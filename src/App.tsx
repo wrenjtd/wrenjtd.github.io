@@ -18,7 +18,7 @@ function App() {
   const auth_url = "/authorize";
   //const get_user_details_endpoint = "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/";
 
-  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY};
+  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY, 'origin': 'https://wrenjtd.github.io/' };
 
   const session = new OAuth2Client({
     server: base_url,
