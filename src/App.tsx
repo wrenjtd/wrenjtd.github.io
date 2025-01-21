@@ -80,7 +80,7 @@ function App() {
 
       <div className="card">
         <p>{eData}</p>
-        <p>Click Me</p>
+        <p>Click Me!</p>
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
