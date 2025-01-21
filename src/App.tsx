@@ -32,7 +32,7 @@ function App() {
 
   });
 
-  console.log(session);
+  console.log("Session info:" + session.clientCredentials.toString);
 
 //  const postFetch = async () => {
 //     let data = await fetch("https://www.bungie.net/en/OAuth/Authorize?client_id="+ client2+ "&response_type=code", {
