@@ -6,10 +6,7 @@ import { OAuth2Client } from '@badgateway/oauth2-client';
 
 function App() {
   const [count, setCount] = useState(0);
-  const apiKey = import.meta.env.VITE_API_KEY;
-  const clientSecret = import.meta.env.VITE_API_SECRET;
-  const clientID = import.meta.env.VITE_API_CLIENT_ID;
-  //const client2 = 48832;
+  
   // const base_auth_url = "https://www.bungie.net/en/OAuth/Authorize";
   // const redirect_uri = "https://github.com/wrenjtd/destiny2-situational-loadout";
   // const token_url = "https://www.bungie.net/Platform/App/OAuth/token/";
@@ -21,12 +18,12 @@ function App() {
   const auth_url = "/authorize";
   //const get_user_details_endpoint = "https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/";
 
-  const additionalHeaders = { 'X-API-Key': apiKey };
+  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY};
 
   const session = new OAuth2Client({
     server: base_url,
-    clientId: clientID,
-    clientSecret: clientSecret,
+    clientId: import.meta.env.VITE_BUNGIE_API_CLIENT_ID,
+    clientSecret: import.meta.env.VITE_BUNGIE_API_SECRET,
     tokenEndpoint: token_url,
     authorizationEndpoint: auth_url,
 
