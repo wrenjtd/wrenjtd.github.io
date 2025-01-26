@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { OAuth2Client } from '@badgateway/oauth2-client';
+import { OAuth2Client, generateCodeVerifier } from '@badgateway/oauth2-client';
 
 
 
@@ -16,7 +16,7 @@ function App() {
   const token_url = "/token/";
   const auth_url = "/authorize";
   
-
+  
   const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY, 'origin': 'https://wrenjtd.github.io/' };
 
  
@@ -36,6 +36,7 @@ function App() {
 
   //Authorization request to authorize user
   const getData = async () => {
+    const codeVerifier = await generateCodeVerifier();
     const authorizationResponse = await fetch(auth_endpoint, {
       method: 'GET',
       headers: {
@@ -57,6 +58,7 @@ function App() {
     session.authorizationCode.getToken({
       code: "https://wrenjtd.github.io/?code=a1f7c56abdade1f0d04318756bd4c558",
       redirectUri: redirect_uri,
+      codeVerifier,
     });
     
 }
