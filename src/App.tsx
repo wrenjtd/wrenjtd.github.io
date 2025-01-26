@@ -55,7 +55,7 @@ function App() {
 
     console.log(authResp);
     session.authorizationCode.getToken({
-      code: "55f7b29cbb940820e494953936f63c69",
+      code: "https://wrenjtd.github.io/?code=a1f7c56abdade1f0d04318756bd4c558",
       redirectUri: redirect_uri,
     });
     
