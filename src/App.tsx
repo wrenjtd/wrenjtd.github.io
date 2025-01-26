@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { OAuth2Client, OAuth2Fetch, generateCodeVerifier } from '@badgateway/oauth2-client';
+import { OAuth2Client } from '@badgateway/oauth2-client';
 
 
 
 function App() {
   const [count, setCount] = useState(0);
   const [some, setSome] = useState(48832);
-  const [eData, setEData] = useState({});
+ 
   const [authResp, setAuthResp] = useState({});
   
   const auth_endpoint = `https://www.bungie.net/en/OAuth/Authorize?client_id=${some}&response_type=code`;
@@ -17,9 +17,9 @@ function App() {
   const auth_url = "/authorize";
   
 
-  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY, 'origin': 'https://wrenjtd.github.io/' };
+  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY, 'origin': 'localhost:5173' };
 
-  const codeVerifier =  generateCodeVerifier();
+ 
 
 
 
@@ -45,6 +45,7 @@ function App() {
         ...additionalHeaders
 
     }, mode: 'no-cors'
+    
  })
     console.log(auth_endpoint);
     //exchange code for token
@@ -53,75 +54,13 @@ function App() {
       code: authResp.toString(),
       redirectUri: redirect_uri,
     });
-    const myData = await fetch("https://www.bungie.net/Platform/User/GetMembershipsForCurrentUser/", {headers: additionalHeaders} );
-    console.log("My data is here: " , myData);
+    
 }
 
 
- 
-
-
-
-
-
-
-
-  // const fetchWrapper = new OAuth2Fetch({
-  //   client: session,
-
-  // getNewToken: async () => {
-
-  //   // // Example
-  //   // return session.clientCredentials();
-
-  //   // Another example
-  //   return session.authorizationCode.getToken({
-  //     code: authResp.toString(),
-  //     redirectUri: redirect_uri,
-  //   });
-
-  // },
-
-
-  // onError: (err) => {
-  //   // err is of type Error
-  //   console.error(err);
-  // }
-  // })
-
-  
-  
-
-
- 
-
-
-  
-
-
- 
-
-  // const getData = async () => {
-    
-  //   const oauth2Token = await session.authorizationCode.getTokenFromCodeRedirect(
-  //     document.location.href,
-  //     {
-  //       redirectUri: redirect_uri
-  //     }
-  //   );
-
-  // }
-
-  // const getData2 = async () => {
-  //   let data = await fetch("https://www.bungie.net/Platform/User/GetMembershipsForCurrentUser/", {headers: {'Host': 'localhost:5173'}} );
-  //   console.log(data);
-  // }
-
-  
-
 
   useEffect(() => {
-    // setSome(import.meta.env.VITE_BUNGIE_API_CLIENT_ID);
+  
     getData();
 
   }, [])
