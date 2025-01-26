@@ -17,7 +17,7 @@ function App() {
   const auth_url = "/authorize";
   
 
-  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY, 'origin': 'localhost:5173' };
+  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY, 'origin': 'https://wrenjtd.github.io/' };
 
  
 
@@ -36,7 +36,7 @@ function App() {
 
   //Authorization request to authorize user
   const getData = async () => {
-    let authorizationResponse = await fetch(`https://www.bungie.net/en/OAuth/Authorize?client_id=${some}&response_type=code`, {
+    let authorizationResponse = await fetch(auth_endpoint, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -48,6 +48,7 @@ function App() {
     
  })
     console.log(auth_endpoint);
+    console.log(authorizationResponse);
     //exchange code for token
     setAuthResp(authorizationResponse);
     session.authorizationCode.getToken({
