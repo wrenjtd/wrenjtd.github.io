@@ -6,7 +6,7 @@ import { OAuth2Client } from '@badgateway/oauth2-client';
 
 function App() {
   const [count, setCount] = useState(0);
-  const [some, setSome] = useState(48832);
+  const some = 48832;
  
   const [authResp, setAuthResp] = useState({});
   
@@ -60,7 +60,7 @@ function App() {
 
 
   useEffect(() => {
-  
+
     getData();
 
   }, [])
