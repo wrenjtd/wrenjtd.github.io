@@ -49,7 +49,7 @@ function App() {
  })
     console.log("Client ID: "+ import.meta.env.VITE_BUNGIE_API_CLIENT_ID);
     console.log(auth_endpoint);
-    console.log(authResp.);
+    console.log(authResp.toString());
     //exchange code for token
     setAuthResp(authorizationResponse);
     session.authorizationCode.getToken({
