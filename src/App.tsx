@@ -12,7 +12,7 @@ function App() {
   
   const auth_endpoint = `https://www.bungie.net/en/OAuth/Authorize?client_id=${some}&response_type=code`;
   const base_url = "https://www.bungie.net/en/OAuth/";
-  const redirect_uri_2 = "https://wrenjtd.github.io/";
+  //const redirect_uri_2 = "https://wrenjtd.github.io/";
   const redirect_uri = "localhost:5173/";
   const token_url = "/token/";
   const auth_url = "/authorize";
@@ -56,11 +56,11 @@ function App() {
     setAuthResp(authorizationResponse);
 
     console.log(authResp);
-    // session.authorizationCode.getToken({
-    //   code: "https://wrenjtd.github.io/?code=a1f7c56abdade1f0d04318756bd4c558",
-    //   redirectUri: redirect_uri,
-    //   codeVerifier,
-    // });
+    session.authorizationCode.getToken({
+      code: "https://wrenjtd.github.io/?code=a1f7c56abdade1f0d04318756bd4c558",
+      redirectUri: redirect_uri,
+      codeVerifier,
+    });
     
 }
 
