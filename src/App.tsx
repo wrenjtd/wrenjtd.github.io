@@ -36,7 +36,7 @@ function App() {
 
   //Authorization request to authorize user
   const getData = async () => {
-    let authorizationResponse = await fetch(auth_endpoint, {
+    const authorizationResponse = await fetch(auth_endpoint, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -47,7 +47,7 @@ function App() {
     }, mode: 'no-cors'
     
  })
-    console.log("Client ID: "+ import.meta.env.VITE_BUNGIE_API_CLIENT_ID);
+    
     console.log(auth_endpoint);
     
     //exchange code for token
@@ -55,7 +55,7 @@ function App() {
 
     console.log(authResp);
     session.authorizationCode.getToken({
-      code: authResp.toString(),
+      code: "55f7b29cbb940820e494953936f63c69",
       redirectUri: redirect_uri,
     });
     
