@@ -43,7 +43,7 @@ function App() {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'authorization': 'Basic ' + btoa(import.meta.env.VITE_BUNGIE_API_CLIENT_ID + ":" + import.meta.env.VITE_BUNGIE_API_CLIENT_SECRET),
-        'grant_type': 'authorization_code',
+        'grant_type': 'authorization_code&code=f8ab7a7c1954cd44854793c400315ae6',
         ...additionalHeaders
 
     }, mode: 'no-cors'
@@ -57,7 +57,7 @@ function App() {
 
     console.log(authResp);
     session.authorizationCode.getToken({
-      code: "https://wrenjtd.github.io/?code=a1f7c56abdade1f0d04318756bd4c558",
+      code: "?code=f8ab7a7c1954cd44854793c400315ae6",
       redirectUri: redirect_uri,
       codeVerifier,
     });
