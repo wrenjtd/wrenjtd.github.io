@@ -24,7 +24,7 @@ function App() {
 
  
   const openInNewTab = (url: string) => {
-    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    const newWindow = window.open(url, '_self', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
   }
 
@@ -81,7 +81,7 @@ function App() {
 
       <div className="card">
         
-        <button onClick={() => openInNewTab(auth_endpoint)}>Click Me!
+        <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
 
         <button onClick={() => getData()}>Don't click me yet!
