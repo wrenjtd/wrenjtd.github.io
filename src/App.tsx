@@ -81,8 +81,8 @@ function App() {
     <>
 
       <div className="card">
-        <p>Click Me!</p>
-        <button onClick={() => openInNewTab(auth_endpoint)}>
+        
+        <button onClick={() => openInNewTab(auth_endpoint)}>Click Me!
         </button>
       </div>
 
