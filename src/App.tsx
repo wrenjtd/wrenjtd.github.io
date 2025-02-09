@@ -5,7 +5,7 @@ import { OAuth2Client, generateCodeVerifier } from '@badgateway/oauth2-client';
 
 
 function App() {
-  const [count, setCount] = useState(0);
+  //const [count, setCount] = useState(0);
   const some = 48832;
  
   const [authResp, setAuthResp] = useState({});
@@ -55,7 +55,6 @@ function App() {
     
  })
     
-    console.log(auth_endpoint);
     
     // //exchange code for token
     setAuthResp(authorizationResponse);
@@ -84,6 +83,10 @@ function App() {
         
         <button onClick={() => openInNewTab(auth_endpoint)}>Click Me!
         </button>
+
+        <button onClick={() => getData()}>Don't click me yet!
+        </button>
+
       </div>
 
     </>
