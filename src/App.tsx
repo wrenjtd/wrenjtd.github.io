@@ -12,16 +12,21 @@ function App() {
   
   const auth_endpoint = `https://www.bungie.net/en/OAuth/Authorize?client_id=${some}&response_type=code`;
   const base_url = "https://www.bungie.net/en/OAuth/";
-  //const redirect_uri_2 = "https://wrenjtd.github.io/";
-  const redirect_uri = "localhost:5173/";
+  const redirect_uri_2 = "https://wrenjtd.github.io/";
+  //const redirect_uri = "localhost:5173/";
   const token_url = "/token/";
   const auth_url = "/authorize";
   
   
-  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY, 'origin': 'localhost:5173/' };
+  
+  
+  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY, 'origin': 'https://wrenjtd.github.io/' };
 
  
-
+  const openInNewTab = (url: string) => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
 
 
   //Start new session
@@ -58,7 +63,7 @@ function App() {
     console.log(authResp);
     session.authorizationCode.getToken({
       code: "?code=f8ab7a7c1954cd44854793c400315ae6",
-      redirectUri: redirect_uri,
+      redirectUri: redirect_uri_2,
       codeVerifier,
     });
     
@@ -68,7 +73,7 @@ function App() {
 
   useEffect(() => {
 
-    getData();
+    
 
   }, [])
 
@@ -76,10 +81,8 @@ function App() {
     <>
 
       <div className="card">
-        <p></p>
         <p>Click Me!</p>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => openInNewTab(auth_endpoint)}>
         </button>
       </div>
 
