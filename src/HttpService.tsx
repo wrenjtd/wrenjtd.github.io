@@ -39,7 +39,7 @@ export default class HTTPService {
       }
 
   
-      return new Promise<object>((resolve, reject) => {
+      return new Promise<object>((reject) => {
         ky
         .post(url, data)
         .then(response => {
