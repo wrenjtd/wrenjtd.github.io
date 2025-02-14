@@ -15,7 +15,7 @@ function App() {
 
   //const [authResp, setAuthResp] = useState({});
 
-  const auth_endpoint = "https://www.bungie.net/en/OAuth/Authorize?client_id=" + import.meta.env.VITE_BUNGIE_API_CLIENT_ID + "&response_type=code";
+  const auth_endpoint = "https://www.bungie.net/en/OAuth/Authorize?client_id=" + 48832 + "&response_type=code";
   //const base_url = "https://www.bungie.net/en/OAuth/";
   const redirect_uri = "https://wrenjtd.github.io/";
   //const redirect_uri = "localhost:5173/";
