@@ -46,6 +46,7 @@ function App() {
   //   }
   // }
 
+  
 
 
   
@@ -53,20 +54,19 @@ function App() {
   
 
   //Authorization request to authorize user
-  const getData = async () => {
-    let myObject = await fetch(auth_endpoint, {
-      method: 'GET',
-      headers: additionalHeaders,
-      credentials: 'omit',
-    });
-    let myText = await myObject.text();
-    console.log(myText);
+  const checker = async () => {
+   if(window.location.search.includes("code")){
+
+    const code = window.location.search.split("code=")[1];
+    console.log(code);
+   }
+
   }
 
 
 
   useEffect(() => {
-
+    checker();
 
 
   }, [])
@@ -81,8 +81,7 @@ function App() {
 
        
 
-        <button onClick={() => getData()}>Start here!
-        </button>
+      
 
       </div>
 
