@@ -1,6 +1,6 @@
 import { useEffect} from 'react'
 import './App.css'
-import { OAuthError } from './errors';
+//import { OAuthError } from './errors';
 // import { OAuthResponse, TravelerConfig } from './type-definitions/additons';
 // import ky from 'ky';
 
