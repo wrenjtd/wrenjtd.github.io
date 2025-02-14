@@ -17,7 +17,7 @@ function App() {
 
   const auth_endpoint = "https://www.bungie.net/en/OAuth/Authorize?client_id=" + import.meta.env.VITE_BUNGIE_API_CLIENT_ID + "&response_type=code";
   //const base_url = "https://www.bungie.net/en/OAuth/";
-  //const redirect_uri = "https://wrenjtd.github.io/";
+  const redirect_uri = "https://wrenjtd.github.io/";
   //const redirect_uri = "localhost:5173/";
   //const token_url = "/token/";
   //const auth_url = "/authorize";
@@ -27,7 +27,7 @@ function App() {
 
 
 
-  //const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY, 'origin': redirect_uri };
+  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY, 'origin': redirect_uri };
 
 
   const openInNewTab = (url: string) => {
@@ -54,7 +54,10 @@ function App() {
 
   //Authorization request to authorize user
   const getData = async () => {
-    let myObject = await fetch(auth_endpoint);
+    let myObject = await fetch(auth_endpoint, {
+      method: 'GET',
+      headers: additionalHeaders
+    });
     let myText = await myObject.text();
     console.log(myText);
   }
