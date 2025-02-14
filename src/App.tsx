@@ -27,7 +27,7 @@ function App() {
 
 
 
-  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY};
+  //const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY};
 
 
   const openInNewTab = (url: string) => {
