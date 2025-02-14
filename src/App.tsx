@@ -38,13 +38,13 @@ function App() {
 
  
 
-  const generateOAuthURL = (oauthClientId: string): string => {
-    if (oauthClientId !== undefined) {
-      return `https://www.bungie.net/en/OAuth/Authorize?client_id=${oauthClientId}&response_type=code`;
-    } else {
-      throw new OAuthError('You did not specify a OAuth client Id');
-    }
-  }
+  // const generateOAuthURL = (oauthClientId: string): string => {
+  //   if (oauthClientId !== undefined) {
+  //     return `https://www.bungie.net/en/OAuth/Authorize?client_id=${oauthClientId}&response_type=code`;
+  //   } else {
+  //     throw new OAuthError('You did not specify a OAuth client Id');
+  //   }
+  // }
 
 
 
@@ -53,10 +53,11 @@ function App() {
   
 
   //Authorization request to authorize user
-  // const getData = async () => {
-  //   fetch(auth_url)
-  //   console.log("Hello");
-  // }
+  const getData = async () => {
+    let myObject = await fetch(auth_endpoint);
+    let myText = await myObject.text();
+    console.log(myText);
+  }
 
 
 
@@ -76,7 +77,7 @@ function App() {
 
        
 
-        <button onClick={() => generateOAuthURL(import.meta.env.VITE_BUNGIE_API_CLIENT_ID)}>Start here!
+        <button onClick={() => getData()}>Start here!
         </button>
 
       </div>
