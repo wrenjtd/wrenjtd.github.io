@@ -27,7 +27,7 @@ function App() {
 
 
 
-  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY, 'origin': redirect_uri };
+  const additionalHeaders = { 'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY, 'origin': redirect_uri, cors: 'no-cors' };
 
 
   const openInNewTab = (url: string) => {
