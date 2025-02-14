@@ -56,7 +56,8 @@ function App() {
   const getData = async () => {
     let myObject = await fetch(auth_endpoint, {
       method: 'GET',
-      headers: additionalHeaders
+      headers: additionalHeaders,
+      credentials: 'omit',
     });
     let myText = await myObject.text();
     console.log(myText);
