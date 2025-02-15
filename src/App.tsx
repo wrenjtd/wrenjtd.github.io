@@ -70,7 +70,8 @@ function App() {
       },
       body: new URLSearchParams({
         'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
-        'grant_type': "authorization_code",
+        'client_secret': import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
+        'grant_type': "grant_type=authorization_code&code="+code+"&client_id="+import.meta.env.VITE_BUNGIE_CLIENT_ID+"&client_secret="+import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
         'code': code
       }).toString()
     }).then(function(response) {
