@@ -55,11 +55,33 @@ function App() {
 
   //Authorization request to authorize user
   const checker = async () => {
+  var tokenData = undefined;
    if(window.location.search.includes("code")){
 
     const code = window.location.search.split("code=")[1];
-    console.log(code);
-   }
+
+    fetch('https://www.bungie.net/Platform/App/OAuth/Token/', {
+      method: 'POST',
+      headers: {
+        'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': `Basic ${window.btoa(`${import.meta.env.VITE_BUNGIE_CLIENT_ID}:${import.meta.env.VITE_BUNGIE_CLIENT_SECRET}`)}`
+      },
+      body: new URLSearchParams({
+        'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
+        'grant_type': "authorization_code",
+        'code': code
+      }).toString()
+    }).then(function(response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function(data) {
+      tokenData = data;
+      console.log(data);
+    })
+  }
+    
 
   }
 
