@@ -55,8 +55,8 @@ function App() {
 
   //Authorization request to authorize user
   const checker = async () => {
-  var tokenData = undefined;
-   if(window.location.search.includes("code")){
+  var tokenData = '';
+  if(window.location.search.includes("code")){
 
     const code = window.location.search.split("code=")[1];
 
