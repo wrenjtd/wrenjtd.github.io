@@ -44,8 +44,10 @@ export default class HTTPService {
         ky
         .post(url, data)
         .then(response => {
-          Promise.resolve(response.body);
-        })
+          console.log(response.json());
+        }).then(function(data) {
+               console.log(data);
+             })
         .catch(err => {
           reject(err);
         });
