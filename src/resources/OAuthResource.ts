@@ -32,7 +32,13 @@ export default class OAuthResource extends BungieResource {
         form.append('client_secret', oauthClientSecret);
 
         let options: TravelerOptions = {
-            body: form,
+            body: new URLSearchParams({
+                      'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
+                      'client_secret': import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
+                      'grant_type': "authorization_code",
+                      'code': code
+                    }).toString()
+                  ,
             headers:
                 oauthClientId && oauthClientSecret
                     ? {

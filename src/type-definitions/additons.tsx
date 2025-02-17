@@ -121,7 +121,7 @@ export interface OAuthResponse {
   }
 
   export interface TravelerOptions {
-        body?: object;
+        body?: string;
         headers?: OutgoingHttpHeaders;
         form?: boolean;
         json: true;
