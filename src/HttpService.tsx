@@ -40,11 +40,11 @@ export default class HTTPService {
       }
 
   
-      return new Promise<object>((reject) => {
+      return new Promise<object>((resolve, reject) => {
         ky
         .post(url, data)
         .then(response => {
-          console.log(response.json());
+          resolve(response.json());
         }).then(function(data) {
                console.log(data);
              })
