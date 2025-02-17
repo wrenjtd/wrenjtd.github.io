@@ -1,6 +1,6 @@
 import BungieResource from './BungieResource';
 import HTTPService from '../HttpService';
-import { OAuthResponse, TravelerConfig } from '../type-definitions/additons';
+import { OAuthResponse, TravelerConfig, TravelerOptions } from '../type-definitions/additons';
 import { OAuthError } from '../errors';
 
 
@@ -31,14 +31,14 @@ export default class OAuthResource extends BungieResource {
         form.append('grant_type', 'authorization_code');
         form.append('client_secret', oauthClientSecret);
 
-        let options: object = {
+        let options: TravelerOptions = {
             body: form,
             headers:
                 oauthClientId && oauthClientSecret
                     ? {
                         authorization: 'Basic ' + btoa(`${oauthClientId}:${oauthClientSecret}`).toString(),
                         'content-type': 'application/x-www-form-urlencoded',
-                        'user-agent': this.userAgent
+                        'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
                     }
                     : {
                         'content-type': 'application/x-www-form-urlencoded',
@@ -47,6 +47,7 @@ export default class OAuthResource extends BungieResource {
 
             json: true
         };
+        console.log("attempting to retrieve access token");
         return new Promise<OAuthResponse>((reject) => {
             this.httpService
                 .post('https://www.bungie.net/platform/app/oauth/token/', options)
@@ -63,7 +64,7 @@ export default class OAuthResource extends BungieResource {
         form.append('refresh_token', refreshToken);
         form.append('grant_type', 'refresh_token');
     
-        const options: object = {
+        const options: TravelerOptions = {
           body: form,
           headers: {
             authorization: 'Basic ' + btoa(oauthClientId + ":" + oauthClientSecret),
