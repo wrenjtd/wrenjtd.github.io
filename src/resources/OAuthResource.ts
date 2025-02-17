@@ -19,6 +19,7 @@ export default class OAuthResource extends BungieResource {
         if (oauthClientId !== undefined) {
             return `https://www.bungie.net/en/OAuth/Authorize?client_id=${oauthClientId}&response_type=code`;
         } else {
+            console.log("I'm here, uh oh");
             throw new OAuthError('You did not specify a OAuth client Id');
         } 
     }
