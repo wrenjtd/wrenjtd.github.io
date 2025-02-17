@@ -23,7 +23,7 @@ function App() {
   });
 
 
-  const [authResp, setAuthResp] = useState<OAuthResponse>();
+  //const [authResp, setAuthResp] = useState<OAuthResponse>();
   const [urlAuthCode, setURLAuthCode] = useState("");
 
   const auth_endpoint = "https://www.bungie.net/en/OAuth/Authorize?client_id=" + 48832 + "&response_type=code";
