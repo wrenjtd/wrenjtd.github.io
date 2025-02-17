@@ -26,7 +26,7 @@ function App() {
   //const [authResp, setAuthResp] = useState<OAuthResponse>();
   const [urlAuthCode, setURLAuthCode] = useState("");
 
-  const auth_endpoint = "https://www.bungie.net/en/OAuth/Authorize?client_id=" + 48832 + "&response_type=code";
+  const auth_endpoint = traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID);
   //const base_url = "https://www.bungie.net/en/OAuth/";
   //const redirect_uri = "https://wrenjtd.github.io/";
   //const token_url = "https://www.bungie.net/Platform/App/OAuth/Token/";
@@ -133,8 +133,7 @@ function App() {
         <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
 
-        <button onClick={() => traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID)}>Try me!
-        </button>
+        
        
 
       
