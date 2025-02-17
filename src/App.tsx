@@ -1,7 +1,8 @@
-import { useEffect} from 'react'
+import { useEffect, useState} from 'react'
 import './App.css'
 //import { OAuthError } from './errors';
-// import { OAuthResponse, TravelerConfig } from './type-definitions/additons';
+import { OAuthResponse } from './type-definitions/additons';
+import Traveler from './Traveler';
 // import ky from 'ky';
 
 
@@ -10,16 +11,25 @@ import './App.css'
 
 
 function App() {
-  //const [count, setCount] = useState(0);
+  
   // const some = 48832;
 
-  //const [authResp, setAuthResp] = useState({});
+  const traveler = new Traveler({
+    apikey: import.meta.env.VITE_BUNGIE_API_KEY as string,
+    debug: true,
+    oauthClientId: import.meta.env.VITE_BUNGIE_CLIENT_ID,
+    oauthClientSecret: import.meta.env.OAUTH_SECRET,
+    userAgent: ''
+  });
+
+
+  const [authResp, setAuthResp] = useState<OAuthResponse>();
+  const [urlAuthCode, setURLAuthCode] = useState("");
 
   const auth_endpoint = "https://www.bungie.net/en/OAuth/Authorize?client_id=" + 48832 + "&response_type=code";
   //const base_url = "https://www.bungie.net/en/OAuth/";
   //const redirect_uri = "https://wrenjtd.github.io/";
-  //const redirect_uri = "localhost:5173/";
-  //const token_url = "/token/";
+  //const token_url = "https://www.bungie.net/Platform/App/OAuth/Token/";
   //const auth_url = "/authorize";
 
 
@@ -38,15 +48,57 @@ function App() {
 
  
 
-  // const generateOAuthURL = (oauthClientId: string): string => {
-  //   if (oauthClientId !== undefined) {
-  //     return `https://www.bungie.net/en/OAuth/Authorize?client_id=${oauthClientId}&response_type=code`;
-  //   } else {
-  //     throw new OAuthError('You did not specify a OAuth client Id');
-  //   }
+  
+  // const getAccessToken = (authorizationCode: string) => {
+
+  //   fetch(token_url, {
+  //     method: 'POST',
+  //     headers: {
+  //       'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
+  //       'Content-Type': 'application/x-www-form-urlencoded',
+  //       'Authorization': `Basic ${window.btoa(`${import.meta.env.VITE_BUNGIE_CLIENT_ID}:${import.meta.env.VITE_BUNGIE_CLIENT_SECRET}`)}`
+  //     },
+  //     body: new URLSearchParams({
+  //       'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
+  //       'client_secret': import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
+  //       'grant_type': "authorization_code",
+  //       'code': authorizationCode
+  //     }).toString()
+  //   }).then(function(response) {
+  //     console.log(response);
+  //     return response.json();
+  //   })
+  //   .then(function(data) {
+  //     setAuthResp(data);
+  //     console.log(authResp);
+  //   })
+
   // }
 
-  
+
+  // const getRefreshToken = (refreshToken: string) => {
+    
+  //   fetch(token_url, {
+  //     method: 'POST',
+  //     headers: {
+  //       'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
+  //       'Content-Type': 'application/x-www-form-urlencoded',
+  //       'Authorization': `Basic ${window.btoa(`${import.meta.env.VITE_BUNGIE_CLIENT_ID}:${import.meta.env.VITE_BUNGIE_CLIENT_SECRET}`)}`
+  //     },
+  //     body: new URLSearchParams({
+  //       'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
+  //       'client_secret': import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
+  //       'grant_type': "refresh_token",
+  //       'refresh_token': refreshToken
+  //     }).toString()
+  //   }).then(function(response) {
+  //     return response.json();
+  //   })
+  //   .then(function(data) {
+  //     setAuthResp(data);
+  //     console.log(authResp);
+  //   })
+  // }
 
 
   
@@ -55,33 +107,11 @@ function App() {
 
   //Authorization request to authorize user
   const checker = async () => {
-  var tokenData = '';
-  console.log("Initial log in" + tokenData);
   if(window.location.search.includes("code")){
-
-    const code = window.location.search.split("code=")[1];
-
-    fetch('https://www.bungie.net/Platform/App/OAuth/Token/', {
-      method: 'POST',
-      headers: {
-        'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': `Basic ${window.btoa(`${import.meta.env.VITE_BUNGIE_CLIENT_ID}:${import.meta.env.VITE_BUNGIE_CLIENT_SECRET}`)}`
-      },
-      body: new URLSearchParams({
-        'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
-        'client_secret': import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
-        'grant_type': "authorization_code",
-        'code': code
-      }).toString()
-    }).then(function(response) {
-      console.log(response);
-      return response.json();
-    })
-    .then(function(data) {
-      tokenData = data;
-      console.log(data);
-    })
+    console.log("Checker is running");
+    setURLAuthCode(window.location.search.split("code=")[1]) ;
+    traveler.oauth.getAccessToken(urlAuthCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET)
+    //getAccessToken(urlAuthCode);
   }
     
 

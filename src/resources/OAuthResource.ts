@@ -24,18 +24,19 @@ export default class OAuthResource extends BungieResource {
     }
 
 
-    public getAccessToken(code: string, oauthClientId?: string, oauthClientSecret?: string): Promise<OAuthResponse> {
+    public getAccessToken(code: string, oauthClientId: string, oauthClientSecret: string): Promise<OAuthResponse> {
         let form = new FormData();
-        form.append('client_id', import.meta.env.VITE_BUNGIE_API_CLIENT_ID);
+        form.append('client_id', oauthClientId);
         form.append('code', code);
         form.append('grant_type', 'authorization_code');
+        form.append('client_secret', oauthClientSecret);
 
         let options: object = {
             body: form,
             headers:
                 oauthClientId && oauthClientSecret
                     ? {
-                        authorization: 'Basic ' + btoa(import.meta.env.VITE_BUNGIE_API_CLIENT_ID + ":" + import.meta.env.VITE_BUNGIE_API_CLIENT_SECRET),
+                        authorization: 'Basic ' + btoa(`${oauthClientId}:${oauthClientSecret}`).toString(),
                         'content-type': 'application/x-www-form-urlencoded',
                         'user-agent': this.userAgent
                     }

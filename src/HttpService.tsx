@@ -1,13 +1,14 @@
 import ky from 'ky';
 import Logger from './Logger';
+import { TravelerOptions } from './type-definitions/additons';
 
 export default class HTTPService {
 
    
     private debug?: boolean;
-    private options: object;
+    private options: TravelerOptions;
   
-    constructor(options: object, debug?: boolean) {
+    constructor(options: TravelerOptions, debug?: boolean) {
       this.debug = debug;
       this.options = options;
     }

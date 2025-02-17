@@ -119,3 +119,14 @@ export interface OAuthResponse {
     refresh_expires_in?: number;
     membership_id: string;
   }
+
+  export interface TravelerOptions {
+        body?: object;
+        headers?: OutgoingHttpHeaders;
+        form?: boolean;
+        json: true;
+  }
+
+interface OutgoingHttpHeaders {
+    [header: string]: number | string | string[] | undefined;
+}
