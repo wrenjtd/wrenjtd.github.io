@@ -17,6 +17,7 @@ export default class OAuthResource extends BungieResource {
 
     public generateOAuthURL(oauthClientId: string): string {
         if (oauthClientId !== undefined) {
+            console.log("Auth generated");
             return `https://www.bungie.net/en/OAuth/Authorize?client_id=${oauthClientId}&response_type=code`;
         } else {
             console.log("I'm here, uh oh");
