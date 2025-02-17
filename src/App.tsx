@@ -133,6 +133,8 @@ function App() {
         <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
 
+        <button onClick={() => traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID)}>Try me!
+        </button>
        
 
       
