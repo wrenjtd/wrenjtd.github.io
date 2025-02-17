@@ -71,7 +71,12 @@ export default class OAuthResource extends BungieResource {
         form.append('grant_type', 'refresh_token');
     
         const options: TravelerOptions = {
-          body: form,
+            body: new URLSearchParams({
+                'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
+                      'client_secret': import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
+                      'grant_type': "refresh_token",
+                      'refresh_token': refreshToken
+            }).toString(),
           headers: {
             authorization: 'Basic ' + btoa(oauthClientId + ":" + oauthClientSecret),
             'content-type': 'application/x-www-form-urlencoded'
