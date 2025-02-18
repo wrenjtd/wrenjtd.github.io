@@ -27,7 +27,7 @@ export default class HTTPService {
 
 
         return new Promise<object>(()  => {
-          fetch(url, authenticationToken ? authOptions : this.options) 
+          ky(url, authenticationToken ? authOptions : this.options) 
           .then(response => response.json())
           .catch(err => {
             Promise.reject(err);
@@ -43,7 +43,7 @@ export default class HTTPService {
 
   
       return new Promise<object>((resolve, reject) => {
-        ky(url, data)
+        fetch(url, data)
         .then(response => {
           resolve(response);
         }).then(function(data) {
