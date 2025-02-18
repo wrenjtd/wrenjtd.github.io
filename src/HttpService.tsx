@@ -1,5 +1,6 @@
 import ky, { Options } from 'ky';
 import Logger from './Logger';
+import { OAuthResponse } from './type-definitions/additons';
 //import { OAuthResponse } from './type-definitions/additons';
 
 
@@ -42,8 +43,8 @@ export default class HTTPService {
       }
 
   
-      return new Promise<object>((resolve, reject) => {
-        fetch(url, data)
+      return new Promise<any>((resolve, reject) => {
+        ky<OAuthResponse>(url, data)
         .then(response => {
           resolve(response);
         }).then(function(data) {
