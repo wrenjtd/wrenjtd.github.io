@@ -1,6 +1,6 @@
 import ky, { Options } from 'ky';
 import Logger from './Logger';
-import { OAuthResponse } from './type-definitions/additons';
+//import { OAuthResponse } from './type-definitions/additons';
 
 
 
