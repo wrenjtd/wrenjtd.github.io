@@ -43,7 +43,7 @@ export default class HTTPService {
 
   
       return new Promise<object>((resolve, reject) => {
-        ky<OAuthResponse>(url, data)
+        ky(url, data)
         .then(response => {
           resolve(response);
         }).then(function(data) {
