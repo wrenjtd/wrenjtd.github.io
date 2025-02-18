@@ -113,7 +113,7 @@ function App() {
     setURLAuthCode(window.location.search.split("code=")[1]) ;
     console.log(urlAuthCode);
     console.log(thisThing);
-    //traveler.oauth.getAccessToken(urlAuthCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET)
+    traveler.oauth.getAccessToken(thisThing, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET)
     //getAccessToken(urlAuthCode);
   }
     
