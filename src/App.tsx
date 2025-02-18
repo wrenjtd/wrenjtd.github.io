@@ -114,8 +114,8 @@ function App() {
     setURLAuthCode(tempAuthCode);
     console.log(urlAuthCode);
     
-    traveler.oauth.getAccessToken(tempAuthCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET)
-    //getAccessToken(urlAuthCode);
+    //traveler.oauth.getAccessToken(tempAuthCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET)
+    getAccessToken(urlAuthCode);
   }
     
 
