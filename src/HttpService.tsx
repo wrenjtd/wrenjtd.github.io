@@ -27,7 +27,7 @@ export default class HTTPService {
 
 
         return new Promise<object>(()  => {
-          ky(url, authenticationToken ? authOptions : this.options) 
+          fetch(url, authenticationToken ? authOptions : this.options) 
           .then(response => response.json())
           .catch(err => {
             Promise.reject(err);
