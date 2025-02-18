@@ -37,15 +37,15 @@ export default class HTTPService {
     }
 
 
-    public post(url: string, data: object ): Promise<object> {
+    public post(url: string, data: object ): Promise<OAuthResponse> {
       if (this.debug) {
         Logger.debug(`POST - ${url}`);
       }
 
   
-      return new Promise<any>((resolve, reject) => {
-        ky<OAuthResponse>(url, data)
-        .then(response => {
+      return new Promise<OAuthResponse>((resolve, reject) => {
+        ky.post<OAuthResponse>(url, data)
+        .then((response: any) => {
           resolve(response);
         }).then(function(data) {
                console.log(data);
