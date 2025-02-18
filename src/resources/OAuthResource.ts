@@ -44,6 +44,7 @@ export default class OAuthResource extends BungieResource {
                         authorization: `Basic ${window.btoa(`${import.meta.env.VITE_BUNGIE_CLIENT_ID}:${import.meta.env.VITE_BUNGIE_CLIENT_SECRET}`)}`,
                         'content-type': 'application/x-www-form-urlencoded',
                         'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
+                        'user-agent': this.userAgent
                     }
                     : {
                     authorization: `Basic ${window.btoa(`${import.meta.env.VITE_BUNGIE_CLIENT_ID}:${import.meta.env.VITE_BUNGIE_CLIENT_SECRET}`)}`,
@@ -54,7 +55,7 @@ export default class OAuthResource extends BungieResource {
 
             json: true
         };
-        console.log("attempting to retrieve access token");
+        
         return new Promise<any>((reject) => {
             this.httpService
                 .post('https://www.bungie.net/platform/app/oauth/token/', options)
