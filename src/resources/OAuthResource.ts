@@ -32,8 +32,8 @@ export default class OAuthResource extends BungieResource {
         let options = {
             method: 'POST',
             body: new URLSearchParams({
-                      'client_id': oauthClientId,
-                      'client_secret': oauthClientSecret,
+                      'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
+                      'client_secret': import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
                       'grant_type': "authorization_code",
                       'code': code
                     }).toString()
@@ -41,12 +41,12 @@ export default class OAuthResource extends BungieResource {
             headers:
                 oauthClientId && oauthClientSecret
                     ? {
-                        authorization: `Basic ${window.btoa(oauthClientId + ":" + oauthClientSecret)}`,
+                        authorization: `Basic ${window.btoa(`${import.meta.env.VITE_BUNGIE_CLIENT_ID}:${import.meta.env.VITE_BUNGIE_CLIENT_SECRET}`)}`,
                         'content-type': 'application/x-www-form-urlencoded',
                         'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
                     }
                     : {
-                    authorization: `Basic ${window.btoa(oauthClientId + ":" + oauthClientSecret)}`,
+                    authorization: `Basic ${window.btoa(`${import.meta.env.VITE_BUNGIE_CLIENT_ID}:${import.meta.env.VITE_BUNGIE_CLIENT_SECRET}`)}`,
                     'content-type': 'application/x-www-form-urlencoded',
                     'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
                     'user-agent': this.userAgent
