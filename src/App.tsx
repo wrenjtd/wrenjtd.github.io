@@ -109,8 +109,10 @@ function App() {
   const checker = async () => {
   if(window.location.search.includes("code")){
     console.log("Checker is running");
+    let thisThing = window.location.search.split("code=")[1];
     setURLAuthCode(window.location.search.split("code=")[1]) ;
     console.log(urlAuthCode);
+    console.log(thisThing);
     //traveler.oauth.getAccessToken(urlAuthCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET)
     //getAccessToken(urlAuthCode);
   }
