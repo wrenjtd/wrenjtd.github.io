@@ -110,6 +110,7 @@ function App() {
   if(window.location.search.includes("code")){
     console.log("Checker is running");
     setURLAuthCode(window.location.search.split("code=")[1]) ;
+    console.log(urlAuthCode);
     //traveler.oauth.getAccessToken(urlAuthCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET)
     getAccessToken(urlAuthCode);
   }
