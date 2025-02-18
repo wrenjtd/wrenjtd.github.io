@@ -27,16 +27,13 @@ export default class OAuthResource extends BungieResource {
 
 
     public getAccessToken(code: string, oauthClientId: string, oauthClientSecret: string): Promise<OAuthResponse> {
-        let form = new FormData();
-        form.append('client_id', oauthClientId);
-        form.append('code', code);
-        form.append('grant_type', 'authorization_code');
-        form.append('client_secret', oauthClientSecret);
+      
 
-        let options: Options = {
+        let options = {
+            method: 'POST',
             body: new URLSearchParams({
-                      'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
-                      'client_secret': import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
+                      'client_id': oauthClientId,
+                      'client_secret': oauthClientSecret,
                       'grant_type': "authorization_code",
                       'code': code
                     }).toString()
@@ -44,22 +41,22 @@ export default class OAuthResource extends BungieResource {
             headers:
                 oauthClientId && oauthClientSecret
                     ? {
-                        authorization: `Basic ${new Buffer(`${oauthClientId}:${oauthClientSecret}`).toString('base64')}`,
+                        authorization: `Basic ${window.btoa(oauthClientId + ":" + oauthClientSecret)}`,
                         'content-type': 'application/x-www-form-urlencoded',
                         'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
                     }
                     : {
-                        'content-type': 'application/x-www-form-urlencoded',
-                        'user-agent': this.userAgent
+                    authorization: `Basic ${window.btoa(oauthClientId + ":" + oauthClientSecret)}`,
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
                     },
 
             json: true
         };
         console.log("attempting to retrieve access token");
-        return new Promise<OAuthResponse>((reject) => {
+        return new Promise<any>((reject) => {
             this.httpService
                 .post('https://www.bungie.net/platform/app/oauth/token/', options)
-               
                 .catch(err => {
                     reject(err);
                 });

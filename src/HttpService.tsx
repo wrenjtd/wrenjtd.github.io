@@ -35,15 +35,14 @@ export default class HTTPService {
     }
 
 
-    public post(url: string, data: Options): Promise<object> {
+    public post(url: string, data: object ): Promise<object> {
       if (this.debug) {
         Logger.debug(`POST - ${url}`);
       }
 
   
       return new Promise<object>((reject) => {
-        ky
-        .post(url, data)
+        fetch(url, data)
         .then(response => {
           console.log(response);
         }).then(function(data) {
