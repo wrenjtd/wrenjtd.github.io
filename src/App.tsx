@@ -23,7 +23,7 @@ function App() {
   });
 
 
-  const [authResp, setAuthResp] = useState<OAuthResponse>();
+  //const [authResp, setAuthResp] = useState<OAuthResponse>();
   const [urlAuthCode, setURLAuthCode] = useState("");
 
   const auth_endpoint = traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID);
@@ -69,7 +69,7 @@ function App() {
       return response.json();
     })
     .then(function(data) {
-      setAuthResp(data);
+      let authResp = data;
       console.log(authResp);
     })
 
