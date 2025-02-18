@@ -135,6 +135,8 @@ function App() {
 
         <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
+
+        <button onClick={() => getAccessToken(urlAuthCode)}>Get Access Token</button>
         
        
 
