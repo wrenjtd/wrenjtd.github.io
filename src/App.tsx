@@ -112,7 +112,7 @@ function App() {
     setURLAuthCode(window.location.search.split("code=")[1]) ;
     console.log(urlAuthCode);
     //traveler.oauth.getAccessToken(urlAuthCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET)
-    getAccessToken(urlAuthCode);
+    //getAccessToken(urlAuthCode);
   }
     
 
@@ -133,7 +133,7 @@ function App() {
 
         <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
-
+        <button onClick={() => getAccessToken(urlAuthCode)}>Get Access Token</button>
         
        
 
