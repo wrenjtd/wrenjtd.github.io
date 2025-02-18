@@ -65,12 +65,8 @@ function App() {
         'code': authorizationCode
       }).toString()
     }).then(function(response) {
-      console.log(response);
-      return response.json();
-    })
-    .then(function(data) {
-      let authResp = data;
-      console.log(authResp);
+      let authResponse = response.json();
+      console.log(authResponse);
     })
 
   }
