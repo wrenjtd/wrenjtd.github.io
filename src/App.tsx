@@ -1,7 +1,7 @@
 import { useEffect, useState} from 'react'
 import './App.css'
 //import { OAuthError } from './errors';
-import { OAuthResponse } from './type-definitions/additons';
+//import { OAuthResponse } from './type-definitions/additons';
 import Traveler from './Traveler';
 // import ky from 'ky';
 
