@@ -43,7 +43,7 @@ export default class OAuthResource extends BungieResource {
             headers:
                 oauthClientId && oauthClientSecret
                     ? {
-                        authorization: 'Basic ' + btoa(`${oauthClientId}:${oauthClientSecret}`).toString(),
+                        authorization: `Basic ${new Buffer(`${oauthClientId}:${oauthClientSecret}`).toString('base64')}`,
                         'content-type': 'application/x-www-form-urlencoded',
                         'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
                     }
