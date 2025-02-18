@@ -110,6 +110,7 @@ function App() {
   if(window.location.search.includes("code")){
     console.log("Checker is running");
     let tempAuthCode = window.location.search.split("code=")[1];
+    console.log(tempAuthCode);
     setURLAuthCode(tempAuthCode);
     console.log(urlAuthCode);
     
