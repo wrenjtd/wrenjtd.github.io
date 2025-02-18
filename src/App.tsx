@@ -3,6 +3,7 @@ import './App.css'
 //import { OAuthError } from './errors';
 //import { OAuthResponse } from './type-definitions/additons';
 import Traveler from './Traveler';
+import { OAuthResponse } from './type-definitions/additons';
 // import ky from 'ky';
 
 
@@ -49,9 +50,9 @@ function App() {
  
 
   
-  const getAccessToken = (authorizationCode: string) => {
+  const getAccessToken = async (authorizationCode: string)  =>  {
 
-    fetch(token_url, {
+    const myResponse = await fetch(token_url, {
       method: 'POST',
       headers: {
         'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
@@ -64,10 +65,9 @@ function App() {
         'grant_type': "authorization_code",
         'code': authorizationCode
       }).toString()
-    }).then(function(response) {
-      let authResponse = response.json();
-      console.log(authResponse);
     })
+
+    console.log(myResponse.json());
 
   }
 
