@@ -44,7 +44,7 @@ export default class HTTPService {
 
   
       return new Promise<OAuthResponse>((resolve, reject) => {
-        ky.post<OAuthResponse>(url, data)
+        fetch(url, data)
         .then((response: any) => {
           resolve(response);
         }).then(function(data) {
