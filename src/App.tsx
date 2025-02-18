@@ -3,7 +3,6 @@ import './App.css'
 //import { OAuthError } from './errors';
 //import { OAuthResponse } from './type-definitions/additons';
 import Traveler from './Traveler';
-import { OAuthResponse } from './type-definitions/additons';
 // import ky from 'ky';
 
 
