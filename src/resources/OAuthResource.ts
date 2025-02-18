@@ -1,3 +1,4 @@
+/// <reference types="node"/>
 import BungieResource from './BungieResource';
 import HTTPService from '../HttpService';
 import { OAuthResponse, TravelerConfig } from '../type-definitions/additons';
