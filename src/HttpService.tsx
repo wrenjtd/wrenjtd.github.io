@@ -1,14 +1,15 @@
-import ky from 'ky';
+import ky, { Options } from 'ky';
 import Logger from './Logger';
-import { TravelerOptions } from './type-definitions/additons';
+
+
 
 export default class HTTPService {
 
    
     private debug?: boolean;
-    private options: TravelerOptions;
+    private options: Options;
   
-    constructor(options: TravelerOptions, debug?: boolean) {
+    constructor(options: Options, debug?: boolean) {
       this.debug = debug;
       this.options = options;
     }
@@ -34,17 +35,17 @@ export default class HTTPService {
     }
 
 
-    public post(url: string, data: object): Promise<object> {
+    public post(url: string, data: Options): Promise<object> {
       if (this.debug) {
         Logger.debug(`POST - ${url}`);
       }
 
   
-      return new Promise<object>((resolve, reject) => {
+      return new Promise<object>((reject) => {
         ky
         .post(url, data)
         .then(response => {
-          resolve(response.json());
+          console.log(response);
         }).then(function(data) {
                console.log(data);
              })

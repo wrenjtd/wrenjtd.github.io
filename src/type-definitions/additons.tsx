@@ -4,6 +4,9 @@
  * Enum for the global alert level
  * @enum
  */
+
+/// <reference types="node"/>
+
 export enum GlobalAlertLevel {
     Unkown = 0,
     Blue = 1,
@@ -120,13 +123,13 @@ export interface OAuthResponse {
     membership_id: string;
   }
 
-  export interface TravelerOptions {
-        body?: string;
-        headers?: OutgoingHttpHeaders;
-        form?: boolean;
-        json: true;
-  }
-
-interface OutgoingHttpHeaders {
-    [header: string]: number | string | string[] | undefined;
+  export interface Response<B extends Buffer | string | object> {
+    body: B;
+    url: string;
+    requestUrl: string;
+    fromCache: boolean;
+    redirectUrls?: string[];
 }
+
+
+

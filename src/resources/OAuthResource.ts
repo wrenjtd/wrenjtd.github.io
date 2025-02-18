@@ -1,7 +1,8 @@
 import BungieResource from './BungieResource';
 import HTTPService from '../HttpService';
-import { OAuthResponse, TravelerConfig, TravelerOptions } from '../type-definitions/additons';
+import { OAuthResponse, TravelerConfig } from '../type-definitions/additons';
 import { OAuthError } from '../errors';
+import { Options } from 'ky';
 
 
 export default class OAuthResource extends BungieResource {
@@ -31,7 +32,7 @@ export default class OAuthResource extends BungieResource {
         form.append('grant_type', 'authorization_code');
         form.append('client_secret', oauthClientSecret);
 
-        let options: TravelerOptions = {
+        let options: Options = {
             body: new URLSearchParams({
                       'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
                       'client_secret': import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
@@ -57,7 +58,7 @@ export default class OAuthResource extends BungieResource {
         return new Promise<OAuthResponse>((reject) => {
             this.httpService
                 .post('https://www.bungie.net/platform/app/oauth/token/', options)
-                .then(response => Promise.resolve(response))
+               
                 .catch(err => {
                     reject(err);
                 });
@@ -70,7 +71,7 @@ export default class OAuthResource extends BungieResource {
         form.append('refresh_token', refreshToken);
         form.append('grant_type', 'refresh_token');
     
-        const options: TravelerOptions = {
+        const options: Options = {
             body: new URLSearchParams({
                 'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
                       'client_secret': import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
