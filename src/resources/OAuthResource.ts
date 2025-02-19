@@ -56,9 +56,12 @@ export default class OAuthResource extends BungieResource {
             json: true
         };
         
-        return new Promise<any>((reject) => {
+        return new Promise<any>((resolve, reject) => {
             this.httpService
                 .post('https://www.bungie.net/platform/app/oauth/token/', options)
+                .then(response => {
+                    resolve(response);
+                })
                 .catch(err => {
                     reject(err);
                 });

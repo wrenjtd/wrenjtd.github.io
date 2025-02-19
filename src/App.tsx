@@ -114,10 +114,11 @@ function App() {
     let tempAuthCode = window.location.search.split("code=")[1];
     console.log(tempAuthCode);
     setURLAuthCode(tempAuthCode);
-    console.log(urlAuthCode);
+    //console.log(urlAuthCode);
     
-    //traveler.oauth.getAccessToken(tempAuthCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET)
-    getAccessToken(tempAuthCode);
+    let oAuthThing = traveler.oauth.getAccessToken(tempAuthCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET);
+    console.log(oAuthThing);
+    //getAccessToken(tempAuthCode);
   }
     
 
