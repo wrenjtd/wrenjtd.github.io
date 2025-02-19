@@ -67,10 +67,11 @@ function App() {
     })
 
     let thisThing = await myResponse.json();
-    thisThing["access_token"];
-    console.log(thisThing);
+    console.log(thisThing["access_token"]);
+
     
-    console.log(myResponse.json());
+    
+   
 
   }
 
