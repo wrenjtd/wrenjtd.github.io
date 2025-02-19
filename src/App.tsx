@@ -1,7 +1,7 @@
 import { useEffect, useState} from 'react'
 import './App.css'
 //import { OAuthError } from './errors';
-import { OAuthResponse } from './type-definitions/additons';
+//import { OAuthResponse } from './type-definitions/additons';
 import Traveler from './Traveler';
 // import ky from 'ky';
 
@@ -24,12 +24,12 @@ function App() {
 
 
   //const [authResp, setAuthResp] = useState<OAuthResponse>();
-  const [urlAuthCode, setURLAuthCode] = useState("");
+  //const [urlAuthCode, setURLAuthCode] = useState("");
 
   const auth_endpoint = traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID);
   //const base_url = "https://www.bungie.net/en/OAuth/";
   //const redirect_uri = "https://wrenjtd.github.io/";
-  const token_url = "https://www.bungie.net/Platform/App/OAuth/Token/";
+  //const token_url = "https://www.bungie.net/Platform/App/OAuth/Token/";
   //const auth_url = "/authorize";
 
 
@@ -49,33 +49,33 @@ function App() {
  
 
   
-  const getAccessToken = async (authorizationCode: string)  =>  {
+  // const getAccessToken = async (authorizationCode: string)  =>  {
 
-    const myResponse = await fetch(token_url, {
-      method: 'POST',
-      headers: {
-        'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': `Basic ${window.btoa(`${import.meta.env.VITE_BUNGIE_CLIENT_ID}:${import.meta.env.VITE_BUNGIE_CLIENT_SECRET}`)}`
-      },
-      body: new URLSearchParams({
-        'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
-        'client_secret': import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
-        'grant_type': "authorization_code",
-        'code': authorizationCode
-      }).toString()
-    })
+  //   const myResponse = await fetch(token_url, {
+  //     method: 'POST',
+  //     headers: {
+  //       'X-API-Key': import.meta.env.VITE_BUNGIE_API_KEY,
+  //       'Content-Type': 'application/x-www-form-urlencoded',
+  //       'Authorization': `Basic ${window.btoa(`${import.meta.env.VITE_BUNGIE_CLIENT_ID}:${import.meta.env.VITE_BUNGIE_CLIENT_SECRET}`)}`
+  //     },
+  //     body: new URLSearchParams({
+  //       'client_id': import.meta.env.VITE_BUNGIE_CLIENT_ID,
+  //       'client_secret': import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
+  //       'grant_type': "authorization_code",
+  //       'code': authorizationCode
+  //     }).toString()
+  //   })
 
-    let thisThing = await myResponse.json();
-    let myThing: OAuthResponse = thisThing;
-    console.log("About to show you OAuthResponse");
-    console.log(myThing);
+  //   let thisThing = await myResponse.json();
+  //   let myThing: OAuthResponse = thisThing;
+  //   console.log("About to show you OAuthResponse");
+  //   console.log(myThing);
 
     
     
    
 
-  }
+  // }
 
 
   // const getRefreshToken = (refreshToken: string) => {
@@ -113,11 +113,11 @@ function App() {
     console.log("Checker is running");
     let tempAuthCode = window.location.search.split("code=")[1];
     console.log(tempAuthCode);
-    setURLAuthCode(tempAuthCode);
+    //setURLAuthCode(tempAuthCode);
     //console.log(urlAuthCode);
     
     let oAuthThing = traveler.oauth.getAccessToken(tempAuthCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET);
-    console.log(oAuthThing);
+    console.log("OAuthThing: "+ oAuthThing);
     //getAccessToken(tempAuthCode);
   }
     
@@ -140,7 +140,7 @@ function App() {
         <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
 
-        <button onClick={() => getAccessToken(urlAuthCode)}>Get Access Token</button>
+      
         
        
 
