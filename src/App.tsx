@@ -66,6 +66,10 @@ function App() {
       }).toString()
     })
 
+    let thisThing = await myResponse.json();
+    thisThing["access_token"];
+    console.log(thisThing);
+    
     console.log(myResponse.json());
 
   }
