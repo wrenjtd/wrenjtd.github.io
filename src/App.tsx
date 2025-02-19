@@ -1,4 +1,4 @@
-import { useEffect, useState} from 'react'
+import { useEffect} from 'react'
 import './App.css'
 //import { OAuthError } from './errors';
 //import { OAuthResponse } from './type-definitions/additons';
@@ -117,7 +117,7 @@ function App() {
     //console.log(urlAuthCode);
     
     let oAuthThing = traveler.oauth.getAccessToken(tempAuthCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET);
-    console.log("OAuthThing: "+ oAuthThing);
+    console.log(oAuthThing);
     //getAccessToken(tempAuthCode);
   }
     
