@@ -30,12 +30,10 @@ function App() {
   //Authorization request to authorize user
   const checker = async () => {
     if (window.location.search.includes("code")) {
-      console.log("Checker is running");
       let tempAuthCode = window.location.search.split("code=")[1];
-      console.log(tempAuthCode);
-
       let oAuthThing = traveler.oauth.getAccessToken(tempAuthCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET);
-      console.log(oAuthThing);
+      let tempToken = (await oAuthThing).access_token;
+      console.log(tempToken);
 
     }
 
