@@ -1,7 +1,7 @@
 import { useEffect, useState} from 'react'
 import './App.css'
 //import { OAuthError } from './errors';
-//import { OAuthResponse } from './type-definitions/additons';
+import { OAuthResponse } from './type-definitions/additons';
 import Traveler from './Traveler';
 // import ky from 'ky';
 
@@ -67,7 +67,9 @@ function App() {
     })
 
     let thisThing = await myResponse.json();
-    console.log(thisThing["access_token"]);
+    let myThing: OAuthResponse = thisThing;
+    console.log("About to show you OAuthResponse");
+    console.log(myThing);
 
     
     
