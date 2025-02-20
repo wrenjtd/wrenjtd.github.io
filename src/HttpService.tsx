@@ -44,10 +44,9 @@ export default class HTTPService {
 
   
       return new Promise<OAuthResponse>((resolve, reject) => {
-        let oAuthData = data as OAuthResponse;
         fetch(url, data)
         .then(response => response.json())
-        .then(data => {oAuthData = data; resolve(oAuthData);})
+        .then(data => { resolve(data);})
         .catch(err => {
           reject(err);
         });
