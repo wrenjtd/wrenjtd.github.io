@@ -43,14 +43,14 @@ function App() {
 const checker2 = async () => {
 
   if (authResponse?.membership_id){
-    console.log("Made it to checker 2: ");
+   
     let membershipData = traveler.getBungieNetUserById(authResponse?.membership_id, authResponse?.access_token);
-    console.log("Using my method to get membership data: ");
     console.log(membershipData);
 
     console.log("Membership data for current user:");
     let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
-    console.log(membershipData2);
+    
+    console.log((await membershipData2).MessageData);
   }
 }
 
