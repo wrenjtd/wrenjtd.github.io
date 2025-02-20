@@ -38,39 +38,39 @@ export default class Traveler {
   }
 }
 
-//   /**
-//    * Equip an item from the inventory. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.
-//    * @async
-//    * @param itemActionRequest An object containing following keys: <br />
-//    * <ul>
-//    * <li>itemId {string} - The itemInstanceId (**not hash**) of the item you want to equipt</li>
-//    * <li>charcterId {string} The character ID of the character who gets the item</li>
-//    * <li>membershipType {number} The BungieMemberschipType</li>
-//    * </ul>
-//    */
-//   public equipItem(itemActionRequest: IDestinyItemActionRequest): Promise<IAPIResponse<number>> {
-//     if (this.oauth !== undefined) {
-//       this.oauthOptions.body = itemActionRequest;
-//       this.oauthOptions.uri = `${this.apibaseDestiny2}/Actions/Items/EquipItem/`;
-//       this.oauthOptions.json = true;
-//       return new Promise<IAPIResponse<number>>((resolve, reject) => {
-//         this.httpService
-//           .post(this.oauthOptions)
-//           .then((response: IAPIResponse<number>) => {
-//             resolve(response);
-//           })
-//           .catch(err => {
-//             reject(err);
-//           });
-//       });
-//     } else {
-//       throw new OAuthError(
-//         'You have to use OAuth to access this endpoint. Your oauth object is this: ' +
-//           JSON.stringify(this.oauth) +
-//           ' Please use traveler.oauth = yourOauthObject to set it.'
-//       );
-//     }
-//   }
+  // /**
+  //  * Equip an item from the inventory. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.
+  //  * @async
+  //  * @param itemActionRequest An object containing following keys: <br />
+  //  * <ul>
+  //  * <li>itemId {string} - The itemInstanceId (**not hash**) of the item you want to equipt</li>
+  //  * <li>charcterId {string} The character ID of the character who gets the item</li>
+  //  * <li>membershipType {number} The BungieMemberschipType</li>
+  //  * </ul>
+  //  */
+  // public equipItem(itemActionRequest: IDestinyItemActionRequest): Promise<IAPIResponse<number>> {
+  //   if (this.oauth !== undefined) {
+  //     this.oauthOptions.body = itemActionRequest;
+  //     this.oauthOptions.uri = `${this.apibaseDestiny2}/Actions/Items/EquipItem/`;
+  //     this.oauthOptions.json = true;
+  //     return new Promise<IAPIResponse<number>>((resolve, reject) => {
+  //       this.httpService
+  //         .post(this.oauthOptions)
+  //         .then((response: IAPIResponse<number>) => {
+  //           resolve(response);
+  //         })
+  //         .catch(err => {
+  //           reject(err);
+  //         });
+  //     });
+  //   } else {
+  //     throw new OAuthError(
+  //       'You have to use OAuth to access this endpoint. Your oauth object is this: ' +
+  //         JSON.stringify(this.oauth) +
+  //         ' Please use traveler.oauth = yourOauthObject to set it.'
+  //     );
+  //   }
+  // }
 
 //   /**
 //    * Equip multiple items from the inventory. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.

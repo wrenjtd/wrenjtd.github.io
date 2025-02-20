@@ -25,6 +25,8 @@ export default class OAuthResource extends BungieResource {
         } 
     }
 
+    
+
 
     public getAccessToken(code: string, oauthClientId: string, oauthClientSecret: string): Promise<OAuthResponse> {
       
