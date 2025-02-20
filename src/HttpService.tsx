@@ -26,12 +26,12 @@ export default class HTTPService {
         authOptions.headers['Authorization'] = `Bearer ${authenticationToken}`;
 
 
-        return new Promise<object>(() => {
+        return new Promise<object>((resolve, reject) => {
           fetch(url, authenticationToken ? authOptions : this.options) 
           .then(response => response.json())
-          .then(data => {return data;})
+          .then(data => {resolve(data) })
           .catch(err => {
-            Promise.reject(err);
+            reject(err);
           });
           })
     }
