@@ -45,13 +45,12 @@ const checker2 = async () => {
 
   if (authResponse?.membership_id){
    
-    let membershipData = traveler.getBungieNetUserById(authResponse?.membership_id, authResponse?.access_token);
-    console.log(membershipData);
+    // let membershipData = traveler.getBungieNetUserById(authResponse?.membership_id, authResponse?.access_token);
+    // console.log(membershipData);
 
-    console.log("Membership data for current user:");
     let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
     setMembershipData(await membershipData2);
-    console.log((await membershipData2)["Response"].bungieNetUser.displayName);
+    console.log((await membershipData2).Response.bungieNetUser.displayName);
   }
 }
 
