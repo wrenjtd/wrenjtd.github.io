@@ -1,7 +1,6 @@
-import ky, { Options } from 'ky';
+import { Options } from 'ky';
 import Logger from './Logger';
 import { OAuthResponse } from './type-definitions/additons';
-//import { OAuthResponse } from './type-definitions/additons';
 
 
 
@@ -24,12 +23,16 @@ export default class HTTPService {
         }
         
         const authOptions = JSON.parse(JSON.stringify(this.options));
+        console.log(authOptions);
         authOptions.headers['Authorization'] = `Bearer ${authenticationToken}`;
 
 
         return new Promise<object>(()  => {
-          ky(url, authenticationToken ? authOptions : this.options) 
+          fetch(url, authenticationToken ? authOptions : this.options) 
           .then(response => response.json())
+          .then(data => {
+           return data;
+          })
           .catch(err => {
             Promise.reject(err);
           });

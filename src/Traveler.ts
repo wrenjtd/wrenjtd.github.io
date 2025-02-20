@@ -36,7 +36,27 @@ export default class Traveler {
     this.destiny2 = new Destiny2Resource(this.httpService);
     this.user = new UserResource(this.httpService);
   }
+
+  public getBungieNetUserById(userId: string, authToken: string): Promise<object> {
+        
+          
+          return new Promise<any>((resolve, reject) => {
+              this.httpService
+                  .get(`https://www.bungie.net/platform/userGetBungieNetUserById/${userId}/`, authToken)
+                  .then(response => {
+                      resolve(response);
+                  })
+                  .catch(err => {
+                      reject(err);
+                  });
+          });
+      }
+
+
+
 }
+
+
 
   // /**
   //  * Equip an item from the inventory. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.

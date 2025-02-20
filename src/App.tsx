@@ -35,19 +35,33 @@ function App() {
       let authorizationCode: string = window.location.search.split("code=")[1];
       let oAuthResponse = traveler.oauth.getAccessToken(authorizationCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET);
       setAuthResponse(await oAuthResponse);
-      console.log(authResponse);
     }
 
 
   }
 
+const checker2 = async () => {
 
+  if (authResponse?.membership_id){
+    console.log("Made it to checker 2: ");
+    let membershipData = traveler.getBungieNetUserById(authResponse?.membership_id, authResponse?.access_token);
+    console.log("Using my method to get membership data: ");
+    console.log(membershipData);
+
+    console.log("Membership data for current user:");
+    let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
+    console.log(membershipData2);
+  }
+}
 
   useEffect(() => {
     checker();
+    checker2();
 
 
   }, [])
+
+  
 
   return (
     <>
@@ -57,7 +71,7 @@ function App() {
         <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
 
-        <h2>{authResponse?.access_token}</h2>
+        <h2>{authResponse?.membership_id}</h2>
 
 
       </div>
