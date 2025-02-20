@@ -60,6 +60,7 @@ function App() {
         console.log(await membershipData2);
         (await membershipData2).Response.destinyMemberships.toString();
         setMembershipData(await membershipData2);
+        console.log(membershipData.Response.destinyMemberships.toString());
       }
     }
     
