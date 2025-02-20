@@ -42,7 +42,7 @@ export default class Traveler {
           
           return new Promise<any>((resolve, reject) => {
               this.httpService
-                  .get(`https://www.bungie.net/platform/userGetBungieNetUserById/${userId}/`, authToken)
+                  .get(`https://www.bungie.net/platform/user/GetBungieNetUserById/${userId}/`, authToken)
                   .then(response => {
                       resolve(response);
                   })
