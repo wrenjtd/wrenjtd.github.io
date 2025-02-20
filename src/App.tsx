@@ -79,7 +79,6 @@ function App() {
         <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
 
-        <h3>{membershipData?.Response.bungieNetUser.displayName}</h3>
         
 
       </div>
