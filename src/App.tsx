@@ -50,7 +50,7 @@ const checker2 = async () => {
     console.log("Membership data for current user:");
     let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
     
-    console.log((await membershipData2).MessageData);
+    console.log((await membershipData2).Message);
   }
 }
 
