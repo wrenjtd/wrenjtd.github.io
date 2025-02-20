@@ -57,10 +57,7 @@ function App() {
         // console.log(membershipData);
     
         let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
-        console.log((await membershipData2).Response.bungieNetUser.displayName);
-        (await membershipData2).Response.destinyMemberships.toString();
         setMembershipData(await membershipData2);
-        console.log(membershipData.Response.destinyMemberships.toString());
       }
     }
     
@@ -68,6 +65,10 @@ function App() {
     checker2();
   }, [authResponse])
 
+
+  useEffect(() => {
+    console.log(membershipData);
+  }, [membershipData])
   
 
   return (
