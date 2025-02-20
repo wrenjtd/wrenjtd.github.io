@@ -56,10 +56,11 @@ const checker2 = async () => {
 
   useEffect(() => {
     checker();
-    checker2();
-
-
   }, [])
+
+  useEffect(() => {
+    checker2();
+  }, [authResponse])
 
   
 
