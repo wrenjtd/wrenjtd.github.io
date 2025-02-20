@@ -20,6 +20,7 @@ function App() {
 
   const auth_endpoint = traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID);
   const [authResponse, setAuthResponse] = useState<OAuthResponse>();
+  const [membershipData, setMembershipData] = useState<any>();
 
 
 
@@ -49,8 +50,8 @@ const checker2 = async () => {
 
     console.log("Membership data for current user:");
     let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
-    
-    console.log((await membershipData2).Message);
+    setMembershipData(await membershipData2);
+    console.log((await membershipData2)["Response"].bungieNetUser.displayName);
   }
 }
 
@@ -72,7 +73,7 @@ const checker2 = async () => {
         <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
 
-        <h2>{authResponse?.membership_id}</h2>
+        <h2>{membershipData?.response.bungieNetUser.displayName}</h2>
 
 
       </div>
