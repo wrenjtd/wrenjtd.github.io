@@ -20,7 +20,7 @@ function App() {
 
   const auth_endpoint = traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID);
   const [authResponse, setAuthResponse] = useState<OAuthResponse>();
-  const [membershipData, setMembershipData] = useState<any>();
+  const [membershipData, setMembershipData] = useState<any>({});
 
 
 
@@ -41,24 +41,29 @@ function App() {
 
   }
 
-const checker2 = async () => {
 
-  if (authResponse?.membership_id){
-   
-    // let membershipData = traveler.getBungieNetUserById(authResponse?.membership_id, authResponse?.access_token);
-    // console.log(membershipData);
-
-    let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
-    setMembershipData(await membershipData2);
-    console.log((await membershipData2).Response.bungieNetUser.displayName);
-  }
-}
 
   useEffect(() => {
     checker();
   }, [])
 
   useEffect(() => {
+    
+    const checker2 = async () => {
+
+      if (authResponse?.membership_id){
+       
+        // let membershipData = traveler.getBungieNetUserById(authResponse?.membership_id, authResponse?.access_token);
+        // console.log(membershipData);
+    
+        let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
+        console.log(await membershipData2);
+        (await membershipData2).Response.destinyMemberships.toString();
+        setMembershipData(await membershipData2);
+      }
+    }
+    
+    
     checker2();
   }, [authResponse])
 
@@ -72,8 +77,7 @@ const checker2 = async () => {
         <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
 
-        <h2>{membershipData?.response.bungieNetUser.displayName}</h2>
-
+        
 
       </div>
 
