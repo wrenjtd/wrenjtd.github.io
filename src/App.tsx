@@ -57,7 +57,7 @@ function App() {
         // console.log(membershipData);
     
         let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
-        console.log(await membershipData2);
+        console.log((await membershipData2).Response.bungieNetUser.displayName);
         (await membershipData2).Response.destinyMemberships.toString();
         setMembershipData(await membershipData2);
         console.log(membershipData.Response.destinyMemberships.toString());
@@ -78,6 +78,7 @@ function App() {
         <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
 
+        <h3>{membershipData?.Response.bungieNetUser.displayName}</h3>
         
 
       </div>
