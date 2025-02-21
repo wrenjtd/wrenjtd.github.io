@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 }
+
+.bungie-user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  padding: 2em;
+  border: 1px solid #646cff;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.bungie-user-card img {
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+}

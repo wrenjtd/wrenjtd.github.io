@@ -52,9 +52,6 @@ function App() {
     const checker2 = async () => {
 
       if (authResponse?.membership_id){
-       
-        // let membershipData = traveler.getBungieNetUserById(authResponse?.membership_id, authResponse?.access_token);
-        // console.log(membershipData);
     
         let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
         setMembershipData(await membershipData2);
@@ -67,7 +64,7 @@ function App() {
 
 
   useEffect(() => {
-    console.log(membershipData);
+   
     console.log(membershipData?.Response?.bungieNetUser?.displayName);
   }, [membershipData])
   
@@ -80,7 +77,11 @@ function App() {
         <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
 
+
+      <div className="bungie-user-card">
+        <img id ="bungie-user-card img" src={`http://www.bungie.net/${membershipData?.Response?.bungieNetUser?.profilePicturePath}`}  />
         <h2>{membershipData?.Response?.bungieNetUser?.displayName}</h2>
+        </div>
         
 
       </div>
