@@ -32,10 +32,13 @@ export default class UserResource extends BungieResource {
   public getMembershipDataForCurrentUser(oauthAccesstoken: string): Promise<ServerResponse<UserMembershipData>> {
     checkOauthToken(oauthAccesstoken);
 
-    return new Promise<ServerResponse<UserMembershipData>>((reject) => {
+    return new Promise<ServerResponse<UserMembershipData>>((resolve, reject) => {
       this.httpService
         .get(`${this.resourcePath}/GetMembershipsForCurrentUser/`, oauthAccesstoken)
         .then( response => response as ServerResponse<UserMembershipData>)
+        .then(data => {
+          resolve(data);
+        })
         .catch(err => {
           reject(err);
         });

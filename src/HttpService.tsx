@@ -29,7 +29,7 @@ export default class HTTPService {
         return new Promise<object>((resolve, reject) => {
           fetch(url, authenticationToken ? authOptions : this.options) 
           .then(response => response.json())
-          .then(data => {resolve(data) })
+          .then(data => {resolve(data); })
           .catch(err => {
             reject(err);
           });
