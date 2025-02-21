@@ -35,10 +35,7 @@ export default class UserResource extends BungieResource {
     return new Promise<ServerResponse<UserMembershipData>>((resolve, reject) => {
       this.httpService
         .get(`${this.resourcePath}/GetMembershipsForCurrentUser/`, oauthAccesstoken)
-        .then( response => response as ServerResponse<UserMembershipData>)
-        .then(data => {
-          resolve(data);
-        })
+        .then( response => resolve(response as ServerResponse<UserMembershipData>))
         .catch(err => {
           reject(err);
         });
@@ -74,10 +71,10 @@ export default class UserResource extends BungieResource {
   ): Promise<ServerResponse<UserMembershipData>> {
     checkOauthToken(oauthAccesstoken);
 
-    return new Promise<ServerResponse<UserMembershipData>>((reject) => {
+    return new Promise<ServerResponse<UserMembershipData>>((resolve, reject) => {
       this.httpService
         .get(`${this.resourcePath}/GetMembershipsById/${destinyMembershipId}/${membershipType}/`, oauthAccesstoken)
-        .then( response => response as ServerResponse<UserMembershipData>)
+        .then( response => resolve(response as ServerResponse<UserMembershipData>))
         .catch(err => {
           reject(err);
         });

@@ -68,6 +68,7 @@ function App() {
 
   useEffect(() => {
     console.log(membershipData);
+    console.log(membershipData?.Response?.bungieNetUser?.displayName);
   }, [membershipData])
   
 
@@ -79,6 +80,7 @@ function App() {
         <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET
         </button>
 
+        <h2>{membershipData?.Response?.bungieNetUser?.displayName}</h2>
         
 
       </div>
