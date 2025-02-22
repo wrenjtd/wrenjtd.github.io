@@ -80,7 +80,7 @@ function App() {
 
       <div className="bungie-user-card">
         <img id ="bungie-user-card img" src={`https://www.bungie.net/${membershipData?.Response?.bungieNetUser?.profilePicturePath}`}  />
-        <h2>{membershipData?.Response?.bungieNetUser?.displayName}</h2>
+        <h2 id="bungie-user-card-username">{membershipData?.Response?.bungieNetUser?.displayName}</h2>
         </div>
         
 

@@ -57,3 +57,9 @@
   height: 6em;
   border-radius: 50%;
 }
+
+.bungie-user-card-username {
+  font-size: 1.5em;
+  font-weight: 500;
+  color: #000;
+}
