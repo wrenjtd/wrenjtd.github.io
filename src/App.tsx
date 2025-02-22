@@ -63,12 +63,6 @@ function App() {
   }, [authResponse])
 
 
-  useEffect(() => {
-    if(membershipData?.Response?.bungieNetUser?.displayName)
-    console.log(membershipData?.Response?.bungieNetUser?.displayName);
-  }, [membershipData])
-  
-
   return (
     <>
 
