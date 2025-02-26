@@ -89,3 +89,19 @@
   height:100%;
   display:none;
 }
+
+#main_flex_container{
+  display: flex;
+  
+}
+
+#sidebar_div{
+  width: 200px;
+  height: 100%;
+  border-bottom: solid black 2px;
+}
+#sidebar_ul{
+  width: 200px;
+  list-style-type: none;
+  padding-left: 10px;
+}
