@@ -45,6 +45,11 @@
   margin-left: 10px;
 }
 
+#logo_pic{
+  width: 100px;
+  height: 100px;
+}
+
 #main_hr{
   margin-bottom: 0px;
   margin-top: 1px;

@@ -13,7 +13,7 @@ const HeaderContentComponent: React.FC = () => {
         <div>
             <div id="page_headline">
     <div id="logo_div">
-        <Link to="/"><img src={logo} id="logo_pic"/></Link>
+        <Link to="/"><img src={logo} id="logo_pic" /></Link>
     </div>
     <br></br>
 
