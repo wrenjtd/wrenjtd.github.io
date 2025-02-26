@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css'
+import '../src/assets/css/App.css';
 import { BrowserRouter } from 'react-router-dom';
 import MainBoxComponent from './components/UI_Sections/MainBox.component';
 

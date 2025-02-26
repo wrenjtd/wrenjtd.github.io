@@ -7,7 +7,7 @@ const FooterBoxComponent: React.FC = () => {
 
     return (
         <div>
-            <p>Footer Box</p>
+            <footer className = "footer-class">Footer stuff goes here.</footer>
             
 
         </div>)

@@ -1,0 +1,91 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+.card {
+  padding: 2em;
+}
+
+
+
+.bungie-user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  padding: 2em;
+  border: 1px solid #646cff;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+#bungie-user-card img {
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+}
+
+#bungie-user-card-username {
+  font-size: 1.5em;
+  font-weight: 500;
+  color: #000;
+}
+
+#page_headline{
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+}
+
+#logo_div{
+  margin-left: 10px;
+}
+
+#main_hr{
+  margin-bottom: 0px;
+  margin-top: 1px;
+}
+
+#loginScreen:target, #loginScreen:target + #cover{
+  display:block;
+  opacity:1;
+}
+
+#login_text{
+  font-family: 'Antic Slab';
+  display:flex;
+  justify-content:space-between;
+  margin-right: 100px;
+  
+}
+
+
+.cancel{
+  display:block;
+  position:absolute;
+  top:3px;
+  right:2px;
+  background:rgb(245,245,245);
+  color:black;
+  height:30px;
+  width:35px;
+  font-size:30px;
+  text-decoration:none;
+  text-align:center;
+  font-weight:bold;
+}
+
+#cover{
+  position:fixed;
+  top:0;
+  left:0;
+  background:rgba(0,0,0,0.6);
+  z-index:5;
+  width:100%;
+  height:100%;
+  display:none;
+}
