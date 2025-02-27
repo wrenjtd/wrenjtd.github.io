@@ -14,6 +14,7 @@ const HeaderContentComponent: React.FC = () => {
     
     useEffect(() => {    
         if(membershipData){
+        console.log("Membership Data: ");
         console.log(membershipData);
         }
     }
@@ -26,6 +27,8 @@ const HeaderContentComponent: React.FC = () => {
         <Link to="/"><img src={logo} id="logo_pic" /></Link>
     </div>
     <br></br>
+
+  
 
    
         

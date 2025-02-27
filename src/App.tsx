@@ -70,12 +70,7 @@ useEffect(() => {
  
 }, [authResponse])
 
-useEffect(() => {   
-  if(membershipData){
-  {`${membershipData}`}
-  } 
-}
-  , [membershipData])
+
 
 
   
