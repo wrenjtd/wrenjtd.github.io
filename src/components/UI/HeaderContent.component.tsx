@@ -27,7 +27,7 @@ const HeaderContentComponent: React.FC = () => {
     </div>
     <br></br>
 
- <h2>{membershipData2.Response.bungieNetUser.displayName}</h2>
+ <h2>{membershipData2?.Response?.bungieNetUser?.displayName}</h2>
 
    
         
