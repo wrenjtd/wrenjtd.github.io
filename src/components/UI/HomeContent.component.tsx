@@ -67,6 +67,11 @@ const HomeContentComponent: React.FC = () => {
    
   }, [authResponse])
 
+  useEffect(() => {   
+    if(membershipData){
+    console.log(membershipData);
+    }
+  }, [membershipData])
 
 
 
