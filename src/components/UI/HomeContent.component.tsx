@@ -1,15 +1,14 @@
 import Traveler from '../../Traveler';
 import { OAuthResponse } from '../../type-definitions/additons';
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 
 
-//export const UserInformationContext = createContext((membershipData? membershipData : {}));
-const [membershipData, setMembershipData] = useState<any>({});
+export const UserInformationContext = createContext({});
 
 const HomeContentComponent: React.FC = () => {
 
-  
+  const [membershipData, setMembershipData] = useState<any>({});
 
   const traveler = new Traveler({
     apikey: import.meta.env.VITE_BUNGIE_API_KEY,
