@@ -5,7 +5,7 @@ import { useEffect, useState, createContext } from 'react';
 
 const [membershipData, setMembershipData] = useState<any>({});
 
-export const UserInformationContext = createContext(membershipData? membershipData : null);
+export const UserInformationContext = createContext(membershipData? membershipData : {});
 
 const HomeContentComponent: React.FC = () => {
 
