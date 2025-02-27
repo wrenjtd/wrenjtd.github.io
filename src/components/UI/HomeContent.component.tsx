@@ -69,7 +69,7 @@ const HomeContentComponent: React.FC = () => {
 
   useEffect(() => {   
     if(membershipData){
-    {`${membershipData}`}
+   
     }
   }, [membershipData])
 
@@ -82,7 +82,7 @@ const HomeContentComponent: React.FC = () => {
 
     <div>
       <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET</button>
-      <UserInformationContext.Provider value={membershipData}> </UserInformationContext.Provider>
+      <UserInformationContext.Provider value={{membershipData}}> </UserInformationContext.Provider>
       
     
       
