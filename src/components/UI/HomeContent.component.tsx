@@ -65,7 +65,7 @@ const HomeContentComponent: React.FC = () => {
     }
    
    
-  }, [authResponse, membershipData])
+  }, [authResponse])
 
  
 
