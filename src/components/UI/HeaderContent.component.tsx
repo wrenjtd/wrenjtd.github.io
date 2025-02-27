@@ -1,15 +1,21 @@
-import React, {   useState } from 'react';
+import React, {   useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/static/app_logo.png';
-//import { UserInformationContext } from '../UI/HomeContent.component.tsx';
+import { UserInformationContext } from '../UI/HomeContent.component.tsx';
 
 
 
 const HeaderContentComponent: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // const membershipData = useContext(UserInformationContext);
+    const membershipData = useContext(UserInformationContext);
     
+    useEffect(() => {    
+        if(membershipData){
+        console.log(membershipData);
+        }
+    }
+        , [membershipData])
 
     return(
         <div>
