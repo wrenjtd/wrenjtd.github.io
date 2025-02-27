@@ -67,11 +67,7 @@ const HomeContentComponent: React.FC = () => {
    
   }, [authResponse, membershipData])
 
-  useEffect(() => {   
-    if(membershipData){
-   
-    }
-  }, [membershipData])
+ 
 
 
 
