@@ -64,7 +64,7 @@ const HomeContentComponent: React.FC = () => {
       getMembershipData();
     }
     if(membershipData){
-      console.log(membershipData.Response.destinyMemberships[0].membershipId);
+      console.log(membershipData.Response.bungieNetUser.displayName);
     }
    
   }, [authResponse])
