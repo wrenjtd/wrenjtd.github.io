@@ -8,7 +8,7 @@ export const UserInformationContext = createContext({});
 
 const HomeContentComponent: React.FC = () => {
 
-  const [membershipData, setMembershipData] = useState<any>({});
+ 
 
   const traveler = new Traveler({
     apikey: import.meta.env.VITE_BUNGIE_API_KEY,
@@ -21,7 +21,7 @@ const HomeContentComponent: React.FC = () => {
   const auth_endpoint = traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID);
   const [authResponse, setAuthResponse] = useState<OAuthResponse>();
  
-
+  const [membershipData, setMembershipData] = useState<any>({});
 
 
   const openInNewTab = (url: string) => {
@@ -63,11 +63,18 @@ const HomeContentComponent: React.FC = () => {
     if (authResponse?.membership_id){
       getMembershipData();
     }
-    if(membershipData){
-      console.log(membershipData);
-    }
+   
    
   }, [authResponse])
+
+
+  useEffect(() => {
+    if (membershipData) {
+      console.log("Membership Data:")
+      console.log(membershipData);
+    }
+  }
+    , [membershipData])
 
 
   return (
