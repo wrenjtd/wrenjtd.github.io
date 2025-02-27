@@ -60,9 +60,11 @@ const HomeContentComponent: React.FC = () => {
   useEffect(() => {
 
    
-    
-    getMembershipData();
-    console.log(membershipData);
+    if (authResponse?.membership_id){
+      getMembershipData();
+      console.log(membershipData);
+    }
+   
   }, [authResponse])
 
 
