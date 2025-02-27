@@ -1,12 +1,15 @@
 import React from 'react';
 import Traveler from '../../Traveler';
 import { OAuthResponse } from '../../type-definitions/additons';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 
+const [membershipData, setMembershipData] = useState<any>({});
 
+export const UserInformationContext = createContext(membershipData? membershipData : null);
 
 const HomeContentComponent: React.FC = () => {
 
+  
 
   const traveler = new Traveler({
     apikey: import.meta.env.VITE_BUNGIE_API_KEY,
@@ -18,7 +21,7 @@ const HomeContentComponent: React.FC = () => {
 
   const auth_endpoint = traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID);
   const [authResponse, setAuthResponse] = useState<OAuthResponse>();
-  const [membershipData, setMembershipData] = useState<any>({});
+ 
 
 
 
@@ -39,6 +42,15 @@ const HomeContentComponent: React.FC = () => {
 
   }
 
+  const getMembershipData = async () => {
+
+    if (authResponse?.membership_id) {
+
+      let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
+      setMembershipData(await membershipData2);
+    }
+  }
+
 
 
   useEffect(() => {
@@ -47,37 +59,21 @@ const HomeContentComponent: React.FC = () => {
 
   useEffect(() => {
 
-    const checker2 = async () => {
-
-      if (authResponse?.membership_id) {
-
-        let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
-        setMembershipData(await membershipData2);
-      }
-    }
-
-
-    checker2();
+    
+    getMembershipData();
   }, [authResponse])
 
 
   return (
 
 
-    <div className="card">
+    
 
-
+    <div>
       <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET</button>
-
-
-      <div className="bungie-user-card">
-        <img id="bungie-user-card img" src={`https://www.bungie.net/${membershipData?.Response?.bungieNetUser?.profilePicturePath}`} />
-        <h2 id="bungie-user-card-username">{membershipData?.Response?.bungieNetUser?.displayName}</h2>
-      </div>
-
-
-
-
+      <UserInformationContext.Provider value={membershipData}> </UserInformationContext.Provider>
+      {`${membershipData}`}
+      
 
     </div>
   )
