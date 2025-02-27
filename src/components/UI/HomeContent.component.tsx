@@ -5,10 +5,11 @@ import { useEffect, useState } from 'react';
 
 
 //export const UserInformationContext = createContext((membershipData? membershipData : {}));
+const [membershipData, setMembershipData] = useState<any>({});
 
 const HomeContentComponent: React.FC = () => {
 
-  const [membershipData, setMembershipData] = useState<any>({});
+  
 
   const traveler = new Traveler({
     apikey: import.meta.env.VITE_BUNGIE_API_KEY,
