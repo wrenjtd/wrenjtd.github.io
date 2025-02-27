@@ -1,14 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, {  useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/static/app_logo.png';
-import { UserInformationContext } from '../UI/HomeContent.component.tsx';
+// import { UserInformationContext } from '../UI/HomeContent.component.tsx';
 
 
 
 const HeaderContentComponent: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const membershipData = useContext(UserInformationContext);
+    //const membershipData = useContext(UserInformationContext);
 
 
     return(
@@ -19,10 +19,10 @@ const HeaderContentComponent: React.FC = () => {
     </div>
     <br></br>
 
-    <div className="bungie-user-card">
+    {/* <div className="bungie-user-card">
         <img id ="bungie-user-card img" src={`https://www.bungie.net/${membershipData?.Response?.bungieNetUser?.profilePicturePath}`}  />
         <h2 id="bungie-user-card-username">{membershipData?.Response?.bungieNetUser?.displayName}</h2>
-        </div>
+        </div> */}
         
 
     {/* <div id="avatar_div"><div id="letters_div"><img src={letter_e} id="letter_e"/></div><Link to="/userinfo"><img src={avatar} id="avatar_pic"/></Link><br></br><a href="#loginScreen"><img src={login} id="login_pic"/></a></div>      */}
