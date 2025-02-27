@@ -62,7 +62,9 @@ const HomeContentComponent: React.FC = () => {
    
     if (authResponse?.membership_id){
       getMembershipData();
-      console.log(membershipData);
+    }
+    if(membershipData){
+      console.log(membershipData.Response.destinyMemberships[0].membershipId);
     }
    
   }, [authResponse])
