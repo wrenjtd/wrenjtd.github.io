@@ -71,8 +71,8 @@ const HomeContentComponent: React.FC = () => {
 
     <div>
       <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET</button>
-      <UserInformationContext.Provider value={membershipData}> </UserInformationContext.Provider>
-      {`${membershipData}`}
+      <UserInformationContext.Provider value={membershipData? membershipData: {}}> </UserInformationContext.Provider>
+      
       
 
     </div>
