@@ -1,7 +1,9 @@
 import React, {   useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/static/app_logo.png';
-import { UserInformationContext } from '../UI/HomeContent.component.tsx';
+import { UserInformationContext } from '../../App';
+
+
 
 
 
