@@ -41,14 +41,7 @@ const HomeContentComponent: React.FC = () => {
 
   }
 
-  const getMembershipData = async () => {
-
-    if (authResponse?.membership_id) {
-
-      let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
-      setMembershipData(await membershipData2);
-    }
-  }
+ 
 
 
 
@@ -58,6 +51,14 @@ const HomeContentComponent: React.FC = () => {
 
   useEffect(() => {
 
+    const getMembershipData = async () => {
+
+      if (authResponse?.membership_id) {
+  
+        let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
+        setMembershipData(await membershipData2);
+      }
+    }
     
     getMembershipData();
   }, [authResponse])
