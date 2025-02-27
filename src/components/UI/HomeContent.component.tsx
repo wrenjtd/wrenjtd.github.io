@@ -1,4 +1,3 @@
-import React from 'react';
 import Traveler from '../../Traveler';
 import { OAuthResponse } from '../../type-definitions/additons';
 import { useEffect, useState, createContext } from 'react';
