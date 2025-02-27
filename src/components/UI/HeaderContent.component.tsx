@@ -11,11 +11,10 @@ const HeaderContentComponent: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const membershipData = useContext(UserInformationContext);
-    
+    const [membershipData2, setMembershipData2] = useState<any>();
     useEffect(() => {    
         if(membershipData){
-        console.log("Membership Data: ");
-        console.log(membershipData);
+        setMembershipData2(membershipData);
         }
     }
         , [membershipData])
@@ -28,7 +27,7 @@ const HeaderContentComponent: React.FC = () => {
     </div>
     <br></br>
 
-  
+ <h2>{membershipData2.Response.bungieNetUser.displayName}</h2>
 
    
         
