@@ -1,14 +1,14 @@
 import Traveler from '../../Traveler';
 import { OAuthResponse } from '../../type-definitions/additons';
-import { useEffect, useState, createContext } from 'react';
+import { useEffect, useState } from 'react';
 
-const [membershipData, setMembershipData] = useState<any>({});
 
-export const UserInformationContext = createContext((membershipData? membershipData : {}));
+
+//export const UserInformationContext = createContext((membershipData? membershipData : {}));
 
 const HomeContentComponent: React.FC = () => {
 
-  
+  const [membershipData, setMembershipData] = useState<any>({});
 
   const traveler = new Traveler({
     apikey: import.meta.env.VITE_BUNGIE_API_KEY,
@@ -73,6 +73,10 @@ const HomeContentComponent: React.FC = () => {
       <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET</button>
       {/* <UserInformationContext.Provider value={membershipData? membershipData: {}}> </UserInformationContext.Provider> */}
       
+    <div className="bungie-user-card">
+        <img id ="bungie-user-card img" src={`https://www.bungie.net/${membershipData?.Response?.bungieNetUser?.profilePicturePath}`}  />
+        <h2 id="bungie-user-card-username">{membershipData?.Response?.bungieNetUser?.displayName}</h2>
+        </div>
       
 
     </div>
