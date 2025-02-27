@@ -28,6 +28,9 @@ const HeaderContentComponent: React.FC = () => {
     <br></br>
 
  <h2>{membershipData2?.Response?.bungieNetUser?.displayName}</h2>
+ <div id="membership_pic_div">
+     <img src={`http://www.bungie.net/${membershipData2?.Response?.bungieNetUser?.profilePicturePath}`}/>
+ </div>
 
    
         
