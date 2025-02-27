@@ -21,7 +21,7 @@ const HomeContentComponent: React.FC = () => {
   const auth_endpoint = traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID);
   const [authResponse, setAuthResponse] = useState<OAuthResponse>();
  
-  const [membershipData, setMembershipData] = useState<any>({});
+  const [membershipData, setMembershipData] = useState<any>();
 
 
   const openInNewTab = (url: string) => {
