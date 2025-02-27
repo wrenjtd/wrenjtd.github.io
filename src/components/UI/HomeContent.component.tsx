@@ -71,12 +71,9 @@ const HomeContentComponent: React.FC = () => {
 
     <div>
       <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET</button>
-      {/* <UserInformationContext.Provider value={membershipData? membershipData: {}}> </UserInformationContext.Provider> */}
+      <UserInformationContext.Provider value={membershipData? membershipData: {}}> </UserInformationContext.Provider>
       
-    <div className="bungie-user-card">
-        <img id ="bungie-user-card img" src={`https://www.bungie.net/${membershipData?.Response?.bungieNetUser?.profilePicturePath}`}  />
-        <h2 id="bungie-user-card-username">{membershipData?.Response?.bungieNetUser?.displayName}</h2>
-        </div>
+    
       
 
     </div>
