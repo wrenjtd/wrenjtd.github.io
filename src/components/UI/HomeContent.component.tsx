@@ -37,7 +37,7 @@ const HomeContentComponent: React.FC = () => {
 
   return (
 
-    <div>
+    <div id="login_div">
 {   isButtonVisible &&  <button onClick={() => openInNewTab(auth_endpoint)}>Login to Bungie.NET</button>
 }
     </div>
