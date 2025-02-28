@@ -82,19 +82,19 @@ function App() {
     <React.Fragment>
       <BrowserRouter>
 
-        <div id="parent_flex_container">
+        <div id="parent_flex_container" className="bg-gray-900 text-gray-200 min-h-screen">
 
           <UserInformationContext.Provider value={membershipData}>
             <HeaderContentComponent></HeaderContentComponent>
 
-            <div id="main_flex_container">
+            <div id="main_flex_container" className="flex justify-between p-2">
 
-              <div id="sidebar_flex_container">
+              <div id="sidebar_flex_container" className="w-48 p-2 border border-gray-700">
 
                 <SidebarBoxComponent></SidebarBoxComponent>
               </div>
 
-              <div id="main_content_flex">
+              <div id="main_content_flex" className="flex-1 p-2 border border-gray-700 mx-2">
                 <AuthInformationContext.Provider value={auth_endpoint}>
                   <MainBoxComponent></MainBoxComponent>
                 </AuthInformationContext.Provider>
