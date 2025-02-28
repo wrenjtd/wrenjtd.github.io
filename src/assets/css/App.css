@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-#root {
+/* #root {
   width: 100%;
     margin: 0 auto;
     
@@ -40,8 +40,6 @@
   #header_div{
     display: flex;
     height: auto;
-    /* margin-left: 9px;
-    margin-right: 9px; */
     padding: 9px;
     justify-content: space-between;
   }
@@ -130,4 +128,4 @@
     width: 200px;
     list-style-type: none;
     padding-left: 10px;
-  }
+  } */
