@@ -28,7 +28,7 @@ const HeaderContentComponent: React.FC = () => {
 
                 <h2>{membershipData2?.Response?.bungieNetUser?.displayName}</h2>
                 <div id="membership_pic_div">
-                    <img src={`https://www.bungie.net/${membershipData2?.Response?.bungieNetUser?.profilePicturePath}`} />
+                   {membershipData2?.Response?.bungieNetUser?.profilePicturePath && <img src={`https://www.bungie.net/${membershipData2?.Response?.bungieNetUser?.profilePicturePath}`} /> }
                 </div>
 
 
