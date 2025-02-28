@@ -9,6 +9,7 @@ import SidebarBoxComponent from './components/UI_Sections/SidebarBox.component';
 import Traveler from './Traveler';
 import { OAuthResponse } from './type-definitions/additons';
 import React from 'react';
+import FooterBoxComponent from './components/UI_Sections/FooterBox.component';
 
 
 export const UserInformationContext = createContext({});
@@ -65,7 +66,7 @@ function App() {
 
 
     if (authResponse?.membership_id) {
-      
+
       getMembershipData();
     }
 
@@ -81,18 +82,29 @@ function App() {
     <React.Fragment>
       <BrowserRouter>
 
-        <UserInformationContext.Provider value={membershipData}>
-          <HeaderContentComponent></HeaderContentComponent>
-        
-        <div id="main_flex_container">
+        <div id="parent_flex_container">
 
-          <SidebarBoxComponent></SidebarBoxComponent>
-          <AuthInformationContext.Provider value={auth_endpoint}>
-            <MainBoxComponent></MainBoxComponent> 
-          </AuthInformationContext.Provider>
+          <UserInformationContext.Provider value={membershipData}>
+            <HeaderContentComponent></HeaderContentComponent>
+
+            <div id="main_flex_container">
+
+              <div id="sidebar_flex_container">
+
+                <SidebarBoxComponent></SidebarBoxComponent>
+              </div>
+
+              <div id="main_content_flex">
+                <AuthInformationContext.Provider value={auth_endpoint}>
+                  <MainBoxComponent></MainBoxComponent>
+                </AuthInformationContext.Provider>
+              </div>
+
+
+            </div>
+          </UserInformationContext.Provider>
+          <FooterBoxComponent></FooterBoxComponent>
         </div>
-        </UserInformationContext.Provider>
-
       </BrowserRouter>
 
     </React.Fragment>
