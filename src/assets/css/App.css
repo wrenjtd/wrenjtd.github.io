@@ -97,7 +97,7 @@
 
 #main_flex_container{
   display: flex;
-  
+  justify-content: space-between;
 }
 
 #sidebar_div{
