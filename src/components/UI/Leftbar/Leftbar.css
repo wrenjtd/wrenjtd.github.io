@@ -1,0 +1,13 @@
+#leftbar_div{
+    width: 200px;
+    height: auto;
+    border: solid black 2px;
+    margin: 9px;
+    padding: 9px;
+    
+  }
+  #leftbar_div_ul{
+    width: 200px;
+    list-style-type: none;
+    padding-left: 10px;
+  }

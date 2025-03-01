@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthInformationContext, UserInformationContext } from '../../App';
+import { OAuthURLEndpointContext, BungieMembershipDataContext } from '../../../App';
 
 
 
@@ -7,8 +7,8 @@ import { AuthInformationContext, UserInformationContext } from '../../App';
 
 const HomeContentComponent: React.FC = () => {
 
-  const membershipData = useContext(UserInformationContext); 
-  const auth_endpoint = useContext(AuthInformationContext);
+  const membershipData = useContext(BungieMembershipDataContext); 
+  const auth_endpoint = useContext(OAuthURLEndpointContext);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
   const [membershipData2, setMembershipData2] = useState<any>(); 
 

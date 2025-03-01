@@ -1,19 +1,19 @@
 import { useState, useEffect, createContext } from 'react';
 import '../src/assets/css/App.css';
 import { BrowserRouter } from 'react-router-dom';
-import MainBoxComponent from './components/UI_Sections/MainBox.component';
-import HeaderContentComponent from './components/UI/HeaderContent.component';
-import SidebarBoxComponent from './components/UI_Sections/SidebarBox.component';
+import MainBoxComponent from './components/UI/Main/MainBox.component';
+import HeaderContentComponent from './components/UI/Header/HeaderContent.component';
+import LeftbarBoxComponent from './components/UI/Leftbar/LeftbarBox.component';
 
 
 import Traveler from './Traveler';
 import { OAuthResponse } from './type-definitions/additons';
 import React from 'react';
-import FooterBoxComponent from './components/UI_Sections/FooterBox.component';
+import FooterBoxComponent from './components/UI/Footer/FooterBox.component';
 
 
-export const UserInformationContext = createContext({});
-export const AuthInformationContext = createContext("");
+export const BungieMembershipDataContext = createContext({});
+export const OAuthURLEndpointContext = createContext("");
 
 function App() {
 
@@ -26,32 +26,31 @@ function App() {
     userAgent: ''
   });
 
-  const auth_endpoint = traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID);
-  const [authResponse, setAuthResponse] = useState<OAuthResponse>();
+  const oauth_url_endpoint = traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID);
+  const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
 
-  const [membershipData, setMembershipData] = useState<any>();
-
-
+  const [bungieMembershipData, setBungieMembershipData] = useState<any>();
 
 
 
-  //Authorization request to authorize user
-  const checker = async () => {
+
+
+  //Checks if the authorization code is in the URL and if it is, it gets the access token
+  const authorizationCodeChecker = async () => {
     if (window.location.search.includes("code")) {
       let authorizationCode: string = window.location.search.split("code=")[1];
       let oAuthResponse = traveler.oauth.getAccessToken(authorizationCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET);
-      setAuthResponse(await oAuthResponse);
+      setOauthServerResponse(await oAuthResponse);
     }
 
 
   }
 
-  const getMembershipData = async () => {
-
-    if (authResponse?.membership_id) {
-
-      let membershipData2 = traveler.user.getMembershipDataForCurrentUser(authResponse?.access_token);
-      setMembershipData(await membershipData2);
+  //Gets Bungie membership data for the current user
+  const getBungieMembershipData = async () => {
+    if (oauthServerResponse?.membership_id) {
+      let tempBungieUserDataObject = traveler.user.getMembershipDataForCurrentUser(oauthServerResponse?.access_token);
+      setBungieMembershipData(await tempBungieUserDataObject);
     }
   }
 
@@ -59,19 +58,16 @@ function App() {
 
 
   useEffect(() => {
-    checker();
+    authorizationCodeChecker();
   }, [])
 
   useEffect(() => {
 
-
-    if (authResponse?.membership_id) {
-
-      getMembershipData();
+    if (oauthServerResponse?.membership_id) {
+      getBungieMembershipData();
     }
 
-
-  }, [authResponse])
+  }, [oauthServerResponse])
 
 
 
@@ -82,27 +78,27 @@ function App() {
     <React.Fragment>
       <BrowserRouter>
 
-        <div id="parent_flex_container" className="bg-gray-900 text-gray-200 min-h-screen">
+        <div id="app_parent_div" className="bg-gray-900 text-gray-200 min-h-screen">
 
-          <UserInformationContext.Provider value={membershipData}>
+          <BungieMembershipDataContext.Provider value={bungieMembershipData}>
             <HeaderContentComponent></HeaderContentComponent>
 
-            <div id="main_flex_container" className="flex justify-between p-2">
+            <div id="mainbox_component_flex_container" className="flex justify-between p-2">
 
-              <div id="sidebar_flex_container" className="w-48 p-2 border border-gray-700">
+              <div id="leftbar_component_div" className="w-48 p-2 border border-gray-700">
 
-                <SidebarBoxComponent></SidebarBoxComponent>
+                <LeftbarBoxComponent></LeftbarBoxComponent>
               </div>
 
-              <div id="main_content_flex" className="flex-1 p-2 border border-gray-700 mx-2">
-                <AuthInformationContext.Provider value={auth_endpoint}>
+              <div id="mainboxcontent_component_div" className="flex-1 p-2 border border-gray-700 mx-2">
+                <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
                   <MainBoxComponent></MainBoxComponent>
-                </AuthInformationContext.Provider>
+                </OAuthURLEndpointContext.Provider>
               </div>
 
 
             </div>
-          </UserInformationContext.Provider>
+          </BungieMembershipDataContext.Provider>
           <FooterBoxComponent></FooterBoxComponent>
         </div>
       </BrowserRouter>

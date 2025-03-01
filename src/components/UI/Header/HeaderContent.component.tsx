@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/static/app_logo.png';
-import { UserInformationContext } from '../../App';
+import { BungieMembershipDataContext } from '../../../App';
+import './HeaderContent.component.css';
 
 
 
@@ -9,14 +10,14 @@ import { UserInformationContext } from '../../App';
 
 const HeaderContentComponent: React.FC = () => {
 
-    const membershipData = useContext(UserInformationContext);
-    const [membershipData2, setMembershipData2] = useState<any>();
+    const bungieMembershipData = useContext(BungieMembershipDataContext);
+    const [membershipData, setMembershipData] = useState<any>();
     useEffect(() => {
-        if (membershipData) {
-            setMembershipData2(membershipData);
+        if (bungieMembershipData) {
+            setMembershipData(bungieMembershipData);
         }
     }
-        , [membershipData])
+        , [bungieMembershipData])
 
     return (
         
@@ -26,9 +27,9 @@ const HeaderContentComponent: React.FC = () => {
                 </div>
                 <br></br>
 
-                <h2>{membershipData2?.Response?.bungieNetUser?.displayName}</h2>
+                <h2>{membershipData?.Response?.bungieNetUser?.displayName}</h2>
                 <div id="membership_pic_div">
-                   {membershipData2?.Response?.bungieNetUser?.profilePicturePath && <img src={`https://www.bungie.net/${membershipData2?.Response?.bungieNetUser?.profilePicturePath}`} /> }
+                   {membershipData?.Response?.bungieNetUser?.profilePicturePath && <img src={`https://www.bungie.net/${membershipData?.Response?.bungieNetUser?.profilePicturePath}`} /> }
                 </div>
 
 

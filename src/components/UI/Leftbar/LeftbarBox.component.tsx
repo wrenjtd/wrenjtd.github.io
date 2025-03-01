@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './LeftbarBox.component.css';
 
 
 
-const SidebarBoxComponent: React.FC = () => {
+const LeftbarBoxComponent: React.FC = () => {
 
     return(
-            <div id="sidebar_div">
-                <h3 id="elinks_h3">Employee Links</h3>
+            <div id="leftbar_div">
+                <h3>Employee Links</h3>
                 
-                <ul id="sidebar_ul">
+                <ul id="leftbar_div_ul">
                 <li><Link to="/rform">Reimbursement Form</Link></li>
                 
                 <h3>Manager Links</h3>
@@ -22,4 +23,4 @@ const SidebarBoxComponent: React.FC = () => {
 };
 
 
-export default SidebarBoxComponent;
+export default LeftbarBoxComponent;

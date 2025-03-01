@@ -1,0 +1,15 @@
+#header_div{
+    display: flex;
+    height: auto;
+    padding: 9px;
+    justify-content: space-between;
+  }
+
+  #logo_div{
+    margin-left: 10px;
+  }
+  
+  #logo_pic{
+    width: 100px;
+    height: 100px;
+  }

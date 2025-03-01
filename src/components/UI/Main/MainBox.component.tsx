@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 // import FormComponent from "../UI/Form.component";
-import HomeContent from "../UI/HomeContent.component";
+import HomeContent from "./HomeContent.component";
 
 
 
