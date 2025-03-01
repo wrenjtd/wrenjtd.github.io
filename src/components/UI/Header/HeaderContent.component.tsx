@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/static/app_logo.png';
+import logo from '../../../assets/static/app_logo.png';
 import { BungieMembershipDataContext } from '../../../App';
-import './HeaderContent.component.css';
+import './Header.css';
 
 
 
