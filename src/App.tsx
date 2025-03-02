@@ -67,20 +67,18 @@ function App() {
     <React.Fragment>
       <BrowserRouter>
 
-        <div id="app_parent_div" className="bg-gray-900 text-gray-200 min-h-screen">
+       
 
           <BungieMembershipDataContext.Provider value={bungieMembershipData}>
-            
-
-              <div id="mainboxcontent_component_div" className=" my-auto mx-auto">
+              {/* <div id="mainboxcontent_component_div" className=" my-auto mx-auto"> */}
                 <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
                   <MainBoxComponent></MainBoxComponent>
                 </OAuthURLEndpointContext.Provider>
-              </div>
+              {/* </div> */}
 
           </BungieMembershipDataContext.Provider>
           
-        </div>
+       
       </BrowserRouter>
 
     </React.Fragment>
