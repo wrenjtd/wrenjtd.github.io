@@ -6,17 +6,12 @@ import HomeContent from "./HomeContent.component";
 
 const MainBoxComponent: React.FC = () =>{
 
-
-
     return(
     <div>
-        
         
         <Routes>
                 
                 <Route path ="/" element= {<HomeContent/>}></Route>
-                {/* <Route path="/form" element={<FormComponent/>}></Route> */}
-                
                 {/* <Route path ="/" element ={<Navigate replace to="/home" />}/> */}
             </Routes>
 

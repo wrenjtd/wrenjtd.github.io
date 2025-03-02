@@ -2,9 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { OAuthURLEndpointContext, BungieMembershipDataContext } from '../../../App';
 
 
-
-
-
 const HomeContentComponent: React.FC = () => {
 
   const membershipData = useContext(BungieMembershipDataContext); 
@@ -25,8 +22,6 @@ const HomeContentComponent: React.FC = () => {
   }
     , [membershipData2]);
 
-
-  
 
   const openInNewTab = (url: string) => {
     const newWindow = window.open(url, '_self', 'noopener,noreferrer')

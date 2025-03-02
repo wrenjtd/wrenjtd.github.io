@@ -6,8 +6,6 @@ import './Header.css';
 
 
 
-
-
 const HeaderContentComponent: React.FC = () => {
 
     const bungieMembershipData = useContext(BungieMembershipDataContext);
@@ -31,7 +29,6 @@ const HeaderContentComponent: React.FC = () => {
                 <div id="membership_pic_div">
                    {membershipData?.Response?.bungieNetUser?.profilePicturePath && <img src={`https://www.bungie.net/${membershipData?.Response?.bungieNetUser?.profilePicturePath}`} /> }
                 </div>
-
 
 
 

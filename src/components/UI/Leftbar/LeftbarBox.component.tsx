@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Leftbar.css';
 
 
-
 const LeftbarBoxComponent: React.FC = () => {
 
     return(

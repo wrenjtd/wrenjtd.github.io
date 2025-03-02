@@ -32,9 +32,6 @@ function App() {
   const [bungieMembershipData, setBungieMembershipData] = useState<any>();
 
 
-
-
-
   //Checks if the authorization code is in the URL and if it is, it gets the access token
   const authorizationCodeChecker = async () => {
     if (window.location.search.includes("code")) {
@@ -56,7 +53,6 @@ function App() {
 
 
 
-
   useEffect(() => {
     authorizationCodeChecker();
   }, [])
@@ -68,9 +64,6 @@ function App() {
     }
 
   }, [oauthServerResponse])
-
-
-
 
 
 
@@ -95,7 +88,6 @@ function App() {
                   <MainBoxComponent></MainBoxComponent>
                 </OAuthURLEndpointContext.Provider>
               </div>
-
 
             </div>
           </BungieMembershipDataContext.Provider>
