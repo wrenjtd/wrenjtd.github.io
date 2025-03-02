@@ -3,7 +3,7 @@ import '../src/assets/css/App.css';
 import { BrowserRouter } from 'react-router-dom';
 import MainBoxComponent from './components/UI/Main/MainBox.component';
 import HeaderContentComponent from './components/UI/Header/HeaderContent.component';
-import LeftbarBoxComponent from './components/UI/Leftbar/LeftbarBox.component';
+// import LeftbarBoxComponent from './components/UI/Leftbar/LeftbarBox.component';
 
 
 import Traveler from './Traveler';
@@ -80,7 +80,7 @@ function App() {
 
               <div id="leftbar_component_div" className="w-48 p-2 border border-gray-700">
 
-                <LeftbarBoxComponent></LeftbarBoxComponent>
+                {/* <LeftbarBoxComponent></LeftbarBoxComponent> */}
               </div>
 
               <div id="mainboxcontent_component_div" className="flex-1 p-2 border border-gray-700 mx-2">
