@@ -21,7 +21,7 @@ const MainContentComponent = ({membershipData}: {membershipData: any}) => {
         
 </header>
 
-{membershipData?.Response?.bungieNetUser && <p className="text-gray-100">{...membershipData?.Response?.bungieNetUser}</p>
+{membershipData?.Response?.bungieNetUser && <p className="text-gray-100">{membershipData?.Response?.bungieNetUser?.displayName}</p>
 }
 
     </div>

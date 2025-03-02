@@ -210,7 +210,7 @@ const HeaderContentComponent = ({membershipData}:{membershipData:any}) => {
                     </div>
                 </div>
             </DisclosurePanel>
-            <h2 className="margin-auto">{membershipData?.Response?.bungieNetUser?.displayName}</h2>
+            
         </Disclosure>
 
 
