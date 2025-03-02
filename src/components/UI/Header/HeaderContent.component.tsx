@@ -4,6 +4,8 @@ import logo from '../../../assets/static/app_logo.png';
 import { OAuthURLEndpointContext } from '../../../App';
 import { Disclosure, Menu, MenuButton, MenuItems, MenuItem, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { ServerResponse } from '../../../type-definitions/user';
+import { ApiResponse } from '../../../type-definitions/additons';
 
 
 
@@ -28,7 +30,7 @@ function classNames(...classes: string[]) {
 
 
 
-const HeaderContentComponent = ({membershipData}:{membershipData:any}) => {
+const HeaderContentComponent = ({membershipData}:{membershipData:ServerResponse<ApiResponse>}) => {
 
   
     const auth_endpoint = useContext(OAuthURLEndpointContext);

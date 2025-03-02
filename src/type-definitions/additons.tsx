@@ -131,5 +131,59 @@ export interface OAuthResponse {
     redirectUrls?: string[];
 }
 
+export interface DestinyMembership {
+  LastSeenDisplayName: string;
+  LastSeenDisplayNameType: number;
+  iconPath: string;
+  crossSaveOverride: number;
+  applicableMembershipTypes: number[];
+  isPublic: boolean;
+  membershipType: number;
+  membershipId: string;
+  displayName: string;
+  bungieGlobalDisplayName: string;
+  bungieGlobalDisplayNameCode: number;
+}
+
+export interface BungieNetUser {
+  membershipId: string;
+  uniqueName: string;
+  displayName: string;
+  profilePicture: number;
+  profileTheme: number;
+  userTitle: number;
+  successMessageFlags: string;
+  isDeleted: boolean;
+  about: string;
+  firstAccess: string;
+  lastUpdate: string;
+  context: {
+    isFollowing: boolean;
+    ignoreStatus: {
+      isIgnored: boolean;
+      ignoreFlags: number;
+    };
+  };
+  psnDisplayName: string;
+  xboxDisplayName: string;
+  showActivity: boolean;
+  locale: string;
+  localeInheritDefault: boolean;
+  showGroupMessaging: boolean;
+  profilePicturePath: string;
+  profileThemeName: string;
+  userTitleDisplay: string;
+  statusText: string;
+  statusDate: string;
+  cachedBungieGlobalDisplayName: string;
+  cachedBungieGlobalDisplayNameCode: number;
+}
+
+export interface ApiResponse {
+  destinyMemberships: DestinyMembership[];
+  primaryMembershipId: string;
+  bungieNetUser: BungieNetUser;
+}
+
 
 

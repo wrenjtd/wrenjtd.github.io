@@ -8,6 +8,7 @@ import React from 'react';
 import FooterBoxComponent from './components/UI/Footer/FooterBox.component';
 
 
+
 export const BungieMembershipDataContext = createContext({});
 export const OAuthURLEndpointContext = createContext("");
 

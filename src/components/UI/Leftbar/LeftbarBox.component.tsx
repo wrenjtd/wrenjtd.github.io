@@ -1,10 +1,12 @@
 
+import { ApiResponse } from '../../../type-definitions/additons';
+import { ServerResponse } from '../../../type-definitions/common';
 import MainContentComponent from '../Main/MainContent.component';
 // import { Link } from 'react-router-dom';
 // import './Leftbar.css';
 
 
-const LeftbarBoxComponent = ({membershipData}:{membershipData:any}) => {
+const LeftbarBoxComponent = ({membershipData}:{membershipData:ServerResponse<ApiResponse>}) => {
 
     return(
             // <div id="leftbar_div">
