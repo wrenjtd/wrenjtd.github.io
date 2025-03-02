@@ -12,14 +12,15 @@ const MainContentComponent = ({ membershipData }: { membershipData: ServerRespon
 
   return (
 
-    <div className="size-full">
+    <div className="flex flex-col size-full">
 
       <header className="shadow-sm">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl py-4 py-6 sm:py-6 lg:py-8">
           <h1 className="text-3xl font-bold tracking-tight text-gray-100">Dashboard</h1>
         </div>
 
       </header>
+      <div className="flex-1">
       {user && <>
         <p className="text-gray-100">{user.displayName}</p>
         <img
@@ -32,6 +33,7 @@ const MainContentComponent = ({ membershipData }: { membershipData: ServerRespon
         {user.xboxDisplayName && <p>{user.xboxDisplayName}</p>} */}
 
       </>}
+      </div>
 
 
     </div>

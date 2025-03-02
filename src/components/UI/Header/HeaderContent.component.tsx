@@ -72,7 +72,7 @@ const HeaderContentComponent = ({membershipData}:{membershipData:ServerResponse<
 
 
         <Disclosure as="nav" className="bg-gray-800">
-            <div className="mx-auto max-w-7xl py-4 sm:py-6 lg:py-8">
+            <div className="mx-auto max-w-7xl ">
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center">
                         <div className="shrink-0">

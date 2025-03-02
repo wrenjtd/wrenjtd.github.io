@@ -28,7 +28,7 @@ const LeftbarBoxComponent = ({membershipData}:{membershipData:ServerResponse<Api
 
 
 <div className="flex-1 bg-gray-900 text-gray-100 ">
-  <aside className="flex h-[100%] w-18 flex-col items-center bg-gray-800" >
+  <aside className="flex min-h-full w-20 flex-col items-center border-r border-gray-900 bg-gray-800">
     
 
     <div className="flex flex-col items-center gap-y-4 py-10">
