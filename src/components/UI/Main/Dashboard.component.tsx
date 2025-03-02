@@ -5,7 +5,7 @@ import LeftbarBoxComponent from "../Leftbar/LeftbarBox.component";
 
 export default function Dashboard() {
 
-const membershipData: any = useContext(BungieMembershipDataContext);
+  const membershipData: any = useContext(BungieMembershipDataContext);
 
 
   return (
@@ -13,14 +13,14 @@ const membershipData: any = useContext(BungieMembershipDataContext);
       <div className="min-h-full">
 
 
-     
-{        membershipData && <HeaderContentComponent membershipData={membershipData}></HeaderContentComponent>
-}        
+
+        <HeaderContentComponent membershipData={membershipData}></HeaderContentComponent>
+
         <main>
-        { /* mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 */}
+          { /* mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 */}
           <div className="">
-{         membershipData &&   <LeftbarBoxComponent membershipData={membershipData}/>
-}            
+            {membershipData && <LeftbarBoxComponent membershipData={membershipData} />
+            }
           </div>
         </main>
       </div>

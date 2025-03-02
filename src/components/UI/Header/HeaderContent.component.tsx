@@ -32,6 +32,7 @@ function classNames(...classes: string[]) {
 
 const HeaderContentComponent = ({membershipData}:{membershipData:ServerResponse<ApiResponse>}) => {
 
+    
   
     const auth_endpoint = useContext(OAuthURLEndpointContext);
 
@@ -49,7 +50,7 @@ const HeaderContentComponent = ({membershipData}:{membershipData:ServerResponse<
 
 
 
-
+    
 
     return (
 
