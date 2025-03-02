@@ -5,7 +5,7 @@ import { ServerResponse } from "../../../type-definitions/common";
 const MainContentComponent = ({ membershipData }: { membershipData: ServerResponse<ApiResponse> }) => {
 
 
-  const user: BungieNetUser = {
+  const user: BungieNetUser = membershipData && {
     ...membershipData.Response.bungieNetUser
 
   }
