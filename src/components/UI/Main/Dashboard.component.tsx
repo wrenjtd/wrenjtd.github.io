@@ -1,5 +1,10 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import React, { useContext, useEffect, useState } from 'react';
+import { OAuthURLEndpointContext, BungieMembershipDataContext } from '../../../App';
+
+
+
 
 const user = {
   name: 'Tom Cook',
@@ -24,7 +29,16 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Dashboard() {
+  
+  const membershipData: any = useContext(BungieMembershipDataContext);
+  const auth_endpoint = useContext(OAuthURLEndpointContext);
+
+  const openInNewTab = (url: string) => {
+    const newWindow = window.open(url, '_self', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
+
   return (
     <>
       {/*
@@ -41,11 +55,12 @@ export default function Example() {
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
                 <div className="shrink-0">
-                  <img
+                {membershipData?.Response?.bungieNetUser?.profilePicturePath && 
+                  <img onClick={() => openInNewTab(auth_endpoint)}
                     alt="Your Company"
-                    src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+                    src={`https://www.bungie.net/${membershipData?.Response?.bungieNetUser?.profilePicturePath}`}
                     className="size-8"
-                  />
+                  />}
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">

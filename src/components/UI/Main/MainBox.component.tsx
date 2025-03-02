@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 // import FormComponent from "../UI/Form.component";
-import HomeContent from "./HomeContent.component";
+import HomeContent from "./Dashboard.component";
 
 
 
@@ -12,6 +12,7 @@ const MainBoxComponent: React.FC = () =>{
         <Routes>
                 
                 <Route path ="/" element= {<HomeContent/>}></Route>
+
                 {/* <Route path ="/" element ={<Navigate replace to="/home" />}/> */}
             </Routes>
 
