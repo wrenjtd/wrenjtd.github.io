@@ -14,13 +14,13 @@ const membershipData: any = useContext(BungieMembershipDataContext);
 
 
      
-        <HeaderContentComponent membershipData={membershipData}></HeaderContentComponent>
-        
+{        membershipData && <HeaderContentComponent membershipData={membershipData}></HeaderContentComponent>
+}        
         <main>
         { /* mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 */}
           <div className="">
-            <LeftbarBoxComponent membershipData={membershipData}/>
-            
+{         membershipData &&   <LeftbarBoxComponent membershipData={membershipData}/>
+}            
           </div>
         </main>
       </div>
