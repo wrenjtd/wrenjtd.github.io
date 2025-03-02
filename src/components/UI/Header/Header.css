@@ -2,7 +2,8 @@
     display: flex;
     height: auto;
     padding: 9px;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: flex-start;
   }
 
   #logo_div{
