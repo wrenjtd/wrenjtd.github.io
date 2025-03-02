@@ -19,11 +19,7 @@ const navigation = [
   { name: 'Calendar', href: '#', current: false },
   { name: 'Reports', href: '#', current: false },
 ]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
+
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -38,6 +34,13 @@ export default function Dashboard() {
     const newWindow = window.open(url, '_self', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
   }
+
+const userNavigation = [
+  { name: 'Your Profile', onClick: () => openInNewTab(auth_endpoint)},
+  { name: 'Settings', href: '#' },
+  { name: 'Sign out', href: '#' },
+]
+
 
   return (
     <>
@@ -56,7 +59,7 @@ export default function Dashboard() {
               <div className="flex items-center">
                 <div className="shrink-0">
                 {membershipData?.Response?.bungieNetUser?.profilePicturePath && 
-                  <img onClick={() => openInNewTab(auth_endpoint)}
+                  <img 
                     alt="Your Company"
                     src={`https://www.bungie.net/${membershipData?.Response?.bungieNetUser?.profilePicturePath}`}
                     className="size-8"
