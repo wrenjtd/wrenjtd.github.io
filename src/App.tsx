@@ -35,8 +35,8 @@ function App() {
   //Checks if the authorization code is in the URL and if it is, it gets the access token
   const authorizationCodeChecker = async () => {
     if (window.location.search.includes("code")) {
-      let authorizationCode: string = window.location.search.split("code=")[1];
-      let oAuthResponse = traveler.oauth.getAccessToken(authorizationCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET);
+      const authorizationCode: string = window.location.search.split("code=")[1];
+      const oAuthResponse = traveler.oauth.getAccessToken(authorizationCode, import.meta.env.VITE_BUNGIE_CLIENT_ID, import.meta.env.VITE_BUNGIE_CLIENT_SECRET);
       setOauthServerResponse(await oAuthResponse);
     }
 
@@ -46,7 +46,7 @@ function App() {
   //Gets Bungie membership data for the current user
   const getBungieMembershipData = async () => {
     if (oauthServerResponse?.membership_id) {
-      let tempBungieUserDataObject = traveler.user.getMembershipDataForCurrentUser(oauthServerResponse?.access_token);
+      const tempBungieUserDataObject = traveler.user.getMembershipDataForCurrentUser(oauthServerResponse?.access_token);
       setBungieMembershipData(await tempBungieUserDataObject);
     }
   }
