@@ -28,8 +28,8 @@ const MainContentComponent = ({ membershipData }: { membershipData: ServerRespon
           className="size-8 rounded-full"
         />
        <p>{user.membershipId}</p>
-        {user.psnDisplayName && <p>{user.psnDisplayName}</p>}
-        {user.xboxDisplayName && <p>{user.xboxDisplayName}</p>}
+        {/* {user.psnDisplayName && <p>{user.psnDisplayName}</p>}
+        {user.xboxDisplayName && <p>{user.xboxDisplayName}</p>} */}
 
       </>}
 
