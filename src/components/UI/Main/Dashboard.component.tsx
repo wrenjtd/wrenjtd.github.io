@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { BungieMembershipDataContext } from "../../../App";
-import HeaderContentComponent from "../Header/HeaderContent.component";
-import LeftbarBoxComponent from "../Leftbar/LeftbarBox.component";
-import FooterBoxComponent from "../Footer/FooterBox.component";
+import HeaderContentComponent from "../HeaderContent.component";
+import LeftbarBoxComponent from "../LeftbarBox.component";
+import FooterBoxComponent from "../FooterBox.component";
 
 export default function Dashboard() {
 
