@@ -7,7 +7,7 @@ import HomeContent from "./Dashboard.component";
 const MainBoxComponent: React.FC = () =>{
 
     return(
-    <div className="bungie-user-card bg-gray-800 text-gray-200">
+    <div className="h-[100%] w-[100%] bg-gray-800 text-gray-200">
         
         <Routes>
                 

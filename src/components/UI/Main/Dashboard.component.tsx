@@ -11,7 +11,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="min-h-full">
+      <div className="h-[100%]">
 
 
 

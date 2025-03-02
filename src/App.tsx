@@ -70,15 +70,14 @@ function App() {
         <div id="app_parent_div" className="bg-gray-900 text-gray-200 min-h-screen">
 
           <BungieMembershipDataContext.Provider value={bungieMembershipData}>
-            <div id="mainbox_component_flex_container" className="flex justify-between p-2">
+            
 
-              <div id="mainboxcontent_component_div" className="flex-1 p-2 border border-gray-700 mx-2">
+              <div id="mainboxcontent_component_div" className=" my-auto mx-auto">
                 <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
                   <MainBoxComponent></MainBoxComponent>
                 </OAuthURLEndpointContext.Provider>
               </div>
 
-            </div>
           </BungieMembershipDataContext.Provider>
           
         </div>
