@@ -11,7 +11,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen flex-col">
 
 
 
@@ -19,11 +19,10 @@ export default function Dashboard() {
 
         <main>
           { /* mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 */}
-          <div className="">
+         
             <LeftbarBoxComponent membershipData={membershipData} />
             <FooterBoxComponent></FooterBoxComponent>
             
-          </div>
         </main>
       </div>
     </>

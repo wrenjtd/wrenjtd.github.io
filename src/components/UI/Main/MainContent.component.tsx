@@ -12,7 +12,7 @@ const MainContentComponent = ({ membershipData }: { membershipData: ServerRespon
 
   return (
 
-    <div className="size-full flex-grow">
+    <div className="size-full">
 
       <header className="shadow-sm">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
