@@ -178,10 +178,10 @@ const HeaderContentComponent = ({membershipData}:{membershipData:ServerResponse<
                 <div className="border-t border-gray-700 pt-4 pb-3">
                     <div className="flex items-center px-5">
                         <div className="shrink-0">
-                            {membershipData?.Response?.bungieNetUser?.profilePicturePath &&
+                            {membershipData?.Response?.bungieNetUser &&
                                 <img
                                     alt="Your Company"
-                                    src={`https://www.bungie.net/${membershipData?.Response?.bungieNetUser?.profilePicturePath}`}
+                                    src={`https://www.bungie.net/${membershipData.Response.bungieNetUser.profilePicturePath}`}
                                     className="size-8 rounded-full"
                                 />}
                         </div>
