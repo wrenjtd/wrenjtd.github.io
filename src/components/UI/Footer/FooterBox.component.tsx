@@ -1,13 +1,13 @@
 import React from "react";
-
+// import './Footer.css';
 
 const FooterBoxComponent: React.FC = () => {
 
 
 
     return (
-        <div>
-            <footer className = "footer-class">Footer stuff goes here.</footer>
+        <div id="footer_div">
+            <footer className="text-center">Footer stuff goes here.</footer>
             
 
         </div>)
