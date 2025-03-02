@@ -27,8 +27,10 @@ const MainContentComponent = ({ membershipData }: { membershipData: ServerRespon
           src={`https://www.bungie.net/${user.profilePicturePath}`}
           className="size-8 rounded-full"
         />
-        <p>{user.membershipId}</p>
-        <p>{user.psnDisplayName}</p>
+       <p>{user.membershipId}</p>
+        {user.psnDisplayName && <p>{user.psnDisplayName}</p>}
+        {user.xboxDisplayName && <p>{user.xboxDisplayName}</p>}
+
       </>}
 
 
