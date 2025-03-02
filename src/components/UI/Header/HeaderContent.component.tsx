@@ -96,7 +96,7 @@ const HeaderContentComponent: React.FC = () => {
                                         href={item.href}
                                         aria-current={item.current ? 'page' : undefined}
                                         className={classNames(
-                                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                            item.current ? 'bg-gray-900 text-gray-100' : 'text-gray-700 hover:bg-gray-300 hover:text-gray-100',
                                             'rounded-md px-3 py-2 text-sm font-medium',
                                         )}
                                     >
@@ -146,7 +146,7 @@ const HeaderContentComponent: React.FC = () => {
                     </div>
                     <div className="-mr-2 flex md:hidden">
                         {/* Mobile menu button */}
-                        <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
+                        <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-gray-200 p-2 text-gray-600 hover:bg-gray-300 hover:text-gray-100 focus:ring-2 focus:ring-gray-100 focus:ring-offset-2 focus:ring-offset-gray-200 focus:outline-hidden">
                             <span className="absolute -inset-0.5" />
                             <span className="sr-only">Open main menu</span>
                             <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
@@ -165,7 +165,7 @@ const HeaderContentComponent: React.FC = () => {
                             href={item.href}
                             aria-current={item.current ? 'page' : undefined}
                             className={classNames(
-                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                item.current ? 'bg-gray-100 text-gray-100' : 'text-gray-700 hover:bg-gray-300 hover:text-gray-100',
                                 'block rounded-md px-3 py-2 text-base font-medium',
                             )}
                         >
