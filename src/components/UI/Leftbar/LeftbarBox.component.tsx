@@ -24,8 +24,8 @@ const LeftbarBoxComponent: React.FC = () => {
 
 
 
-<div className="flex bg-gray-100 text-gray-900 w-[100%] h-[100%]">
-  <aside className="flex h-screen w-20 flex-col items-center border-r border-gray-200 bg-white">
+<div className="flex bg-gray-900 text-gray-100 w-[100%] h-[100%]">
+  <aside className="flex h-screen w-20 flex-col items-center border-r border-gray-100 bg-gray-800">
     <div className="flex h-[4.5rem] w-full items-center justify-center border-b border-gray-200 p-2">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThsapwuIZ2JPUVRaWSoX_xoEIOHWxneY7EupS8gsFriA&s" />
     </div>
@@ -76,6 +76,12 @@ const LeftbarBoxComponent: React.FC = () => {
       </button>
     </div>
   </aside>
+
+  <header className="shadow-sm">
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-100">Dashboard</h1>
+          </div>
+        </header>
 </div>
     )
 };
