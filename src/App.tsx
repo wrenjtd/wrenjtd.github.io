@@ -2,10 +2,6 @@ import { useState, useEffect, createContext } from 'react';
 import '../src/assets/css/App.css';
 import { BrowserRouter } from 'react-router-dom';
 import MainBoxComponent from './components/UI/Main/MainBox.component';
-import HeaderContentComponent from './components/UI/Header/HeaderContent.component';
-// import LeftbarBoxComponent from './components/UI/Leftbar/LeftbarBox.component';
-
-
 import Traveler from './Traveler';
 import { OAuthResponse } from './type-definitions/additons';
 import React from 'react';
