@@ -11,19 +11,19 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col justify-between">
 
 
 
         <HeaderContentComponent membershipData={membershipData}></HeaderContentComponent>
 
-        <main>
+        
           { /* mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 */}
          
             <LeftbarBoxComponent membershipData={membershipData} />
             <FooterBoxComponent></FooterBoxComponent>
             
-        </main>
+       
       </div>
     </>
   )

@@ -27,7 +27,7 @@ const LeftbarBoxComponent = ({membershipData}:{membershipData:ServerResponse<Api
 
 
 
-<div className="flex flex-1 bg-gray-900 text-gray-100 ">
+<main className="flex flex-1 bg-gray-900 text-gray-100 ">
   <aside className="flex min-h-full w-20 flex-col items-center border-r border-gray-900 bg-gray-800">
     
 
@@ -46,7 +46,7 @@ const LeftbarBoxComponent = ({membershipData}:{membershipData:ServerResponse<Api
   </aside>
 
 <MainContentComponent membershipData={membershipData}/>
-</div>
+</main>
     )
 };
 
