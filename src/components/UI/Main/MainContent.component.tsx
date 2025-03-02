@@ -20,7 +20,7 @@ const MainContentComponent = ({ membershipData }: { membershipData: ServerRespon
         </div>
 
       </header>
-      <div className="flex-1">
+      <div className="flex flex-1">
       {user && <>
         <p className="text-gray-100">{user.displayName}</p>
         <img
