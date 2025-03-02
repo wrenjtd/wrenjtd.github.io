@@ -5,7 +5,6 @@ import MainBoxComponent from './components/UI/Main/MainBox.component';
 import Traveler from './Traveler';
 import { OAuthResponse } from './type-definitions/additons';
 import React from 'react';
-import FooterBoxComponent from './components/UI/Footer/FooterBox.component';
 
 
 
@@ -81,7 +80,7 @@ function App() {
 
             </div>
           </BungieMembershipDataContext.Provider>
-          <FooterBoxComponent></FooterBoxComponent>
+          
         </div>
       </BrowserRouter>
 
