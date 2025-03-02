@@ -1,9 +1,10 @@
-import React from 'react';
+
+import MainContentComponent from '../Main/MainContent.component';
 // import { Link } from 'react-router-dom';
 // import './Leftbar.css';
 
 
-const LeftbarBoxComponent: React.FC = () => {
+const LeftbarBoxComponent = ({membershipData}:{membershipData:any}) => {
 
     return(
             // <div id="leftbar_div">
@@ -77,11 +78,7 @@ const LeftbarBoxComponent: React.FC = () => {
     </div>
   </aside>
 
-  <header className="shadow-sm">
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-100">Dashboard</h1>
-          </div>
-        </header>
+<MainContentComponent membershipData={membershipData}/>
 </div>
     )
 };

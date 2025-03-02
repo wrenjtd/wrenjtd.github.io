@@ -1,9 +1,11 @@
+import { useContext } from "react";
+import { BungieMembershipDataContext } from "../../../App";
 import HeaderContentComponent from "../Header/HeaderContent.component";
 import LeftbarBoxComponent from "../Leftbar/LeftbarBox.component";
 
 export default function Dashboard() {
 
-
+const membershipData: any = useContext(BungieMembershipDataContext);
 
 
   return (
@@ -12,12 +14,12 @@ export default function Dashboard() {
 
 
      
-        <HeaderContentComponent></HeaderContentComponent>
+        <HeaderContentComponent membershipData={membershipData}></HeaderContentComponent>
         
         <main>
         { /* mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 */}
           <div className="">
-            <LeftbarBoxComponent/>
+            <LeftbarBoxComponent membershipData={membershipData}/>
             
           </div>
         </main>

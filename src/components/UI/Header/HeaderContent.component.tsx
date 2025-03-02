@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/static/app_logo.png';
-import { OAuthURLEndpointContext, BungieMembershipDataContext } from '../../../App';
+import { OAuthURLEndpointContext } from '../../../App';
 import { Disclosure, Menu, MenuButton, MenuItems, MenuItem, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -28,9 +28,9 @@ function classNames(...classes: string[]) {
 
 
 
-const HeaderContentComponent: React.FC = () => {
+const HeaderContentComponent = ({membershipData}:{membershipData:any}) => {
 
-    const membershipData: any = useContext(BungieMembershipDataContext);
+  
     const auth_endpoint = useContext(OAuthURLEndpointContext);
 
     const openInNewTab = (url: string) => {
