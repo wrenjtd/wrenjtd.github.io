@@ -121,7 +121,7 @@ const HeaderContentComponent = ({membershipData}:{membershipData:ServerResponse<
                                     <MenuButton className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
-                                        <img alt="" src={user.imageUrl} className="size-8 rounded-full" />
+                                        <img alt="" src={membershipData && `https://www.bungie.net/${membershipData.Response.bungieNetUser.profilePicturePath}`} className="size-8 rounded-full" />
                                     </MenuButton>
                                 </div>
                                 <MenuItems
