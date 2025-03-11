@@ -69,6 +69,7 @@ const HeaderContentComponent = ({membershipData}:{membershipData:ServerResponse<
 
 
         // </div>
+        
 
 
         <Disclosure as="nav" className="bg-gray-800">
