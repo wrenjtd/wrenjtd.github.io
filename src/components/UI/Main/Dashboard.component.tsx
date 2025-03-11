@@ -3,6 +3,7 @@ import { BungieMembershipDataContext } from "../../../App";
 import HeaderContentComponent from "../HeaderContent.component";
 // import LeftbarBoxComponent from "../LeftbarBox.component";
 import FooterBoxComponent from "../FooterBox.component";
+import MainContentComponent from "./MainContent.component";
 
 export default function Dashboard() {
 
@@ -16,7 +17,7 @@ export default function Dashboard() {
 
 
         <HeaderContentComponent membershipData={membershipData}></HeaderContentComponent>
-
+        <MainContentComponent membershipData={membershipData}></MainContentComponent>
         
           { /* mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 */}
          
