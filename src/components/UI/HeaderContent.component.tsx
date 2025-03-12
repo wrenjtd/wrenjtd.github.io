@@ -65,60 +65,6 @@ const HeaderContentComponent = ({ membershipData }: { membershipData: ServerResp
                                 <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
                             </DisclosureButton>
                         </div>
-                        <DisclosurePanel className="md:hidden">
-                <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-                    {navigation.map((item) => (
-                        <DisclosureButton
-                            key={item.name}
-                            as="a"
-                            href={item.href}
-                            aria-current={item.current ? 'page' : undefined}
-                            className={classNames(
-                                item.current ? 'bg-gray-100 text-gray-100' : 'text-gray-700 hover:bg-gray-300 hover:text-gray-100',
-                                'block rounded-md px-3 py-2 text-base font-medium',
-                            )}
-                        >
-                            {item.name}
-                        </DisclosureButton>
-                    ))}
-                </div>
-                <div className="border-t border-gray-700 pt-4 pb-3">
-                    <div className="flex items-center px-5">
-                        <div className="shrink-0">
-
-                            <img
-                                alt="Your Company"
-                                src={settings_gear}
-                                className="size-8 rounded-full"
-                            />
-                        </div>
-                        <div className="ml-3">
-                            <div className="text-base/5 font-medium text-white">{membershipData && membershipData.Response.bungieNetUser.membershipId}</div>
-                            <div className="text-sm font-medium text-gray-400">{membershipData && membershipData.Response.bungieNetUser.displayName}</div>
-                        </div>
-                        <button
-                            type="button"
-                            className="relative ml-auto shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
-                        >
-                            <span className="absolute -inset-1.5" />
-                            <span className="sr-only">View notifications</span>
-                            <BellIcon aria-hidden="true" className="size-6" />
-                        </button>
-                    </div>
-                    <div className="mt-3 space-y-1 px-2">
-                        {userNavigation.map((item) => (
-                            <DisclosureButton
-                                key={item.name}
-                                as="a"
-                                href={item.href}
-                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-                            >
-                                {item.name}
-                            </DisclosureButton>
-                        ))}
-                    </div>
-                </div>
-            </DisclosurePanel>
                         <div className="shrink-0">
                             {/* This is the site logo */}
                             <Link to="/">
@@ -185,11 +131,72 @@ const HeaderContentComponent = ({ membershipData }: { membershipData: ServerResp
                             </Menu>
                         </div>
                     </div>
-                    
+                    <div className="-mr-2 flex md:hidden">
+                        {/* Mobile menu button */}
+                        <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-gray-200 p-2 text-gray-600 hover:bg-gray-300 hover:text-gray-100 focus:ring-2 focus:ring-gray-100 focus:ring-offset-2 focus:ring-offset-gray-200 focus:outline-hidden">
+                            <span className="absolute -inset-0.5" />
+                            <span className="sr-only">Open main menu</span>
+                            <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
+                            <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
+                        </DisclosureButton>
+                    </div>
                 </div>
             </div>
 
-            
+            <DisclosurePanel className="md:hidden">
+                <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+                    {navigation.map((item) => (
+                        <DisclosureButton
+                            key={item.name}
+                            as="a"
+                            href={item.href}
+                            aria-current={item.current ? 'page' : undefined}
+                            className={classNames(
+                                item.current ? 'bg-gray-100 text-gray-100' : 'text-gray-700 hover:bg-gray-300 hover:text-gray-100',
+                                'block rounded-md px-3 py-2 text-base font-medium',
+                            )}
+                        >
+                            {item.name}
+                        </DisclosureButton>
+                    ))}
+                </div>
+                <div className="border-t border-gray-700 pt-4 pb-3">
+                    <div className="flex items-center px-5">
+                        <div className="shrink-0">
+
+                            <img
+                                alt="Your Company"
+                                src={settings_gear}
+                                className="size-8 rounded-full"
+                            />
+                        </div>
+                        <div className="ml-3">
+                            <div className="text-base/5 font-medium text-white">{membershipData && membershipData.Response.bungieNetUser.membershipId}</div>
+                            <div className="text-sm font-medium text-gray-400">{membershipData && membershipData.Response.bungieNetUser.displayName}</div>
+                        </div>
+                        <button
+                            type="button"
+                            className="relative ml-auto shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+                        >
+                            <span className="absolute -inset-1.5" />
+                            <span className="sr-only">View notifications</span>
+                            <BellIcon aria-hidden="true" className="size-6" />
+                        </button>
+                    </div>
+                    <div className="mt-3 space-y-1 px-2">
+                        {userNavigation.map((item) => (
+                            <DisclosureButton
+                                key={item.name}
+                                as="a"
+                                href={item.href}
+                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                            >
+                                {item.name}
+                            </DisclosureButton>
+                        ))}
+                    </div>
+                </div>
+            </DisclosurePanel>
 
         </Disclosure>
 
