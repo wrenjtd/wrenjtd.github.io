@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/static/app_logo.png';
+import settings_gear from '../../assets/static/settings_gear.jpg';
+
 import { OAuthURLEndpointContext } from '../../App';
 import { Disclosure, Menu, MenuButton, MenuItems, MenuItem, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -174,12 +176,12 @@ const HeaderContentComponent = ({membershipData}:{membershipData:ServerResponse<
                 <div className="border-t border-gray-700 pt-4 pb-3">
                     <div className="flex items-center px-5">
                         <div className="shrink-0">
-                            {membershipData?.Response?.bungieNetUser &&
+                          
                                 <img
                                     alt="Your Company"
-                                    src={`https://www.bungie.net/${membershipData.Response.bungieNetUser.profilePicturePath}`}
+                                    src={settings_gear}
                                     className="size-8 rounded-full"
-                                />}
+                                />
                         </div>
                         <div className="ml-3">
                             <div className="text-base/5 font-medium text-white">{user.name}</div>
