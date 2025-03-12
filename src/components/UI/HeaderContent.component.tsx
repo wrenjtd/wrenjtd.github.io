@@ -18,7 +18,7 @@ const user = {
         'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
+    { name: 'Dashboard', href: '#', current: false },
     { name: 'Team', href: '#', current: false },
     { name: 'Projects', href: '#', current: false },
     { name: 'Calendar', href: '#', current: false },
@@ -56,21 +56,6 @@ const HeaderContentComponent = ({membershipData}:{membershipData:ServerResponse<
 
     return (
 
-        // <div id="header_div" className="flex justify-between p-3 border-b border-gray-700">
-        //     <div id="logo_div" className="ml-2">
-        //         <Link to="/"><img src={logo} id="logo_pic" className="w-24 h-24"  /></Link>
-        //     </div>
-        //     <br></br>
-
-        //     <h2 className="w-24 h-24" >{membershipData?.Response?.bungieNetUser?.displayName}</h2>
-        //     <div id="membership_pic_div">
-        //        {membershipData?.Response?.bungieNetUser?.profilePicturePath && <img src={`https://www.bungie.net/${membershipData?.Response?.bungieNetUser?.profilePicturePath}`} /> }
-        //     </div>
-
-
-
-
-        // </div>
         
 
 
@@ -123,7 +108,7 @@ const HeaderContentComponent = ({membershipData}:{membershipData:ServerResponse<
                                     <MenuButton className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
-                                        <img alt="" src={membershipData && `https://www.bungie.net/${membershipData.Response.bungieNetUser.profilePicturePath}`} className="size-8 rounded-full" />
+                                        <img alt="" src={settings_gear}  />
                                     </MenuButton>
                                 </div>
                                 <MenuItems
