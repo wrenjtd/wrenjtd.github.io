@@ -14,12 +14,7 @@ const MainContentComponent = ({ membershipData }: { membershipData: ServerRespon
 
     <div className="flex flex-col size-full">
 
-      <header className="shadow-sm">
-        <div className="mx-auto max-w-7xl py-6 sm:py-6 lg:py-8">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-100">Dashboard</h1>
-        </div>
-
-      </header>
+   
       <div className="flex flex-1">
       {user && <div className="mx-auto">
         
