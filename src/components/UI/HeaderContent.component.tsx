@@ -98,7 +98,7 @@ const HeaderContentComponent = ({ membershipData }: { membershipData: ServerResp
                             {/* Profile dropdown */}
                             <Menu as="div" className="relative ml-3">
                                 <div>
-                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
+                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
                                         <img alt="" src={settings_gear} className="size-6 " />
