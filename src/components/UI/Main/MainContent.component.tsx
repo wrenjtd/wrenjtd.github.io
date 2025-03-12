@@ -31,7 +31,7 @@ const MainContentComponent = ({ membershipData }: { membershipData: ServerRespon
     </div>
 
     <div className="hidden sm:block sm:shrink-0">
-       <img alt="" src={`https://www.bungie.net/${user.profilePicturePath}`}/>
+       <img alt="" src={user && `https://www.bungie.net/${user.profilePicturePath}`}/>
     </div>
   </div>
 
