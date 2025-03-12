@@ -58,13 +58,6 @@ const HeaderContentComponent = ({ membershipData }: { membershipData: ServerResp
             <div className="mx-auto max-w-7xl ">
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center">
-                        <div className="-mr-2 flex">
-                            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-gray-200 p-2 text-gray-600 hover:bg-gray-300 hover:text-gray-100 focus:ring-2 focus:ring-gray-100 focus:ring-offset-2 focus:ring-offset-gray-200 focus:outline-hidden">
-                                <span className="absolute -inset-0.5" />
-                                <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
-                                <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
-                            </DisclosureButton>
-                        </div>
                         <div className="shrink-0">
                             {/* This is the site logo */}
                             <Link to="/">
