@@ -52,8 +52,6 @@ const HeaderContentComponent = ({ membershipData }: { membershipData: ServerResp
     return (
 
 
-
-
         <Disclosure as="nav" className="bg-gray-800">
             <div className="mx-auto max-w-7xl ">
                 <div className="flex h-16 items-center justify-between">
@@ -90,7 +88,7 @@ const HeaderContentComponent = ({ membershipData }: { membershipData: ServerResp
                         <div className="ml-4 flex items-center md:ml-6">
                             <button
                                 type="button"
-                                className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+                                className="relative rounded-full bg-transparent p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
                             >
                                 <span className="absolute -inset-1.5" />
                                 <span className="sr-only">View notifications</span>
@@ -108,7 +106,7 @@ const HeaderContentComponent = ({ membershipData }: { membershipData: ServerResp
                                 </div>
                                 <MenuItems
                                     transition
-                                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-gray-900 py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-transparent py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
                                 >
                                     {userNavigation.map((item) => (
                                         <MenuItem key={item.name}>
