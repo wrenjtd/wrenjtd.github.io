@@ -10,6 +10,8 @@ const MainContentComponent = ({ membershipData }: { membershipData: ServerRespon
 
   }
 
+  
+
   return (
 
     <div className="flex flex-col size-full">
@@ -24,7 +26,7 @@ const MainContentComponent = ({ membershipData }: { membershipData: ServerRespon
   <div className="sm:flex sm:justify-between sm:gap-4">
     <div>
       <h3 className="text-lg font-bold text-gray-900 sm:text-xl">
-        Building a SaaS product as a software developer
+       
       </h3>
 
       <p className="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
