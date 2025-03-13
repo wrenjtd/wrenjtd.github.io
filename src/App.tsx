@@ -26,7 +26,7 @@ function App() {
   const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
 
   const [bungieMembershipData, setBungieMembershipData] = useState<any>();
-  const [userCharacterProfiles, setUserCharacterProfiles ] = useState<any>();
+  const [userCharacterProfiles, setUserCharacterProfiles] = useState<any>();
 
 
   //Checks if the authorization code is in the URL and if it is, it gets the access token
@@ -66,32 +66,31 @@ function App() {
 
     if (oauthServerResponse?.membership_id) {
       getBungieMembershipData();
-      getUserProfileInformation();
-    }
-
-    if(userCharacterProfiles){
-      console.log(userCharacterProfiles);
     }
 
   }, [oauthServerResponse])
 
- 
+  useEffect(() => {
+    getUserProfileInformation();
+
+  }, [bungieMembershipData])
+
 
 
   return (
     <React.Fragment>
       <BrowserRouter>
 
-       
 
-          <BungieMembershipDataContext.Provider value={bungieMembershipData}>
-                <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
-                  <MainBoxComponent {...userCharacterProfiles}></MainBoxComponent>
-                </OAuthURLEndpointContext.Provider>
 
-          </BungieMembershipDataContext.Provider>
-          
-       
+        <BungieMembershipDataContext.Provider value={bungieMembershipData}>
+          <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
+            <MainBoxComponent {...userCharacterProfiles}></MainBoxComponent>
+          </OAuthURLEndpointContext.Provider>
+
+        </BungieMembershipDataContext.Provider>
+
+
       </BrowserRouter>
 
     </React.Fragment>
