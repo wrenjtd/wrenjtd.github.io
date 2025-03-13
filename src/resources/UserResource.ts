@@ -86,7 +86,7 @@ export default class UserResource extends BungieResource {
 
     return new Promise<any>((resolve, reject) =>{
       this.httpService
-      .get(`https://www.bungie.net//Platform/Destiny2/${membershipType}/Profile/${destinyMembershipId}/?components=${components}`, authToken)
+      .get(`https://www.bungie.net/Platform/Destiny2/${membershipType}/Profile/${destinyMembershipId}/?components=${components}`, authToken)
       .then(response => {
           resolve(response);
       })
