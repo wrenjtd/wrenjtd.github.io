@@ -51,7 +51,7 @@ function App() {
   const getUserProfileInformation = async () => {
     if (bungieMembershipData && oauthServerResponse) {
       const components = [200, 205]
-      const tempBungieCharacterProfileDataObject = traveler.user.getUserProfileInformation(bungieMembershipData.Response.destinyMemberships[0].membershipId, bungieMembershipData.Response.destinyMemberships[0].membershipType, components, oauthServerResponse.access_token);
+      const tempBungieCharacterProfileDataObject = traveler.destiny2.getProfile(bungieMembershipData.Response.destinyMemberships[0].membershipId, bungieMembershipData.Response.destinyMemberships[0].membershipType, components, oauthServerResponse.access_token);
       setUserCharacterProfiles(await tempBungieCharacterProfileDataObject);
     }
   }
