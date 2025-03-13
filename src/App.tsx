@@ -67,7 +67,10 @@ function App() {
     if (oauthServerResponse?.membership_id) {
       getBungieMembershipData();
       getUserProfileInformation();
-      
+    }
+
+    if(userCharacterProfiles){
+      console.log(userCharacterProfiles);
     }
 
   }, [oauthServerResponse])

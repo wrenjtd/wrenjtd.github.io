@@ -2,20 +2,13 @@ import { ApiResponse, BungieNetUser } from "../../../type-definitions/additons";
 import { ServerResponse } from "../../../type-definitions/common";
 
 
-const MainContentComponent = ({ membershipData }: { membershipData: ServerResponse<ApiResponse> }, userCharacterProfiles: any) => {
+const MainContentComponent = ({ membershipData }: { membershipData: ServerResponse<ApiResponse> }) => {
 
 
   const user: BungieNetUser = membershipData && {
     ...membershipData.Response.bungieNetUser
   }
 
-  const userProfiles: any = userCharacterProfiles && {
-    ...userCharacterProfiles.Response.CharacterEquipment.data
-  }
-
-  if(userProfiles){
-    console.log(userProfiles);
-  }
  
 
 
