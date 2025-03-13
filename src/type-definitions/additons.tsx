@@ -7,6 +7,9 @@
 
 /// <reference types="node"/>
 
+import { DestinyActivityModeType, DestinyStatsGroupType, PeriodType, DestinyComponentType } from './destiny2';
+
+
 export enum GlobalAlertLevel {
     Unkown = 0,
     Blue = 1,
@@ -94,16 +97,16 @@ export interface TravelerConfig {
 
 
   export interface QueryStringParameters {
-    //components?: DestinyComponentType[];
-    //modes?: DestinyActivityModeType[];
-    //mode?: DestinyActivityModeType;
+    components?: DestinyComponentType[];
+    modes?: DestinyActivityModeType[];
+    mode?: DestinyActivityModeType;
     maxtop?: number;
     statid?: string;
     page?: number;
     dayend?: string;
     daystart?: string;
-    //groups?: DestinyStatsGroupType[];
-    //periodType?: PeriodType;
+    groups?: DestinyStatsGroupType[];
+    periodType?: PeriodType;
     count?: number;
     [key: string]: any;
   }

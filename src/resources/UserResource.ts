@@ -3,6 +3,7 @@ import HTTPService from '../HttpService';
 import { ServerResponse } from '../type-definitions/app';
 import { UserMembershipData, BungieMembershipType } from '../type-definitions/user';
 import { checkOauthToken } from '../util';
+import { QueryStringParameters } from '../type-definitions/additons';
 
 export default class UserResource extends BungieResource {
   protected resourcePath: string;
@@ -82,7 +83,7 @@ export default class UserResource extends BungieResource {
   }
 
 
-  public getUserProfileInformation(destinyMembershipId: string, membershipType: string, components: number [], authToken: string): Promise<object> {
+  public getUserProfileInformation(destinyMembershipId: string, membershipType: BungieMembershipType, components: QueryStringParameters, authToken: string): Promise<object> {
 
     console.log("Membership ID: " + destinyMembershipId + "MembershipType: " +  membershipType + "Components: " + components);
 

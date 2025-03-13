@@ -5,6 +5,8 @@ import MainBoxComponent from './components/UI/Main/MainBox.component';
 import Traveler from './Traveler';
 import { OAuthResponse } from './type-definitions/additons';
 import React from 'react';
+import { BungieMembershipType } from './type-definitions/common';
+import { DestinyComponentType } from './type-definitions/destiny2';
 
 
 
@@ -50,8 +52,8 @@ function App() {
 
   const getUserProfileInformation = async () => {
     if (bungieMembershipData && oauthServerResponse) {
-      const components = [200, 205]
-      const tempBungieCharacterProfileDataObject = traveler.destiny2.getProfile(bungieMembershipData.Response.destinyMemberships[0].membershipId, bungieMembershipData.Response.destinyMemberships[0].membershipType, components, oauthServerResponse.access_token);
+      const components = [DestinyComponentType.Characters, DestinyComponentType.CharacterEquipment];
+      const tempBungieCharacterProfileDataObject = traveler.destiny2.getProfile(BungieMembershipType.TigerXbox, bungieMembershipData.Response.primaryMembershipId,{components}, oauthServerResponse.access_token);
       setUserCharacterProfiles(await tempBungieCharacterProfileDataObject);
     }
   }
