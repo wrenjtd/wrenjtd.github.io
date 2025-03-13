@@ -5,7 +5,7 @@ import HeaderContentComponent from "../HeaderContent.component";
 import FooterBoxComponent from "../FooterBox.component";
 import MainContentComponent from "./MainContent.component";
 
-export default function Dashboard() {
+export default function Dashboard({userCharacterProfiles}: any) {
 
   const membershipData: any = useContext(BungieMembershipDataContext);
 
@@ -17,7 +17,7 @@ export default function Dashboard() {
 
 
         <HeaderContentComponent membershipData={membershipData}></HeaderContentComponent>
-        <MainContentComponent membershipData={membershipData}></MainContentComponent>
+        <MainContentComponent membershipData={membershipData} {...userCharacterProfiles}></MainContentComponent>
          
             {/* <LeftbarBoxComponent membershipData={membershipData} /> */}
             <FooterBoxComponent></FooterBoxComponent>

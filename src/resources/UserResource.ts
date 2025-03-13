@@ -80,4 +80,22 @@ export default class UserResource extends BungieResource {
         });
     });
   }
+
+
+  public getUserProfileInformation(destinyMembershipId: string, membershipType: string, components: number [], authToken: string): Promise<object> {
+
+    return new Promise<any>((resolve, reject) =>{
+      this.httpService
+      .get(`https://www.bungie.net//Platform/Destiny2/${membershipType}/Profile/${destinyMembershipId}/?components=${components}`, authToken)
+      .then(response => {
+          resolve(response);
+      })
+      .catch(err => {
+          reject(err);
+      });
+    });
+
+
+
+  }
 }

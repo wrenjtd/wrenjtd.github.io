@@ -2,15 +2,23 @@ import { ApiResponse, BungieNetUser } from "../../../type-definitions/additons";
 import { ServerResponse } from "../../../type-definitions/common";
 
 
-const MainContentComponent = ({ membershipData }: { membershipData: ServerResponse<ApiResponse> }) => {
+const MainContentComponent = ({ membershipData }: { membershipData: ServerResponse<ApiResponse> }, userCharacterProfiles: any) => {
 
 
   const user: BungieNetUser = membershipData && {
     ...membershipData.Response.bungieNetUser
-
   }
 
-  
+  const userProfiles: any = userCharacterProfiles && {
+    ...userCharacterProfiles.Response.CharacterEquipment.data
+  }
+
+  if(userProfiles){
+    console.log(userProfiles);
+  }
+ 
+
+
 
   return (
 
@@ -26,7 +34,7 @@ const MainContentComponent = ({ membershipData }: { membershipData: ServerRespon
   <div className="sm:flex sm:justify-between sm:gap-4">
     <div>
       <h3 className="text-lg font-bold text-gray-900 sm:text-xl">
-       
+        {user && user.uniqueName}
       </h3>
 
       <p className="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
@@ -41,6 +49,7 @@ const MainContentComponent = ({ membershipData }: { membershipData: ServerRespon
     <p className="text-sm text-pretty text-gray-500">
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
       maiores deleniti consectetur nobis et eaque.
+      
     </p>
   </div>
 

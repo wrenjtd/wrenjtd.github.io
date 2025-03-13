@@ -26,6 +26,7 @@ function App() {
   const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
 
   const [bungieMembershipData, setBungieMembershipData] = useState<any>();
+  const [userCharacterProfiles, setUserCharacterProfiles ] = useState<any>();
 
 
   //Checks if the authorization code is in the URL and if it is, it gets the access token
@@ -47,6 +48,14 @@ function App() {
     }
   }
 
+  const getUserProfileInformation = async () => {
+    if (oauthServerResponse?.membership_id) {
+      const components = [200, 205]
+      const tempBungieCharacterProfileDataObject = traveler.user.getUserProfileInformation(bungieMembershipData.Response.destinyMemberships[0].membershipId, bungieMembershipData.Response.destinyMemberships[0].membershipType, components, oauthServerResponse.access_token);
+      setUserCharacterProfiles(await tempBungieCharacterProfileDataObject);
+    }
+  }
+
 
 
   useEffect(() => {
@@ -57,10 +66,13 @@ function App() {
 
     if (oauthServerResponse?.membership_id) {
       getBungieMembershipData();
+      getUserProfileInformation();
+      
     }
 
   }, [oauthServerResponse])
 
+ 
 
 
   return (
@@ -70,11 +82,9 @@ function App() {
        
 
           <BungieMembershipDataContext.Provider value={bungieMembershipData}>
-              {/* <div id="mainboxcontent_component_div" className=" my-auto mx-auto"> */}
                 <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
-                  <MainBoxComponent></MainBoxComponent>
+                  <MainBoxComponent {...userCharacterProfiles}></MainBoxComponent>
                 </OAuthURLEndpointContext.Provider>
-              {/* </div> */}
 
           </BungieMembershipDataContext.Provider>
           

@@ -51,10 +51,13 @@ export default class Traveler {
                   });
           });
       }
-
-
+     
+      
+      
 
 }
+
+
 
 
 
