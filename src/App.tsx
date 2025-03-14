@@ -3,7 +3,7 @@ import '../src/assets/css/App.css';
 import { BrowserRouter } from 'react-router-dom';
 import MainBoxComponent from './components/UI/Main/MainBox.component';
 import Traveler from './Traveler';
-import { OAuthResponse } from './type-definitions/additons';
+import { OAuthResponse, TypeDefinition } from './type-definitions/additons';
 import React from 'react';
 import { BungieMembershipType } from './type-definitions/common';
 import { DestinyComponentType } from './type-definitions/destiny2';
@@ -73,8 +73,17 @@ function App() {
 
   useEffect(() => {
     getUserProfileInformation();
-
   }, [bungieMembershipData])
+
+  useEffect(() => {
+    if (userCharacterProfiles) {
+      let temp = traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.CharacterEquipment.data[Object.keys(userCharacterProfiles.Response.CharacterEquipment.data)[0]].items[0].itemHash);
+
+      console.log(temp);
+    }
+    
+  },
+    [userCharacterProfiles])
 
 
 
@@ -86,10 +95,7 @@ function App() {
           <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
             <MainBoxComponent {...userCharacterProfiles}></MainBoxComponent>
           </OAuthURLEndpointContext.Provider>
-
         </BungieMembershipDataContext.Provider>
-
-
       </BrowserRouter>
 
     </React.Fragment>

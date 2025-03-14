@@ -30,7 +30,6 @@ import {
 
 import { UserInfoCard } from '../type-definitions/user';
 import { QueryStringParameters, DictionaryResponse, TypeDefinition } from '../type-definitions/additons';
-
 import { resolveQueryStringParameters } from '../util';
 
 
@@ -829,7 +828,7 @@ export default class Destiny2Resource extends BungieResource {
    * <li><statId {string}: ID of stat to return rather than returning all Leaderboard stats. <br />
    * {@link https://alexanderwe.github.io/the-traveler/enums/statid.html|StatIds} for available ids</li>
    * </ul>
-   * @returns {Promise<ServerResponse<DictionaryResponse<object>>} When fulfilled returns an object containing leaderboards for a clan
+   * @returns {Promise<ServerResponse<DictionaryResponse<object>>>} When fulfilled returns an object containing leaderboards for a clan
    * @memberof Destiny2Resource
    */
   public getClanLeaderboards(
@@ -1499,8 +1498,5 @@ export default class Destiny2Resource extends BungieResource {
         });
     });
   }
-
-  
-  
 
 }

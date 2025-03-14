@@ -13,9 +13,6 @@ export default function Dashboard({userCharacterProfiles}: any) {
   return (
     <>
       <div className="min-h-screen flex flex-col justify-between">
-
-
-
         <HeaderContentComponent membershipData={membershipData}></HeaderContentComponent>
         <MainContentComponent membershipData={membershipData} {...userCharacterProfiles}></MainContentComponent>
          
