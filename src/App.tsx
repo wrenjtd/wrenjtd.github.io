@@ -29,7 +29,7 @@ function App() {
 
   const [bungieMembershipData, setBungieMembershipData] = useState<any>();
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<any>();
-  // const [userCharacterEquipment, setUserCharacterEquipment] = useState<any>();
+  const [userCharacterEquipment, setUserCharacterEquipment] = useState<any>();
 
 
   //Checks if the authorization code is in the URL and if it is, it gets the access token
@@ -79,15 +79,15 @@ function App() {
   useEffect(() => {
     if (userCharacterProfiles) {
       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash).then(response => {
-            console.log(response.Response);
+            setUserCharacterEquipment(response.Response);
           })
     }
   },[userCharacterProfiles])
 
-  // useEffect(() => {
-  //   console.log(userCharacterEquipment.Response.displayProperties.name);
-  // }
-  // ,[userCharacterEquipment])
+  useEffect(() => {
+    console.log(userCharacterEquipment.displayProperties.name);
+  }
+  ,[userCharacterEquipment])
 
 
   return (
