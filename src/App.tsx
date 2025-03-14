@@ -77,7 +77,7 @@ function App() {
 
   useEffect(() => {
     if (userCharacterProfiles) {
-      console.log(userCharacterProfiles.Response.CharacterEquipment.data[0]);
+      console.log(userCharacterProfiles.Response.CharacterEquipment);
       // let temp = traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.CharacterEquipment.data[Object.keys(userCharacterProfiles.Response.CharacterEquipment.data)[0]].items[0].itemHash);
 
       // console.log(temp);
