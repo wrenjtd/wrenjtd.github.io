@@ -85,7 +85,9 @@ function App() {
   },[userCharacterProfiles])
 
   useEffect(() => {
+    if(userCharacterEquipment){
     console.log(userCharacterEquipment.displayProperties.name);
+    }
   }
   ,[userCharacterEquipment])
 
