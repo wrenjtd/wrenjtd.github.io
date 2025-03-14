@@ -85,7 +85,7 @@ function App() {
   },[userCharacterProfiles])
 
   useEffect(() => {
-    console.log(userCharacterEquipment);
+    console.log(userCharacterEquipment.Response.displayProperties.name);
   }
   ,[userCharacterEquipment])
 
@@ -96,7 +96,7 @@ function App() {
 
         <BungieMembershipDataContext.Provider value={bungieMembershipData}>
           <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
-            <MainBoxComponent {...userCharacterProfiles}></MainBoxComponent>
+            <MainBoxComponent {...userCharacterProfiles}{...userCharacterEquipment}></MainBoxComponent>
           </OAuthURLEndpointContext.Provider>
         </BungieMembershipDataContext.Provider>
       </BrowserRouter>
