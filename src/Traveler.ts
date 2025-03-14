@@ -36,23 +36,6 @@ export default class Traveler {
     this.destiny2 = new Destiny2Resource(this.httpService);
     this.user = new UserResource(this.httpService);
   }
-
-  public getBungieNetUserById(userId: string, authToken: string): Promise<object> {
-        
-          
-          return new Promise<any>((resolve, reject) => {
-              this.httpService
-                  .get(`https://www.bungie.net/platform/user/GetBungieNetUserById/${userId}/`, authToken)
-                  .then(response => {
-                      resolve(response);
-                  })
-                  .catch(err => {
-                      reject(err);
-                  });
-          });
-      }
-     
-      
       
 
 }

@@ -39,7 +39,6 @@ function App() {
       setOauthServerResponse(await oAuthResponse);
     }
 
-
   }
 
   //Gets Bungie membership data for the current user
@@ -82,8 +81,6 @@ function App() {
   return (
     <React.Fragment>
       <BrowserRouter>
-
-
 
         <BungieMembershipDataContext.Provider value={bungieMembershipData}>
           <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
