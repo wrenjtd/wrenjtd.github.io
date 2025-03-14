@@ -3,7 +3,7 @@ import '../src/assets/css/App.css';
 import { BrowserRouter } from 'react-router-dom';
 import MainBoxComponent from './components/UI/Main/MainBox.component';
 import Traveler from './Traveler';
-import { OAuthResponse, TypeDefinition } from './type-definitions/additons';
+import { OAuthResponse } from './type-definitions/additons';
 import React from 'react';
 import { BungieMembershipType } from './type-definitions/common';
 import { DestinyComponentType } from './type-definitions/destiny2';
