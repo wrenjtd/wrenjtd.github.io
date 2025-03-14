@@ -52,7 +52,7 @@ const HeaderContentComponent = ({ membershipData }: { membershipData: ServerResp
     return (
 
 
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-transparent">
             <div className="mx-auto max-w-7xl ">
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center">
@@ -74,7 +74,7 @@ const HeaderContentComponent = ({ membershipData }: { membershipData: ServerResp
                                         href={item.href}
                                         aria-current={item.current ? 'page' : undefined}
                                         className={classNames(
-                                            item.current ? 'bg-gray-900 text-gray-100' : 'text-gray-700 hover:bg-gray-300 hover:text-gray-100',
+                                            item.current ? 'bg-transparent text-gray-100' : 'text-gray-700 hover:bg-gray-300 hover:text-gray-100',
                                             'rounded-md px-3 py-2 text-sm font-medium',
                                         )}
                                     >
@@ -98,7 +98,7 @@ const HeaderContentComponent = ({ membershipData }: { membershipData: ServerResp
                             {/* Profile dropdown */}
                             <Menu as="div" className="relative ml-3">
                                 <div>
-                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
+                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
                                         <img alt="" src={settings_gear} className="size-6 " />
