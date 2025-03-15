@@ -31,6 +31,7 @@ function App() {
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<any>();
   const [userCharacterEquipment, setUserCharacterEquipment] = useState<any>();
 
+  
 
   //Checks if the authorization code is in the URL and if it is, it gets the access token
   const authorizationCodeChecker = async () => {
@@ -91,14 +92,19 @@ function App() {
   }
   ,[userCharacterEquipment])
 
+  const props = {
+    userCharacterEquipment, userCharacterProfiles, bungieMembershipData
+  }
+
+
 
   return (
     <React.Fragment>
       <BrowserRouter>
 
-        <BungieMembershipDataContext.Provider value={bungieMembershipData}>
+        <BungieMembershipDataContext.Provider value={{...props}}>
           <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
-            <MainBoxComponent {...userCharacterProfiles}></MainBoxComponent>
+            <MainBoxComponent></MainBoxComponent>
           </OAuthURLEndpointContext.Provider>
         </BungieMembershipDataContext.Provider>
       </BrowserRouter>

@@ -1,12 +1,14 @@
-import { ApiResponse, BungieNetUser } from "../../../type-definitions/additons";
-import { ServerResponse } from "../../../type-definitions/common";
+import { useContext } from "react";
+import { BungieMembershipDataContext } from "../../../App";
+import { BungieNetUser } from "../../../type-definitions/additons";
 
 
-const MainContentComponent = ({ membershipData }: { membershipData: ServerResponse<ApiResponse> }) => {
 
+const MainContentComponent = () => {
+const membershipData: any = useContext(BungieMembershipDataContext);
 
   const user: BungieNetUser = membershipData && {
-    ...membershipData.Response.bungieNetUser
+    ...membershipData.bungieMembershipData.Response.bungieNetUser
   }
 
  
