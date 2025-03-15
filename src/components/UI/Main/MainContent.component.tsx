@@ -11,6 +11,12 @@ const membershipData: any = useContext(BungieMembershipDataContext);
     ...membershipData.bungieMembershipData.Response.bungieNetUser
   }
 
+
+  const userCharacterEquipment = membershipData && {
+
+    ...membershipData.userCharacterEquipment.Response.displayProperties
+
+  }
  
 
 
@@ -42,8 +48,7 @@ const membershipData: any = useContext(BungieMembershipDataContext);
 
   <div className="mt-4">
     <p className="text-sm text-pretty text-gray-500">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
-      maiores deleniti consectetur nobis et eaque.
+     {userCharacterEquipment.name}
       
     </p>
   </div>
