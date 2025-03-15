@@ -5,8 +5,9 @@ import MainBoxComponent from './components/UI/Main/MainBox.component';
 import Traveler from './Traveler';
 import { OAuthResponse, TypeDefinition } from './type-definitions/additons';
 import React from 'react';
-import { BungieMembershipType } from './type-definitions/common';
-import { DestinyComponentType } from './type-definitions/destiny2';
+import { BungieMembershipType, ServerResponse } from './type-definitions/common';
+import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyProfileResponse } from './type-definitions/destiny2';
+import { UserMembershipData } from './type-definitions/user';
 
 
 
@@ -27,9 +28,9 @@ function App() {
   const oauth_url_endpoint = traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID);
   const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
 
-  const [bungieMembershipData, setBungieMembershipData] = useState<any>();
-  const [userCharacterProfiles, setUserCharacterProfiles] = useState<any>();
-  const [userCharacterEquipment, setUserCharacterEquipment] = useState<any>();
+  const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
+  const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
+  const [userCharacterEquipment, setUserCharacterEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>>();
 
   
 
@@ -54,7 +55,7 @@ function App() {
   const getUserProfileInformation = async () => {
     if (bungieMembershipData && oauthServerResponse) {
       const components = [DestinyComponentType.Characters, DestinyComponentType.CharacterEquipment];
-      const tempBungieCharacterProfileDataObject = traveler.destiny2.getProfile(BungieMembershipType.TigerXbox, bungieMembershipData.Response.primaryMembershipId,{components}, oauthServerResponse.access_token);
+      const tempBungieCharacterProfileDataObject = traveler.destiny2.getProfile(BungieMembershipType.TigerXbox, bungieMembershipData.Response.bungieNetUser.membershipId,{components}, oauthServerResponse.access_token);
       setUserCharacterProfiles(await tempBungieCharacterProfileDataObject);
     }
   }
@@ -79,21 +80,21 @@ function App() {
 
   useEffect(() => {
     if (userCharacterProfiles) {
-      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash).then(response => {
-            setUserCharacterEquipment(response.Response);
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash.toString()).then(response => {
+            console.log(response);
           })
     }
   },[userCharacterProfiles])
 
-  useEffect(() => {
-    if(userCharacterEquipment){
-    console.log(userCharacterEquipment.displayProperties.name);
-    }
-  }
-  ,[userCharacterEquipment])
+  // useEffect(() => {
+  //   if(userCharacterEquipment){
+  //   console.log(userCharacterEquipment.);
+  //   }
+  // }
+  // ,[userCharacterEquipment])
 
   const props = {
-    userCharacterEquipment, userCharacterProfiles, bungieMembershipData
+    userCharacterProfiles, bungieMembershipData
   }
 
 

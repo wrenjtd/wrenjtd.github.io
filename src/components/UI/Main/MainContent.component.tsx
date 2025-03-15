@@ -12,11 +12,11 @@ const membershipData: any = useContext(BungieMembershipDataContext);
   }
 
 
-  const userCharacterEquipment = membershipData && {
+  // const userCharacterEquipment = membershipData && {
 
-    ...membershipData.userCharacterEquipment.Response.displayProperties
+  //   ...membershipData.userCharacterEquipment.Response.displayProperties
 
-  }
+  // }
  
 
 
@@ -48,7 +48,7 @@ const membershipData: any = useContext(BungieMembershipDataContext);
 
   <div className="mt-4">
     <p className="text-sm text-pretty text-gray-500">
-     {userCharacterEquipment.name}
+     {/* {userCharacterEquipment.name} */}
       
     </p>
   </div>

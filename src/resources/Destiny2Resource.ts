@@ -25,7 +25,8 @@ import {
     DestinyHistoricalWeaponStatsData,
     DestinyAggregateActivityResults,
     DestinyMilestoneContent,
-    DestinyPublicMilestone
+    DestinyPublicMilestone,
+    DestinyInventoryItemDefinition
   } from '../type-definitions/destiny2';
 
 import { UserInfoCard } from '../type-definitions/user';
@@ -112,10 +113,10 @@ export default class Destiny2Resource extends BungieResource {
     typeDefinition: string,
     hashIdentifier: string
   ): Promise<ServerResponse<DestinyDefinition>> {
-    return new Promise<ServerResponse<DestinyDefinition>>((resolve, reject) => {
+    return new Promise<ServerResponse<DestinyInventoryItemDefinition>>((resolve, reject) => {
       this.httpService
         .get(`${this.resourcePath}/Manifest/${typeDefinition}/${hashIdentifier}/`)
-        .then((response => resolve(response as ServerResponse<DestinyDefinition>)))
+        .then((response => resolve(response as ServerResponse<DestinyInventoryItemDefinition>)))
         .catch(err => {
           reject(err);
         });
