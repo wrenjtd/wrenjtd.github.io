@@ -75,6 +75,7 @@ function App() {
   }, [oauthServerResponse])
 
   useEffect(() => {
+    if(bungieMembershipData)
     getUserProfileInformation();
   }, [bungieMembershipData])
 
