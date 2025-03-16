@@ -157,8 +157,8 @@ const HeaderContentComponent = () => {
                             />
                         </div>
                         <div className="ml-3">
-                            <div className="text-base/5 font-medium text-white">{membershipData && membershipData.bungieMembershipData.Response.bungieNetUser.membershipId}</div>
-                            <div className="text-sm font-medium text-gray-400">{membershipData && membershipData.bungieMembershipData.Response.bungieNetUser.displayName}</div>
+                            <div className="text-base/5 font-medium text-white">{membershipData && membershipData.bungieMembershipData.bungieNetUser.membershipId}</div>
+                            <div className="text-sm font-medium text-gray-400">{membershipData && membershipData.bungieMembershipData.bungieNetUser.displayName}</div>
                         </div>
                         <button
                             type="button"
