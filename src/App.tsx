@@ -6,7 +6,7 @@ import Traveler from './Traveler';
 import { OAuthResponse } from './type-definitions/additons';
 import React from 'react';
 import { BungieMembershipType, ServerResponse } from './type-definitions/common';
-import { DestinyComponentType } from './type-definitions/destiny2';
+import { DestinyComponentType, DestinyProfileResponse } from './type-definitions/destiny2';
 import { UserMembershipData } from './type-definitions/user';
 
 
@@ -29,7 +29,7 @@ function App() {
   const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
 
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
-  const [userCharacterProfiles, setUserCharacterProfiles] = useState<any>();
+  const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
   
 
   
