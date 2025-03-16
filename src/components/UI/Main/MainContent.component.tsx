@@ -1,15 +1,15 @@
-// import { useContext } from "react";
-// import { BungieMembershipDataContext } from "../../../App";
-// import { BungieNetUser } from "../../../type-definitions/additons";
+import { useContext } from "react";
+import { BungieMembershipDataContext } from "../../../App";
+import { BungieNetUser } from "../../../type-definitions/additons";
 
 
 
 const MainContentComponent = () => {
-// const membershipData: any = useContext(BungieMembershipDataContext);
+const membershipData: any = useContext(BungieMembershipDataContext);
 
-  // const user: BungieNetUser = membershipData && {
-  //   ...membershipData.bungieMembershipData.Response.bungieNetUser
-  // }
+  const user: BungieNetUser = membershipData && {
+    ...membershipData.bungieMembershipData.Response.bungieNetUser
+  }
 
 
   // const userCharacterEquipment = membershipData && {
@@ -35,7 +35,7 @@ const MainContentComponent = () => {
   <div className="sm:flex sm:justify-between sm:gap-4">
     <div>
       <h3 className="text-lg font-bold text-gray-900 sm:text-xl">
-        {/* {user && user.uniqueName} */}
+        {user && user.uniqueName}
       </h3>
 
       <p className="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
