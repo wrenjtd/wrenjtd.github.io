@@ -30,7 +30,7 @@ function App() {
 
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
-  const [userCharacterEquipment, setUserCharacterEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>>();
+  
 
   
 

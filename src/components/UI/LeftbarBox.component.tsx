@@ -1,12 +1,10 @@
 
-import { ApiResponse } from '../../type-definitions/additons';
-import { ServerResponse } from '../../type-definitions/common';
 import MainContentComponent from './Main/MainContent.component';
 // import { Link } from 'react-router-dom';
 // import './Leftbar.css';
 
 
-const LeftbarBoxComponent = ({membershipData}:{membershipData:ServerResponse<ApiResponse>}) => {
+const LeftbarBoxComponent = () => {
 
     return(
             // <div id="leftbar_div">
@@ -45,7 +43,7 @@ const LeftbarBoxComponent = ({membershipData}:{membershipData:ServerResponse<Api
     </div>
   </aside>
 
-<MainContentComponent membershipData={membershipData}/>
+<MainContentComponent />
 
 <aside className="flex min-h-full w-20 flex-col items-center border-r border-gray-900 bg-gray-800">
     
