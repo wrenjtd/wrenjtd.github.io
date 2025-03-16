@@ -7,7 +7,7 @@ import { OAuthResponse } from './type-definitions/additons';
 import React from 'react';
 import { BungieMembershipType, ServerResponse } from './type-definitions/common';
 import { DestinyComponentType, DestinyProfileResponse } from './type-definitions/destiny2';
-
+import { UserMembershipData } from './type-definitions/user';
 
 
 
@@ -28,7 +28,7 @@ function App() {
   const oauth_url_endpoint = traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID);
   const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
 
-  const [bungieMembershipData, setBungieMembershipData] = useState<any>();
+  const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
   
 
@@ -56,7 +56,7 @@ function App() {
     if (bungieMembershipData && oauthServerResponse) {
       console.log(bungieMembershipData);
       const components = [DestinyComponentType.Characters, DestinyComponentType.CharacterEquipment];
-      const tempBungieCharacterProfileDataObject = traveler.destiny2.getProfile(BungieMembershipType.TigerXbox, bungieMembershipData.Response.primaryMembershipId,{components}, oauthServerResponse.access_token);
+      const tempBungieCharacterProfileDataObject = traveler.destiny2.getProfile(BungieMembershipType.TigerXbox, bungieMembershipData.Response.destinyMemberships[0].membershipId,{components}, oauthServerResponse.access_token);
       setUserCharacterProfiles(await tempBungieCharacterProfileDataObject);
     }
   }
