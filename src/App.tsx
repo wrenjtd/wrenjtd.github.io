@@ -3,7 +3,7 @@ import '../src/assets/css/App.css';
 import { BrowserRouter } from 'react-router-dom';
 import MainBoxComponent from './components/UI/Main/MainBox.component';
 import Traveler from './Traveler';
-import { OAuthResponse } from './type-definitions/additons';
+import { OAuthResponse, TypeDefinition } from './type-definitions/additons';
 import React from 'react';
 import { BungieMembershipType, ServerResponse } from './type-definitions/common';
 import { DestinyComponentType, DestinyProfileResponse } from './type-definitions/destiny2';
@@ -80,13 +80,13 @@ function App() {
     getUserProfileInformation();
   }, [bungieMembershipData])
 
-  // useEffect(() => {
-  //   if (userCharacterProfiles) {
-  //     traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash).then(response => {
-  //           console.log(response);
-  //         })
-  //   }
-  // },[userCharacterProfiles])
+  useEffect(() => {
+    if (userCharacterProfiles) {
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash.toString()).then(response => {
+            console.log(response);
+          })
+    }
+  },[userCharacterProfiles])
 
   // useEffect(() => {
   //   if(userCharacterEquipment){
