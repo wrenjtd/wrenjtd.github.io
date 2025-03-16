@@ -54,6 +54,7 @@ function App() {
 
   const getUserProfileInformation = async () => {
     if (bungieMembershipData && oauthServerResponse) {
+      console.log(bungieMembershipData);
       const components = [DestinyComponentType.Characters, DestinyComponentType.CharacterEquipment];
       const tempBungieCharacterProfileDataObject = traveler.destiny2.getProfile(BungieMembershipType.TigerXbox, bungieMembershipData.Response.bungieNetUser.membershipId,{components}, oauthServerResponse.access_token);
       setUserCharacterProfiles(await tempBungieCharacterProfileDataObject);
