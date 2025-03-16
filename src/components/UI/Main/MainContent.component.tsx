@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { BungieMembershipDataContext } from "../../../App";
 import { BungieNetUser } from "../../../type-definitions/additons";
 
@@ -19,6 +19,10 @@ const membershipData: any = useContext(BungieMembershipDataContext);
   // }
  
 
+  useEffect(() => {
+    console.log(user);
+  }
+  ,[user])
 
 
   return (
