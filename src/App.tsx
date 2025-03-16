@@ -6,7 +6,7 @@ import Traveler from './Traveler';
 import { OAuthResponse, TypeDefinition } from './type-definitions/additons';
 import React from 'react';
 import { BungieMembershipType, ServerResponse } from './type-definitions/common';
-import { DestinyComponentType, DestinyProfileResponse } from './type-definitions/destiny2';
+import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyProfileResponse } from './type-definitions/destiny2';
 import { UserMembershipData } from './type-definitions/user';
 
 
@@ -30,7 +30,7 @@ function App() {
 
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
-  const [userCharacterEquipment, setUserCharacterEquipment] = useState<any>();
+  // const [userCharacterEquipment, setUserCharacterEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>>();
   
 
   
@@ -84,17 +84,17 @@ function App() {
   useEffect(() => {
     if (userCharacterProfiles) {
       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash.toString()).then(response => {
-            setUserCharacterEquipment(response);
+            console.log(response);
           })
     }
   },[userCharacterProfiles])
 
-  useEffect(() => {
-    if(userCharacterEquipment){
-    console.log(userCharacterEquipment);
-    }
-  }
-  ,[userCharacterEquipment])
+  // useEffect(() => {
+  //   if(userCharacterEquipment){
+  //   console.log(userCharacterEquipment);
+  //   }
+  // }
+  // ,[userCharacterEquipment])
 
   const props = {
     userCharacterProfiles, bungieMembershipData
