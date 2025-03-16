@@ -7,7 +7,7 @@ import { OAuthResponse } from './type-definitions/additons';
 import React from 'react';
 import { BungieMembershipType, ServerResponse } from './type-definitions/common';
 import { DestinyComponentType, DestinyProfileResponse } from './type-definitions/destiny2';
-import { UserMembershipData } from './type-definitions/user';
+
 
 
 
