@@ -8,7 +8,6 @@ import {
     DestinyCharacterResponse,
     DestinyActivityHistoryResults,
     DestinyManifest,
-    DestinyDefinition,
     DestinyLinkedProfilesResponse,
     DestinyProfileResponse,
     DestinyMilestone,
@@ -112,7 +111,7 @@ export default class Destiny2Resource extends BungieResource {
   public getDestinyEntityDefinition(
     typeDefinition: string,
     hashIdentifier: string
-  ): Promise<ServerResponse<DestinyDefinition>> {
+  ): Promise<ServerResponse<DestinyInventoryItemDefinition>> {
     return new Promise<ServerResponse<DestinyInventoryItemDefinition>>((resolve, reject) => {
       this.httpService
         .get(`${this.resourcePath}/Manifest/${typeDefinition}/${hashIdentifier}/`)
