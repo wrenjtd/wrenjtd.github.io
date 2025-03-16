@@ -8,7 +8,7 @@ const MainContentComponent = () => {
 const membershipData: any = useContext(BungieMembershipDataContext);
 
   const user: BungieNetUser = membershipData && {
-    ...membershipData.bungieMembershipData
+    ...membershipData.bungieMembershipData.Response.bungieNetUser
   }
 
 
