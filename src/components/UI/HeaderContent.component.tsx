@@ -30,7 +30,7 @@ const HeaderContentComponent = () => {
 
 const membershipData: any = useContext(BungieMembershipDataContext);
 
-console.log(membershipData);
+
 
     const auth_endpoint = useContext(OAuthURLEndpointContext);
 
@@ -159,7 +159,7 @@ console.log(membershipData);
                             />
                         </div>
                         <div className="ml-3">
-                       
+                       {membershipData && membershipData.bungieMembershipData.Response.bungieNetUser.uniqueName}
                         </div>
                         <button
                             type="button"
