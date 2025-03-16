@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/static/app_logo.png';
 import settings_gear from '../../assets/static/settings.png';
 
-import { OAuthURLEndpointContext } from '../../App';
+import { BungieMembershipDataContext, OAuthURLEndpointContext } from '../../App';
 import { Disclosure, Menu, MenuButton, MenuItems, MenuItem, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -28,7 +28,9 @@ function classNames(...classes: string[]) {
 
 const HeaderContentComponent = () => {
 
-//  const membershipData: any = useContext(BungieMembershipDataContext);
+const membershipData: any = useContext(BungieMembershipDataContext);
+
+console.log(membershipData);
 
     const auth_endpoint = useContext(OAuthURLEndpointContext);
 
