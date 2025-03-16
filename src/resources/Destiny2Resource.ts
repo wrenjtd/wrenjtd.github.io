@@ -111,7 +111,7 @@ export default class Destiny2Resource extends BungieResource {
    */
   public getDestinyEntityDefinition(
     typeDefinition: string,
-    hashIdentifier: string
+    hashIdentifier: string | number
   ): Promise<ServerResponse<DestinyDefinition>> {
     return new Promise<ServerResponse<DestinyInventoryItemDefinition>>((resolve, reject) => {
       this.httpService

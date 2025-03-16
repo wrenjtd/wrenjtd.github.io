@@ -80,7 +80,7 @@ function App() {
 
   useEffect(() => {
     if (userCharacterProfiles) {
-      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, `${userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash}`).then(response => {
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash).then(response => {
             console.log(response);
           })
     }
