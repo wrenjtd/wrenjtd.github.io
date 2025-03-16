@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/static/app_logo.png';
 import settings_gear from '../../assets/static/settings.png';
 
-import { BungieMembershipDataContext, OAuthURLEndpointContext } from '../../App';
+import { OAuthURLEndpointContext } from '../../App';
 import { Disclosure, Menu, MenuButton, MenuItems, MenuItem, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -28,7 +28,7 @@ function classNames(...classes: string[]) {
 
 const HeaderContentComponent = () => {
 
- const membershipData: any = useContext(BungieMembershipDataContext);
+//  const membershipData: any = useContext(BungieMembershipDataContext);
 
     const auth_endpoint = useContext(OAuthURLEndpointContext);
 
@@ -157,8 +157,7 @@ const HeaderContentComponent = () => {
                             />
                         </div>
                         <div className="ml-3">
-                            <div className="text-base/5 font-medium text-white">{membershipData && membershipData.bungieMembershipData.bungieNetUser.membershipId}</div>
-                            <div className="text-sm font-medium text-gray-400">{membershipData && membershipData.bungieMembershipData.bungieNetUser.displayName}</div>
+                       
                         </div>
                         <button
                             type="button"
