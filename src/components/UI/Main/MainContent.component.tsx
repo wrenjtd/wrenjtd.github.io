@@ -53,7 +53,7 @@ const membershipData = useContext(BungieMembershipDataContext);
 
   <div className="mt-4">
     <p className="text-sm text-pretty text-gray-500">
-     {user.userCharacterEquipment.Response.displayProperties.name}
+     {/* {user.userCharacterEquipment.Response.displayProperties.name} */}
       <img src="https://www.bungie.net/common/destiny2_content/icons/1986d831face6f7a188204509383574f.jpg" alt="weapon icon" />
     </p>
   </div>
