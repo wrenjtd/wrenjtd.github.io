@@ -52,9 +52,11 @@ const membershipData = useContext(BungieMembershipDataContext);
   </div>
 
   <div className="mt-4">
-    <p className="text-sm text-pretty text-gray-500">
-     {user.userCharacterEquipment &&  user.userCharacterEquipment.Response.displayProperties.name}
-    </p>
+
+   { user.userCharacterEquipment && <p className="text-sm text-pretty text-gray-500">
+      {user.userCharacterEquipment.Response.displayProperties.name}
+     <img src={`https://www.bungie.net/${user.userCharacterEquipment.Response.displayProperties.icon}`} alt="weapon icon" />
+    </p>}
   </div>
 
   <dl className="mt-6 flex gap-4 sm:gap-6">
