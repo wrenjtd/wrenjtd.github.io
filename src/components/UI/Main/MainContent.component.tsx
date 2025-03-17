@@ -20,6 +20,7 @@ const membershipData = useContext(BungieMembershipDataContext);
  
 
   useEffect(() => {
+    if(user)
     console.log(user.bungieMembershipData);
   }
   ,[user])
