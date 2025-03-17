@@ -40,7 +40,7 @@ const membershipData = useContext(BungieMembershipDataContext);
   <div className="sm:flex sm:justify-between sm:gap-4">
     <div>
       <h3 className="text-lg font-bold text-gray-900 sm:text-xl">
-        {/* {user && user.bungieMembershipData.Response.bungieNetUser.uniqueName} */}
+        {user.bungieMembershipData && user.bungieMembershipData.Response.bungieNetUser.uniqueName}
       </h3>
 
       <p className="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
