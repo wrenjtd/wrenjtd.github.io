@@ -7,7 +7,7 @@ import { BungieMembershipDataContext } from "../../../App";
 const MainContentComponent = () => {
 const membershipData = useContext(BungieMembershipDataContext);
 
-  const user: any = membershipData && {
+  const user: any = {
     ...membershipData
   }
 
@@ -40,7 +40,7 @@ const membershipData = useContext(BungieMembershipDataContext);
   <div className="sm:flex sm:justify-between sm:gap-4">
     <div>
       <h3 className="text-lg font-bold text-gray-900 sm:text-xl">
-        {user && user.uniqueName}
+        {user && user.bungieMembershipData.Response.bungieNetUser.uniqueName}
       </h3>
 
       <p className="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
@@ -53,8 +53,8 @@ const membershipData = useContext(BungieMembershipDataContext);
 
   <div className="mt-4">
     <p className="text-sm text-pretty text-gray-500">
-     {/* {userCharacterEquipment.name} */}
-      
+     {user.userCharacterEquipment.Response.displayProperties.name}
+      <img src="https://www.bungie.net/common/destiny2_content/icons/1986d831face6f7a188204509383574f.jpg" alt="weapon icon" />
     </p>
   </div>
 
