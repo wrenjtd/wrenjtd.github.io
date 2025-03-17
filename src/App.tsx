@@ -94,9 +94,7 @@ function App() {
 
 
           if(userCharacterProfiles != undefined){
-            userCharacterProfiles.Response.characterEquipment.data[0].items.forEach((item) => {
-              console.log(item);
-            })
+            console.log(userCharacterProfiles.Response.characterEquipment.data[0]);
           }
     }
   },[userCharacterProfiles])
