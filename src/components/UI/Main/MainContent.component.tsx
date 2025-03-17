@@ -47,7 +47,7 @@ const membershipData = useContext(BungieMembershipDataContext);
     </div>
 
     <div className="hidden sm:block sm:shrink-0">
-       {/* <img alt="" src={user && `https://www.bungie.net/${user.profilePicturePath}`}/> */}
+      { user.bungieMembershipData &&  <img alt="" src={`https://www.bungie.net/${user.bungieMembershipData.Response.bungieNetUser.profilePicturePath}`}/>}
     </div>
   </div>
 
