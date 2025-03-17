@@ -1,14 +1,13 @@
 import { useContext, useEffect } from "react";
-import { BungieMembershipDataContext } from "../../../App";
-
+import { BungieMembershipDataContext, contextType } from "../../../App";
 
 
 
 const MainContentComponent = () => {
 const membershipData = useContext(BungieMembershipDataContext);
 
-  const user: any = {
-    ...membershipData
+  const user: contextType = {
+    ...membershipData as contextType
   }
 
 
