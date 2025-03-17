@@ -20,7 +20,7 @@ const membershipData = useContext(BungieMembershipDataContext);
  
 
   useEffect(() => {
-    console.log(user.bungieMembershipData.Response);
+    console.log(user.bungieMembershipData);
   }
   ,[user])
 
