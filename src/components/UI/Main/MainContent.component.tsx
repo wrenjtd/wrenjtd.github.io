@@ -20,8 +20,8 @@ const membershipData = useContext(BungieMembershipDataContext);
  
 
   useEffect(() => {
-    if(user.bungieMembershipData)
-    console.log(user.bungieMembershipData.Response.bungieNetUser.uniqueName);
+    if(user)
+    console.log(user);
   }
   ,[user])
 
