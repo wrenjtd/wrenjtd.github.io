@@ -13,7 +13,7 @@ const MainContentComponent = () => {
 
 
   useEffect(() => {
-    if (user != undefined)
+    if (user.userCharacterEquipment != undefined)
       console.log(user);
   }
     , [user])
