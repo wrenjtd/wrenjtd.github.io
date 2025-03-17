@@ -93,12 +93,6 @@ function App() {
     }
   },[userCharacterProfiles])
 
-  // useEffect(() => {
-  //   if(userCharacterEquipment){
-  //   console.log(userCharacterEquipment);
-  //   }
-  // }
-  // ,[userCharacterEquipment])
 
   const props = {
     userCharacterProfiles, bungieMembershipData, userCharacterEquipment
