@@ -87,6 +87,10 @@ function App() {
 
   useEffect(() => {
     if (userCharacterProfiles) {
+
+      userCharacterProfiles.Response.characterEquipment.data[0].items.forEach((item: any) => {
+        console.log(item);
+      })
       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash.toString()).then(response => {
         setUserCharacterEquipment(response);
           })
