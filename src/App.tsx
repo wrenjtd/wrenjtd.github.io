@@ -91,8 +91,18 @@ function App() {
       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash.toString()).then(response => {
         setUserCharacterEquipment(response);
           })
+
+
+          if(userCharacterProfiles != undefined){
+            userCharacterProfiles.Response.characterEquipment.data[0].items.forEach((item) => {
+              console.log(item);
+            })
+          }
     }
   },[userCharacterProfiles])
+
+
+
 
 
   const props = {
