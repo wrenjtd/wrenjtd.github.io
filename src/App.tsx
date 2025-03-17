@@ -9,6 +9,11 @@ import { BungieMembershipType, ServerResponse } from './type-definitions/common'
 import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyProfileResponse } from './type-definitions/destiny2';
 import { UserMembershipData } from './type-definitions/user';
 
+export type contextType = {
+  bungieMembershipData: ServerResponse<UserMembershipData>;
+  userCharacterProfiles: ServerResponse<DestinyProfileResponse>;
+  userCharacterEquipment: ServerResponse<DestinyInventoryItemDefinition>;
+}
 
 
 export const BungieMembershipDataContext = createContext({});
