@@ -10,8 +10,12 @@ import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyProfileRes
 import { UserMembershipData } from './type-definitions/user';
 
 
-
-export const BungieMembershipDataContext = createContext({});
+type contextType = {
+  userCharacterProfiles: ServerResponse<DestinyProfileResponse> | undefined,
+  bungieMembershipData: ServerResponse<UserMembershipData> | undefined,
+  userCharacterEquipment: ServerResponse<DestinyInventoryItemDefinition> | undefined
+}
+export const BungieMembershipDataContext = createContext<contextType>({} as contextType);
 export const OAuthURLEndpointContext = createContext("");
 
 function App() {
