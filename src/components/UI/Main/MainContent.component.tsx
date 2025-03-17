@@ -53,7 +53,7 @@ const membershipData = useContext(BungieMembershipDataContext);
 
   <div className="mt-4">
     <p className="text-sm text-pretty text-gray-500">
-     {user.characterEquipment &&  user.userCharacterEquipment.Response.displayProperties.name}
+     {user.userCharacterEquipment &&  user.userCharacterEquipment.Response.displayProperties.name}
     </p>
   </div>
 
