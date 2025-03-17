@@ -44,9 +44,9 @@ const MainContentComponent = () => {
 
             <div className="mt-4">
 
-              {user.userCharacterProfiles && <p className="text-sm text-pretty text-gray-500">
-                {/* {user.userCharacterEquipment.Response.displayProperties.name} */}
-                <img src={`https://www.bungie.net/${user.userCharacterEquipment.Response.displayProperties.icon}`} alt="weapon icon" />
+              {user.userCharacterEquipment && <p className="text-sm text-pretty text-gray-500">
+                {user.userCharacterEquipment.Response.displayProperties.name}
+                {/* <img src={`https://www.bungie.net/${user.userCharacterEquipment.Response.displayProperties.icon}`} alt="weapon icon" /> */}
               </p>}
             </div>
 
