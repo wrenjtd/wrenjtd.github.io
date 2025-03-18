@@ -13,7 +13,7 @@ const MainContentComponent = () => {
 
 
   useEffect(() => {
-    if (user.userCharacterEquipment != undefined)
+    if (user.userEquipmentItems!= undefined)
       console.log(user);
   }
     , [user])
@@ -44,8 +44,8 @@ const MainContentComponent = () => {
 
             <div className="mt-4">
 
-              {user.userCharacterEquipment && <p className="text-sm text-pretty text-gray-500">
-                {/* {user.userCharacterEquipment.Response.displayProperties.name} */}
+              {user.userEquipmentItems && <p className="text-sm text-pretty text-gray-500">
+         
                 {/* <img src={`https://www.bungie.net/${user.userCharacterEquipment.Response.displayProperties.icon}`} alt="weapon icon" /> */}
               </p>}
             </div>

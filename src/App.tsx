@@ -12,7 +12,7 @@ import { UserMembershipData } from './type-definitions/user';
 export type contextType = {
   bungieMembershipData: ServerResponse<UserMembershipData>;
   userCharacterProfiles: ServerResponse<DestinyProfileResponse>;
-  userCharacterEquipment: ServerResponse<DestinyInventoryItemDefinition>;
+  userEquipmentItems: ServerResponse<DestinyInventoryItemDefinition[]>;
 }
 
 
@@ -36,9 +36,10 @@ function App() {
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
   const [userCharacterEquipment, setUserCharacterEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>>();
-  
+  const [userEquipmentItems, setUserEquipmentItems] = useState([] as ServerResponse<DestinyInventoryItemDefinition>[]);
 
-  
+
+
 
   //Checks if the authorization code is in the URL and if it is, it gets the access token
   const authorizationCodeChecker = async () => {
@@ -61,7 +62,7 @@ function App() {
   const getUserProfileInformation = async () => {
     if (bungieMembershipData && oauthServerResponse) {
       const components = [DestinyComponentType.Characters, DestinyComponentType.CharacterEquipment];
-      const tempBungieCharacterProfileDataObject = traveler.destiny2.getProfile(BungieMembershipType.TigerXbox, bungieMembershipData.Response.destinyMemberships[0].membershipId,{components}, oauthServerResponse.access_token);
+      const tempBungieCharacterProfileDataObject = traveler.destiny2.getProfile(BungieMembershipType.TigerXbox, bungieMembershipData.Response.destinyMemberships[0].membershipId, { components }, oauthServerResponse.access_token);
       setUserCharacterProfiles(await tempBungieCharacterProfileDataObject);
     }
   }
@@ -81,37 +82,37 @@ function App() {
   }, [oauthServerResponse])
 
   useEffect(() => {
-    if(bungieMembershipData)
-    getUserProfileInformation();
+    if (bungieMembershipData)
+      getUserProfileInformation();
   }, [bungieMembershipData])
 
   useEffect(() => {
     if (userCharacterProfiles) {
-      
+
       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash.toString()).then(response => {
         setUserCharacterEquipment(response);
-          })
-
-    }
-  },[userCharacterProfiles])
-
-useEffect(() => {
-  if(userCharacterProfiles != undefined){
-    console.log(userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items);
-
-    userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
-      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-        console.log(response.Response.displayProperties.name);
       })
+
     }
-    )
-  }
-},[userCharacterEquipment])
+  }, [userCharacterProfiles])
+
+  useEffect(() => {
+    if (userCharacterProfiles != undefined) {
+      userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
+        traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+          setUserEquipmentItems(
+            (prevState) => [...prevState, response]
+          );
+        })
+      }
+      )
+    }
+  }, [userCharacterEquipment])
 
 
 
   const props = {
-    userCharacterProfiles, bungieMembershipData, userCharacterEquipment
+    userCharacterProfiles, bungieMembershipData, userEquipmentItems
   }
 
 
@@ -120,7 +121,7 @@ useEffect(() => {
     <React.Fragment>
       <BrowserRouter>
 
-        <BungieMembershipDataContext.Provider value={{...props}}>
+        <BungieMembershipDataContext.Provider value={{ ...props }}>
           <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
             <MainBoxComponent></MainBoxComponent>
           </OAuthURLEndpointContext.Provider>
