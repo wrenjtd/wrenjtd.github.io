@@ -96,8 +96,8 @@ function App() {
   },[userCharacterProfiles])
 
 useEffect(() => {
-  if(userCharacterEquipment != undefined){
-    console.log(userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]]);
+  if(userCharacterProfiles != undefined){
+    console.log(userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items);
   }
 },[userCharacterEquipment])
 
