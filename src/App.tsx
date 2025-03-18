@@ -107,9 +107,7 @@ function App() {
     }
   }, [userCharacterEquipment])
 
-
-
-  const props = {
+    const props = {
     userCharacterProfiles, bungieMembershipData, userEquipmentItems
   }
 
