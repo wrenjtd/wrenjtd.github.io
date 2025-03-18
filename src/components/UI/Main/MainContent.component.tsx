@@ -13,10 +13,11 @@ const MainContentComponent = () => {
 
 
   useEffect(() => {
-    if (user.userEquipmentItems!= undefined)
-      console.log(user);
+   
+      console.log(user.userEquipmentItems);
+  
   }
-    , [user])
+    , [user.userEquipmentItems])
 
 
   return (
@@ -37,15 +38,14 @@ const MainContentComponent = () => {
                 </h3>
               </div>
 
-              <div className="hidden sm:block sm:shrink-0">
-                {user.bungieMembershipData && <img alt="user Bungie icon" src={`https://www.bungie.net/${user.bungieMembershipData.Response.bungieNetUser.profilePicturePath}`} />}
-              </div>
+              
             </div>
 
             <div className="mt-4">
 
               {user.userEquipmentItems && <p className="text-sm text-pretty text-gray-500">
          
+                
                 {/* <img src={`https://www.bungie.net/${user.userCharacterEquipment.Response.displayProperties.icon}`} alt="weapon icon" /> */}
               </p>}
             </div>
