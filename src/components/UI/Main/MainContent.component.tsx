@@ -43,7 +43,7 @@ const MainContentComponent = () => {
 
             <div className="mt-4">
 
-              {equipment && <p className="text-sm text-pretty text-gray-500">
+              {equipment[1].Response && <p className="text-sm text-pretty text-gray-500">
                 {equipment[1].Response.displayProperties.name}
                 
                 {/* <img src={`https://www.bungie.net/${equipment[1].Response.displayProperties.icon}`} alt="weapon icon" /> */}
