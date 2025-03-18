@@ -18,7 +18,7 @@ const MainContentComponent = () => {
 
   useEffect(() => {
    
-   console.log(user.userEquipmentItems);
+   console.log(user.userEquipmentItems.Response);
   
   }
     , [user.userEquipmentItems])
