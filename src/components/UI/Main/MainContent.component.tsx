@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { BungieMembershipDataContext, contextType } from "../../../App";
+import { DestinyInventoryItemDefinition } from "../../../type-definitions/destiny2";
 
 
 
@@ -18,7 +19,7 @@ const MainContentComponent = () => {
 
   useEffect(() => {
    
-   console.log(user.userEquipmentItems.Response);
+   console.log(user.userEquipmentItems.Response as DestinyInventoryItemDefinition[]);
   
   }
     , [user.userEquipmentItems])
