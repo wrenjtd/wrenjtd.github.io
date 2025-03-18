@@ -21,6 +21,8 @@ const MainContentComponent = () => {
 
 
    useEffect(() => {
+    
+    if(equipment != undefined) 
     console.log(equipment)
   }
     , [equipment]) 
