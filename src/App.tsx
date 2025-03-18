@@ -98,6 +98,13 @@ function App() {
 useEffect(() => {
   if(userCharacterProfiles != undefined){
     console.log(userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items);
+
+    userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+        console.log(response.Response.displayProperties.name);
+      })
+    }
+    )
   }
 },[userCharacterEquipment])
 
