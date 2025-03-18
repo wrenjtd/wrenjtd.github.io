@@ -53,7 +53,7 @@ const MainContentComponent = () => {
             <div className="mt-4">
 
               {equipmentArray && <p className="text-sm text-pretty text-gray-500">
-                
+                {equipmentArray[0].Response[0].displayProperties.name}
                 
                 {/* <img src={`https://www.bungie.net/${user.userCharacterEquipment.Response.displayProperties.icon}`} alt="weapon icon" /> */}
               </p>}
