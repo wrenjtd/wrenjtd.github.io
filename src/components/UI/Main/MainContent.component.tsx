@@ -11,7 +11,7 @@ const MainContentComponent = () => {
     ...membershipData as contextType
   }
 
-  let equipmentArray: Array<ServerResponse<DestinyInventoryItemDefinition>> = [];
+  const equipmentArray: ServerResponse<DestinyInventoryItemDefinition> [] = [];
 
 
 
