@@ -17,8 +17,6 @@ const MainContentComponent = () => {
 
 
   useEffect(() => {
-
-    if(user.userEquipmentItems != undefined)
   equipmentArray.push(user.userEquipmentItems)
     
   }
