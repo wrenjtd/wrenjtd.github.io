@@ -1,4 +1,4 @@
-import { useContext, useEffect} from "react";
+import { useContext, useEffect, useState} from "react";
 import { BungieMembershipDataContext, contextType } from "../../../App";
 import { DestinyInventoryItemDefinition } from "../../../type-definitions/destiny2/interfaces";
 import { ServerResponse } from "../../../type-definitions/common";
@@ -11,22 +11,19 @@ const MainContentComponent = () => {
     ...membershipData as contextType
   }
 
-  const equipmentArray: ServerResponse<DestinyInventoryItemDefinition> [] = [];
-
-
-
+  // const equipmentArray: ServerResponse<DestinyInventoryItemDefinition> [] = [];
+  const [equipment, setEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([]);
 
   useEffect(() => {
-  equipmentArray.push(user.userEquipmentItems)
-    
+      setEquipment(prev => [...prev, user.userEquipmentItems])
   }
     , [user.userEquipmentItems])
 
 
    useEffect(() => {
-    console.log(equipmentArray)
+    console.log(equipment)
   }
-    , [equipmentArray]) 
+    , [equipment]) 
   
     return (
 
@@ -51,7 +48,7 @@ const MainContentComponent = () => {
 
             <div className="mt-4">
 
-              {equipmentArray && <p className="text-sm text-pretty text-gray-500">
+              {equipment && <p className="text-sm text-pretty text-gray-500">
                 {/* {equipmentArray[0]?.Response?.displayProperties.name} */}
                 
                 {/* <img src={`https://www.bungie.net/${user.userCharacterEquipment.Response.displayProperties.icon}`} alt="weapon icon" /> */}
