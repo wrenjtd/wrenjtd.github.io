@@ -97,7 +97,7 @@ function App() {
 
 useEffect(() => {
   if(userCharacterEquipment != undefined){
-    console.log(userCharacterProfiles?.Response.characterEquipment.data[0]);
+    console.log(userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]]);
   }
 },[userCharacterEquipment])
 
