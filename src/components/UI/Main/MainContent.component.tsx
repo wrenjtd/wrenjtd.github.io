@@ -1,8 +1,6 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect} from "react";
 import { BungieMembershipDataContext, contextType } from "../../../App";
-import { DestinyInventoryItemDefinition } from "../../../type-definitions/destiny2";
-
-
+import { DestinyInventoryItemDefinition } from "../../../type-definitions/destiny2/interfaces";
 
 
 const MainContentComponent = () => {
@@ -12,15 +10,18 @@ const MainContentComponent = () => {
     ...membershipData as contextType
   }
 
-  // const [userEquipment, setUserEquipment] = useState([] as ServerResponse<DestinyInventoryItemDefinition>[]);
+  const equipmentArray: DestinyInventoryItemDefinition [] = [];
 
 
 
 
   useEffect(() => {
-   
-   console.log(user.userEquipmentItems.Response as DestinyInventoryItemDefinition[]);
-  
+    if (user.userEquipmentItems) {
+      user.userEquipmentItems.Response.forEach((item) => {
+        equipmentArray.push(item);
+      })
+    }
+    
   }
     , [user.userEquipmentItems])
 
