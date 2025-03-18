@@ -1,6 +1,7 @@
 import { useContext, useEffect} from "react";
 import { BungieMembershipDataContext, contextType } from "../../../App";
 import { DestinyInventoryItemDefinition } from "../../../type-definitions/destiny2/interfaces";
+import { ServerResponse } from "../../../type-definitions/common";
 
 
 const MainContentComponent = () => {
@@ -10,22 +11,24 @@ const MainContentComponent = () => {
     ...membershipData as contextType
   }
 
-  const equipmentArray: DestinyInventoryItemDefinition [] = [];
+  const equipmentArray: ServerResponse<DestinyInventoryItemDefinition[]>[] = [];
 
 
 
 
   useEffect(() => {
-    if (user.userEquipmentItems) {
-      user.userEquipmentItems.Response.forEach((item) => {
-        equipmentArray.push(item);
-      })
-    }
+
+    if(user.userEquipmentItems != undefined)
+  equipmentArray.push(user.userEquipmentItems)
     
   }
     , [user.userEquipmentItems])
 
 
+   useEffect(() => {
+    console.log(equipmentArray)
+  }
+    , [equipmentArray]) 
   return (
 
     <div className="flex flex-col size-full">
@@ -49,8 +52,8 @@ const MainContentComponent = () => {
 
             <div className="mt-4">
 
-              {user.userEquipmentItems && <p className="text-sm text-pretty text-gray-500">
-         
+              {equipmentArray && <p className="text-sm text-pretty text-gray-500">
+                
                 
                 {/* <img src={`https://www.bungie.net/${user.userCharacterEquipment.Response.displayProperties.icon}`} alt="weapon icon" /> */}
               </p>}
