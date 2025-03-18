@@ -11,7 +11,7 @@ const MainContentComponent = () => {
     ...membershipData as contextType
   }
 
-  const equipmentArray: ServerResponse<DestinyInventoryItemDefinition[]>[] = [];
+  const equipmentArray: Array<ServerResponse<DestinyInventoryItemDefinition>>= [];
 
 
 
@@ -29,7 +29,8 @@ const MainContentComponent = () => {
     console.log(equipmentArray)
   }
     , [equipmentArray]) 
-  return (
+  
+    return (
 
     <div className="flex flex-col size-full">
 
@@ -53,7 +54,7 @@ const MainContentComponent = () => {
             <div className="mt-4">
 
               {equipmentArray && <p className="text-sm text-pretty text-gray-500">
-                {equipmentArray[0].Response[0].displayProperties.name}
+                {equipmentArray[0].Response.displayProperties.name}
                 
                 {/* <img src={`https://www.bungie.net/${user.userCharacterEquipment.Response.displayProperties.icon}`} alt="weapon icon" /> */}
               </p>}
