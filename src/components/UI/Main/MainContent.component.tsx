@@ -3,6 +3,7 @@ import { BungieMembershipDataContext, contextType } from "../../../App";
 
 
 
+
 const MainContentComponent = () => {
   const membershipData = useContext(BungieMembershipDataContext);
 
@@ -10,11 +11,14 @@ const MainContentComponent = () => {
     ...membershipData as contextType
   }
 
+  // const [userEquipment, setUserEquipment] = useState([] as ServerResponse<DestinyInventoryItemDefinition>[]);
+
+
 
 
   useEffect(() => {
    
-      console.log(user.userEquipmentItems);
+   console.log(user.userEquipmentItems);
   
   }
     , [user.userEquipmentItems])
