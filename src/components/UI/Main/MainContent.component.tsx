@@ -76,6 +76,18 @@ const MainContentComponent = () => {
       </a>
     </li>}
 
+    {equipment[3] &&<li>
+      
+      <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
+      <img src={`https://www.bungie.net/${equipment[3].Response.displayProperties.icon}`} alt="weapon icon" />
+        <strong className="font-medium text-white">{equipment[3]?.Response.displayProperties.name}</strong>
+
+        <p className="mt-1 text-xs font-medium text-gray-300">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente cumque saepe sit.
+        </p>
+      </a>
+    </li>}
+
     {equipment[4] &&<li>
       
       <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
@@ -93,18 +105,6 @@ const MainContentComponent = () => {
       <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
       <img src={`https://www.bungie.net/${equipment[5].Response.displayProperties.icon}`} alt="weapon icon" />
         <strong className="font-medium text-white">{equipment[5]?.Response.displayProperties.name}</strong>
-
-        <p className="mt-1 text-xs font-medium text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente cumque saepe sit.
-        </p>
-      </a>
-    </li>}
-
-    {equipment[5] &&<li>
-      
-      <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
-      <img src={`https://www.bungie.net/${equipment[3].Response.displayProperties.icon}`} alt="weapon icon" />
-        <strong className="font-medium text-white">{equipment[3]?.Response.displayProperties.name}</strong>
 
         <p className="mt-1 text-xs font-medium text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente cumque saepe sit.
