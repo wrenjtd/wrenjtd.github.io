@@ -27,7 +27,10 @@ const MainContentComponent = () => {
    
 
     <div>
+      <div className="flex items-center gap-2">
+        <img src={`https://www.bungie.net/${user.bungieMembershipData.Response.bungieNetUser.profilePicturePath}`} alt="avatar" className="w-12 h-12 rounded-full" />
       <h3 className="text-lg font-medium text-white">{user.bungieMembershipData && user.bungieMembershipData.Response.bungieNetUser.uniqueName}</h3>
+      </div>
 
       <div className="flow-root">
         <ul className="-m-1 flex flex-wrap">
@@ -49,6 +52,7 @@ const MainContentComponent = () => {
 
   <ul className="mt-4 space-y-2">
     {equipment[1] &&<li>
+      <img src={`https://www.bungie.net/${equipment[1].Response.displayProperties.icon}`} alt="weapon icon" />
       <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
         <strong className="font-medium text-white">{equipment[1]?.Response.displayProperties.name}</strong>
 
@@ -60,6 +64,7 @@ const MainContentComponent = () => {
     </li>}
 
     {equipment[2] &&<li>
+      <img src={`https://www.bungie.net/${equipment[2].Response.displayProperties.icon}`} alt="weapon icon" />
       <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
         <strong className="font-medium text-white">{equipment[2]?.Response.displayProperties.name}</strong>
 
