@@ -64,7 +64,7 @@ const HeaderContentComponent = () => {
                                 <img
                                     alt="Your Company"
                                     src={logo}
-                                    className="size-8"
+                                    className="size-9"
                                 />
                             </Link>
                         </div>
@@ -90,7 +90,7 @@ const HeaderContentComponent = () => {
                         <div className="ml-4 flex items-center md:ml-6">
                             <button
                                 type="button"
-                                className="relative rounded-full bg-transparent p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+                                className="relative rounded-full bg-transparent p-1 text-gray-400 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
                             >
                                 <span className="absolute -inset-1.5" />
                                 <span className="sr-only">View notifications</span>
