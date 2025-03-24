@@ -48,7 +48,7 @@ const MainContentComponent = () => {
         </ul>
       </div>
     </div>
-  </div>
+  
 
   <ul className="mt-4 space-y-2">
     {equipment[1] &&<li>
@@ -262,11 +262,8 @@ const MainContentComponent = () => {
       </a>
     </li>}
 
-
-  
-
-
   </ul>
+  </div>
 </article>
   
   )
