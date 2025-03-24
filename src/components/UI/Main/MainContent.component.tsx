@@ -189,11 +189,72 @@ const MainContentComponent = () => {
       </a>
     </li>}
 
-    {equipment[11] &&<li>
+    {equipment[12] &&<li>
       
       <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
-      <img src={`https://www.bungie.net/${equipment[11].Response.displayProperties.icon}`} alt="weapon icon" />
-        <strong className="font-medium text-white">{equipment[11]?.Response.displayProperties.name}</strong>
+      <img src={`https://www.bungie.net/${equipment[12].Response.displayProperties.icon}`} alt="weapon icon" />
+        <strong className="font-medium text-white">{equipment[12]?.Response.displayProperties.name}</strong>
+
+        <p className="mt-1 text-xs font-medium text-gray-300">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente cumque saepe sit.
+        </p>
+      </a>
+    </li>}
+
+    {equipment[13] &&<li>
+      
+      <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
+      <img src={`https://www.bungie.net/${equipment[13].Response.displayProperties.icon}`} alt="weapon icon" />
+        <strong className="font-medium text-white">{equipment[13]?.Response.displayProperties.name}</strong>
+
+        <p className="mt-1 text-xs font-medium text-gray-300">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente cumque saepe sit.
+        </p>
+      </a>
+    </li>}
+
+    {equipment[14] &&<li>
+      
+      <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
+      <img src={`https://www.bungie.net/${equipment[14].Response.displayProperties.icon}`} alt="weapon icon" />
+        <strong className="font-medium text-white">{equipment[14]?.Response.displayProperties.name}</strong>
+
+        <p className="mt-1 text-xs font-medium text-gray-300">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente cumque saepe sit.
+        </p>
+      </a>
+    </li>}
+
+    {equipment[15] &&<li>
+      
+      <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
+      <img src={`https://www.bungie.net/${equipment[15].Response.displayProperties.icon}`} alt="weapon icon" />
+        <strong className="font-medium text-white">{equipment[15]?.Response.displayProperties.name}</strong>
+
+        <p className="mt-1 text-xs font-medium text-gray-300">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente cumque saepe sit.
+        </p>
+      </a>
+    </li>}
+
+
+    {equipment[16] &&<li>
+      
+      <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
+      <img src={`https://www.bungie.net/${equipment[16].Response.displayProperties.icon}`} alt="weapon icon" />
+        <strong className="font-medium text-white">{equipment[16]?.Response.displayProperties.name}</strong>
+
+        <p className="mt-1 text-xs font-medium text-gray-300">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente cumque saepe sit.
+        </p>
+      </a>
+    </li>}
+
+    {equipment[17] &&<li>
+      
+      <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
+      <img src={`https://www.bungie.net/${equipment[17].Response.displayProperties.icon}`} alt="weapon icon" />
+        <strong className="font-medium text-white">{equipment[17]?.Response.displayProperties.name}</strong>
 
         <p className="mt-1 text-xs font-medium text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente cumque saepe sit.
