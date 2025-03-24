@@ -56,6 +56,7 @@ const HeaderContentComponent = () => {
         <Disclosure as="nav" className="bg-transparent">
             <div className="mx-auto max-w-7xl ">
                 <div className="flex h-16 items-center justify-between">
+                    <Bars3Icon />
                     <div className="flex items-center">
                         <div className="shrink-0">
                             {/* This is the site logo */}
