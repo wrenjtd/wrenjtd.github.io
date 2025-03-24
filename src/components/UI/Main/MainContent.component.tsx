@@ -21,7 +21,7 @@ const MainContentComponent = () => {
 
   
     return (
-<article className="rounded-xl border border-gray-700 bg-gray-800 p-4">
+<article className=" bg-gray-800 p-4">
   <div className="flex items-center gap-4">
   
    
