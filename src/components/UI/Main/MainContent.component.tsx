@@ -52,8 +52,9 @@ const MainContentComponent = () => {
 
   <ul className="mt-4 space-y-2">
     {equipment[1] &&<li>
-      <img src={`https://www.bungie.net/${equipment[1].Response.displayProperties.icon}`} alt="weapon icon" />
+      
       <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
+      <img src={`https://www.bungie.net/${equipment[1].Response.displayProperties.icon}`} alt="weapon icon" />
         <strong className="font-medium text-white">{equipment[1]?.Response.displayProperties.name}</strong>
 
         <p className="mt-1 text-xs font-medium text-gray-300">
@@ -64,8 +65,9 @@ const MainContentComponent = () => {
     </li>}
 
     {equipment[2] &&<li>
-      <img src={`https://www.bungie.net/${equipment[2].Response.displayProperties.icon}`} alt="weapon icon" />
+      
       <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
+      <img src={`https://www.bungie.net/${equipment[2].Response.displayProperties.icon}`} alt="weapon icon" />
         <strong className="font-medium text-white">{equipment[2]?.Response.displayProperties.name}</strong>
 
         <p className="mt-1 text-xs font-medium text-gray-300">
