@@ -55,9 +55,9 @@ const HeaderContentComponent = () => {
         <Disclosure as="nav" className="bg-transparent">
             <div className="mx-auto max-w-7xl ">
                 <div className="flex h-16 items-center justify-between">
+                <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
+                <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
                     <div className="flex items-center">
-                    <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
-                    <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
                         <div className="shrink-0">
                             {/* This is the site logo */}
                             <Link to="/">
