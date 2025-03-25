@@ -57,7 +57,7 @@ const HeaderContentComponent = () => {
                 <div className="flex h-16 items-center ">
                     <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
                     <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
-                    <div className="flex-1 flex justify-between items-center pl-5">
+                    <div className="flex-1 flex justify-between items-center pl-10">
                         <div className="flex items-center">
                             <div className="shrink-0">
                                 {/* This is the site logo */}
