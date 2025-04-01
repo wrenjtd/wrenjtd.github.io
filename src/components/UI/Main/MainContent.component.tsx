@@ -51,7 +51,7 @@ const MainContentComponent = () => {
 
         </div>
         }
-      <div>
+      <div className="flex">
         <ul className="mt-4 space-y-2">
           {equipment[1] && <li>
 

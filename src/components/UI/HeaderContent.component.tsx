@@ -71,6 +71,7 @@ const HeaderContentComponent = () => {
                             </div>
                             <div className="hidden md:block">
                                 <div className="ml-10 flex items-baseline space-x-4">
+                                    {/* This is the settings navigation bar */}       
                                     {navigation.map((item) => (
                                         <a
                                             key={item.name}
