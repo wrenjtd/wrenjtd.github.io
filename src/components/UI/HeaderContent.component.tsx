@@ -65,7 +65,7 @@ const HeaderContentComponent = () => {
                                     <img
                                         alt="Your Company"
                                         src={logo}
-                                        className="size-9"
+                                        className="size-15"
                                     />
                                 </Link>
                             </div>
