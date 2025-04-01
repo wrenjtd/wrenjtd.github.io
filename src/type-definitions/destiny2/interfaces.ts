@@ -670,6 +670,8 @@ import {
      * but BNet is not yet allowed to show it. Sorry!
      */
     readonly redacted: boolean;
+
+    readonly iconWatermark: string;
   }
   
   /**
