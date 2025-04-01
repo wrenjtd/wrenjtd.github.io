@@ -55,9 +55,10 @@ const MainContentComponent = () => {
         <ul className="mt-4 space-y-2">
 
        {equipment[1] && equipment.map((item, index) => (
-          <li key={index}>
+          <li className="flex" key={index}>
             <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
               <img src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />
+              <img src={`https://www.bungie.net/${item?.Response.secondaryIcon}`} alt="weapon icon" />
               <strong className="font-medium text-white">{item?.Response.displayProperties.name}</strong>
 
               <p className="mt-1 text-xs font-medium text-gray-300">
