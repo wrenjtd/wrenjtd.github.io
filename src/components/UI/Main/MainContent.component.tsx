@@ -54,7 +54,7 @@ const MainContentComponent = () => {
       <div className="flex">
         <ul className="mt-4 space-y-2">
 
-       {/* {equipment[1] && equipment.map((item, index) => (
+       {equipment[1] && equipment.map((item, index) => (
           <li key={index}>
             <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
               <img src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />
@@ -66,7 +66,7 @@ const MainContentComponent = () => {
               </p>
             </a>
           </li>
-        ))} */}
+        ))}
 
 
         </ul>
