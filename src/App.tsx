@@ -107,6 +107,8 @@ function App() {
     }
   }, [userCharacterEquipment])
 
+  console.log(userEquipmentItems)
+
   
 
     const props = {
