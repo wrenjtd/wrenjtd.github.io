@@ -12,7 +12,7 @@ import { UserMembershipData } from './type-definitions/user';
 export type contextType = {
   bungieMembershipData: ServerResponse<UserMembershipData>;
   userCharacterProfiles: ServerResponse<DestinyProfileResponse>;
-  userEquipmentItems: ServerResponse<DestinyInventoryItemDefinition>;
+  userEquipmentItems: ServerResponse<DestinyInventoryItemDefinition>[];
 }
 
 

@@ -26,7 +26,7 @@ const MainContentComponent = () => {
 
   useEffect(() => {
   
-    setEquipment([user.userEquipmentItems])
+    setEquipment(user.userEquipmentItems)
   }, [user.userEquipmentItems])
 
   console.log("user.userEquipmentItems", user?.userEquipmentItems);
