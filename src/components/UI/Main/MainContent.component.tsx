@@ -87,25 +87,33 @@ const MainContentComponent = () => {
 
         </div>
       }
-      <div className="flex"> 
+      <div className="flex justify-between w-[50%] mx-auto">
         <div>
-          <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600 w-auto">
-            <div className="relative">
-              {user.userEquipmentItems[0]?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${user.userEquipmentItems[0]?.Response.displayProperties.icon}`} alt="weapon icon" />}
-              {user.userEquipmentItems[0]?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${user.userEquipmentItems[0]?.Response.iconWatermark}`} alt="other icon" />}
-            </div>
-          </a>
-        </div>
-        <div>
-          <ul className="flex flex-wrap mt-4 space-y-2 mx-auto">
+          <ul className="flex flex-col space-y-9">
 
             {user?.userEquipmentItems.map((item, index) => (
-              
-              <li className="flex" key={index}>
-                <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600 w-auto">
+
+              <li key={index}>
+                <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
                   <div className="relative">
                     {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
-                    {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="other icon" />}
+                    {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <ul className="flex flex-col space-y-9">
+
+            {user?.userEquipmentItems.map((item, index) => (
+
+              <li key={index}>
+                <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
+                  <div className="relative">
+                    {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
+                    {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
                   </div>
                 </a>
               </li>
