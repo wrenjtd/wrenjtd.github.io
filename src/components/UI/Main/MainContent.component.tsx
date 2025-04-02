@@ -20,24 +20,10 @@ const MainContentComponent = () => {
   const user: contextType = {
     ...membershipData as contextType
   }
-  const [equipment, setEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([]);
+
   const [selectedDungeon, setSelectedDungeon] = useState(dungeons[0]);
 
 
-  useEffect(() => {
-  
-    setEquipment(user.userEquipmentItems)
-  }, [user.userEquipmentItems])
-
-
-  // useEffect(() => {
-  //   const removeEmptyItems = () => {
-      
-  //     const filteredItems = equipment.filter(item => item.Response.displayProperties.icon === undefined || item.Response.displayProperties.icon === null);
-  //     setEquipment(filteredItems);
-  //   }
-  //   removeEmptyItems();
-  // });
 
 
   return (
