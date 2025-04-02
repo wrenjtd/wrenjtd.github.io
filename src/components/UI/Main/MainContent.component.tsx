@@ -1,7 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { BungieMembershipDataContext, contextType } from "../../../App";
-import { DestinyInventoryItemDefinition } from "../../../type-definitions/destiny2/interfaces";
-import { ServerResponse } from "../../../type-definitions/common";
 import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 
@@ -22,9 +20,6 @@ const MainContentComponent = () => {
   }
 
   const [selectedDungeon, setSelectedDungeon] = useState(dungeons[0]);
-
-
-
 
   return (
 
