@@ -106,7 +106,6 @@ const MainContentComponent = () => {
                  {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="other icon" />}
                 </div>
                 <strong className="font-medium text-white">{item?.Response.displayProperties.name}</strong>
-
                 <p className="mt-1 text-xs font-medium text-gray-300">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime consequuntur deleniti,
                   unde ab ut in!
@@ -114,8 +113,6 @@ const MainContentComponent = () => {
               </a>
             </li>
           ))}
-
-
         </ul>
       </div>
     </article>
