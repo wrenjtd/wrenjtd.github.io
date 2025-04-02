@@ -102,7 +102,7 @@ function App() {
     if (userCharacterProfiles !== undefined) {
       userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
         traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-          setUserEquipmentItems([response, ...userEquipmentItems]);
+          setUserEquipmentItems((prev) => [...prev, response]);
         })
       }
       )
