@@ -5,11 +5,11 @@ import { ChevronDownIcon } from '@heroicons/react/16/solid'
 
 
 const dungeons = [
-  { id: 1, name: 'Durward Reynolds', unavailable: false },
-  { id: 2, name: 'Kenton Towne', unavailable: false },
-  { id: 3, name: 'Therese Wunsch', unavailable: false },
-  { id: 4, name: 'Benedict Kessler', unavailable: true },
-  { id: 5, name: 'Katelyn Rohan', unavailable: false },
+  { id: 1, name: 'Dungeon 1', unavailable: false },
+  { id: 2, name: 'Dungeon 2', unavailable: false },
+  { id: 3, name: 'Dungeon 3', unavailable: false },
+  { id: 4, name: 'Dungeon 4', unavailable: true },
+  { id: 5, name: 'Dungeon 5', unavailable: false },
 ]
 
 
@@ -88,9 +88,9 @@ const MainContentComponent = () => {
         </div>
       }
       <div>
-        <ul className="flex flex-wrap mt-4 space-y-2 mx-auto">
+        {/* <ul className="flex flex-wrap mt-4 space-y-2 mx-auto">
 
-          {user ? user?.userEquipmentItems.map((item, index) => (
+          {user?.userEquipmentItems.map((item, index) => (
             <li className="flex" key={index}>
               <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600 w-auto">
                 <div className="relative">
@@ -103,8 +103,9 @@ const MainContentComponent = () => {
                 </p>
               </a>
             </li> 
-          )): <></>}
-        </ul>
+          ))}
+        </ul> */}
+        <p>Hello</p>
       </div>
     </article>
 
