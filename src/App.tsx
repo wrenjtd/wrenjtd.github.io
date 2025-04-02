@@ -36,7 +36,7 @@ function App() {
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
   const [userCharacterEquipment, setUserCharacterEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>>();
-  const [userEquipmentItems, setUserEquipmentItems] = useState <ServerResponse<DestinyInventoryItemDefinition>>();
+  const [userEquipmentItems, setUserEquipmentItems] = useState <ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
 
 
 
@@ -100,16 +100,14 @@ function App() {
     if (userCharacterProfiles !== undefined) {
       userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
         traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-          setUserEquipmentItems(response);
+          setUserEquipmentItems([...userEquipmentItems, response]);
         })
       }
       )
     }
   }, [userCharacterEquipment])
 
-  useEffect(() => {
-    console.log(userEquipmentItems)
-  }, [userEquipmentItems])
+  
 
     const props = {
     userCharacterProfiles, bungieMembershipData, userEquipmentItems
