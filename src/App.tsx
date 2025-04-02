@@ -41,6 +41,8 @@ function App() {
 
 
 
+
+
   //Checks if the authorization code is in the URL and if it is, it gets the access token
   const authorizationCodeChecker = async () => {
     if (window.location.search.includes("code")) {
@@ -100,7 +102,7 @@ function App() {
     if (userCharacterProfiles !== undefined) {
       userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
         traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-          setUserEquipmentItems([...userEquipmentItems, response]);
+          setUserEquipmentItems([response]);
         })
       }
       )
