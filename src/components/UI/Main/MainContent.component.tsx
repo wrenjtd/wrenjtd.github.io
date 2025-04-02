@@ -25,17 +25,18 @@ const MainContentComponent = () => {
 
 
   useEffect(() => {
-
-    setEquipment(prev => [...prev, user.userEquipmentItems])
+  
+    setEquipment([user.userEquipmentItems])
   }, [user.userEquipmentItems])
 
-  useEffect(() => {
-    const removeEmptyItems = () => {
-      const filteredItems = equipment.filter(item => item.Response.displayProperties.icon === undefined || item.Response.displayProperties.icon === null);
-      setEquipment(filteredItems);
-    }
-    removeEmptyItems();
-  });
+  // useEffect(() => {
+  //   const removeEmptyItems = () => {
+      
+  //     const filteredItems = equipment.filter(item => item.Response.displayProperties.icon === undefined || item.Response.displayProperties.icon === null);
+  //     setEquipment(filteredItems);
+  //   }
+  //   removeEmptyItems();
+  // });
 
 
   return (
