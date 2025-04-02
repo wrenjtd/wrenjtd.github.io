@@ -105,7 +105,6 @@ const MainContentComponent = () => {
             </li> 
           ))}
         </ul>
-        <p>Hello</p>
       </div>
     </article>
 
