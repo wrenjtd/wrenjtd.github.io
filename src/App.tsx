@@ -97,7 +97,7 @@ function App() {
   }, [userCharacterProfiles])
 
   useEffect(() => {
-    if (userCharacterProfiles != undefined) {
+    if (userCharacterProfiles !== undefined) {
       userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
         traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
           setUserEquipmentItems(response);
@@ -106,6 +106,10 @@ function App() {
       )
     }
   }, [userCharacterEquipment])
+
+  useEffect(() => {
+    console.log(userEquipmentItems)
+  }, [userEquipmentItems])
 
     const props = {
     userCharacterProfiles, bungieMembershipData, userEquipmentItems
