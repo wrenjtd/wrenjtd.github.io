@@ -31,7 +31,7 @@ const MainContentComponent = () => {
 
   useEffect(() => {
     const removeEmptyItems = () => {
-      const filteredItems = equipment.filter(item => item != undefined && item.Response != undefined);
+      const filteredItems = equipment.filter(item => item.Response.displayProperties.icon === undefined || item.Response.displayProperties.icon === null);
       setEquipment(filteredItems);
     }
     removeEmptyItems();
