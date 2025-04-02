@@ -105,9 +105,10 @@ function App() {
       }
       )
     }
+    console.log(userEquipmentItems.length);
   }, [userCharacterEquipment])
 
-  console.log(userEquipmentItems)
+ 
 
   
 
