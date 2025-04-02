@@ -109,7 +109,7 @@ function App() {
     }
     
   }, [userCharacterEquipment])
-  console.log(userEquipmentItems[0]);
+  console.log(userEquipmentItems);
   console.log(userEquipmentItems.length);
 
   
