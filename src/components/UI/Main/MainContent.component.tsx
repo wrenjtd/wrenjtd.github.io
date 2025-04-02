@@ -88,7 +88,7 @@ const MainContentComponent = () => {
         </div>
       }
       <div>
-        {/* <ul className="flex flex-wrap mt-4 space-y-2 mx-auto">
+        <ul className="flex flex-wrap mt-4 space-y-2 mx-auto">
 
           {user?.userEquipmentItems.map((item, index) => (
             <li className="flex" key={index}>
@@ -104,7 +104,7 @@ const MainContentComponent = () => {
               </a>
             </li> 
           ))}
-        </ul> */}
+        </ul>
         <p>Hello</p>
       </div>
     </article>

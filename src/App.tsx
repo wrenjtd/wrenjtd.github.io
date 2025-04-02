@@ -109,10 +109,7 @@ function App() {
     }
     
   }, [userCharacterEquipment])
-  console.log(userEquipmentItems);
-  console.log(userEquipmentItems.length);
 
-  
 
     const props = {
     userCharacterProfiles, bungieMembershipData, userEquipmentItems
