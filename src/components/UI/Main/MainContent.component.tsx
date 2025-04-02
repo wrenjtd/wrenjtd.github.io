@@ -49,7 +49,7 @@ const MainContentComponent = () => {
 
           <ListboxOptions
             transition
-            className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base ring-1 shadow-lg ring-black/5 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm"
+            className="absolute z-10 mt-1 max-h-56 w-lg overflow-auto rounded-md bg-white py-1 text-base ring-1 shadow-lg ring-black/5 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm"
           >
             {dungeons.map((dungeon) => (
               <ListboxOption
@@ -102,8 +102,8 @@ const MainContentComponent = () => {
             <li className="flex" key={index}>
               <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600">
                 <div className="relative">
-                  <img className="h-[50px] w-[50px]" src={`https://www.bungie.net${item?.Response.displayProperties.icon}`} alt="weapon icon" />
-                  <img className="h-[25px] w-[25px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="other icon" />
+                  {item.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
+                 {item.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="other icon" />}
                 </div>
                 <strong className="font-medium text-white">{item?.Response.displayProperties.name}</strong>
 
