@@ -90,7 +90,7 @@ const MainContentComponent = () => {
       <div>
         <ul className="flex flex-wrap mt-4 space-y-2 mx-auto">
 
-          {user && user?.userEquipmentItems.map((item, index) => (
+          {user && user.userEquipmentItems.length > 0 && user?.userEquipmentItems.map((item, index) => (
             <li className="flex" key={index}>
               <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600 w-auto">
                 <div className="relative">
