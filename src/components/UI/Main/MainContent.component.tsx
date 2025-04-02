@@ -22,17 +22,16 @@ const MainContentComponent = () => {
   }
   const [equipment, setEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([]);
   const [selectedDungeon, setSelectedDungeon] = useState(dungeons[0]);
-  
+
 
   useEffect(() => {
-    
-    setEquipment(prev => [...prev, user.userEquipmentItems])
-  }
-    , [user.userEquipmentItems])
 
-  useEffect(() => { 
+    setEquipment(prev => [...prev, user.userEquipmentItems])
+  }, [user.userEquipmentItems])
+
+  useEffect(() => {
     const removeEmptyItems = () => {
-      const filteredItems = equipment.filter(item => item !== undefined && item.Response !== undefined);
+      const filteredItems = equipment.filter(item => item != undefined && item.Response != undefined);
       setEquipment(filteredItems);
     }
     removeEmptyItems();
@@ -113,7 +112,7 @@ const MainContentComponent = () => {
               <a href="#" className="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600 w-auto">
                 <div className="relative">
                   {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
-                 {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="other icon" />}
+                  {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="other icon" />}
                 </div>
                 <strong className="font-medium text-white">{item?.Response.displayProperties.name}</strong>
                 <p className="mt-1 text-xs font-medium text-gray-300 text-wrap">
