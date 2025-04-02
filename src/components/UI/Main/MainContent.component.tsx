@@ -29,6 +29,8 @@ const MainContentComponent = () => {
     setEquipment([user.userEquipmentItems])
   }, [user.userEquipmentItems])
 
+  console.log("user.userEquipmentItems", user?.userEquipmentItems);
+
   // useEffect(() => {
   //   const removeEmptyItems = () => {
       
