@@ -162,7 +162,7 @@ function App() {
   
       weapons[0]?.items?.map((item) => {
       return traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-        console.log(response);
+        console.log(response.Response);
       })
     })
     
