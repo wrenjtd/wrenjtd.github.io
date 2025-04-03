@@ -61,7 +61,7 @@ const MainContentComponent = () => {
 
       {user.bungieMembershipData &&
 
-        <div className="flex gap-4">
+        <div className="flex flex-col gap-4">
           <div>
             <div className="flex items-center gap-2">
               <img src={`https://www.bungie.net/${user.bungieMembershipData.Response.bungieNetUser.profilePicturePath}`} alt="avatar" className="w-12 h-12 rounded-full" />
