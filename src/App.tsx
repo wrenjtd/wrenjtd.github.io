@@ -118,7 +118,7 @@ function App() {
     return 1498876634 === item.bucketHash;
 
   })
-  console.log(kinectWeaponFilter);
+
 
   
 
@@ -127,40 +127,40 @@ function App() {
 
   })
 
-  console.log(energyWeaponFilter);
+ 
 
   const powerWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
     return 953998645 === item.bucketHash;
 
   })
 
-  console.log(powerWeaponFilter);
 
   const ghostWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
     return 4023194814 === item.bucketHash;
 
   })
 
-  console.log(ghostWeaponFilter);
-  // const weapons = [
-  //   {
-  //     name: "Kinect",
-  //     items: kinectWeaponFilter![0]
-  //   },
-  //   {
-  //     name: "Energy",
-  //     items: energyWeaponFilter![0]
-  //   },
-  //   {
-  //     name: "Power",
-  //     items: powerWeaponFilter![0]
-  //   },
-  //   {
-  //     name: "Ghost",
-  //     items: ghostWeaponFilter![0]
-  //   }
-  // ]
+ 
+  const weapons = [
+    {
+      name: "Kinect",
+      items: kinectWeaponFilter
+    },
+    {
+      name: "Energy",
+      items: energyWeaponFilter
+    },
+    {
+      name: "Power",
+      items: powerWeaponFilter
+    },
+    {
+      name: "Ghost",
+      items: ghostWeaponFilter
+    }
+  ]
 
+  console.log(weapons);
 
   // useEffect(() => {
   //   if (userCharacterProfiles !== undefined) {
