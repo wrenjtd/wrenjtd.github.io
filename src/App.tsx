@@ -119,10 +119,14 @@ function App() {
 
   })
 
+  
+
   const energyWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
     return 2465295065 === item.bucketHash;
 
   })
+
+  console.log(energyWeaponFilter);
 
   const powerWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
     return 953998645 === item.bucketHash;
@@ -153,17 +157,17 @@ function App() {
   ]
 
 
-  useEffect(() => {
-    if (userCharacterProfiles !== undefined) {
+  // useEffect(() => {
+  //   if (userCharacterProfiles !== undefined) {
        
-      }
+  //     }
       
-    }
-  )
+  //   }
+  // )
 
-  traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, kinectWeaponFilter![0].itemHash.toString()).then(response =>{
-    console.log(response);
-  }) 
+  // traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, kinectWeaponFilter![0].itemHash.toString()).then(response =>{
+  //   console.log(response);
+  // }) 
   
 
   const props = {
