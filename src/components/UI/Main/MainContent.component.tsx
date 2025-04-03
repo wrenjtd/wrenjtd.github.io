@@ -93,7 +93,7 @@ const MainContentComponent = () => {
 
             {user?.userEquipmentItems.map((item, index) => (
 
-              <li key={index}>
+              <li className="flex" key={index}>
                 <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
                   <div className="relative">
                     {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
@@ -109,7 +109,7 @@ const MainContentComponent = () => {
 
             {user?.userEquipmentItems.map((item, index) => (
 
-              <li key={index}>
+              <li className="flex" key={index}>
                 <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
                   <div className="relative">
                     {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
