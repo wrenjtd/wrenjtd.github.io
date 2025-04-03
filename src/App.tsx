@@ -14,6 +14,7 @@ export type contextType = {
   userCharacterProfiles: ServerResponse<DestinyProfileResponse>;
   userEquipmentEntities: ServerResponse<DestinyInventoryItemDefinition>[];
   userWeapons: ServerResponse<DestinyInventoryItemDefinition>[];
+  userArmor: ServerResponse<DestinyInventoryItemDefinition>[];
 }
 
 
@@ -37,9 +38,10 @@ function App() {
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
   const [userCharacterEquipment, setUserCharacterEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>>();
-  const [userEquipmentEntities, setUserEquipmentEntities] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
+
   const [userWeapons, setUserWeapons] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
-  
+  const [userArmor, setUserArmor] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
+
 
 
   //Checks if the authorization code is in the URL and if it is, it gets the access token
@@ -68,8 +70,6 @@ function App() {
     }
   }
 
-
-
   useEffect(() => {
     authorizationCodeChecker();
   }, [])
@@ -97,24 +97,11 @@ function App() {
     }
   }, [userCharacterProfiles])
 
-  useEffect(() => {
-    if (userCharacterProfiles !== undefined) {
-      userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
-        traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-          setUserEquipmentEntities((prev) => [...prev, response]);
-        })
-      }
-      )
-    }
-
-  }, [userCharacterEquipment])
 
   const kinectWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
     return 1498876634 === item.bucketHash;
 
   })
-
-
 
 
   const energyWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
@@ -130,15 +117,72 @@ function App() {
   })
 
 
-  // const ghostWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
-  //   return 4023194814 === item.bucketHash;
+  const ghostWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
+    return 4023194814 === item.bucketHash;
 
-  // })
+  })
 
-  const getKinectWeapons = () => {
-    kinectWeaponFilter?.forEach((item) => {
+  const helmetArmorFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
+    return 3448274439 === item.bucketHash;
+
+  })
+
+  const gaunletArmorFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
+    return 3551918588 === item.bucketHash;
+
+  })
+
+  const chestArmorFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
+    return 14239492 === item.bucketHash;
+
+  })
+
+  const feetArmorFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
+    return 20886954 === item.bucketHash;
+
+  })
+
+  const classArmorFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
+    return 1585787867 === item.bucketHash;
+
+  })
+
+  const getHelmetArmor = () => {
+    helmetArmorFilter?.forEach((item) => {
       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-        setUserWeapons((prev) => [...prev, response]);
+        setUserArmor((prev) => [...prev, response]);
+      })
+    })
+  }
+
+  const getGaunletArmor = () => {
+    gaunletArmorFilter?.forEach((item) => {
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+        setUserArmor((prev) => [...prev, response]);
+      })
+    })
+  }
+
+  const getChestArmor = () => {
+    chestArmorFilter?.forEach((item) => {
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+        setUserArmor((prev) => [...prev, response]);
+      })
+    })
+  }
+
+  const getFeetArmor = () => {
+    feetArmorFilter?.forEach((item) => {
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+        setUserArmor((prev) => [...prev, response]);
+      })
+    })
+  }
+
+  const getClassArmor = () => {
+    classArmorFilter?.forEach((item) => {
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+        setUserArmor((prev) => [...prev, response]);
       })
     })
   }
@@ -152,29 +196,44 @@ function App() {
   }
 
   const getPowerWeapons = () => {
-     powerWeaponFilter?.forEach((item) => {
+    powerWeaponFilter?.forEach((item) => {
       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
         setUserWeapons((prev) => [...prev, response]);
       })
     })
   }
 
- 
+  const getGhost = () => {
+    ghostWeaponFilter?.forEach((item) => {
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+        setUserWeapons((prev) => [...prev, response]);
+      })
+    })
+  }
 
-  
-    if(userWeapons.length == 0 && userCharacterEquipment !== undefined){
-      getEnergyWeapons();
-      getPowerWeapons();
-      getKinectWeapons();
-    }
-   
-  
-    
+  const getKinectWeapons = () => {
+    kinectWeaponFilter?.forEach((item) => {
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+        setUserWeapons((prev) => [...prev, response]);
+      })
+    })
+  }
 
-  
-  
 
-  
+  if (userWeapons.length == 0 && userCharacterEquipment !== undefined) {
+    getEnergyWeapons();
+    getPowerWeapons();
+    getKinectWeapons();
+    getGhost();
+    getHelmetArmor();
+    getChestArmor();
+    getGaunletArmor();
+    getFeetArmor();
+    getClassArmor();
+
+    // setUserEquipmentEntities((prev) => [...prev.filter((item) => prev.indexOf(item) !== -1)]);
+  }
+
 
   // traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, kinectWeaponFilter![0].itemHash.toString()).then(response =>{
   //   console.log(response);
@@ -182,7 +241,7 @@ function App() {
 
 
   const props = {
-    userCharacterProfiles, bungieMembershipData, userEquipmentEntities, userWeapons
+    userCharacterProfiles, bungieMembershipData, userWeapons, userArmor
   }
 
 
