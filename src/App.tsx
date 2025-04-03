@@ -160,7 +160,9 @@ function App() {
     }
   ]
 
-  console.log(weapons[0]?.items);
+  console.log(weapons[0]?.items?.map((item) => {
+    return traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString());
+  }))
 
   // useEffect(() => {
   //   if (userCharacterProfiles !== undefined) {
