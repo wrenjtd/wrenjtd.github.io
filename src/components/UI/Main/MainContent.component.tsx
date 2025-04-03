@@ -107,7 +107,7 @@ const MainContentComponent = () => {
         <div>
           <ul className="flex flex-col space-y-9">
 
-            {user?.weapons.map((item, index) => (
+            {/* {user?.weapons.map((item, index) => (
 
               <li className="flex" key={index}>
                 <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
@@ -117,7 +117,7 @@ const MainContentComponent = () => {
                   </div>
                 </a>
               </li>
-            ))}
+            ))} */}
           </ul>
         </div>
       </div>
