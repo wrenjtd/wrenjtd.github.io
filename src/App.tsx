@@ -118,6 +118,7 @@ function App() {
     return 1498876634 === item.bucketHash;
 
   })
+  console.log(kinectWeaponFilter);
 
   
 
@@ -133,28 +134,32 @@ function App() {
 
   })
 
+  console.log(powerWeaponFilter);
+
   const ghostWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
     return 4023194814 === item.bucketHash;
 
   })
-  const weapons = [
-    {
-      name: "Kinect",
-      items: kinectWeaponFilter![0]
-    },
-    {
-      name: "Energy",
-      items: energyWeaponFilter![0]
-    },
-    {
-      name: "Power",
-      items: powerWeaponFilter![0]
-    },
-    {
-      name: "Ghost",
-      items: ghostWeaponFilter![0]
-    }
-  ]
+
+  console.log(ghostWeaponFilter);
+  // const weapons = [
+  //   {
+  //     name: "Kinect",
+  //     items: kinectWeaponFilter![0]
+  //   },
+  //   {
+  //     name: "Energy",
+  //     items: energyWeaponFilter![0]
+  //   },
+  //   {
+  //     name: "Power",
+  //     items: powerWeaponFilter![0]
+  //   },
+  //   {
+  //     name: "Ghost",
+  //     items: ghostWeaponFilter![0]
+  //   }
+  // ]
 
 
   // useEffect(() => {
@@ -171,7 +176,7 @@ function App() {
   
 
   const props = {
-    userCharacterProfiles, bungieMembershipData, userEquipmentItems, weapons
+    userCharacterProfiles, bungieMembershipData, userEquipmentItems
   }
 
 
