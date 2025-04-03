@@ -40,7 +40,9 @@ function App() {
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
   const [userCharacterEquipment, setUserCharacterEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>>();
-  const [userEquipmentItems, setUserEquipmentItems] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
+  const [userEquipmentEntities, setUserEquipmentEntities] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
+  const [userWeapons, setUserWeapons] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
+  
 
 
 
@@ -106,7 +108,7 @@ function App() {
     if (userCharacterProfiles !== undefined) {
       userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
         traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-          setUserEquipmentItems((prev) => [...prev, response]);
+          setUserEquipmentEntities((prev) => [...prev, response]);
         })
       }
       )
@@ -165,15 +167,39 @@ function App() {
         console.log(response.Response);
       })
     })
+
+    const getKinectWeapons = () => {
+      kinectWeaponFilter?.forEach((item) => {
+        traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+          setUserWeapons((prev) => [...prev, response]);
+        })
+      })
+    }
+
+    const getEnergyWeapons = () => {
+      energyWeaponFilter?.forEach((item) => {
+        traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+          setUserWeapons((prev) => [...prev, response]);
+        })
+      })
+    }
+
+    const getPowerWeapons = () => {
+      powerWeaponFilter?.forEach((item) => {
+        traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+          setUserWeapons((prev) => [...prev, response]);
+        })
+      })
+    }
+
     
+  getEnergyWeapons();
+  getPowerWeapons();
+  getKinectWeapons();
+  
+  console.log(userWeapons);
 
-  // useEffect(() => {
-  //   if (userCharacterProfiles !== undefined) {
-
-  //     }
-
-  //   }
-  // )
+  
 
   // traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, kinectWeaponFilter![0].itemHash.toString()).then(response =>{
   //   console.log(response);
@@ -181,7 +207,7 @@ function App() {
 
 
   const props = {
-    userCharacterProfiles, bungieMembershipData, userEquipmentItems
+    userCharacterProfiles, bungieMembershipData, userEquipmentEntities
   }
 
 
