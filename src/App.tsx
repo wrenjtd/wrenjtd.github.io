@@ -6,17 +6,14 @@ import Traveler from './Traveler';
 import { OAuthResponse, TypeDefinition } from './type-definitions/additons';
 import React from 'react';
 import { BungieMembershipType, ServerResponse } from './type-definitions/common';
-import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyItemComponent, DestinyProfileResponse } from './type-definitions/destiny2';
+import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyProfileResponse } from './type-definitions/destiny2';
 import { UserMembershipData } from './type-definitions/user';
 
 export type contextType = {
   bungieMembershipData: ServerResponse<UserMembershipData>;
   userCharacterProfiles: ServerResponse<DestinyProfileResponse>;
   userEquipmentEntities: ServerResponse<DestinyInventoryItemDefinition>[];
-  weapons: {
-    name: string;
-    items: DestinyItemComponent[];
-  }[]
+  userWeapons: ServerResponse<DestinyInventoryItemDefinition>[];
 }
 
 
@@ -197,7 +194,7 @@ function App() {
   getPowerWeapons();
   getKinectWeapons();
   
-  console.log(userWeapons);
+  
 
   
 
@@ -207,7 +204,7 @@ function App() {
 
 
   const props = {
-    userCharacterProfiles, bungieMembershipData, userEquipmentEntities
+    userCharacterProfiles, bungieMembershipData, userEquipmentEntities, userWeapons
   }
 
 
