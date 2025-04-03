@@ -130,10 +130,10 @@ function App() {
   })
 
 
-  const ghostWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
-    return 4023194814 === item.bucketHash;
+  // const ghostWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
+  //   return 4023194814 === item.bucketHash;
 
-  })
+  // })
 
 
  
@@ -183,10 +183,6 @@ function App() {
   const props = {
     userCharacterProfiles, bungieMembershipData, userEquipmentEntities, userWeapons
   }
-
-
-
-
 
 
   return (
