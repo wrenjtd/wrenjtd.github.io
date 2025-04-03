@@ -162,10 +162,12 @@ function App() {
  
 
    useEffect(() => {
-    
-    getEnergyWeapons();
-    getPowerWeapons();
-    getKinectWeapons();
+    if(userWeapons.length !== 0){
+      getEnergyWeapons();
+      getPowerWeapons();
+      getKinectWeapons();
+    }
+   
   }, [userWeapons])
     
 
