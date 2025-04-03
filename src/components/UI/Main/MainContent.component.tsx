@@ -1,16 +1,16 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { BungieMembershipDataContext, contextType } from "../../../App";
-import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
+// import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react'
+// import { ChevronDownIcon } from '@heroicons/react/16/solid'
 
 
-const dungeons = [
-  { id: 1, name: 'Dungeon 1', unavailable: false },
-  { id: 2, name: 'Dungeon 2', unavailable: false },
-  { id: 3, name: 'Dungeon 3', unavailable: false },
-  { id: 4, name: 'Dungeon 4', unavailable: true },
-  { id: 5, name: 'Dungeon 5', unavailable: false },
-]
+// const dungeons = [
+//   { id: 1, name: 'Dungeon 1', unavailable: false },
+//   { id: 2, name: 'Dungeon 2', unavailable: false },
+//   { id: 3, name: 'Dungeon 3', unavailable: false },
+//   { id: 4, name: 'Dungeon 4', unavailable: true },
+//   { id: 5, name: 'Dungeon 5', unavailable: false },
+// ]
 
 
 const MainContentComponent = () => {
@@ -19,14 +19,14 @@ const MainContentComponent = () => {
     ...membershipData as contextType
   }
 
-  const [selectedDungeon, setSelectedDungeon] = useState(dungeons[0]);
+  // const [selectedDungeon, setSelectedDungeon] = useState(dungeons[0]);
 
   return (
 
 
     <article className=" bg-gray-800 p-4">
 
-      <Listbox value={selectedDungeon} onChange={setSelectedDungeon}>
+      {/* <Listbox value={selectedDungeon} onChange={setSelectedDungeon}>
         <Label className="block text-sm/6 font-medium text-white">Dungeons</Label>
         <div className="relative mt-2">
           <ListboxButton className="grid w-lg cursor-default grid-cols-1 rounded-md bg-white py-1.5 pr-2 pl-3 text-left text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
@@ -57,7 +57,7 @@ const MainContentComponent = () => {
             ))}
           </ListboxOptions>
         </div>
-      </Listbox>
+      </Listbox> */}
 
       {user.bungieMembershipData &&
 
