@@ -160,7 +160,7 @@ function App() {
     }
   ]
 
-  console.log(weapons);
+  console.log(weapons[0]?.items);
 
   // useEffect(() => {
   //   if (userCharacterProfiles !== undefined) {
