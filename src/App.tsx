@@ -110,10 +110,18 @@ function App() {
     
   }, [userCharacterEquipment])
 
+  const energyWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
+    const itemType = userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].bucketHash;
+    return itemType === item.bucketHash;
+
+  })
 
     const props = {
     userCharacterProfiles, bungieMembershipData, userEquipmentItems
   }
+
+  console.log("Energy Item Filter: ", energyWeaponFilter);
+  
 
 
 
