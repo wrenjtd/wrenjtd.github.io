@@ -159,13 +159,13 @@ function App() {
       items: ghostWeaponFilter
     }
   ]
-  const myWeapon = async () => {
-    const mw = weapons[0]?.items?.map((item) => {
-      return traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString());
+  
+      weapons[0]?.items?.map((item) => {
+      return traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+        console.log(response);
+      })
     })
-    return await mw;
-  }
-  console.log(myWeapon);
+    
 
   // useEffect(() => {
   //   if (userCharacterProfiles !== undefined) {
