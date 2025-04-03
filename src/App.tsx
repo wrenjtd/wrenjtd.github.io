@@ -42,10 +42,6 @@ function App() {
   
 
 
-
-
-
-
   //Checks if the authorization code is in the URL and if it is, it gets the access token
   const authorizationCodeChecker = async () => {
     if (window.location.search.includes("code")) {
@@ -140,31 +136,11 @@ function App() {
   })
 
 
-  const weapons = [
-    {
-      name: "Kinect",
-      items: kinectWeaponFilter
-    },
-    {
-      name: "Energy",
-      items: energyWeaponFilter
-    },
-    {
-      name: "Power",
-      items: powerWeaponFilter
-    },
-    {
-      name: "Ghost",
-      items: ghostWeaponFilter
-    }
-  ]
-  
-      weapons[0]?.items?.map((item) => {
-      return traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-        console.log(response.Response);
-      })
-    })
+ 
 
+    
+
+   useEffect(() => {
     const getKinectWeapons = () => {
       kinectWeaponFilter?.forEach((item) => {
         traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
@@ -188,11 +164,12 @@ function App() {
         })
       })
     }
-
+    getEnergyWeapons();
+    getPowerWeapons();
+    getKinectWeapons();
+  }, [userWeapons])
     
-  getEnergyWeapons();
-  getPowerWeapons();
-  getKinectWeapons();
+
   
   
 
