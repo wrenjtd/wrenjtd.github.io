@@ -152,7 +152,7 @@ function App() {
   }
 
   const getPowerWeapons = () => {
-    powerWeaponFilter?.forEach((item) => {
+     powerWeaponFilter?.forEach((item) => {
       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
         setUserWeapons((prev) => [...prev, response]);
       })
@@ -161,14 +161,14 @@ function App() {
 
  
 
-   useEffect(() => {
-    if(userWeapons.length !== 0){
+  
+    if(userWeapons.length == 0 && userCharacterEquipment !== undefined){
       getEnergyWeapons();
       getPowerWeapons();
       getKinectWeapons();
     }
    
-  }, [userWeapons])
+  
     
 
   
