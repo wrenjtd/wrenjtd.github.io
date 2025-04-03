@@ -24,7 +24,7 @@ const MainContentComponent = () => {
   return (
 
 
-    <article className=" bg-gray-800 p-4">
+    <article className=" bg-gray-800 p-4 size-full">
 
       {/* <Listbox value={selectedDungeon} onChange={setSelectedDungeon}>
         <Label className="block text-sm/6 font-medium text-white">Dungeons</Label>
