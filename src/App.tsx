@@ -153,6 +153,18 @@ function App() {
   ]
 
 
+  useEffect(() => {
+    if (userCharacterProfiles !== undefined) {
+       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, kinectWeaponFilter![0].itemHash.toString()).then(response =>{
+        console.log(response);
+      }) 
+      }
+      
+    }
+  )
+
+  
+
   const props = {
     userCharacterProfiles, bungieMembershipData, userEquipmentItems, weapons
   }
