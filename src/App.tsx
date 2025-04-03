@@ -110,9 +110,18 @@ function App() {
     
   }, [userCharacterEquipment])
 
+  const kinectWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
+    return 1498876634 === item.bucketHash;
+
+  })
+
   const energyWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
-    const itemType = userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].bucketHash;
-    return itemType === item.bucketHash;
+    return 2465295065 === item.bucketHash;
+
+  })
+
+  const powerWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
+    return 953998645 === item.bucketHash;
 
   })
 
@@ -120,8 +129,9 @@ function App() {
     userCharacterProfiles, bungieMembershipData, userEquipmentItems
   }
 
+  console.log("Kinect Item Filter: ", kinectWeaponFilter);
   console.log("Energy Item Filter: ", energyWeaponFilter);
-  
+  console.log("Power Item Filter: ", powerWeaponFilter);
 
 
 
