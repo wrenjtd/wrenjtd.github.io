@@ -120,14 +120,14 @@ function App() {
   })
 
 
-  
+
 
   const energyWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
     return 2465295065 === item.bucketHash;
 
   })
 
- 
+
 
   const powerWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
     return 953998645 === item.bucketHash;
@@ -140,7 +140,7 @@ function App() {
 
   })
 
- 
+
   const weapons = [
     {
       name: "Kinect",
@@ -159,23 +159,26 @@ function App() {
       items: ghostWeaponFilter
     }
   ]
-
-  console.log(weapons[0]?.items?.map((item) => {
-    return traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString());
-  }))
+  const myWeapon = async () => {
+    const mw = weapons[0]?.items?.map((item) => {
+      return traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString());
+    })
+    return await mw;
+  }
+  console.log(myWeapon);
 
   // useEffect(() => {
   //   if (userCharacterProfiles !== undefined) {
-       
+
   //     }
-      
+
   //   }
   // )
 
   // traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, kinectWeaponFilter![0].itemHash.toString()).then(response =>{
   //   console.log(response);
   // }) 
-  
+
 
   const props = {
     userCharacterProfiles, bungieMembershipData, userEquipmentItems
