@@ -135,35 +135,34 @@ function App() {
 
   // })
 
+  const getKinectWeapons = () => {
+    kinectWeaponFilter?.forEach((item) => {
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+        setUserWeapons((prev) => [...prev, response]);
+      })
+    })
+  }
+
+  const getEnergyWeapons = () => {
+    energyWeaponFilter?.forEach((item) => {
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+        setUserWeapons((prev) => [...prev, response]);
+      })
+    })
+  }
+
+  const getPowerWeapons = () => {
+    powerWeaponFilter?.forEach((item) => {
+      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+        setUserWeapons((prev) => [...prev, response]);
+      })
+    })
+  }
 
  
 
-    
-
    useEffect(() => {
-    const getKinectWeapons = () => {
-      kinectWeaponFilter?.forEach((item) => {
-        traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-          setUserWeapons((prev) => [...prev, response]);
-        })
-      })
-    }
-
-    const getEnergyWeapons = () => {
-      energyWeaponFilter?.forEach((item) => {
-        traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-          setUserWeapons((prev) => [...prev, response]);
-        })
-      })
-    }
-
-    const getPowerWeapons = () => {
-      powerWeaponFilter?.forEach((item) => {
-        traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-          setUserWeapons((prev) => [...prev, response]);
-        })
-      })
-    }
+    
     getEnergyWeapons();
     getPowerWeapons();
     getKinectWeapons();
