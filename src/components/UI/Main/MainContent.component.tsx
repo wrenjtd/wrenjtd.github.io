@@ -107,13 +107,13 @@ const MainContentComponent = () => {
         <div>
           <ul className="flex flex-col space-y-9">
 
-            {user?.userEquipmentItems.map((item, index) => (
+            {user?.weapons.map((item, index) => (
 
               <li className="flex" key={index}>
                 <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
                   <div className="relative">
-                    {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
-                    {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
+                    {item?.items && <p>{item.name}</p>}
+                    
                   </div>
                 </a>
               </li>

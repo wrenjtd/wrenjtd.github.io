@@ -6,13 +6,17 @@ import Traveler from './Traveler';
 import { OAuthResponse, TypeDefinition } from './type-definitions/additons';
 import React from 'react';
 import { BungieMembershipType, ServerResponse } from './type-definitions/common';
-import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyProfileResponse } from './type-definitions/destiny2';
+import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyItemComponent, DestinyProfileResponse } from './type-definitions/destiny2';
 import { UserMembershipData } from './type-definitions/user';
 
 export type contextType = {
   bungieMembershipData: ServerResponse<UserMembershipData>;
   userCharacterProfiles: ServerResponse<DestinyProfileResponse>;
   userEquipmentItems: ServerResponse<DestinyInventoryItemDefinition>[];
+  weapons: {
+    name: string;
+    items: DestinyItemComponent[];
+  }[]
 }
 
 
@@ -36,7 +40,7 @@ function App() {
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
   const [userCharacterEquipment, setUserCharacterEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>>();
-  const [userEquipmentItems, setUserEquipmentItems] = useState <ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
+  const [userEquipmentItems, setUserEquipmentItems] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
 
 
 
@@ -107,7 +111,7 @@ function App() {
       }
       )
     }
-    
+
   }, [userCharacterEquipment])
 
   const kinectWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
@@ -125,13 +129,36 @@ function App() {
 
   })
 
-    const props = {
-    userCharacterProfiles, bungieMembershipData, userEquipmentItems
+  const ghostWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
+    return 4023194814 === item.bucketHash;
+
+  })
+  const weapons = [
+    {
+      name: "Kinect",
+      items: kinectWeaponFilter![0]
+    },
+    {
+      name: "Energy",
+      items: energyWeaponFilter![0]
+    },
+    {
+      name: "Power",
+      items: powerWeaponFilter![0]
+    },
+    {
+      name: "Ghost",
+      items: ghostWeaponFilter![0]
+    }
+  ]
+
+
+  const props = {
+    userCharacterProfiles, bungieMembershipData, userEquipmentItems, weapons
   }
 
-  console.log("Kinect Item Filter: ", kinectWeaponFilter);
-  console.log("Energy Item Filter: ", energyWeaponFilter);
-  console.log("Power Item Filter: ", powerWeaponFilter);
+
+
 
 
 
