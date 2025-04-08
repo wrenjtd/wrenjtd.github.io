@@ -6,11 +6,13 @@ const FooterBoxComponent: React.FC = () => {
 
 
     return (
-        <div>
-            <div className="text-center">Copyright 2025. All rights reserved</div>
+        
+            <div className="text-center">
+                <p>Copyright 2025. All rights reserved</p>
+                </div>
             
 
-        </div>)
+       )
 
 };
 
