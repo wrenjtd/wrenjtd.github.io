@@ -13,13 +13,13 @@ export default function Dashboard() {
       <div className="min-h-screen flex flex-col">
         <HeaderContentComponent ></HeaderContentComponent>
         <MainContentComponent></MainContentComponent>
-         
-            {/* <LeftbarBoxComponent membershipData={membershipData} /> */}
 
-            <div className="flex border-black border-2 items-end">
-            <FooterBoxComponent></FooterBoxComponent>
-            </div>
-       
+        {/* <LeftbarBoxComponent membershipData={membershipData} /> */}
+
+        <div className="flex border-black border-2 items-end justify-end">
+          <FooterBoxComponent></FooterBoxComponent>
+        </div>
+
       </div>
     </>
   )
