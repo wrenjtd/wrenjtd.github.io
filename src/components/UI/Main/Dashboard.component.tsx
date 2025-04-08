@@ -10,13 +10,15 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col ">
+      <div className="min-h-screen flex flex-col">
         <HeaderContentComponent ></HeaderContentComponent>
         <MainContentComponent></MainContentComponent>
          
             {/* <LeftbarBoxComponent membershipData={membershipData} /> */}
+
+            <div className="flex align-bottom">
             <FooterBoxComponent></FooterBoxComponent>
-            
+            </div>
        
       </div>
     </>
