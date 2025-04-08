@@ -53,15 +53,15 @@ const HeaderContentComponent = () => {
     return (
 
         <Disclosure as="nav" className="bg-transparent">
-            {/* Unhidden Parent */}
-            <div className="">
+            {/* Visible Header Parent */}
                 <div className="flex h-16 items-center mr-5 ml-5">
-                    <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
-                    <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
+                    <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden hover:bg-gray-300 hover:text-gray-100" />
+                    <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block hover:bg-gray-300 hover:text-gray-100" />
+                    {/* Logo and Header Links */}
                     <div className="flex-1 flex justify-between items-center pl-9">
                         <div className="flex items-center">
+                            {/* Site Logo */}
                             <div className="shrink-0">
-                                {/* This is the site logo */}
                                 <Link to="/">
                                     <img
                                         alt="Your Company"
@@ -72,7 +72,7 @@ const HeaderContentComponent = () => {
                             </div>
                             <div className="hidden md:block">
                                 <div className="ml-10 flex items-baseline space-x-4">
-                                    {/* This is the settings navigation bar */}       
+                                    {/* Header Links */}       
                                     {navigation.map((item) => (
                                         <a
                                             key={item.name}
@@ -90,7 +90,7 @@ const HeaderContentComponent = () => {
                             </div>
                         </div>
                         <div className="hidden md:block">
-                            <div className="ml-4 flex items-center md:ml-6">
+                            <div className="ml-4 flex justify-end items-center md:ml-6">
                                 <button
                                     type="button"
                                     className="relative rounded-full bg-transparent p-1 text-gray-400 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
@@ -138,7 +138,7 @@ const HeaderContentComponent = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            
 
             <DisclosurePanel className="md:hidden">
                 <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
