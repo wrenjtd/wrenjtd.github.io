@@ -6,7 +6,7 @@ const FooterBoxComponent: React.FC = () => {
 
 
     return (
-        <div id="footer_div">
+        <div>
             <footer className="text-center">Copyright 2025. All rights reserved</footer>
             
 
