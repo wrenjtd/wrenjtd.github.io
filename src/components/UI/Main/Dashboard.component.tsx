@@ -10,13 +10,13 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col bg-gray-800 border-amber-300 border-4">
+      <div className="min-h-screen bg-gray-800 border-amber-300 border-4">
         <HeaderContentComponent ></HeaderContentComponent>
         <MainContentComponent></MainContentComponent>
 
         {/* <LeftbarBoxComponent membershipData={membershipData} /> */}
 
-        <div className ="justify-center items-end ">
+        <div className ="justify-center">
           <FooterBoxComponent></FooterBoxComponent>
         </div>
 
