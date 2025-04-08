@@ -16,7 +16,7 @@ export default function Dashboard() {
 
         {/* <LeftbarBoxComponent membershipData={membershipData} /> */}
 
-        <div className="flex justify-center content-end ">
+        <div className ="justify-center content-end ">
           <FooterBoxComponent></FooterBoxComponent>
         </div>
 

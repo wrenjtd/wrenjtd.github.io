@@ -9,7 +9,7 @@ const FooterBoxComponent: React.FC = () => {
         
             <div className="text-center">
                 <p>Copyright 2025. All rights reserved</p>
-                </div>
+            </div>
             
 
        )
