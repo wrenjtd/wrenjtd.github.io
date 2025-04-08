@@ -10,7 +10,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col border-amber-300 border-4">
+      <div className="min-h-screen flex flex-col bg-gray-800 border-amber-300 border-4">
         <HeaderContentComponent ></HeaderContentComponent>
         <MainContentComponent></MainContentComponent>
 
