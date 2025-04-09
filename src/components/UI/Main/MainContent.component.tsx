@@ -11,7 +11,7 @@ const MainContentComponent = () => {
 
 
   return (
-    <>
+    <div className="justify-center">
       {user.bungieMembershipData &&
         <article className=" bg-gray-800 p-4 size-full">
 
@@ -79,7 +79,7 @@ const MainContentComponent = () => {
           </div>
         </article>
       }
-    </>
+    </div>
   )
 
 };
