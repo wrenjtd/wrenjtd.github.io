@@ -11,7 +11,7 @@ const MainContentComponent = () => {
 
 
   return (
-    <div className="justify-center">
+    <div className="flex flex-1">
       {user.bungieMembershipData &&
         <article className=" bg-gray-800 p-4 size-full">
 
