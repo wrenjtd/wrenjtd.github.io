@@ -8,77 +8,78 @@ const MainContentComponent = () => {
     ...membershipData as contextType
   }
 
- 
+
 
   return (
-
-
-    <article className=" bg-gray-800 p-4 size-full">
-
+    <>
       {user.bungieMembershipData &&
+        <article className=" bg-gray-800 p-4 size-full">
 
-        <div className="flex flex-col gap-4">
-          <div>
-            <div className="flex items-center gap-2">
-              <img src={`https://www.bungie.net/${user.bungieMembershipData.Response.bungieNetUser.profilePicturePath}`} alt="avatar" className="w-12 h-12 rounded-full" />
-              <h3 className="text-lg font-medium text-white">{user.bungieMembershipData && user.bungieMembershipData.Response.bungieNetUser.uniqueName}</h3>
+
+
+          <div className="flex flex-col gap-4">
+            <div>
+              <div className="flex items-center gap-2">
+                <img src={`https://www.bungie.net/${user.bungieMembershipData.Response.bungieNetUser.profilePicturePath}`} alt="avatar" className="w-12 h-12 rounded-full" />
+                <h3 className="text-lg font-medium text-white">{user.bungieMembershipData && user.bungieMembershipData.Response.bungieNetUser.uniqueName}</h3>
+              </div>
+
+              <div className="flow-root">
+                <ul className="-m-1 flex flex-wrap">
+                  <li className="p-1 leading-none">
+                    <a href="#" className="text-xs font-medium text-gray-300"> Twitter </a>
+                  </li>
+
+                  <li className="p-1 leading-none">
+                    <a href="#" className="text-xs font-medium text-gray-300"> GitHub </a>
+                  </li>
+
+                  <li className="p-1 leading-none">
+                    <a href="#" className="text-xs font-medium text-gray-300">Website</a>
+                  </li>
+                </ul>
+              </div>
             </div>
 
-            <div className="flow-root">
-              <ul className="-m-1 flex flex-wrap">
-                <li className="p-1 leading-none">
-                  <a href="#" className="text-xs font-medium text-gray-300"> Twitter </a>
-                </li>
+          </div>
 
-                <li className="p-1 leading-none">
-                  <a href="#" className="text-xs font-medium text-gray-300"> GitHub </a>
-                </li>
+          <div className="flex justify-between w-[50%] mx-auto">
+            <div>
+              <ul className="flex flex-col space-y-9">
 
-                <li className="p-1 leading-none">
-                  <a href="#" className="text-xs font-medium text-gray-300">Website</a>
-                </li>
+                {user?.userWeapons.map((item, index) => (
+
+                  <li className="flex" key={index}>
+                    <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
+                      <div className="relative">
+                        {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
+                        {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
+                      </div>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <ul className="flex flex-col space-y-9">
+
+                {user?.userArmor.map((item, index) => (
+
+                  <li className="flex" key={index}>
+                    <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
+                      <div className="relative">
+                        {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
+                        {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
+                      </div>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
-
-        </div>
+        </article>
       }
-      <div className="flex justify-between w-[50%] mx-auto">
-        <div>
-          <ul className="flex flex-col space-y-9">
-
-            {user?.userWeapons.map((item, index) => (
-
-              <li className="flex" key={index}>
-                <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
-                  <div className="relative">
-                    {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
-                    {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <ul className="flex flex-col space-y-9">
-
-            {user?.userArmor.map((item, index) => (
-
-              <li className="flex" key={index}>
-                <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
-                  <div className="relative">
-                    {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
-                    {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </article>
-
+    </>
   )
 
 };
