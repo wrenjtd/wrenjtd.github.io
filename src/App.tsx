@@ -95,10 +95,14 @@ function App() {
       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash.toString()).then(response => {
         setUserCharacterEquipment(response);
       })
-
+      console.log("UCE: ", userCharacterEquipment)
     }
   }, [userCharacterProfiles])
 
+  useEffect(()=>{
+    if(userCharacterEquipment)
+      console.log("Second UCE: ", userCharacterEquipment);
+  })
 
   const kinectWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
     return 1498876634 === item.bucketHash;
