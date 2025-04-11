@@ -62,6 +62,7 @@ function App() {
     }
   }
 
+  //Gets character information and inventory items via Hash Codes
   const getUserProfileInformation = async () => {
     if (bungieMembershipData && oauthServerResponse) {
       const components = [DestinyComponentType.Characters, DestinyComponentType.CharacterEquipment];
@@ -90,6 +91,7 @@ function App() {
   useEffect(() => {
     if (userCharacterProfiles) {
 
+      console.log("userCharacterProfiles Object: ", userCharacterProfiles)
       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash.toString()).then(response => {
         setUserCharacterEquipment(response);
       })
