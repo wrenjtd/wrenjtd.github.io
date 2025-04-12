@@ -39,7 +39,13 @@ function App() {
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
   
 
-  const [userCharacterEquipment, setuserCharacterEquipment] = useState <ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[])
+  const [userCharacterEquipment, setuserCharacterEquipment] = useState <DestinyInventoryItemDefinition[]>([] as DestinyInventoryItemDefinition[]);
+
+  const [testArray, setTestArray] = useState<DestinyInventoryItemDefinition[]>([] as DestinyInventoryItemDefinition[]);
+  
+  const [testArray2, setTestArray2] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
+
+
 
   const [userWeapons, setUserWeapons] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
   const [userArmor, setUserArmor] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
@@ -94,9 +100,12 @@ function App() {
     if (userCharacterProfiles) {
 
       for(let i = 0; i < userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.length - 1; i ++ ){
-        
+        let temp: DestinyInventoryItemDefinition;
         traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[i].itemHash.toString()).then(response => {
-          setuserCharacterEquipment((prev) => [...prev, response]);
+           temp = response.Response;
+        }
+        ).then(() => {
+          setuserCharacterEquipment((prev) => [...prev, temp]);
         }
         )
       }
@@ -104,6 +113,23 @@ function App() {
     }
   }, [userCharacterProfiles])
 
+
+  const getArray1 = ()=> {
+    
+    if(userCharacterEquipment.length > 16){
+      for(let i = 3; i < 8; i ++ ){
+        setTestArray((prev) => [...prev, userCharacterEquipment[i]]); 
+      }
+    }
+    
+    
+  }
+
+useEffect(() => {
+  if(testArray.length > 0){
+    console.log(testArray);
+  }
+}, [testArray])
 
 
   
@@ -155,6 +181,8 @@ function App() {
     return 1585787867 === item.bucketHash;
 
   })
+
+
 
   const getHelmetArmor = () => {
     helmetArmorFilter?.forEach((item) => {
@@ -239,6 +267,7 @@ function App() {
     getGaunletArmor();
     getFeetArmor();
     getClassArmor();
+    getArray1();
 
     // setUserEquipmentEntities((prev) => [...prev.filter((item) => prev.indexOf(item) !== -1)]);
   }
