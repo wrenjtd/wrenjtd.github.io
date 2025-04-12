@@ -39,7 +39,7 @@ function App() {
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
   const [userCharacterEquipment, setUserCharacterEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>>();
 
-  const [warlockArray, setWarlockArray] = useState <ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[])
+  // const [warlockArray, setWarlockArray] = useState <ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[])
 
   const [userWeapons, setUserWeapons] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
   const [userArmor, setUserArmor] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
@@ -117,11 +117,7 @@ function App() {
     }
   }, [userCharacterProfiles])
 
-  useEffect(()=>{
-    if(warlockArray){
-      console.log("Array: ", warlockArray);
-    }
-  }, [warlockArray])
+ 
 
   
   const kinectWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
