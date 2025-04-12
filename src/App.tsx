@@ -39,7 +39,7 @@ function App() {
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
   const [userCharacterEquipment, setUserCharacterEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>>();
 
-  // const [warlockArray, setWarlockArray] = useState <ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[])
+  const [warlockArray, setWarlockArray] = useState <ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[])
 
   const [userWeapons, setUserWeapons] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
   const [userArmor, setUserArmor] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
@@ -96,7 +96,12 @@ function App() {
       console.log("userCharacterProfiles Object: ", userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items);
 
       for(let i = 0; i < userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.length - 1; i ++ ){
-        console.log("Bucket hash: ",userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[i].bucketHash)
+        
+        
+        traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[i].itemHash.toString()).then(response => {
+          setWarlockArray((prev) => [...prev, response]);
+        }
+        )
       }
 
       // userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
@@ -121,6 +126,11 @@ function App() {
     }
   }, [userCharacterProfiles])
 
+
+  useEffect(()=>{
+    if(warlockArray.length > 0)
+      console.log(warlockArray)
+  }, [warlockArray])
  
 
   
