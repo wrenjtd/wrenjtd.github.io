@@ -100,11 +100,12 @@ function App() {
     if (userCharacterProfiles) {
 
       for(let i = 0; i < userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.length - 1; i ++ ){
-        let temp: DestinyInventoryItemDefinition;
+        let temp: DestinyInventoryItemDefinition = {} as DestinyInventoryItemDefinition;
         traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[i].itemHash.toString()).then(response => {
            temp = response.Response;
         }
         ).then(() => {
+          console.log("Temp:", temp);
           setuserCharacterEquipment((prev) => [...prev, temp]);
         }
         )
