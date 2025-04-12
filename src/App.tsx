@@ -105,7 +105,6 @@ function App() {
            temp = response.Response;
         }
         ).then(() => {
-          console.log("Temp:", temp);
           setuserCharacterEquipment((prev) => [...prev, temp]);
         }
         )
@@ -127,10 +126,10 @@ function App() {
   }
 
 useEffect(() => {
-  if(testArray.length > 0){
-    console.log(testArray);
+  if(userCharacterEquipment.length > 0){
+    console.log("UCE:", userCharacterEquipment)
   }
-}, [testArray])
+}, [userCharacterEquipment])
 
 
   
