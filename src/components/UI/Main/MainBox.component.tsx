@@ -11,7 +11,8 @@ const MainBoxComponent: React.FC = () =>{
    
         <Routes>
                 <Route path ="/" element= {<Dashboard />}></Route>
-                <Route path ="picker" element= {<PickerComponent />}></Route>
+                <Route path ="/home" element= {<Dashboard />}></Route>
+                <Route path ="/picker" element= {<PickerComponent />}></Route>
                 {/* <Route path ="/" element ={<Navigate replace to="/home" />}/> */}
             </Routes>
 
