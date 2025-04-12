@@ -93,7 +93,11 @@ function App() {
   useEffect(() => {
     if (userCharacterProfiles) {
 
-      console.log("userCharacterProfiles Object: ", userCharacterProfiles.Response.characterEquipment.data);
+      console.log("userCharacterProfiles Object: ", userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items);
+
+      for(let i = 0; i < userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.length - 1; i ++ ){
+        console.log("Bucket hash: ",userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[i].bucketHash)
+      }
 
       // userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
       //   traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
@@ -102,11 +106,11 @@ function App() {
       // })
 
 
-      userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
-        traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-          console.log("Response: ", response.Response.displayProperties);
-        })
-      })
+      // userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
+      //   traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+      //     console.log("Response: ", response.Response.displayProperties);
+      //   })
+      // })
 
       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash.toString()).then(response => {
         setUserCharacterEquipment(response);
