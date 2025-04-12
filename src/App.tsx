@@ -39,6 +39,8 @@ function App() {
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
   const [userCharacterEquipment, setUserCharacterEquipment] = useState<ServerResponse<DestinyInventoryItemDefinition>>();
 
+  const [warlockArray, setWarlockArray] = useState <ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[])
+
   const [userWeapons, setUserWeapons] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
   const [userArmor, setUserArmor] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
 
@@ -92,18 +94,26 @@ function App() {
     if (userCharacterProfiles) {
 
       console.log("userCharacterProfiles Object: ", userCharacterProfiles.Response.characterEquipment.data);
+
+      userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
+        traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+          setWarlockArray((prev) => [...prev, response]);
+        })
+      })
+
       traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash.toString()).then(response => {
         setUserCharacterEquipment(response);
       })
-      console.log("UCE: ", userCharacterEquipment)
     }
   }, [userCharacterProfiles])
 
   useEffect(()=>{
-    if(userCharacterEquipment)
-      console.log("Second UCE: ", userCharacterEquipment);
-  })
+    if(warlockArray){
+      console.log("Array: ", warlockArray);
+    }
+  }, [warlockArray])
 
+  
   const kinectWeaponFilter = userCharacterProfiles?.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.filter((item) => {
     return 1498876634 === item.bucketHash;
 
