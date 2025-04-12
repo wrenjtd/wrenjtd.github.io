@@ -43,7 +43,7 @@ function App() {
 
   const [testArray, setTestArray] = useState<DestinyInventoryItemDefinition[]>([] as DestinyInventoryItemDefinition[]);
   
-  const [testArray2, setTestArray2] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
+  // const [testArray2, setTestArray2] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
 
 
 
