@@ -41,7 +41,7 @@ function App() {
 
   const [userCharacterEquipment, setuserCharacterEquipment] = useState <DestinyInventoryItemDefinition[]>([] as DestinyInventoryItemDefinition[]);
 
-  const [testArray, setTestArray] = useState<DestinyInventoryItemDefinition[]>([] as DestinyInventoryItemDefinition[]);
+  // const [testArray, setTestArray] = useState<DestinyInventoryItemDefinition[]>([] as DestinyInventoryItemDefinition[]);
   
   // const [testArray2, setTestArray2] = useState<ServerResponse<DestinyInventoryItemDefinition>[]>([] as ServerResponse<DestinyInventoryItemDefinition>[]);
 
@@ -115,12 +115,12 @@ function App() {
 
 
   const getArray1 = ()=> {
-    console.log("UCE:", userCharacterEquipment)
-    if(userCharacterEquipment.length > 16){
-      for(let i = 3; i < 8; i ++ ){
-        setTestArray((prev) => [...prev, userCharacterEquipment[i]]); 
-      }
-    }
+    console.log("UCE2:", userCharacterEquipment)
+    // if(userCharacterEquipment.length > 16){
+    //   for(let i = 3; i < 8; i ++ ){
+    //     setTestArray((prev) => [...prev, userCharacterEquipment[i]]); 
+    //   }
+    // }
     
     
   }
@@ -128,6 +128,7 @@ function App() {
 useEffect(() => {
   if(userCharacterEquipment.length > 0){
     console.log("UCE:", userCharacterEquipment)
+    
   }
 }, [userCharacterEquipment])
 
