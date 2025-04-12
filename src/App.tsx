@@ -114,16 +114,16 @@ function App() {
   }, [userCharacterProfiles])
 
 
-  const getArray1 = ()=> {
-    console.log("UCE2:", userCharacterEquipment)
-    // if(userCharacterEquipment.length > 16){
-    //   for(let i = 3; i < 8; i ++ ){
-    //     setTestArray((prev) => [...prev, userCharacterEquipment[i]]); 
-    //   }
-    // }
+  // const getArray1 = ()=> {
+  //   console.log("UCE2:", userCharacterEquipment)
+  //   // if(userCharacterEquipment.length > 16){
+  //   //   for(let i = 3; i < 8; i ++ ){
+  //   //     setTestArray((prev) => [...prev, userCharacterEquipment[i]]); 
+  //   //   }
+  //   // }
     
     
-  }
+  // }
 
 useEffect(() => {
   if(userCharacterEquipment.length > 0){
@@ -268,7 +268,7 @@ useEffect(() => {
     getGaunletArmor();
     getFeetArmor();
     getClassArmor();
-    getArray1();
+    // getArray1();
 
     // setUserEquipmentEntities((prev) => [...prev.filter((item) => prev.indexOf(item) !== -1)]);
   }
