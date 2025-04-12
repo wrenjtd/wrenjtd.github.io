@@ -115,7 +115,7 @@ function App() {
 
 
   const getArray1 = ()=> {
-    
+    console.log("UCE:", userCharacterEquipment)
     if(userCharacterEquipment.length > 16){
       for(let i = 3; i < 8; i ++ ){
         setTestArray((prev) => [...prev, userCharacterEquipment[i]]); 
