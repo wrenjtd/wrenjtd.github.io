@@ -95,15 +95,25 @@ function App() {
 
       console.log("userCharacterProfiles Object: ", userCharacterProfiles.Response.characterEquipment.data);
 
+      // userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
+      //   traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
+      //     setWarlockArray((prev) => [...prev, response]);
+      //   })
+      // })
+
+
       userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.forEach((item) => {
         traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, item.itemHash.toString()).then(response => {
-          setWarlockArray((prev) => [...prev, response]);
+          console.log("Response: ", response.Response.displayProperties);
         })
       })
 
-      traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash.toString()).then(response => {
-        setUserCharacterEquipment(response);
-      })
+      // traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[0].itemHash.toString()).then(response => {
+      //   setUserCharacterEquipment(response);
+      // })
+
+
+
     }
   }, [userCharacterProfiles])
 
