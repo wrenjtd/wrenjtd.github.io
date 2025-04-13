@@ -60,7 +60,7 @@ const MainContentComponent = () => {
                     <a href="#" className=" rounded-lg border-2 border-black hover:white w-auto">
                       
                       <div className="relative border-black rounded-lg border-1 size-full">
-                        <div className="size-full">
+                        <div className="">
                         {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
                         {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
                         </div>
