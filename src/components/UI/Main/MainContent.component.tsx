@@ -66,9 +66,9 @@ const MainContentComponent = () => {
                         </div>
                       
 
-                        <div className="flex flex-initial">
-                        {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="misc img" />}
-                        {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon damage type" />}
+                        <div className="flex flex-initial size-[20px]">
+                        {item?.Response.displayProperties.icon && <img className="" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="misc img" />}
+                        {item?.Response.displayProperties.icon && <img className="" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon damage type" />}
                         <p className="text-white text-auto ">2031</p>
                         </div>
                       </div>
