@@ -57,10 +57,10 @@ const MainContentComponent = () => {
                         {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
                         {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
                         <div className="flex w-full bg-black">
-                        {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
+                        {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon icon" />}
                         </div>
                       </div>
-                      <span className=" bg-gray-500 text-white hover: visible w-auto h-auto rounded-lg">Stuff</span>
+                      <span className=" bg-gray-500 text-white hover: visible w-auto h-auto rounded-lg absolute z-1">Stuff</span>
                     </a>
                     
                   </li>
