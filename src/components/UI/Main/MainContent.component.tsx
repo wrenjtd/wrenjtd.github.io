@@ -55,8 +55,9 @@ const MainContentComponent = () => {
                 {user?.userWeapons.map((item, index) => (
 
                   <li className={`flex hover:${myFunction}` }key={index}>
-                    
-                    <a href="#" className=" rounded-lg border-2 border-gray-700 w-auto hover:border-pink-600  ">
+                    <div className="hover:border-pink-600">
+                    <div >
+                    <a href="#" className=" rounded-lg border-1 border-gray-700 w-auto   ">
                       
                       <div className="relative">
                         {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
@@ -67,7 +68,8 @@ const MainContentComponent = () => {
                       </div>
                       {hoverBool && <span className="absolute bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>}
                     </a>
-                    
+                    </div>
+                    </div>
                   </li>
                 ))}
               </ul>
