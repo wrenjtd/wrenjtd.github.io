@@ -65,7 +65,8 @@ const MainContentComponent = () => {
                         {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
                         </div>
                       
-                        <div className=" bg-black">
+
+                        <div className="flex flex-1">
                         {item?.Response.displayProperties.icon && <img className="size-auto" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="misc img" />}
                         {item?.Response.displayProperties.icon && <img className="size-auto" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
                         <p className="text-white text-auto ">2031</p>
