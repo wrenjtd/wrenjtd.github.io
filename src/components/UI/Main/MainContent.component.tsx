@@ -50,12 +50,16 @@ const MainContentComponent = () => {
                 {user?.userWeapons.map((item, index) => (
 
                   <li className="flex" key={index}>
-                    <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
+                    
+                    <a href="#" className=" rounded-lg border border-gray-700 w-auto">
+                      
                       <div className="relative">
                         {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
                         {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
                       </div>
+                      <span className="hidden bg-gray-500 text-white hover: visible w-auto h-auto rounded-lg">Stuff</span>
                     </a>
+                    
                   </li>
                 ))}
               </ul>

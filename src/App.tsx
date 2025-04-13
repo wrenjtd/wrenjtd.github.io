@@ -99,8 +99,12 @@ function App() {
   useEffect(() => {
     if (userCharacterProfiles) {
       console.log("character profiles", userCharacterProfiles)
+      let temp: DestinyInventoryItemDefinition = {} as DestinyInventoryItemDefinition;
       for(let i = 0; i < userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items.length - 1; i ++ ){
-        let temp: DestinyInventoryItemDefinition = {} as DestinyInventoryItemDefinition;
+       
+        console.log("itemHash:", userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[i].itemHash.toString());
+
+        
         traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[i].itemHash.toString()).then(response => {
            temp = response.Response;
         }
