@@ -55,21 +55,26 @@ const MainContentComponent = () => {
                 {user?.userWeapons.map((item, index) => (
 
                   <li className={`flex hover:${myFunction}` }key={index}>
-                    <div className="hover:border-pink-600">
-                    <div >
-                    <a href="#" className=" rounded-lg border-1 border-gray-700 w-auto   ">
+                   
+                    <div className="size-full border-gray-700 ">
+                    <a href="#" className=" rounded-lg border-2 border-black hover:white w-auto">
                       
-                      <div className="relative">
+                      <div className="relative border-black rounded-lg border-1">
+                        <div>
                         {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
                         {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
+                        </div>
+                      
                         <div className="flex w-full bg-black h-[20px]">
                         {item?.Response.displayProperties.icon && <img className="h-[20px] w-[20px]" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
+                        {item?.Response.displayProperties.icon && <img className="h-[20px] w-[20px]" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
+                        <p>2031</p>
                         </div>
                       </div>
                       {hoverBool == true && <span className="absolute bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>}
                     </a>
                     </div>
-                    </div>
+                    
                   </li>
                 ))}
               </ul>
