@@ -66,7 +66,7 @@ const MainContentComponent = () => {
                         {item?.Response.displayProperties.icon && <img className="h-[20px] w-[20px]" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
                         </div>
                       </div>
-                      {hoverBool && <span className="absolute bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>}
+                      {hoverBool == true && <span className="absolute bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>}
                     </a>
                     </div>
                     </div>
