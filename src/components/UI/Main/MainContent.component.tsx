@@ -60,7 +60,7 @@ const MainContentComponent = () => {
                         {item?.Response.displayProperties.icon && <img className="h-[20px] w-[20px]" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
                         </div>
                       </div>
-                      <span className="absolute hidden bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>
+                      <span className="absolute hidden bg-gray-500 text-white w-auto h-auto rounded-lg hover:visible ">Stuff</span>
                     </a>
                     
                   </li>

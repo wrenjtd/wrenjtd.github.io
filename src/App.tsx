@@ -104,7 +104,7 @@ function App() {
        
         console.log("itemHash:", userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[i].itemHash.toString());
 
-        
+
         traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, userCharacterProfiles.Response.characterEquipment.data[Object.keys(userCharacterProfiles.Response.characterEquipment.data)[0]].items[i].itemHash.toString()).then(response => {
            temp = response.Response;
         }
@@ -129,12 +129,6 @@ function App() {
     
   // }
 
-useEffect(() => {
-  if(userCharacterEquipment.length > 0){
-    console.log("UCE:", userCharacterEquipment)
-    
-  }
-}, [userCharacterEquipment])
 
 
   
