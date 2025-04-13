@@ -14,7 +14,7 @@ const PickerComponent: React.FC = () =>{
 
      const [selectedDungeon, setSelectedDungeon] = useState(dungeons[0]);
     return(
-    <div className="h-[100%] w-[100%] bg-gray-800 text-gray-200">
+    <div className="h-[100%] w-[100%] bg-gray-800 text-gray-200 flex flex-1">
         
     <Listbox value={selectedDungeon} onChange={setSelectedDungeon}>
         <Label className="block text-sm/6 font-medium text-white">Dungeons</Label>
