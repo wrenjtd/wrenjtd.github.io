@@ -51,7 +51,7 @@ const MainContentComponent = () => {
 
                   <li className="flex" key={index}>
                     
-                    <a href="#" className=" rounded-lg border-2 border-gray-700 w-auto hover:border-pink-600 ">
+                    <a href="#" className=" rounded-lg border-2 border-gray-700 w-auto hover:border-pink-600  ">
                       
                       <div className="relative">
                         {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
