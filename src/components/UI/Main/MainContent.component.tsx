@@ -56,7 +56,7 @@ const MainContentComponent = () => {
 
                   <li className={`flex flex-1 hover:${myFunction}` }key={index}>
                    
-                    <div className="size-full border-gray-700 ">
+                    <div className="">
                     <a href="#" className=" rounded-lg border-2 border-black hover:white w-auto">
                       
                       <div className="relative border-black rounded-lg border-1 size-full">
