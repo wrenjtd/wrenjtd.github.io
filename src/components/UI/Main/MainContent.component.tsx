@@ -54,9 +54,9 @@ const MainContentComponent = () => {
 
                 {user?.userWeapons.map((item, index) => (
 
-                  <li  key={index}>
+                  <li key={index}>
                    
-                    <div className="size-full border-gray-700 ">
+                    
                     <a href="#" className=" rounded-lg border-2 border-black hover:white w-auto">
                       
                       <div className="relative border-black rounded-lg border-1 size-full">
@@ -73,7 +73,7 @@ const MainContentComponent = () => {
                       </div>
                       {/* {hoverBool && <span className="absolute bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>} */}
                     </a>
-                    </div>
+                   
                     
                   </li>
                 ))}
