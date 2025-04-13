@@ -1,17 +1,17 @@
 import * as fs from 'fs';
-import * as sqlite from 'sqlite3';
+import Database from 'better-sqlite3';
 
 /**
  * Class for accessing the manifest file. You will need to install <strong>sqlite3</strong> to use this class.
  */
 export default class Manifest {
   private filepath: string;
-  private db: sqlite.Database;
+  private db;
 
   constructor(filepath: string) {
     if (fs.existsSync(filepath)) {
       this.filepath = filepath;
-      this.db = new sqlite.Database(filepath);
+      this.db = new Database(filepath);
     } else {
       throw new Error(
         'The manifest file you want to refer to does not exist. Consider downloading it at first with Traveler#downloadManifest.'
