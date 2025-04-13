@@ -51,16 +51,16 @@ const MainContentComponent = () => {
 
                   <li className="flex" key={index}>
                     
-                    <a href="#" className=" rounded-lg border border-gray-700 w-auto">
+                    <a href="#" className=" rounded-lg border-2 border-gray-700 w-auto hover:border-pink-600 ">
                       
                       <div className="relative">
                         {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
                         {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
-                        <div className="flex w-full bg-black">
-                        {item?.Response.displayProperties.icon && <img className="h-[25px] w-[25px]" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon icon" />}
+                        <div className="flex w-full bg-black h-[20px]">
+                        {item?.Response.displayProperties.icon && <img className="h-[20px] w-[20px]" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
                         </div>
                       </div>
-                      <span className="hidden bg-gray-500 text-white hover: visible w-auto h-auto rounded-lg ">Stuff</span>
+                      <span className="absolute hidden bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>
                     </a>
                     
                   </li>
