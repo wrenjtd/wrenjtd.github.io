@@ -1,13 +1,13 @@
 import { useState, useEffect, createContext } from 'react';
 import '../src/assets/css/App.css';
 import { BrowserRouter } from 'react-router-dom';
-import MainBoxComponent from './components/UI/Main/MainBox.component';
 import Traveler from './Traveler';
 import { OAuthResponse, TypeDefinition } from './type-definitions/additons';
 import React from 'react';
 import { BungieMembershipType, ServerResponse } from './type-definitions/common';
 import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyProfileResponse } from './type-definitions/destiny2';
 import { UserMembershipData } from './type-definitions/user';
+import Dashboard from './components/UI/Main/Dashboard.component';
 
 export type contextType = {
   bungieMembershipData: ServerResponse<UserMembershipData>;
@@ -284,7 +284,7 @@ function App() {
 
         <BungieMembershipDataContext.Provider value={{ ...props }}>
           <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
-            <MainBoxComponent></MainBoxComponent>
+            <Dashboard></Dashboard>
           </OAuthURLEndpointContext.Provider>
         </BungieMembershipDataContext.Provider>
       </BrowserRouter>
