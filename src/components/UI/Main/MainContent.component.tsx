@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { BungieMembershipDataContext, contextType } from "../../../App";
 
 
@@ -8,7 +8,12 @@ const MainContentComponent = () => {
     ...membershipData as contextType
   }
 
+  const [hoverBool, setHoverBool] = useState(false);
 
+  const myFunction = ()=>{
+    setHoverBool(true);
+    return ""
+  }
 
   return (
     <div className="flex flex-1">
@@ -49,7 +54,7 @@ const MainContentComponent = () => {
 
                 {user?.userWeapons.map((item, index) => (
 
-                  <li className="flex" key={index}>
+                  <li className={`flex hover:${myFunction}` }key={index}>
                     
                     <a href="#" className=" rounded-lg border-2 border-gray-700 w-auto hover:border-pink-600  ">
                       
@@ -60,7 +65,7 @@ const MainContentComponent = () => {
                         {item?.Response.displayProperties.icon && <img className="h-[20px] w-[20px]" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
                         </div>
                       </div>
-                      <span className="absolute hidden bg-gray-500 text-white w-auto h-auto rounded-lg hover:visible ">Stuff</span>
+                      {hoverBool && <span className="absolute bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>}
                     </a>
                     
                   </li>
