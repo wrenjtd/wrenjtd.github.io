@@ -69,8 +69,9 @@ const MainContentComponent = () => {
                         <div className="flex flex-initial size-[20px]">
                         {item?.Response.displayProperties.icon && <img className="" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="misc img" />}
                         {item?.Response.displayProperties.icon && <img className="" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon damage type" />}
-                        <p className="text-white text-auto ">2031</p>
+                        <p className="text-white ">2031</p>
                         </div>
+
                       </div>
                       {/* {hoverBool && <span className="absolute bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>} */}
                     </a>
