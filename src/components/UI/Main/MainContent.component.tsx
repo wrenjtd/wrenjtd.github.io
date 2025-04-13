@@ -54,7 +54,7 @@ const MainContentComponent = () => {
 
                 {user?.userWeapons.map((item, index) => (
 
-                  <li className="flex flex-1" key={index}>
+                  <li  key={index}>
                    
                     <div className="size-full border-gray-700 ">
                     <a href="#" className=" rounded-lg border-2 border-black hover:white w-auto">
