@@ -27,15 +27,15 @@ export default class Manifest {
    */
   public queryManifest(sqlLiteQuery: string): Promise<object> {
     return new Promise<object>((resolve, reject) => {
-      this.db.serialize(() => {
-        this.db.all(sqlLiteQuery, (err, row) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(row);
-          }
-        });
-      });
+      // this.db.serialize(() => {
+      //   this.db.all(sqlLiteQuery, (err, row) => {
+      //     if (err) {
+      //       reject(err);
+      //     } else {
+      //       resolve(row);
+      //     }
+      //   });
+      // });
     });
   }
 }
