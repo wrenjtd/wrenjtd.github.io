@@ -71,7 +71,7 @@ const MainContentComponent = () => {
                         <p className="text-white text-[8px] ">2031</p>
                         </div>
                       </div>
-                      {hoverBool == true && <span className="absolute bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>}
+                      {hoverBool && <span className="absolute bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>}
                     </a>
                     </div>
                     
