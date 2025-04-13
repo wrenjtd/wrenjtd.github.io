@@ -66,9 +66,9 @@ const MainContentComponent = () => {
                         </div>
                       
                         <div className="flex w-full bg-black h-[20px]">
-                        {item?.Response.displayProperties.icon && <img className="h-[20px] w-[20px]" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
-                        {item?.Response.displayProperties.icon && <img className="h-[20px] w-[20px]" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
-                        <p className="text-white text-sm ">2031</p>
+                        {item?.Response.displayProperties.icon && <img className="size-auto" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
+                        {item?.Response.displayProperties.icon && <img className="size-auto" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
+                        <p className="text-white text-[8px] ">2031</p>
                         </div>
                       </div>
                       {hoverBool == true && <span className="absolute bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>}
