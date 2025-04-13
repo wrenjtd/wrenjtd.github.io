@@ -59,14 +59,14 @@ const MainContentComponent = () => {
                     
                     <a href="#" className=" rounded-lg border-2 border-black hover:white w-auto">
                       
-                      <div className="relative border-black rounded-lg border-1 w-[50px]">
+                      <div className="relative border-black rounded-lg border-1 size-full">
                         <div className="">
                         {item?.Response.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.Response.displayProperties.icon}`} alt="weapon icon" />}
                         {item?.Response.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="icon watermark" />}
                         </div>
                       
-                        <div className="flex w-full bg-black h-[20px]">
-                        {item?.Response.displayProperties.icon && <img className="size-auto" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
+                        <div className=" bg-black">
+                        {item?.Response.displayProperties.icon && <img className="size-auto" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="misc img" />}
                         {item?.Response.displayProperties.icon && <img className="size-auto" src={`https://www.bungie.net/${item?.Response.iconWatermark}`} alt="weapon damage type" />}
                         <p className="text-white text-auto ">2031</p>
                         </div>
