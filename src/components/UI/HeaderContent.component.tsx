@@ -55,7 +55,31 @@ const HeaderContentComponent = () => {
         <Disclosure as="nav" className="bg-transparent">
             {/* Visible Header Parent */}
             <div className="flex h-16 items-center mr-5 ml-5">
-                <Bars3Icon aria-hidden="true" className="block size-7 group-data-open:hidden text-white hover:bg-gray-500 hover:text-gray-50 border-white border-2 rounded-sm" />
+            <Menu as="div" className="relative ml-3">
+                                <div>
+                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
+                                        <span className="absolute -inset-1.5" />
+                                        <span className="sr-only">Open user menu</span>
+                                        <Bars3Icon aria-hidden="true" className="block size-7 group-data-open:hidden text-white hover:bg-gray-500 hover:text-gray-50 border-white border-2 rounded-sm" />
+                                    </MenuButton>
+                                </div>
+                                <MenuItems
+                                    transition
+                                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-transparent py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                                >
+                                    {userNavigation.map((item) => (
+                                        <MenuItem key={item.name}>
+                                            <button
+                                                onClick={item.onClick}
+                                                className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                                            >
+                                                {item.name}
+                                            </button>
+                                        </MenuItem>
+                                    ))}
+                                </MenuItems>
+                            </Menu>
+                
                 <XMarkIcon aria-hidden="true" className="hidden size-7 group-data-open:block hover:bg-gray-500 hover:text-gray-50 border-white border-2 rounded-sm" />
                 {/* Logo and Header Links */}
                 <div className="flex-1 flex justify-between items-center pl-9">
@@ -89,6 +113,7 @@ const HeaderContentComponent = () => {
                             </div>
                         </div>
                     </div>
+                    {/* Dropdown */}
                     <div className="hidden md:block">
                         <div className="ml-4 flex justify-end items-center md:ml-6">
                             <button
