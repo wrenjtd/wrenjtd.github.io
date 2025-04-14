@@ -8,12 +8,7 @@ const MainContentComponent = () => {
     ...membershipData as contextType
   }
 
-  // const [hoverBool, setHoverBool] = useState(false);
-
-  // const myFunction = ()=>{
-  //   setHoverBool(true);
-  //   return ""
-  // }
+ 
 
   return (
     <div className="flex flex-1">
@@ -69,13 +64,15 @@ const MainContentComponent = () => {
                             {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
                           </div>
                           <div className="mx-auto">
-                            <p className="text-white text-xs items-center ">2031</p>
+                            <p className="text-white text-[10px] items-center ">2031</p>
                           </div>
                         </div>
 
                       </div>
-                      {/* {hoverBool && <span className="absolute bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>} */}
-                    </a>
+                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md shadow-lg whitespace-nowrap">
+                        {item?.displayProperties?.name || "Weapon Details"} {/* Use actual item name */}
+                        {/* You can add more details here */}
+                      </span>                    </a>
 
 
                   </li>
@@ -103,7 +100,7 @@ const MainContentComponent = () => {
                             {item?.displayProperties.icon && <img className="size-[8px] " src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
                           </div>
                           <div className="mx-auto">
-                            <p className="text-white text-xs items-center ">2031</p>
+                            <p className="text-white text-[10px] items-center ">2031</p>
                           </div>
                         </div>
                       </div>
