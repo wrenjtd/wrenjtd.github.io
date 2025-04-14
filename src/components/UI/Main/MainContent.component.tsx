@@ -62,14 +62,14 @@ const MainContentComponent = () => {
                           {item?.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.iconWatermark}`} alt="icon watermark" />}
                         </div>
                         <div className="flex flex-inital w-full h-[20px] bg-black">
-                          <div>
+                          <div className="my-auto">
                             {item?.displayProperties.icon && <img className="size-[8px] items-center " src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
                           </div>
-                          <div>
-                            {item?.displayProperties.icon && <img className="size-[8px] items-center" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
+                          <div className="my-auto">
+                            {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
                           </div>
-                          <div>
-                            <p className="text-white text-xs text-center items-center ">2031</p>
+                          <div className="mx-auto">
+                            <p className="text-white text-xs items-center ">2031</p>
                           </div>
                         </div>
 
@@ -99,7 +99,7 @@ const MainContentComponent = () => {
                           <div className="my-auto">
                             {item?.displayProperties.icon && <img className="size-[8px] " src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
                           </div>
-                          <div className="items-center">
+                          <div className="my-auto">
                             {item?.displayProperties.icon && <img className="size-[8px] " src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
                           </div>
                           <div>
