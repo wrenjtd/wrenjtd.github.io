@@ -102,8 +102,8 @@ const MainContentComponent = () => {
                           <div className="my-auto">
                             {item?.displayProperties.icon && <img className="size-[8px] " src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
                           </div>
-                          <div>
-                            <p className="text-white text-xs text-center items-center ">2031</p>
+                          <div className="mx-auto">
+                            <p className="text-white text-xs items-center ">2031</p>
                           </div>
                         </div>
                       </div>
