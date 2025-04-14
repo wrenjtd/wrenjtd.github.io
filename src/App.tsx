@@ -148,7 +148,7 @@ function App() {
       // Ensure we have the necessary data and token
       if (bungieMembershipData?.Response?.destinyMemberships?.length && oauthServerResponse?.access_token) {
          // Prefer PLATFORM_BUNGIE_NEXT (Type 254) if available, otherwise use the first one. Add logic if multiple profiles exist (Xbox, PSN, Steam etc.)
-         const primaryMembership = bungieMembershipData.Response.destinyMemberships.find(m => m.membershipType === BungieMembershipType.TigerPsn) // Example: Prioritize PSN
+         const primaryMembership = bungieMembershipData.Response.destinyMemberships.find(m => m.membershipType === BungieMembershipType.TigerXbox) // Example: Prioritize PSN
             || bungieMembershipData.Response.destinyMemberships[0]; 
             
          if (!primaryMembership) {
