@@ -55,7 +55,7 @@ const HeaderContentComponent = () => {
         <Disclosure as="nav" className="bg-transparent">
             {/* Visible Header Parent */}
             <div className="flex h-16 items-center mr-5 ml-5">
-                <Bars3Icon aria-hidden="true" className="block size-7 group-data-open:hidden hover:bg-gray-500 hover:text-gray-50 border-white border-2 rounded-sm" />
+                <Bars3Icon aria-hidden="true" className="block size-7 group-data-open:hidden text-white hover:bg-gray-500 hover:text-gray-50 border-white border-2 rounded-sm" />
                 <XMarkIcon aria-hidden="true" className="hidden size-7 group-data-open:block hover:bg-gray-500 hover:text-gray-50 border-white border-2 rounded-sm" />
                 {/* Logo and Header Links */}
                 <div className="flex-1 flex justify-between items-center pl-9">
