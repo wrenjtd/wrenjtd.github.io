@@ -98,7 +98,6 @@ function App() {
       const code = urlParams.get('code');
 
       if (code) {
-        console.log("Authorization code found:", code);
         try {
           // Important: Avoid exposing client secret directly in frontend code for production apps.
           // Usually, the token exchange happens on a backend server.
@@ -109,8 +108,7 @@ function App() {
               import.meta.env.VITE_BUNGIE_CLIENT_SECRET // SECURITY WARNING for production
           );
           setOauthServerResponse(oAuthResponse);
-          console.log("OAuth Response:", oAuthResponse);
-          // Clean the URL
+          
           window.history.replaceState({}, document.title, window.location.pathname);
         } catch (error) {
             console.error("Error getting access token:", error);
@@ -122,17 +120,16 @@ function App() {
     };
 
     authorizationCodeChecker();
-  }, [traveler]); // Add traveler dependency
+  }, [traveler]); 
 
   // 2. Get Bungie Membership Data when OAuth is successful
   useEffect(() => {
     const getBungieMembershipData = async () => {
-      if (oauthServerResponse?.access_token) { // Check for access_token
+      if (oauthServerResponse?.access_token) {
         console.log("Fetching Bungie membership data...");
         try {
           const tempBungieUserDataObject = await traveler.user.getMembershipDataForCurrentUser(oauthServerResponse.access_token);
           setBungieMembershipData(tempBungieUserDataObject);
-          console.log("Bungie Membership Data:", tempBungieUserDataObject);
         } catch (error) {
             console.error("Error fetching Bungie membership data:", error);
         }
@@ -140,15 +137,14 @@ function App() {
     };
 
     getBungieMembershipData();
-  }, [oauthServerResponse, traveler]); // Add traveler dependency
+  }, [oauthServerResponse, traveler]); 
 
   // 3. Get Character Profiles when Membership Data is available
   useEffect(() => {
     const getUserProfileInformation = async () => {
       // Ensure we have the necessary data and token
       if (bungieMembershipData?.Response?.destinyMemberships?.length && oauthServerResponse?.access_token) {
-         // Prefer PLATFORM_BUNGIE_NEXT (Type 254) if available, otherwise use the first one. Add logic if multiple profiles exist (Xbox, PSN, Steam etc.)
-         const primaryMembership = bungieMembershipData.Response.destinyMemberships.find(m => m.membershipType === BungieMembershipType.TigerXbox) // Example: Prioritize PSN
+         const primaryMembership = bungieMembershipData.Response.destinyMemberships.find(m => m.membershipType === BungieMembershipType.TigerXbox) 
             || bungieMembershipData.Response.destinyMemberships[0]; 
             
          if (!primaryMembership) {
@@ -158,8 +154,8 @@ function App() {
 
         console.log(`Workspaceing profile for membership type ${primaryMembership.membershipType}, ID ${primaryMembership.membershipId}`);
         const components = [
-          DestinyComponentType.Characters,        // Basic character info
-          DestinyComponentType.CharacterEquipment // Currently equipped items
+          DestinyComponentType.Characters,        
+          DestinyComponentType.CharacterEquipment 
           // Add other components if needed (e.g., CharacterInventories for inventory)
         ];
 
@@ -179,13 +175,12 @@ function App() {
     };
 
     getUserProfileInformation();
-  }, [bungieMembershipData, oauthServerResponse, traveler]); // Add dependencies
+  }, [bungieMembershipData, oauthServerResponse, traveler]);
 
   // 4. Fetch ALL Equipped Item Definitions when Profiles are loaded
   useEffect(() => {
     const fetchItemDefinitions = async () => {
         if (userCharacterProfiles?.Response?.characterEquipment?.data) {
-            console.log("Character profiles loaded, fetching item definitions...");
             const characterIds = Object.keys(userCharacterProfiles.Response.characterEquipment.data);
             
             if (characterIds.length === 0) {
@@ -206,15 +201,14 @@ function App() {
 
             // Create a unique set of item hashes to avoid redundant fetches
             const uniqueItemHashes = [...new Set(equippedItems.map(item => item.itemHash.toString()))];
-            console.log("Unique item hashes to fetch:", uniqueItemHashes);
 
             // Create an array of promises for fetching each definition
             const definitionPromises = uniqueItemHashes.map(hash =>
                 traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, hash)
-                    .then(response => response.Response) // Extract the definition data
+                    .then(response => response.Response) 
                     .catch(error => {
                         console.error(`Error fetching definition for item hash ${hash}:`, error);
-                        return null; // Return null on error to handle gracefully in Promise.all
+                        return null; 
                     })
             );
 
@@ -226,7 +220,6 @@ function App() {
                 (def): def is DestinyInventoryItemDefinition => def !== null
             );
 
-            console.log("Fetched item definitions:", validDefinitions);
             setuserCharacterEquipmentDefinitions(validDefinitions);
         } else {
             // Reset if profile data is not available
@@ -235,7 +228,7 @@ function App() {
     };
 
     fetchItemDefinitions();
-  }, [userCharacterProfiles, traveler]); // Depend on profiles and traveler
+  }, [userCharacterProfiles, traveler]);
 
 
   // 5. Filter Definitions into Weapons and Armor when definitions are ready
@@ -247,7 +240,6 @@ function App() {
         const armor: DestinyInventoryItemDefinition[] = [];
 
         userCharacterEquipmentDefinitions.forEach(definition => {
-            // The bucket hash is usually within the definition's inventory property
             const bucketHash = definition.inventory?.bucketTypeHash;
 
             if (bucketHash) {
@@ -291,9 +283,6 @@ function App() {
         });
 
 
-        console.log("Filtered Weapons:", weapons);
-        console.log("Filtered Armor:", armor);
-
         // Set state ONCE with the final, filtered (and optionally sorted) arrays
         setUserWeapons(weapons);
         setUserArmor(armor);
@@ -302,12 +291,10 @@ function App() {
          setUserWeapons([]);
          setUserArmor([]);
     }
-  }, [userCharacterEquipmentDefinitions]); // This effect runs when the definitions are ready
+  }, [userCharacterEquipmentDefinitions]);
 
 
   // --- Prepare Context Value ---
-  // Use useMemo to avoid recreating the context value object on every render
-  // unless one of its dependencies actually changes.
   const contextValue = React.useMemo(() => ({
     bungieMembershipData,
     userCharacterProfiles,
@@ -316,7 +303,6 @@ function App() {
   }), [bungieMembershipData, userCharacterProfiles, userWeapons, userArmor]);
 
 
-  // --- Render ---
   return (
     <React.Fragment>
       <BrowserRouter>
@@ -327,11 +313,11 @@ function App() {
               or pass loading state down to Dashboard to handle internally.
               Example: Show loading indicator until essential data is present.
             */}
-            {/* {contextValue.userCharacterProfiles && contextValue.userWeapons.length > 0 && contextValue.userArmor.length > 0 ? ( */}
-                 <Dashboard />
-            {/* ) : ( */}
-                 {/* <div>Loading Guardian Data...</div> // Or a more sophisticated loading component */}
-            {/* )} */}
+            {contextValue.userCharacterProfiles && contextValue.userWeapons.length > 0 && contextValue.userArmor.length > 0 ? (
+                  <Dashboard />
+             ) : (
+                  <div>Loading Guardian Data...</div> // Or a more sophisticated loading component
+             )}
           </OAuthURLEndpointContext.Provider>
         </BungieMembershipDataContext.Provider>
       </BrowserRouter>
