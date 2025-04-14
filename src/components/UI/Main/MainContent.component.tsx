@@ -96,7 +96,7 @@ const MainContentComponent = () => {
                         </div>
 
                         <div className="flex flex-inital w-full h-[20px] bg-black">
-                          <div className="items-center">
+                          <div className="my-auto">
                             {item?.displayProperties.icon && <img className="size-[8px] " src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
                           </div>
                           <div className="items-center">
