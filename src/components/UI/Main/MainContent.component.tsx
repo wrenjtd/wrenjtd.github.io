@@ -63,10 +63,10 @@ const MainContentComponent = () => {
                         </div>
                         <div className="flex flex-inital w-full h-[20px] bg-black">
                           <div>
-                            {item?.displayProperties.icon && <img className="size-[8px] " src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
+                            {item?.displayProperties.icon && <img className="size-[8px] items-center " src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
                           </div>
                           <div>
-                            {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
+                            {item?.displayProperties.icon && <img className="size-[8px] items-center" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
                           </div>
                           <div>
                             <p className="text-white text-xs text-center items-center ">2031</p>
@@ -97,10 +97,10 @@ const MainContentComponent = () => {
 
                         <div className="flex flex-inital w-full h-[20px] bg-black">
                           <div>
-                            {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
+                            {item?.displayProperties.icon && <img className="size-[8px] items-center" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
                           </div>
                           <div>
-                            {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
+                            {item?.displayProperties.icon && <img className="size-[8px] items-center" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
                           </div>
                           <div>
                             <p className="text-white text-xs text-center items-center ">2031</p>
