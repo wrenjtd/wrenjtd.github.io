@@ -50,8 +50,8 @@ const MainContentComponent = () => {
                 {user?.userWeapons.map((item, index) => (
 
                   <li className="flex" key={index}>
-                    <a href="#" className=" rounded-lg border border-gray-700 hover:border-white w-auto">
-                      <div className="relative border-black rounded-lg border-1 size-full">
+                    <a href="#" className="group relative rounded-lg border border-gray-700 hover:border-white w-auto transition-colors duration-150">
+                      <div className="relative border-black rounded-lg border-1 size-full overflow-hidden">
                         <div className="relative">
                           {item?.displayProperties.icon && <img className="h-[50px] w-[50px] rounded-t-lg" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon icon" />}
                           {item?.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.iconWatermark}`} alt="icon watermark" />}
@@ -72,9 +72,8 @@ const MainContentComponent = () => {
                       <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md shadow-lg whitespace-nowrap">
                         {item?.displayProperties?.name || "Weapon Details"} {/* Use actual item name */}
                         {/* You can add more details here */}
-                      </span>                    </a>
-
-
+                      </span>                   
+                       </a>
                   </li>
                 ))}
               </ul>
@@ -85,8 +84,8 @@ const MainContentComponent = () => {
                 {user?.userArmor.map((item, index) => (
 
                   <li className="flex" key={index}>
-                    <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
-                      <div className="relative border-black rounded-lg border-1 size-full">
+                    <a href="#" className="group relative rounded-lg border border-gray-700 hover:border-white w-auto transition-colors duration-150">
+                      <div className="relative border-black rounded-lg border-1 size-full overflow-hidden">
                         <div className="relative">
                           {item?.displayProperties.icon && <img className="h-[50px] w-[50px] rounded-t-lg" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon icon" />}
                           {item?.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.iconWatermark}`} alt="icon watermark" />}
@@ -104,6 +103,10 @@ const MainContentComponent = () => {
                           </div>
                         </div>
                       </div>
+                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md shadow-lg whitespace-nowrap">
+                        {item?.displayProperties?.name || "Weapon Details"} {/* Use actual item name */}
+                        {/* You can add more details here */}
+                      </span> 
                     </a>
                   </li>
                 ))}
