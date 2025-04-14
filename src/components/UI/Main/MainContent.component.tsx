@@ -54,35 +54,30 @@ const MainContentComponent = () => {
 
                 {user?.userWeapons.map((item, index) => (
 
-                  <li key={index}>
-                   
-                    
-                    <a href="#" className=" rounded-lg border-2 border-black hover:white w-auto">
-                      
+                  <li className="flex" key={index}>
+                    <a href="#" className=" rounded-lg border border-gray-700 hover:border-white w-auto">
                       <div className="relative border-black rounded-lg border-1 size-full">
-                        <div className="">
-                        {item?.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon icon" />}
-                        {item?.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.iconWatermark}`} alt="icon watermark" />}
+                        <div className="relative">
+                          {item?.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon icon" />}
+                          {item?.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.iconWatermark}`} alt="icon watermark" />}
                         </div>
-                      
-
                         <div className="flex flex-inital w-full h-[20px]">
                           <div>
-                        {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
-                        </div>
-                        <div>
-                        {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
-                        </div>
-                        <div>
-                        <p className="text-white text-xs ">2031</p>
-                        </div>
+                            {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
+                          </div>
+                          <div>
+                            {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
+                          </div>
+                          <div>
+                            <p className="text-white text-xs ">2031</p>
+                          </div>
                         </div>
 
                       </div>
                       {/* {hoverBool && <span className="absolute bg-gray-500 text-white w-auto h-auto rounded-lg ">Stuff</span>} */}
                     </a>
-                   
-                    
+
+
                   </li>
                 ))}
               </ul>
@@ -94,24 +89,24 @@ const MainContentComponent = () => {
 
                   <li className="flex" key={index}>
                     <a href="#" className=" rounded-lg border border-gray-700 hover:border-pink-600 w-auto">
-                    <div className="relative border-black rounded-lg border-1 size-full">
-                      <div className="relative">
-                        {item?.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon icon" />}
-                        {item?.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.iconWatermark}`} alt="icon watermark" />}
-                      </div>
+                      <div className="relative border-black rounded-lg border-1 size-full">
+                        <div className="relative">
+                          {item?.displayProperties.icon && <img className="h-[50px] w-[50px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon icon" />}
+                          {item?.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.iconWatermark}`} alt="icon watermark" />}
+                        </div>
 
-                      <div className="flex flex-inital w-full h-[20px]">
+                        <div className="flex flex-inital w-full h-[20px]">
                           <div>
-                        {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
+                            {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
+                          </div>
+                          <div>
+                            {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
+                          </div>
+                          <div>
+                            <p className="text-white text-xs ">2031</p>
+                          </div>
                         </div>
-                        <div>
-                        {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
-                        </div>
-                        <div>
-                        <p className="text-white text-xs ">2031</p>
-                        </div>
-                        </div>
-                    </div>
+                      </div>
                     </a>
                   </li>
                 ))}
