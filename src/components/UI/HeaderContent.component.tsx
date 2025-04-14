@@ -57,8 +57,8 @@ const HeaderContentComponent = () => {
             <div className="flex h-16 items-center mr-5 ml-5">
             <Menu as="div" className="relative ml-3">
                                 <div>
-                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
-                                        <span className="absolute -inset-1.5" />
+                                    <MenuButton className="relative flex max-w-xs items-center bg-transparent text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
+                                        <span className="absolute inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
                                         <Bars3Icon aria-hidden="true" className="block size-7 group-data-open:hidden text-white hover:bg-gray-500 hover:text-gray-50 border-white border-2 rounded-sm" />
                                     </MenuButton>
