@@ -103,7 +103,7 @@ const MainContentComponent = () => {
                           </div>
                         </div>
                       </div>
-                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-md shadow-lg whitespace-nowrap">
+                      <span className="absolute  left-1/2 -translate-x-1/2 mb-2 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-md shadow-lg whitespace-nowrap">
                         {item?.displayProperties?.name || "Weapon Details"} {/* Use actual item name */}
                         {/* You can add more details here */}
                       </span> 
