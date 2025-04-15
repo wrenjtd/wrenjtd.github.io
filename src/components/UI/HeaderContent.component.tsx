@@ -62,7 +62,7 @@ const HeaderContentComponent = () => {
             <div className="flex h-16 items-center mr-5 ml-5">
                 <Menu as="div" className="relative ml-3">
                     <div>
-                        <MenuButton className="group relative inline-flex items-center justify-center rounded-md bg-transparent p-2 text-white  hover:text-orange-600 focus:ring-2 focus:outline-hidden">
+                        <MenuButton className="group relative inline-flex items-center justify-center rounded-md bg-transparent p-2 text-white  hover:text-orange-600 focus:text-orange-600 focus:outline-hidden">
                             <span className="absolute inset-1.5" />
                             <span className="sr-only">Open user menu</span>
 
@@ -79,7 +79,7 @@ const HeaderContentComponent = () => {
                             <MenuItem key={item.name}>
                                 <button
                                     onClick={item.onClick}
-                                    className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                                    className="block px-4 py-2 w-full text-sm text-white text-left data-focus:bg-orange-600 data-focus:outline-hidden"
                                 >
                                     {item.name}
                                 </button>
