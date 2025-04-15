@@ -128,16 +128,16 @@ const HeaderContentComponent = () => {
                             >
                                 <span className="absolute -inset-1.5" />
                                 <span className="sr-only">View notifications</span>
-                                <BellIcon aria-hidden="true" className="size-6 text-white hover:text-orange-600 " />
+                                <BellIcon aria-hidden="true" className="size-6 text-white  hover:text-orange-600 focus:text-orange-600 " />
                             </button>
 
                             {/* Profile dropdown */}
                             <Menu as="div" className="relative ml-3">
                                 <div>
-                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent text-sm hover:text-orange-600 focus:text-orange-600   focus:outline-hidden">
+                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent text-sm   focus:outline-hidden">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
-                                        <img alt="" src={settings_gear} className="size-6 " />
+                                        <img alt="" src={settings_gear} className="size-6  hover:text-orange-600 focus:text-orange-600 " />
                                     </MenuButton>
                                 </div>
                                 <MenuItems
