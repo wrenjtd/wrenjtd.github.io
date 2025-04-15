@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/static/app_logo.png';
-import settings_gear from '../../assets/static/settings.png';
+import settings_gear from '../../assets/static/settings.svg';
 
 import { BungieMembershipDataContext, contextType, OAuthURLEndpointContext } from '../../App';
 import { Disclosure, Menu, MenuButton, MenuItems, MenuItem, DisclosureButton, DisclosurePanel } from '@headlessui/react';
