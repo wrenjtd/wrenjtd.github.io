@@ -17,7 +17,7 @@ export default function Dashboard() {
                 <Route path ="/" element= {<MainContentComponent />}></Route>
                 <Route path ="/picker" element= {<PickerComponent />}></Route>
                 {/* <Route path ="/" element ={<Navigate replace to="/home" />}/> */}
-            </Routes>
+        </Routes>
 
         {/* <LeftbarBoxComponent membershipData={membershipData} /> */}
 
