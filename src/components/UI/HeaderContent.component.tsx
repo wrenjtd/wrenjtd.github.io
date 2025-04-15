@@ -148,7 +148,7 @@ const HeaderContentComponent = () => {
                                         <MenuItem key={item.name}>
                                             <button
                                                 onClick={item.onClick}
-                                                className="block px-4 py-2 text-sm text-white data-focus:bg-orange-600 data-focus:outline-hidden"
+                                                className="block px-4 py-2 w-full text-left text-sm text-white data-focus:bg-orange-600 data-focus:outline-hidden"
                                             >
                                                 {item.name}
                                             </button>
