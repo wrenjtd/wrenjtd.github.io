@@ -66,7 +66,7 @@ const HeaderContentComponent = () => {
             <div className="flex h-16 items-center mr-5 ml-5">
                 <Menu as="div" className="relative ml-3">
                     <div>
-                        <MenuButton className="group relative inline-flex items-center justify-center rounded-md bg-transparent p-2 text-gray-600 hover:bg-gray-300 hover:text-gray-100 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-200 focus:outline-hidden">
+                        <MenuButton className="group relative inline-flex items-center justify-center rounded-md bg-transparent p-2 text-white  hover:text-orange-600 focus:ring-2 focus:outline-hidden">
                             <span className="absolute inset-1.5" />
                             <span className="sr-only">Open user menu</span>
 
