@@ -7,19 +7,6 @@ import { BungieMembershipDataContext, contextType, OAuthURLEndpointContext } fro
 import { Disclosure, Menu, MenuButton, MenuItems, MenuItem, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
-
-
-
-
-const navigation = [
-    { name: 'Dashboard', href: '#', current: false },
-    { name: 'Team', href: '/Picker', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-    { name: 'Reports', href: '#', current: false },
-]
-
-
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
 }
@@ -43,13 +30,22 @@ const HeaderContentComponent = () => {
         if (newWindow) newWindow.opener = null
     }
 
-    const userNavigation = [
+    const topNavigation = [
+    { name: 'Dashboard', href: '#', current: false },
+    { name: 'Team', href: '/Picker', current: false },
+    { name: 'Projects', href: '#', current: false },
+    { name: 'Calendar', href: '#', current: false },
+    { name: 'Reports', href: '#', current: false },
+]
+
+
+    const settingsNavigation = [
         { name: 'Bungie.net', href: '', onClick: () => openInNewTab(auth_endpoint) },
         { name: 'Settings', href: '#', onClick: () => { } },
         { name: 'Sign out', href: '#', onClick: () => { } },
     ]
 
-    const userNavigation2 = [
+    const leftNavigation2 = [
         { name: 'Inventory', href: '#', onClick: () => { } },
         { name: 'Progress', href: '#', onClick: () => { } },
         { name: 'Vendors', href: '#', onClick: () => { } },
@@ -79,7 +75,7 @@ const HeaderContentComponent = () => {
                         className="fixed top-16 bottom-0 left-0 z-50 w-64 origin-top-left rounded-r-md bg-gray-800 py-1 shadow-lg ring-1 ring-black/5 overflow-y-auto transition focus:outline-none data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
 
                     >
-                        {userNavigation2.map((item) => (
+                        {leftNavigation2.map((item) => (
                             <MenuItem key={item.name}>
                                 <button
                                     onClick={item.onClick}
@@ -107,13 +103,13 @@ const HeaderContentComponent = () => {
                         <div className="hidden md:block">
                             <div className="ml-10 flex items-baseline space-x-4">
                                 {/* Header Links */}
-                                {navigation.map((item) => (
+                                {topNavigation.map((item) => (
                                     <Link
                                         key={item.name}
                                         to={item.href}
                                         aria-current={item.current ? 'page' : undefined}
                                         className={classNames(
-                                            item.current ? 'bg-transparent text-gray-100' : 'text-gray-700 hover:bg-gray-300 hover:text-gray-100',
+                                            item.current ? 'bg-transparent text-white' : 'text-white hover:text-orange-600 ',
                                             'rounded-md px-3 py-2 text-sm font-medium',
                                         )}
                                     >
@@ -128,17 +124,17 @@ const HeaderContentComponent = () => {
                         <div className="ml-4 flex justify-end items-center md:ml-6">
                             <button
                                 type="button"
-                                className="relative rounded-full bg-transparent p-1 text-gray-400 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+                                className="relative rounded-full bg-transparent p-1 text-white focus:text-orange-600 hover:text-orange-600  focus:outline-hidden"
                             >
                                 <span className="absolute -inset-1.5" />
                                 <span className="sr-only">View notifications</span>
-                                <BellIcon aria-hidden="true" className="size-6" />
+                                <BellIcon aria-hidden="true" className="size-6 text-white hover:text-orange-600 " />
                             </button>
 
                             {/* Profile dropdown */}
                             <Menu as="div" className="relative ml-3">
                                 <div>
-                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
+                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent text-sm hover:text-orange-600 focus:text-orange-600   focus:outline-hidden">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
                                         <img alt="" src={settings_gear} className="size-6 " />
@@ -148,7 +144,7 @@ const HeaderContentComponent = () => {
                                     transition
                                     className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-transparent py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
                                 >
-                                    {userNavigation.map((item) => (
+                                    {settingsNavigation.map((item) => (
                                         <MenuItem key={item.name}>
                                             <button
                                                 onClick={item.onClick}
@@ -177,7 +173,7 @@ const HeaderContentComponent = () => {
 
             <DisclosurePanel className="md:hidden">
                 <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-                    {navigation.map((item) => (
+                    {topNavigation.map((item) => (
                         <DisclosureButton
                             key={item.name}
                             as="a"
@@ -216,7 +212,7 @@ const HeaderContentComponent = () => {
                         </button>
                     </div>
                     <div className="mt-3 space-y-1 px-2">
-                        {userNavigation.map((item) => (
+                        {settingsNavigation.map((item) => (
                             <DisclosureButton
                                 key={item.name}
                                 as="a"
