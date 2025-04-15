@@ -49,6 +49,15 @@ const HeaderContentComponent = () => {
         { name: 'Sign out', href: '#', onClick: () => { } },
     ]
 
+    const userNavigation2 = [
+        { name: 'Inventory', href: '#', onClick: () => { } },
+        { name: 'Progress', href: '#', onClick: () => { } },
+        { name: 'Vendors', href: '#', onClick: () => { } },
+        { name: 'Records', href: '#', onClick: () => { } },
+        { name: 'Loadouts', href: '#', onClick: () => { } },
+        { name: 'Organizers', href: '#', onClick: () => { } }
+    ]
+
 
     return (
 
@@ -57,7 +66,7 @@ const HeaderContentComponent = () => {
             <div className="flex h-16 items-center mr-5 ml-5">
                 <Menu as="div" className="relative ml-3">
                     <div>
-                        <MenuButton className="group relative inline-flex items-center justify-center rounded-md bg-gray-200 p-2 text-gray-600 hover:bg-gray-300 hover:text-gray-100 focus:ring-2 focus:ring-gray-100 focus:ring-offset-2 focus:ring-offset-gray-200 focus:outline-hidden">
+                        <MenuButton className="group relative inline-flex items-center justify-center rounded-md bg-transparent p-2 text-gray-600 hover:bg-gray-300 hover:text-gray-100 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-200 focus:outline-hidden">
                             <span className="absolute inset-1.5" />
                             <span className="sr-only">Open user menu</span>
 
@@ -69,7 +78,7 @@ const HeaderContentComponent = () => {
                         transition
                         className="absolute left-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-transparent py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
                     >
-                        {userNavigation.map((item) => (
+                        {userNavigation2.map((item) => (
                             <MenuItem key={item.name}>
                                 <button
                                     onClick={item.onClick}
