@@ -47,7 +47,6 @@ const MainContentComponent = () => {
 
           <div>
           <div>Class Name</div>
-
           <div className="flex mx-auto">
             
             <div>
