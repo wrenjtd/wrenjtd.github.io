@@ -46,7 +46,9 @@ const MainContentComponent = () => {
 
 
           <div>
-          <div>Class Name</div>
+          <div className="m-2">
+            <img src ={`https://bungie.net/${user.userCharacterProfiles?.Response.characters.data[0].emblemBackgroundPath}`} alt="class name"/>
+          </div>
           <div className="flex mx-auto">
             
             <div>
