@@ -45,7 +45,7 @@ const MainContentComponent = () => {
 
           <div className="flex mx-auto">
             <div>
-              Class Name
+              <p>Class Name</p>
             </div>
             <div>
               <ul className="flex flex-col space-y-9">
