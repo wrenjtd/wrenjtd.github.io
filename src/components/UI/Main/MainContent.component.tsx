@@ -43,7 +43,10 @@ const MainContentComponent = () => {
 
           </div>
 
-          <div className="flex justify-between w-[50%] mx-auto">
+          <div className="flex mx-auto">
+            <div>
+              Class Name
+            </div>
             <div>
               <ul className="flex flex-col space-y-9">
 
@@ -56,12 +59,12 @@ const MainContentComponent = () => {
                           {item?.displayProperties.icon && <img className="h-[50px] w-[50px] rounded-t-lg" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon icon" />}
                           {item?.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.iconWatermark}`} alt="icon watermark" />}
                         </div>
-                        <div className="flex flex-inital w-full h-[20px] bg-black">
+                        <div className="flex flex-inital w-full h-5 bg-black">
                           <div className="my-auto mr-0.5">
-                            {item?.displayProperties.icon && <img className="size-[8px] items-center " src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
+                            {item?.displayProperties.icon && <img className="size-2 items-center " src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="misc img" />}
                           </div>
                           <div className="my-auto justify-end">
-                            {item?.displayProperties.icon && <img className="size-[8px]" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
+                            {item?.displayProperties.icon && <img className="size-2" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon damage type" />}
                           </div>
                           <div className="mx-auto">
                             <p className="text-white text-[10px] items-center ">2031</p>
@@ -79,7 +82,7 @@ const MainContentComponent = () => {
               </ul>
             </div>
             <div>
-              <ul className="flex flex-col space-y-9">
+              <ul className="flex flex-col space-y-9 ml-2.5">
 
                 {user?.userArmor.map((item, index) => (
 

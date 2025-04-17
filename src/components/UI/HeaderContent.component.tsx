@@ -72,7 +72,7 @@ const HeaderContentComponent = () => {
                     </div>
                     <MenuItems
                         transition
-                        className="fixed top-16 bottom-0 left-0 z-50 w-64 origin-top-left rounded-r-md bg-gray-800 py-1 shadow-lg ring-1 ring-black/5 overflow-y-auto transition focus:outline-none data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                        className="fixed top-16 bottom-0 left-0 z-50 w-64 origin-top-left rounded-r-md border bg-gray-800 py-1 shadow-lg ring-1 ring-black/5 overflow-y-auto transition focus:outline-none data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
 
                     >
                         {leftNavigation2.map((item) => (
