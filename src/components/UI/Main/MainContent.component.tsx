@@ -43,10 +43,13 @@ const MainContentComponent = () => {
 
           </div>
 
+
+
+          <div>
+          <div>Class Name</div>
+
           <div className="flex mx-auto">
-            <div>
-              <p>Class Name</p>
-            </div>
+            
             <div>
               <ul className="flex flex-col space-y-9">
 
@@ -115,6 +118,7 @@ const MainContentComponent = () => {
                 ))}
               </ul>
             </div>
+          </div>
           </div>
         </article>
       }
