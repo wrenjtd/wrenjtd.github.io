@@ -314,11 +314,15 @@ function App() {
               Example: Show loading indicator until essential data is present.
             */}
             <Dashboard />
+            
+            
             {/* {contextValue.userCharacterProfiles && contextValue.userWeapons.length > 0 && contextValue.userArmor.length > 0 ? (
                   <Dashboard />
              ) : (
                   <div>Loading Guardian Data...</div> // Or a more sophisticated loading component
              )} */}
+
+             
           </OAuthURLEndpointContext.Provider>
         </BungieMembershipDataContext.Provider>
       </BrowserRouter>
