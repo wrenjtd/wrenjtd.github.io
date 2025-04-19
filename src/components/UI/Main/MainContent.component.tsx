@@ -61,7 +61,7 @@ const MainContentComponent = () => {
 
           
           <div>
-            <div className="grid grid-cols-3">
+            <div className="grid grid-cols-3 gap-4">
             <div className="flex mx-auto">
               <div>
                 <ul className="flex flex-col space-y-9">

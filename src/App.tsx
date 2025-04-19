@@ -85,9 +85,12 @@ function App() {
   // State to hold ALL fetched item definitions for equipped items
   const [userCharacterEquipmentDefinitions, setuserCharacterEquipmentDefinitions] = useState<DestinyInventoryItemDefinition[]>([]);
 
+
+
   // Final categorized state
   const [userWeapons, setUserWeapons] = useState<DestinyInventoryItemDefinition[]>([]);
   const [userArmor, setUserArmor] = useState<DestinyInventoryItemDefinition[]>([]);
+
 
   // --- Effects ---
 
@@ -188,10 +191,14 @@ function App() {
                 return;
             }
 
-            // --- Get item hashes from the FIRST character ---
-            // Add logic here if you need to handle multiple characters
+       
             const firstCharacterId = characterIds[0];
+
             const equippedItems = userCharacterProfiles.Response.characterEquipment.data[firstCharacterId]?.items;
+
+              
+                 const characterIdArray = characterIds.map(id => userCharacterProfiles.Response.characterEquipment.data[id]?.items);
+            console.log("Character IDs:", characterIdArray);
 
             if (!equippedItems || equippedItems.length === 0) {
                 console.log(`No equipped items found for character ${firstCharacterId}.`);
