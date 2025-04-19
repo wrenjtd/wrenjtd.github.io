@@ -46,8 +46,8 @@ const MainContentComponent = () => {
 
 
           <div>
-          <div className="m-2">
-            <img src = {`https://www.bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}`} alt="emblem" className="w-full h-32 rounded-lg" />
+          <div className="m-2 inline-grid">
+            <img src = {`https://www.bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}`} alt="emblem" className="h-12 rounded-lg" />
           </div>
           <div className="flex mx-auto">
             
