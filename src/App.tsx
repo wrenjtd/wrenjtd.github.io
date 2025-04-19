@@ -195,10 +195,12 @@ function App() {
             const firstCharacterId = characterIds[0];
 
             const equippedItems = userCharacterProfiles.Response.characterEquipment.data[firstCharacterId]?.items;
+            console.log("Equipped items for first character:", equippedItems);
 
               
-                 const characterIdArray = characterIds.map(id => userCharacterProfiles.Response.characterEquipment.data[id]?.items);
-            console.log("Character IDs:", characterIdArray);
+            const equippedItemsAllCharacters = characterIds.map(id => userCharacterProfiles.Response.characterEquipment.data[id]?.items);
+            console.log("Equipped items for all characters:", equippedItemsAllCharacters);
+          
 
             if (!equippedItems || equippedItems.length === 0) {
                 console.log(`No equipped items found for character ${firstCharacterId}.`);
