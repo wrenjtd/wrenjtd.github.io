@@ -47,14 +47,14 @@ const MainContentComponent = () => {
 
           <div>
             <div className="m-2 grid grid-cols-3 gap-4">
-              <div className= {`bg-['https://www.bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}'] bg-cover bg-center rounded-lg`} >
-
-              </div>
+              <div className= " bg-cover bg-center rounded-lg" >
               <img src={`https://www.bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}`} alt="emblem" className="h-12 rounded-lg" />
+              </div>
+              <img src={`https://www.bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}`} alt="emblem" className="h-12 rounded-lg" />
             </div>
 
 
-
+          
           <div>
             <div className="grid grid-cols-3">
             <div className="flex mx-auto">
