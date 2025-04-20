@@ -183,74 +183,56 @@ function App() {
   // 4. Fetch ALL Equipped Item Definitions when Profiles are loaded
   useEffect(() => {
     const fetchItemDefinitions = async () => {
-        // Check if character equipment data exists in the profile response
-        const characterEquipmentData = userCharacterProfiles?.Response?.characterEquipment?.data;
-
-        if (characterEquipmentData) {
-            console.log("Processing equipment for all characters...");
-
-            // --- MODIFICATION START ---
-            // Gather all equipped items from *all* characters
-            let allEquippedItems: { itemHash: number }[] = []; // Define expected item structure
-            const characterIds = Object.keys(characterEquipmentData);
-
+        if (userCharacterProfiles?.Response?.characterEquipment?.data) {
+            const characterIds = Object.keys(userCharacterProfiles.Response.characterEquipment.data);
+            
             if (characterIds.length === 0) {
-                console.log("No character equipment data found in profile.");
-                 setuserCharacterEquipmentDefinitions([]); // Reset definitions
+                console.log("No characters found in profile equipment data.");
                 return;
             }
 
-            characterIds.forEach(charId => {
-                const characterItems = characterEquipmentData[charId]?.items;
-                if (characterItems) {
-                    allEquippedItems = allEquippedItems.concat(characterItems);
-                } else {
-                     console.log(`No equipped items found for character ${charId}.`);
-                }
-            });
+       
+            const firstCharacterId = characterIds[0];
 
-            console.log(`Combined ${allEquippedItems.length} equipped items from ${characterIds.length} character(s).`);
+            const equippedItems = userCharacterProfiles.Response.characterEquipment.data[firstCharacterId]?.items;
+            console.log("Equipped items for first character:", equippedItems);
 
-            if (allEquippedItems.length === 0) {
-                console.log("No equipped items found across all characters.");
+              
+            const equippedItemsAllCharacters = characterIds.map(id => userCharacterProfiles.Response.characterEquipment.data[id]?.items);
+            console.log("Equipped items for all characters:", equippedItemsAllCharacters);
+          
+
+            if (!equippedItems || equippedItems.length === 0) {
+                console.log(`No equipped items found for character ${firstCharacterId}.`);
                 setuserCharacterEquipmentDefinitions([]); // Clear previous definitions
                 return;
             }
 
-            // Create a unique set of item hashes from ALL characters to avoid redundant fetches
-            const uniqueItemHashes = [...new Set(allEquippedItems.map(item => item.itemHash.toString()))];
-            // --- MODIFICATION END ---
-
-            console.log(`Workspaceing definitions for ${uniqueItemHashes.length} unique item(s)...`);
+            // Create a unique set of item hashes to avoid redundant fetches
+            const uniqueItemHashes = [...new Set(equippedItems.map(item => item.itemHash.toString()))];
 
             // Create an array of promises for fetching each definition
             const definitionPromises = uniqueItemHashes.map(hash =>
                 traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, hash)
-                    .then(response => response.Response) // Extract the definition data
+                    .then(response => response.Response) 
                     .catch(error => {
                         console.error(`Error fetching definition for item hash ${hash}:`, error);
-                        return null; // Return null on error to handle in Promise.all
+                        return null; 
                     })
             );
 
-            // Wait for all definition fetch promises to resolve
+            // Wait for all promises to resolve
             const resolvedDefinitions = await Promise.all(definitionPromises);
 
-            // Filter out any null results (due to fetch errors) and ensure type safety
+            // Filter out any null results (due to errors) and ensure type safety
             const validDefinitions = resolvedDefinitions.filter(
                 (def): def is DestinyInventoryItemDefinition => def !== null
             );
 
-            console.log(`Successfully fetched ${validDefinitions.length} valid item definitions.`);
             setuserCharacterEquipmentDefinitions(validDefinitions);
-
         } else {
-            // Reset definitions if profile data or equipment data is not available
+            // Reset if profile data is not available
              setuserCharacterEquipmentDefinitions([]);
-             // Optional: Log why it was reset
-             if (userCharacterProfiles?.Response) {
-                 console.log("Character equipment data missing in profile response.");
-             }
         }
     };
 
