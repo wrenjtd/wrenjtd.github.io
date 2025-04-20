@@ -1,13 +1,13 @@
-import { useState, useEffect, createContext } from 'react';
-import '../src/assets/css/App.css';
+import { useState, useEffect, createContext, useMemo } from 'react';
+import '../src/assets/css/App.css'; // Assuming this path is correct relative to your file structure
 import { BrowserRouter } from 'react-router-dom';
-import Traveler from './Traveler';
-import { OAuthResponse, TypeDefinition } from './type-definitions/additons';
+import Traveler from './Traveler'; // Assuming './Traveler' exists and exports the class
+import { OAuthResponse, TypeDefinition } from './type-definitions/additons'; // Ensure paths are correct
 import React from 'react';
-import { BungieMembershipType, ServerResponse } from './type-definitions/common';
-import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyProfileResponse } from './type-definitions/destiny2';
-import { UserMembershipData } from './type-definitions/user';
-import Dashboard from './components/UI/Main/Dashboard.component';
+import { BungieMembershipType, ServerResponse } from './type-definitions/common'; // Ensure paths are correct
+import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyItemComponent, DestinyProfileResponse } from './type-definitions/destiny2'; // Ensure paths are correct
+import { UserMembershipData } from './type-definitions/user'; // Ensure paths are correct
+import Dashboard from './components/UI/Main/Dashboard.component'; // Ensure path is correct
 
 // Define bucket hashes for clarity and maintainability
 const BUCKET_HASHES = {
@@ -39,15 +39,13 @@ const ARMOR_BUCKET_HASHES = [
     BUCKET_HASHES.CLASS_ARMOR,
 ];
 
-
 // --- Context Type Definition ---
-// Note: If you store the definitions directly, you might not need ServerResponse wrapper here
 export type contextType = {
-  bungieMembershipData: ServerResponse<UserMembershipData> | undefined; // Allow undefined initial state
-  userCharacterProfiles: ServerResponse<DestinyProfileResponse> | undefined; // Allow undefined initial state
-  // Store the actual definitions, not the wrapped ServerResponse
-  userWeapons: DestinyInventoryItemDefinition[]; 
-  userArmor: DestinyInventoryItemDefinition[];
+  bungieMembershipData: ServerResponse<UserMembershipData> | undefined;
+  userCharacterProfiles: ServerResponse<DestinyProfileResponse> | undefined;
+  // MODIFIED: Store definitions per character
+  userWeapons: DestinyInventoryItemDefinition[][]; 
+  userArmor: DestinyInventoryItemDefinition[][];
 }
 
 // --- Context Initialization ---
@@ -55,46 +53,45 @@ export type contextType = {
 const defaultContextValue: contextType = {
     bungieMembershipData: undefined,
     userCharacterProfiles: undefined,
-    userWeapons: [],
+    // MODIFIED: Default to empty arrays
+    userWeapons: [], 
     userArmor: [],
 };
 export const BungieMembershipDataContext = createContext<contextType>(defaultContextValue);
-export const OAuthURLEndpointContext = createContext<string>(""); // Default can be empty string
+export const OAuthURLEndpointContext = createContext<string>("");
 
 // --- App Component ---
 function App() {
 
   // --- Traveler Initialization ---
-  const traveler = React.useMemo(() => new Traveler({ // Use useMemo to avoid recreating on every render
+  const traveler = useMemo(() => new Traveler({
     apikey: import.meta.env.VITE_BUNGIE_API_KEY,
-    debug: true, // Consider setting to false in production
+    debug: true,
     oauthClientId: import.meta.env.VITE_BUNGIE_CLIENT_ID,
     oauthClientSecret: import.meta.env.VITE_BUNGIE_CLIENT_SECRET,
-    userAgent: 'YourAppName/Version' // Provide a user agent
-  }), []); // Empty dependency array means it's created once
+    userAgent: 'YourAppName/Version'
+  }), []);
 
-  const oauth_url_endpoint = React.useMemo(() => 
+  const oauth_url_endpoint = useMemo(() =>
       traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID)
-  , [traveler]); // Regenerate if traveler changes (though it won't here)
+  , [traveler]);
 
   // --- State Definitions ---
   const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
-  
-  // State to hold ALL fetched item definitions for equipped items
-  const [userCharacterEquipmentDefinitions, setuserCharacterEquipmentDefinitions] = useState<DestinyInventoryItemDefinition[]>([]);
 
+  // State to hold ALL unique fetched item definitions for equipped items across all characters
+  const [allUniqueEquippedItemDefinitions, setAllUniqueEquippedItemDefinitions] = useState<DestinyInventoryItemDefinition[]>([]);
 
-
-  // Final categorized state
-  const [userWeapons, setUserWeapons] = useState<DestinyInventoryItemDefinition[]>([]);
-  const [userArmor, setUserArmor] = useState<DestinyInventoryItemDefinition[]>([]);
+  // MODIFIED: Final categorized state - Array per character
+  const [userWeapons, setUserWeapons] = useState<DestinyInventoryItemDefinition[][]>([]);
+  const [userArmor, setUserArmor] = useState<DestinyInventoryItemDefinition[][]>([]);
 
 
   // --- Effects ---
 
-  // 1. Check for OAuth Code
+  // 1. Check for OAuth Code (Unchanged)
   useEffect(() => {
     const authorizationCodeChecker = async () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -102,30 +99,24 @@ function App() {
 
       if (code) {
         try {
-          // Important: Avoid exposing client secret directly in frontend code for production apps.
-          // Usually, the token exchange happens on a backend server.
-          // For local dev or specific use cases, this might be acceptable, but be aware of security risks.
           const oAuthResponse = await traveler.oauth.getAccessToken(
-              code, 
-              import.meta.env.VITE_BUNGIE_CLIENT_ID, 
+              code,
+              import.meta.env.VITE_BUNGIE_CLIENT_ID,
               import.meta.env.VITE_BUNGIE_CLIENT_SECRET // SECURITY WARNING for production
           );
           setOauthServerResponse(oAuthResponse);
-          
           window.history.replaceState({}, document.title, window.location.pathname);
         } catch (error) {
             console.error("Error getting access token:", error);
-            // Handle token exchange error (e.g., show message to user)
         }
       } else {
           console.log("No authorization code found in URL.");
       }
     };
-
     authorizationCodeChecker();
-  }, [traveler]); 
+  }, [traveler]);
 
-  // 2. Get Bungie Membership Data when OAuth is successful
+  // 2. Get Bungie Membership Data (Unchanged)
   useEffect(() => {
     const getBungieMembershipData = async () => {
       if (oauthServerResponse?.access_token) {
@@ -138,18 +129,16 @@ function App() {
         }
       }
     };
-
     getBungieMembershipData();
-  }, [oauthServerResponse, traveler]); 
+  }, [oauthServerResponse, traveler]);
 
-  // 3. Get Character Profiles when Membership Data is available
+  // 3. Get Character Profiles (Unchanged)
   useEffect(() => {
     const getUserProfileInformation = async () => {
-      // Ensure we have the necessary data and token
       if (bungieMembershipData?.Response?.destinyMemberships?.length && oauthServerResponse?.access_token) {
-         const primaryMembership = bungieMembershipData.Response.destinyMemberships.find(m => m.membershipType === BungieMembershipType.TigerXbox) 
-            || bungieMembershipData.Response.destinyMemberships[0]; 
-            
+         const primaryMembership = bungieMembershipData.Response.destinyMemberships.find(m => m.membershipType === BungieMembershipType.TigerXbox) // Example: Prefer Xbox
+            || bungieMembershipData.Response.destinyMemberships[0];
+
          if (!primaryMembership) {
             console.error("No suitable Destiny membership found.");
             return;
@@ -157,9 +146,9 @@ function App() {
 
         console.log(`Workspaceing profile for membership type ${primaryMembership.membershipType}, ID ${primaryMembership.membershipId}`);
         const components = [
-          DestinyComponentType.Characters,        
-          DestinyComponentType.CharacterEquipment 
-          // Add other components if needed (e.g., CharacterInventories for inventory)
+          DestinyComponentType.Characters,
+          DestinyComponentType.CharacterEquipment
+          // Add other components if needed
         ];
 
         try {
@@ -176,52 +165,50 @@ function App() {
         }
       }
     };
-
     getUserProfileInformation();
   }, [bungieMembershipData, oauthServerResponse, traveler]);
 
-  // 4. Fetch ALL Equipped Item Definitions when Profiles are loaded
+  // 4. MODIFIED: Fetch ALL Unique Equipped Item Definitions when Profiles are loaded
   useEffect(() => {
     const fetchItemDefinitions = async () => {
-        if (userCharacterProfiles?.Response?.characterEquipment?.data) {
-            const characterIds = Object.keys(userCharacterProfiles.Response.characterEquipment.data);
-            
+        const equipmentData = userCharacterProfiles?.Response?.characterEquipment?.data;
+        if (equipmentData) {
+            const characterIds = Object.keys(equipmentData);
+
             if (characterIds.length === 0) {
                 console.log("No characters found in profile equipment data.");
+                setAllUniqueEquippedItemDefinitions([]); // Clear previous definitions
                 return;
             }
 
-       
-            const firstCharacterId = characterIds[0];
+            console.log("Gathering equipped item hashes for all characters...");
 
-            const equippedItems = userCharacterProfiles.Response.characterEquipment.data[firstCharacterId]?.items;
-            console.log("Equipped items for first character:", equippedItems);
-
-              
-            const equippedItemsAllCharacters = characterIds.map(id => userCharacterProfiles.Response.characterEquipment.data[id]?.items);
-            console.log("Equipped items for all characters:", equippedItemsAllCharacters);
-          
-
-            if (!equippedItems || equippedItems.length === 0) {
-                console.log(`No equipped items found for character ${firstCharacterId}.`);
-                setuserCharacterEquipmentDefinitions([]); // Clear previous definitions
-                return;
+            // MODIFIED: Collect hashes from ALL characters
+            const allEquippedItems: DestinyItemComponent[] = characterIds.flatMap(id => equipmentData[id]?.items || []);
+            
+            if (allEquippedItems.length === 0) {
+                 console.log("No equipped items found across all characters.");
+                 setAllUniqueEquippedItemDefinitions([]);
+                 return;
             }
 
             // Create a unique set of item hashes to avoid redundant fetches
-            const uniqueItemHashes = [...new Set(equippedItems.map(item => item.itemHash.toString()))];
+            const uniqueItemHashes = [...new Set(allEquippedItems.map(item => item.itemHash.toString()))];
+            console.log(`Found ${uniqueItemHashes.length} unique equipped item hashes.`);
+
 
             // Create an array of promises for fetching each definition
             const definitionPromises = uniqueItemHashes.map(hash =>
                 traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, hash)
-                    .then(response => response.Response) 
+                    .then(response => response.Response) // Extract the Response part
                     .catch(error => {
                         console.error(`Error fetching definition for item hash ${hash}:`, error);
-                        return null; 
+                        return null; // Return null on error
                     })
             );
 
             // Wait for all promises to resolve
+            console.log("Fetching definitions...");
             const resolvedDefinitions = await Promise.all(definitionPromises);
 
             // Filter out any null results (due to errors) and ensure type safety
@@ -229,109 +216,132 @@ function App() {
                 (def): def is DestinyInventoryItemDefinition => def !== null
             );
 
-            setuserCharacterEquipmentDefinitions(validDefinitions);
+            console.log(`Successfully fetched ${validDefinitions.length} definitions.`);
+            setAllUniqueEquippedItemDefinitions(validDefinitions);
         } else {
             // Reset if profile data is not available
-             setuserCharacterEquipmentDefinitions([]);
+             setAllUniqueEquippedItemDefinitions([]);
         }
     };
 
     fetchItemDefinitions();
+  // Depends only on profiles and traveler (for fetching)
   }, [userCharacterProfiles, traveler]);
 
 
-  // 5. Filter Definitions into Weapons and Armor when definitions are ready
+  // 5. MODIFIED: Filter Definitions into Weapons and Armor PER CHARACTER
   useEffect(() => {
-    if (userCharacterEquipmentDefinitions.length > 0) {
-        console.log("Filtering fetched definitions into weapons and armor...");
+    // Wait for both profiles (to know *which* items each character has)
+    // AND the definitions (to know *what* those items are)
+    if (userCharacterProfiles?.Response?.characterEquipment?.data && allUniqueEquippedItemDefinitions.length > 0) {
         
-        const weapons: DestinyInventoryItemDefinition[] = [];
-        const armor: DestinyInventoryItemDefinition[] = [];
+        console.log("Structuring fetched definitions into weapons and armor per character...");
+        
+        const equipmentData = userCharacterProfiles.Response.characterEquipment.data;
+        const characterIds = Object.keys(equipmentData);
 
-        userCharacterEquipmentDefinitions.forEach(definition => {
-            const bucketHash = definition.inventory?.bucketTypeHash;
+        // Create a lookup map for quick access to definitions by hash
+        const definitionsMap: { [hash: string]: DestinyInventoryItemDefinition } = {};
+        allUniqueEquippedItemDefinitions.forEach(def => {
+            definitionsMap[def.hash.toString()] = def;
+        });
 
-            if (bucketHash) {
-                if (WEAPON_BUCKET_HASHES.includes(bucketHash)) {
-                    weapons.push(definition);
-                } else if (ARMOR_BUCKET_HASHES.includes(bucketHash)) {
-                    armor.push(definition);
+        const weaponsByCharacter: DestinyInventoryItemDefinition[][] = [];
+        const armorByCharacter: DestinyInventoryItemDefinition[][] = [];
+
+        // Iterate through each character
+        characterIds.forEach(charId => {
+            const equippedItems = equipmentData[charId]?.items || [];
+            const currentCharWeapons: DestinyInventoryItemDefinition[] = [];
+            const currentCharArmor: DestinyInventoryItemDefinition[] = [];
+
+            // Iterate through items equipped by this specific character
+            equippedItems.forEach(item => {
+                const definition = definitionsMap[item.itemHash.toString()];
+                if (definition) {
+                    const bucketHash = definition.inventory?.bucketTypeHash;
+                    if (bucketHash) {
+                        if (WEAPON_BUCKET_HASHES.includes(bucketHash)) {
+                            currentCharWeapons.push(definition);
+                        } else if (ARMOR_BUCKET_HASHES.includes(bucketHash)) {
+                            currentCharArmor.push(definition);
+                        }
+                    } else {
+                         console.warn("Definition missing inventory.bucketTypeHash:", definition.displayProperties.name, definition.hash);
+                    }
+                } else {
+                    // This might happen if a definition failed to fetch in the previous step
+                    console.warn(`Definition not found for item hash ${item.itemHash} on character ${charId}`);
                 }
-                // You could add an else clause here for items that don't fit either category
-            } else {
-                console.warn("Definition missing inventory.bucketTypeHash:", definition.displayProperties.name, definition.hash);
-            }
-        });
+            });
 
-        // Optional: Sort items within categories if needed (e.g., by bucket, then name)
-        // Example sorting: Kinetic -> Energy -> Power -> Ghost
-        const weaponSortOrder = [
-            BUCKET_HASHES.KINETIC_WEAPON, 
-            BUCKET_HASHES.ENERGY_WEAPON, 
-            BUCKET_HASHES.POWER_WEAPON, 
-            BUCKET_HASHES.GHOST
-        ];
-        weapons.sort((a, b) => {
-            const indexA = weaponSortOrder.indexOf(a.inventory.bucketTypeHash);
-            const indexB = weaponSortOrder.indexOf(b.inventory.bucketTypeHash);
-            return indexA - indexB;
-        });
+            // Optional: Sort items within categories for this character
+            const weaponSortOrder = [
+                BUCKET_HASHES.KINETIC_WEAPON, BUCKET_HASHES.ENERGY_WEAPON, BUCKET_HASHES.POWER_WEAPON, BUCKET_HASHES.GHOST
+            ];
+            currentCharWeapons.sort((a, b) => {
+                const indexA = weaponSortOrder.indexOf(a.inventory.bucketTypeHash);
+                const indexB = weaponSortOrder.indexOf(b.inventory.bucketTypeHash);
+                return indexA - indexB;
+            });
 
-        // Example sorting: Helmet -> Arms -> Chest -> Legs -> Class Item
-        const armorSortOrder = [
-            BUCKET_HASHES.HELMET,
-            BUCKET_HASHES.GAUNTLETS,
-            BUCKET_HASHES.CHEST_ARMOR,
-            BUCKET_HASHES.LEG_ARMOR,
-            BUCKET_HASHES.CLASS_ARMOR
-        ];
-         armor.sort((a, b) => {
-            const indexA = armorSortOrder.indexOf(a.inventory.bucketTypeHash);
-            const indexB = armorSortOrder.indexOf(b.inventory.bucketTypeHash);
-            return indexA - indexB;
+            const armorSortOrder = [
+                BUCKET_HASHES.HELMET, BUCKET_HASHES.GAUNTLETS, BUCKET_HASHES.CHEST_ARMOR, BUCKET_HASHES.LEG_ARMOR, BUCKET_HASHES.CLASS_ARMOR
+            ];
+             currentCharArmor.sort((a, b) => {
+                const indexA = armorSortOrder.indexOf(a.inventory.bucketTypeHash);
+                const indexB = armorSortOrder.indexOf(b.inventory.bucketTypeHash);
+                return indexA - indexB;
+            });
+
+            // Add this character's sorted lists to the main arrays
+            weaponsByCharacter.push(currentCharWeapons);
+            armorByCharacter.push(currentCharArmor);
         });
 
 
-        // Set state ONCE with the final, filtered (and optionally sorted) arrays
-        setUserWeapons(weapons);
-        setUserArmor(armor);
+        // Set state ONCE with the final, structured arrays
+        setUserWeapons(weaponsByCharacter);
+        setUserArmor(armorByCharacter);
+        console.log("Finished structuring items per character.", { weaponsByCharacter, armorByCharacter });
+
     } else {
-         // Reset if definitions are empty
+         // Reset if dependencies are not ready
          setUserWeapons([]);
          setUserArmor([]);
     }
-  }, [userCharacterEquipmentDefinitions]);
+  // MODIFIED: Now depends on profiles (for character item lists) and the fetched definitions
+  }, [userCharacterProfiles, allUniqueEquippedItemDefinitions]);
 
 
   // --- Prepare Context Value ---
-  const contextValue = React.useMemo(() => ({
+  // Ensure the value passed matches the contextType
+  const contextValue = useMemo(() => ({
     bungieMembershipData,
     userCharacterProfiles,
-    userWeapons,
-    userArmor
+    userWeapons, // Already holds the [][] structure
+    userArmor   // Already holds the [][] structure
   }), [bungieMembershipData, userCharacterProfiles, userWeapons, userArmor]);
 
 
   return (
     <React.Fragment>
       <BrowserRouter>
-        {/* Pass the memoized context value */}
         <BungieMembershipDataContext.Provider value={contextValue}>
           <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
-            {/* Conditionally render Dashboard only when data is ready, 
-              or pass loading state down to Dashboard to handle internally.
-              Example: Show loading indicator until essential data is present.
+            {/* Render Dashboard. Dashboard component will need to be updated
+                to handle the new userWeapons/userArmor structure (e.g., access items
+                for the first character via userWeapons[0], second via userWeapons[1] etc.)
             */}
             <Dashboard />
-            
-            
-            {/* {contextValue.userCharacterProfiles && contextValue.userWeapons.length > 0 && contextValue.userArmor.length > 0 ? (
-                  <Dashboard />
-             ) : (
-                  <div>Loading Guardian Data...</div> // Or a more sophisticated loading component
-             )} */}
 
-             
+            {/* Example conditional rendering or loading state */}
+            {/* {!contextValue.userCharacterProfiles || (contextValue.userWeapons.length === 0 && contextValue.userArmor.length === 0) ? (
+                 <div>Loading Guardian Data...</div>
+            ) : (
+                 <Dashboard />
+            )} */}
+
           </OAuthURLEndpointContext.Provider>
         </BungieMembershipDataContext.Provider>
       </BrowserRouter>
