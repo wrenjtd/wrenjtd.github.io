@@ -1,13 +1,13 @@
 import { useState, useEffect, createContext, useMemo } from 'react';
-import '../src/assets/css/App.css'; // Assuming this path is correct relative to your file structure
+import '../src/assets/css/App.css';
 import { BrowserRouter } from 'react-router-dom';
-import Traveler from './Traveler'; // Assuming './Traveler' exists and exports the class
-import { OAuthResponse, TypeDefinition } from './type-definitions/additons'; // Ensure paths are correct
+import Traveler from './Traveler'; 
+import { OAuthResponse, TypeDefinition } from './type-definitions/additons'; 
 import React from 'react';
-import { BungieMembershipType, ServerResponse } from './type-definitions/common'; // Ensure paths are correct
-import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyItemComponent, DestinyProfileResponse } from './type-definitions/destiny2'; // Ensure paths are correct
-import { UserMembershipData } from './type-definitions/user'; // Ensure paths are correct
-import Dashboard from './components/UI/Main/Dashboard.component'; // Ensure path is correct
+import { BungieMembershipType, ServerResponse } from './type-definitions/common'; 
+import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyItemComponent, DestinyProfileResponse } from './type-definitions/destiny2';
+import { UserMembershipData } from './type-definitions/user';
+import Dashboard from './components/UI/Main/Dashboard.component';
 
 // Define bucket hashes for clarity and maintainability
 const BUCKET_HASHES = {
@@ -53,7 +53,6 @@ export type contextType = {
 const defaultContextValue: contextType = {
     bungieMembershipData: undefined,
     userCharacterProfiles: undefined,
-    // MODIFIED: Default to empty arrays
     userWeapons: [], 
     userArmor: [],
 };
@@ -84,14 +83,14 @@ function App() {
   // State to hold ALL unique fetched item definitions for equipped items across all characters
   const [allUniqueEquippedItemDefinitions, setAllUniqueEquippedItemDefinitions] = useState<DestinyInventoryItemDefinition[]>([]);
 
-  // MODIFIED: Final categorized state - Array per character
+  // Final categorized state - Array per character
   const [userWeapons, setUserWeapons] = useState<DestinyInventoryItemDefinition[][]>([]);
   const [userArmor, setUserArmor] = useState<DestinyInventoryItemDefinition[][]>([]);
 
 
   // --- Effects ---
 
-  // 1. Check for OAuth Code (Unchanged)
+  // 1. Check for OAuth Code 
   useEffect(() => {
     const authorizationCodeChecker = async () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -116,7 +115,7 @@ function App() {
     authorizationCodeChecker();
   }, [traveler]);
 
-  // 2. Get Bungie Membership Data (Unchanged)
+  // 2. Get Bungie Membership Data 
   useEffect(() => {
     const getBungieMembershipData = async () => {
       if (oauthServerResponse?.access_token) {
@@ -132,7 +131,7 @@ function App() {
     getBungieMembershipData();
   }, [oauthServerResponse, traveler]);
 
-  // 3. Get Character Profiles (Unchanged)
+  // 3. Get Character Profiles
   useEffect(() => {
     const getUserProfileInformation = async () => {
       if (bungieMembershipData?.Response?.destinyMemberships?.length && oauthServerResponse?.access_token) {
@@ -168,7 +167,7 @@ function App() {
     getUserProfileInformation();
   }, [bungieMembershipData, oauthServerResponse, traveler]);
 
-  // 4. MODIFIED: Fetch ALL Unique Equipped Item Definitions when Profiles are loaded
+  // 4. Fetch ALL Unique Equipped Item Definitions when Profiles are loaded
   useEffect(() => {
     const fetchItemDefinitions = async () => {
         const equipmentData = userCharacterProfiles?.Response?.characterEquipment?.data;
@@ -183,7 +182,7 @@ function App() {
 
             console.log("Gathering equipped item hashes for all characters...");
 
-            // MODIFIED: Collect hashes from ALL characters
+            // Collect hashes from ALL characters
             const allEquippedItems: DestinyItemComponent[] = characterIds.flatMap(id => equipmentData[id]?.items || []);
             
             if (allEquippedItems.length === 0) {
@@ -200,7 +199,7 @@ function App() {
             // Create an array of promises for fetching each definition
             const definitionPromises = uniqueItemHashes.map(hash =>
                 traveler.destiny2.getDestinyEntityDefinition(TypeDefinition.DestinyInventoryItemDefinition, hash)
-                    .then(response => response.Response) // Extract the Response part
+                    .then(response => response.Response) // 
                     .catch(error => {
                         console.error(`Error fetching definition for item hash ${hash}:`, error);
                         return null; // Return null on error
@@ -225,11 +224,11 @@ function App() {
     };
 
     fetchItemDefinitions();
-  // Depends only on profiles and traveler (for fetching)
+ 
   }, [userCharacterProfiles, traveler]);
 
 
-  // 5. MODIFIED: Filter Definitions into Weapons and Armor PER CHARACTER
+  // 5. Filter Definitions into Weapons and Armor PER CHARACTER
   useEffect(() => {
     // Wait for both profiles (to know *which* items each character has)
     // AND the definitions (to know *what* those items are)
@@ -310,7 +309,6 @@ function App() {
          setUserWeapons([]);
          setUserArmor([]);
     }
-  // MODIFIED: Now depends on profiles (for character item lists) and the fetched definitions
   }, [userCharacterProfiles, allUniqueEquippedItemDefinitions]);
 
 
@@ -319,8 +317,8 @@ function App() {
   const contextValue = useMemo(() => ({
     bungieMembershipData,
     userCharacterProfiles,
-    userWeapons, // Already holds the [][] structure
-    userArmor   // Already holds the [][] structure
+    userWeapons,
+    userArmor  
   }), [bungieMembershipData, userCharacterProfiles, userWeapons, userArmor]);
 
 
@@ -329,10 +327,7 @@ function App() {
       <BrowserRouter>
         <BungieMembershipDataContext.Provider value={contextValue}>
           <OAuthURLEndpointContext.Provider value={oauth_url_endpoint}>
-            {/* Render Dashboard. Dashboard component will need to be updated
-                to handle the new userWeapons/userArmor structure (e.g., access items
-                for the first character via userWeapons[0], second via userWeapons[1] etc.)
-            */}
+          
             <Dashboard />
 
             {/* Example conditional rendering or loading state */}
