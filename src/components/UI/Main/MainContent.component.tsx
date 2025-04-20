@@ -170,7 +170,7 @@ const MainContentComponent = () => {
               <div>
                 <ul className="flex flex-col space-y-9 ml-2.5">
 
-                  {user?.userArmor[1].map((item, index) => (
+                  {user?.userArmor[1]?.map((item, index) => (
 
                     <li className="flex" key={index}>
                       <a href="#" className="group relative rounded-lg border border-gray-700 hover:border-white w-auto transition-colors duration-150">
