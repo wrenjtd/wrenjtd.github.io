@@ -133,7 +133,7 @@ const HeaderContentComponent = () => {
                             {/* Profile dropdown */}
                             <Menu as="div" className="relative ml-3">
                                 <div>
-                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent text-sm  hover:text-orange-600 focus:text-orange-600  focus:outline-hidden">
+                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent   hover:text-orange-600 focus:text-orange-600  focus:outline-hidden">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
                                         <Cog6ToothIcon aria-hidden="true" className="size-6 hover:text-orange-600 focus:text-orange-600 text-white " />
