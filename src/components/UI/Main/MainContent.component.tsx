@@ -93,7 +93,7 @@ const MainContentComponent = () => {
 
                             </div>
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
-                              {item?.displayProperties?.name || "Weapon Details"}
+                              {item?.displayProperties?.name || "Weapon Details"}<br/>
                               {item?.itemTypeDisplayName || "Weapon Type"}
                             </span>
                           </a>
