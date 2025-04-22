@@ -98,7 +98,7 @@ const MainContentComponent = () => {
                     </ul>
                   </div>
                   <div className="border-black rounded-none">
-                    <ul className="flex flex-col space-y-9 ml-3.5">
+                    <ul className="flex flex-col space-y-9 ml-9.5">
 
                       {user?.userArmor[0]?.map((item, index) => (
 
