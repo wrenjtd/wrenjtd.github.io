@@ -25,7 +25,7 @@ const MainContentComponent = () => {
 
               {/* Social Media stuff */}
               <div className="flow-root">
-                <ul className="-m-1 flex flex-wrap">
+                <ul className="-m-1 flex flex-wrap mb-1.5">
                   <li className="p-1 leading-none">
                     <a href="#" className="text-xs font-medium text-gray-300"> Twitter </a>
                   </li>
@@ -127,7 +127,7 @@ const MainContentComponent = () => {
                               </div>
                             </div>
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
-                              {item?.displayProperties?.name || "Armor Details"}
+                              {item?.displayProperties?.name || "Armor Details"}<br/>
                               {item?.itemTypeDisplayName || "Armor Type"}
                             </span>
                           </a>
@@ -165,7 +165,7 @@ const MainContentComponent = () => {
 
                             </div>
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
-                              {item?.displayProperties?.name || "Weapon Details"}
+                              {item?.displayProperties?.name || "Weapon Details"}<br/>
                               {item?.itemTypeDisplayName || "Weapon Type"}
                             </span>
                           </a>
@@ -199,7 +199,7 @@ const MainContentComponent = () => {
                               </div>
                             </div>
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
-                              {item?.displayProperties?.name || "Armor Details"}
+                              {item?.displayProperties?.name || "Armor Details"}<br/>
                               {item?.itemTypeDisplayName || "Armor Type"}
                             </span>
                           </a>
@@ -238,7 +238,7 @@ const MainContentComponent = () => {
 
                             {/* Tooltip */}
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-md shadow-lg whitespace-nowrap">
-                              {item?.displayProperties?.name || "Weapon Details"}
+                              {item?.displayProperties?.name || "Weapon Details"}<br/>
                               {item?.itemTypeDisplayName || "Weapon Type"}
                             </span>
                           </a>
@@ -274,7 +274,7 @@ const MainContentComponent = () => {
 
                             {/* Tooltip */}
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-md shadow-lg whitespace-nowrap">
-                              {item?.displayProperties?.name || "Armor Details"}
+                              {item?.displayProperties?.name || "Armor Details"}<br/>
                               {item?.itemTypeDisplayName || "Armor Type"}
                             </span>
                           </a>
