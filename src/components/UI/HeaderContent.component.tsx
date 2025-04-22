@@ -1,11 +1,10 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/static/app_logo.png';
-import settings_gear from '../../assets/static/settings.png';
 
 import { BungieMembershipDataContext, contextType, OAuthURLEndpointContext } from '../../App';
 import { Disclosure, Menu, MenuButton, MenuItems, MenuItem, DisclosureButton, DisclosurePanel } from '@headlessui/react';
-import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { BellIcon, Bars3Icon, XMarkIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
@@ -137,7 +136,7 @@ const HeaderContentComponent = () => {
                                     <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent text-sm  hover:text-orange-600 focus:text-orange-600  focus:outline-hidden">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
-                                        <img alt="" src={settings_gear} className="size-6 hover:text-orange-600 focus:text-orange-600 " />
+                                        <Cog6ToothIcon aria-hidden="true"  className="size-6 hover:text-orange-600 focus:text-orange-600 " />
                                     </MenuButton>
                                 </div>
                                 <MenuItems
@@ -190,14 +189,7 @@ const HeaderContentComponent = () => {
                 </div>
                 <div className="border-t border-gray-700 pt-4 pb-3">
                     <div className="flex items-center px-5">
-                        <div className="shrink-0">
-
-                            <img
-                                alt="Your Company"
-                                src={settings_gear}
-                                className="size-8 rounded-full"
-                            />
-                        </div>
+                    <Cog6ToothIcon aria-hidden="true" className="size-8" />
                         <div className="ml-3">
 
                             {user.bungieMembershipData && <img alt="user Bungie icon" src={`https://www.bungie.net/${user.bungieMembershipData.Response.bungieNetUser.profilePicturePath}`} />}

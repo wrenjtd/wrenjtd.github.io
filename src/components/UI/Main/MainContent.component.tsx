@@ -15,8 +15,7 @@ const MainContentComponent = () => {
       {user.bungieMembershipData &&
         <article className=" bg-gray-800 p-4 size-full">
 
-
-
+        {/* Profile information */}
           <div className="flex flex-col gap-4">
             <div>
               <div className="flex items-center gap-2">
@@ -24,6 +23,7 @@ const MainContentComponent = () => {
                 <h3 className="text-lg font-medium text-white">{user.bungieMembershipData && user.bungieMembershipData.Response.bungieNetUser.uniqueName}</h3>
               </div>
 
+              {/* Social Media stuff */}
               <div className="flow-root">
                 <ul className="-m-1 flex flex-wrap">
                   <li className="p-1 leading-none">
@@ -44,7 +44,7 @@ const MainContentComponent = () => {
           </div>
 
 
-
+          {/* Character emblem + overlays */}
           <div>
             <div className="m-2 grid grid-cols-3 gap-4">
               <div className= "flex justify-center bg-cover bg-center rounded-lg" >
@@ -59,7 +59,7 @@ const MainContentComponent = () => {
             </div>
 
 
-          
+          {/* Character 1 equipped items */}
           <div>
             <div className="grid grid-cols-3 gap-4">
             <div className="flex mx-auto">
@@ -132,6 +132,8 @@ const MainContentComponent = () => {
                 </ul>
               </div>
             </div>
+
+            {/* Character 2 equipped items */}
             <div className="flex mx-auto">
               <div>
                 <ul className="flex flex-col space-y-9">
@@ -202,10 +204,11 @@ const MainContentComponent = () => {
                 </ul>
               </div>
             </div>
+            
+            {/* Character 3 equipped items */}
             <div className="flex mx-auto">
               <div>
                 <ul className="flex flex-col space-y-9">
-
                   {user?.userWeapons[2]?.map((item, index) => (
 
                     <li className="flex" key={index}>
