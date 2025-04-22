@@ -25,7 +25,7 @@ const MainContentComponent = () => {
 
               {/* Social Media stuff */}
               <div className="flow-root">
-                <ul className="-m-1 flex flex-wrap mb-1.5">
+                <ul className="-m-1 flex flex-wrap mb-2.5">
                   <li className="p-1 leading-none">
                     <a href="#" className="text-xs font-medium text-gray-300"> Twitter </a>
                   </li>
@@ -42,9 +42,7 @@ const MainContentComponent = () => {
             </div>
 
           </div>
-
-
-          
+     
           <div>
 
             {/* Character emblem + overlays */}
@@ -60,8 +58,6 @@ const MainContentComponent = () => {
               </div>
             </div>
 
-
-           
             <div>
               <div className="grid grid-cols-3">
                  
@@ -101,7 +97,7 @@ const MainContentComponent = () => {
                       ))}
                     </ul>
                   </div>
-                  <div>
+                  <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9">
 
                       {user?.userArmor[0]?.map((item, index) => (
@@ -139,7 +135,7 @@ const MainContentComponent = () => {
 
                 {/* Character 2 equipped items */}
                 <div className="flex mx-auto">
-                  <div>
+                  <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9">
 
                       {user?.userWeapons[1]?.map((item, index) => (
@@ -173,7 +169,7 @@ const MainContentComponent = () => {
                       ))}
                     </ul>
                   </div>
-                  <div>
+                  <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9">
 
                       {user?.userArmor[1]?.map((item, index) => (
@@ -211,7 +207,7 @@ const MainContentComponent = () => {
 
                 {/* Character 3 equipped items */}
                 <div className="flex mx-auto">
-                  <div>
+                  <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9">
                       {user?.userWeapons[2]?.map((item, index) => (
 
@@ -246,7 +242,7 @@ const MainContentComponent = () => {
                       ))}
                     </ul>
                   </div>
-                  <div>
+                  <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9">
 
                       {user?.userArmor[2]?.map((item, index) => (
