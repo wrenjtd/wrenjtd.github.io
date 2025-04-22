@@ -136,7 +136,7 @@ const HeaderContentComponent = () => {
                                     <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent text-sm  hover:text-orange-600 focus:text-orange-600  focus:outline-hidden">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
-                                        <Cog6ToothIcon aria-hidden="true"  className="size-6 hover:text-orange-600 focus:text-orange-600 " />
+                                        <Cog6ToothIcon aria-hidden="true" className="size-6 hover:text-orange-600 focus:text-orange-600 text-white " />
                                     </MenuButton>
                                 </div>
                                 <MenuItems
