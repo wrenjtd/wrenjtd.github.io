@@ -189,7 +189,7 @@ const HeaderContentComponent = () => {
                 </div>
                 <div className="border-t border-gray-700 pt-4 pb-3">
                     <div className="flex items-center px-5">
-                    <Cog6ToothIcon aria-hidden="true" className="size-8" />
+                    <Cog6ToothIcon aria-hidden="true" className="size-6 hover:text-orange-600 focus:text-orange-600 text-white" />
                         <div className="ml-3">
 
                             {user.bungieMembershipData && <img alt="user Bungie icon" src={`https://www.bungie.net/${user.bungieMembershipData.Response.bungieNetUser.profilePicturePath}`} />}
@@ -200,7 +200,7 @@ const HeaderContentComponent = () => {
                         >
                             <span className="absolute -inset-1.5" />
                             <span className="sr-only">View notifications</span>
-                            <BellIcon aria-hidden="true" className="size-6" />
+                            <BellIcon aria-hidden="true" className="size-6 hover:text-orange-600 focus:text-orange-600 text-white" />
                         </button>
                     </div>
                     <div className="mt-3 space-y-1 px-2">
