@@ -64,7 +64,7 @@ const MainContentComponent = () => {
                  {/* Character 1 equipped items */}
                 <div className="flex mx-auto">
                   <div className="border-black rounded-none">
-                    <ul className="flex flex-col space-y-9 mr-3.5">
+                    <ul className="flex flex-col space-y-9 mr-7.5">
 
                       {user?.userWeapons[0]?.map((item, index) => (
 
@@ -98,7 +98,7 @@ const MainContentComponent = () => {
                     </ul>
                   </div>
                   <div className="border-black rounded-none">
-                    <ul className="flex flex-col space-y-9 ml-1.5">
+                    <ul className="flex flex-col space-y-9 ml-3.5">
 
                       {user?.userArmor[0]?.map((item, index) => (
 
