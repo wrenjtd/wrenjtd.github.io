@@ -237,7 +237,7 @@ const MainContentComponent = () => {
                             </div>
 
                             {/* Tooltip */}
-                            <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-md shadow-lg whitespace-nowrap">
+                            <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
                               {item?.displayProperties?.name || "Weapon Details"}<br/>
                               {item?.itemTypeDisplayName || "Weapon Type"}
                             </span>
@@ -252,10 +252,10 @@ const MainContentComponent = () => {
                       {user?.userArmor[2]?.map((item, index) => (
 
                         <li className="flex" key={index}>
-                          <a href="#" className="group relative rounded-lg border border-gray-700 hover:border-white w-auto transition-colors duration-150">
-                            <div className="relative border-black rounded-lg border-1 size-full overflow-hidden">
+                          <a href="#" className="group relative rounded-none border-gray-700 hover:border-white w-auto transition-colors duration-150">
+                            <div className="relative border-black rounded-none border-1 size-full overflow-hidden">
                               <div className="relative">
-                                {item?.displayProperties.icon && <img className="h-[50px] w-[50px] rounded-t-lg" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon icon" />}
+                                {item?.displayProperties.icon && <img className="h-[50px] w-[50px] rounded-none" src={`https://www.bungie.net/${item?.displayProperties.icon}`} alt="weapon icon" />}
                                 {item?.iconWatermark && <img className="h-[50px] w-[50px] absolute top-0 left-0" src={`https://www.bungie.net/${item?.iconWatermark}`} alt="icon watermark" />}
                               </div>
 
@@ -273,7 +273,7 @@ const MainContentComponent = () => {
                             </div>
 
                             {/* Tooltip */}
-                            <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-md shadow-lg whitespace-nowrap">
+                            <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
                               {item?.displayProperties?.name || "Armor Details"}<br/>
                               {item?.itemTypeDisplayName || "Armor Type"}
                             </span>
