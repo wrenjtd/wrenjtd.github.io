@@ -32,6 +32,7 @@ export default class Manifest {
           if (err) {
             reject(err);
           } else {
+            console.log(this.filepath)
             resolve(row);
           }
         });
