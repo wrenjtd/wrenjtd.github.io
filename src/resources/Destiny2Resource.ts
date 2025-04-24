@@ -1,7 +1,12 @@
+import * as fs from 'fs';
+import got from 'got';
 import HTTPService from '../HttpService';
 import BungieResource from './BungieResource';
-
 import { ServerResponse } from '../type-definitions/common';
+import { pipeline } from 'stream/promises'; 
+import { promises as fsPromises } from 'fs'; // Import promise-based fs functions
+import * as path from 'path'; // Import path for directory operations if needed
+import StreamZip from 'node-stream-zip'; // Import the default export for the class
 
 import {
     BungieMembershipType,
@@ -1499,4 +1504,266 @@ export default class Destiny2Resource extends BungieResource {
     });
   }
 
+  /**
+   * Download the specified manifest file, extract the zip and also deleting the zip afterwards
+   * ```js
+   * import Traveler from './Traveler';
+   *
+   * let traveler = new Traveler({
+   *  apikey: 'apikey',
+   *  userAgent: 'useragent', //used to identify your request to the API
+   * });
+   *
+   * traveler.destiny2
+   *  .getDestinyManifest()
+   *  .then(response => {
+   *    traveler.destiny2
+   *    .downloadManifest(response.Response.mobileWorldContentPaths['en'])
+   *      .then(response => {
+   *        console.log(response);
+   *      })
+   *      .catch(err => {
+   *        console.log(err);
+   *        });
+   *    })
+   *    .catch(err => {
+   *    console.log(err);
+   * });
+   * ```
+   *
+   * @param {string} manifestUrl The url of the manifest you want to download
+   * @param {string} [filename] The filename of the final unzipped file. This is used for the constructor of [[Manifest]]
+   * @returns {Promise<string>} When fulfilled returns the path of the saved manifest file
+   * @memberof Destiny2Resource
+   */
+  // public downloadManifest(manifestUrl: string, filename?: string): Promise<string> {
+  //   const downloadFileName = manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1);
+  //   const outputFileName = `${filename ? filename : manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1)}`;
+
+  //   const outStream = fs.createWriteStream(`${downloadFileName}.zip`);
+
+  //   return new Promise<string>((resolve, reject) => {
+  //     got
+  //       .stream(`https://www.bungie.net/${manifestUrl}`)
+  //       .pipe(outStream)
+  //       .on('finish', () => {
+  //         const zip = new SZIP({
+  //           file: `${downloadFileName}.zip`,
+  //           storeEntries: true
+  //         });
+
+  //         zip.on('ready', () => {
+  //           zip.extract(downloadFileName, outputFileName, (err: object, count: number) => {
+  //             if (err) {
+  //               reject(new Error('Error extracting zip'));
+  //             } else {
+  //               zip.close();
+  //               fs.unlink(`${downloadFileName}.zip`, err => {
+  //                 if (err) {
+  //                   reject(new Error('Error deleting .zip file'));
+  //                 }
+  //                 resolve(outputFileName);
+  //               });
+  //             }
+  //           });
+  //         });
+  //       });
+  //   });
+  // }
+
+  /**
+   * Download the specified json manifest file
+   *
+   * ```js
+   * import Traveler from './Traveler';
+   *
+   * let traveler = new Traveler({
+   *  apikey: 'apikey',
+   *  userAgent: 'useragent', //used to identify your request to the API
+   * });
+   *
+   * traveler.destiny2
+   * .getDestinyManifest()
+   * .then(response => {
+   *  traveler.destiny2
+   *    .downloadManifestJSON(response.Response.jsonWorldContentPaths['en'])
+   *    .then(response => {
+   *      console.log(response);
+   *     })
+   *     .catch(err => {
+   *       console.log(err);
+   *     });
+   *  })
+   *  .catch(err => {
+   *   console.log(err);
+   *  });
+   * ```
+   *
+   * @param {string} manifestUrl The url of the manifest you want to download
+   * @param {string} [filename] The filename of the final .json file downloaded
+   * @returns {Promise<string>} When fulfilled returns the path of the saved manifest file
+   * @memberof Destiny2Resource
+   */
+  // public downloadManifestJSON(manifestUrl: string, filename?: string): Promise<string> {
+  //   const outStream = fs.createWriteStream(
+  //     `${filename ? filename : manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1)}`
+  //   );
+  //   return new Promise<string>((resolve, reject) => {
+  //     got
+  //       .stream(`https://www.bungie.net/${manifestUrl}`)
+  //       .pipe(outStream)
+  //       .on('finish', () => {
+  //         resolve(filename);
+  //       });
+  //   });
+  // }
+
+
+  public async downloadManifest(manifestUrl: string, filename?: string): Promise<string> {
+    // 1. Determine filenames
+    const extractedFileName: string = manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1);
+    // Use nullish coalescing (??) for default value - more concise than ternary
+    const outputFileName: string = filename ?? extractedFileName;
+    // Use a more distinct temporary filename to avoid clashes
+    const tempZipPath: string = `${outputFileName}.${Date.now()}.zip.temp`;
+
+    // 2. Construct the full download URL
+    const downloadUrl = `https://www.bungie.net/${manifestUrl}`;
+
+    console.log(`Downloading manifest from ${downloadUrl} to ${tempZipPath}...`);
+
+    // Create a writable stream for the temporary zip file
+    const fileWriteStream = fs.createWriteStream(tempZipPath);
+
+    try {
+        // 3. Download the file using stream pipeline
+        // 'pipeline' handles stream errors and ensures streams are properly destroyed
+        await pipeline(
+            got.stream(downloadUrl), // Source stream (download)
+            fileWriteStream           // Destination stream (file)
+        );
+        console.log(`Download complete: ${tempZipPath}`);
+
+        // 4. Process the downloaded zip file
+        // Use the async constructor from node-stream-zip v1.13.0+
+        const zip = new StreamZip.async({ file: tempZipPath });
+
+        try {
+            console.log(`Extracting '${extractedFileName}' from ${tempZipPath} to '${outputFileName}'...`);
+
+            // Ensure the output directory exists (important if outputFileName includes subdirectories)
+            const outputDir = path.dirname(outputFileName);
+            if (outputDir !== '.') { // Check if outputFileName contains a path
+                 await fsPromises.mkdir(outputDir, { recursive: true });
+            }
+
+
+            // Extract the specific file from the zip archive asynchronously
+            const count = await zip.extract(extractedFileName, outputFileName);
+            console.log(`Successfully extracted ${count} entry to ${outputFileName}`);
+
+            // Close the zip file asynchronously
+            await zip.close();
+            console.log(`Zip file ${tempZipPath} closed.`);
+
+        } catch (zipError) {
+            console.error(`Error processing zip file ${tempZipPath}:`, zipError);
+            // Attempt to close zip even if extraction failed, ignore potential close errors here
+            try { await zip.close(); } catch (closeErr) { /* Ignore */ }
+            // Re-throw the error to be caught by the outer catch block for cleanup
+            throw new Error(`Failed to extract ${extractedFileName} from zip: ${(zipError as Error).message}`);
+        }
+
+    } catch (error) {
+        console.error(`Operation failed:`, error);
+        // 5. Cleanup attempt 1: Clean up the temp file if download or extraction failed
+        try {
+            // Check if the temp file exists before trying to delete it
+             const stats = await fsPromises.stat(tempZipPath).catch(() => null);
+             if (stats) {
+                 await fsPromises.unlink(tempZipPath);
+                 console.log(`Cleaned up temporary file after error: ${tempZipPath}`);
+             }
+        } catch (cleanupError) {
+            // Log cleanup error but prioritize throwing the original error
+             console.error(`Failed to cleanup temporary file ${tempZipPath} after error:`, cleanupError);
+        }
+        // Re-throw the original error to the caller
+        throw error;
+    }
+
+    // 6. Cleanup attempt 2: Delete the temporary zip file if everything succeeded
+    try {
+        await fsPromises.unlink(tempZipPath);
+        console.log(`Deleted temporary file: ${tempZipPath}`);
+    } catch (unlinkError) {
+        console.error(`Failed to delete temporary file ${tempZipPath} after successful extraction:`, unlinkError);
+        // Decide if this is critical. Original code rejected, so we throw.
+        throw new Error(`Extraction successful, but failed to delete temp file ${tempZipPath}: ${(unlinkError as Error).message}`);
+    }
+
+    // 7. Return the final output filename
+    return outputFileName;
 }
+
+
+
+
+  /**
+   * Downloads a manifest JSON file from the Bungie.net API.
+   *
+   * @param manifestUrl - The relative path of the manifest file on Bungie.net (e.g., Platform/Destiny2/...).
+   * @param filename - Optional. The local filename to save the file as. If not provided, extracts the filename from the manifestUrl.
+   * @returns A Promise that resolves with the actual filename used when the download is complete.
+   * @throws An error if the download or file writing fails.
+   */
+  public async downloadManifestJSON(manifestUrl: string, filename?: string): Promise<string> {
+    // 1. Determine the final output filename
+    //    If 'filename' is provided, use it. Otherwise, extract it from the URL.
+    const finalFilename = filename ? filename : manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1);
+
+    // 2. Construct the full URL
+    const fullUrl = `https://www.bungie.net/${manifestUrl}`;
+    console.log(`Attempting to download manifest from: ${fullUrl}`); // Optional logging
+
+    // 3. Create a writable stream to the target file
+    const outputStream = fs.createWriteStream(finalFilename);
+
+    try {
+      // 4. Use stream.pipeline for robust download and file writing
+      //    It handles piping the download stream (`got.stream`) to the file stream (`outputStream`)
+      //    and correctly manages errors and stream cleanup.
+      console.log(`Saving manifest to: ${finalFilename}`); // Optional logging
+      await pipeline(
+        got.stream(fullUrl), // The readable stream from the HTTP GET request
+        outputStream         // The writable stream to the local file
+      );
+
+      // 5. If pipeline completes successfully, resolve the promise with the filename
+      console.log(`Successfully downloaded and saved manifest to ${finalFilename}`); // Optional logging
+      return finalFilename;
+
+    } catch (error) {
+      // 6. If any error occurs during download or writing, pipeline rejects
+      console.error(`Error downloading or writing manifest from ${fullUrl} to ${finalFilename}:`, error);
+
+      // Optional: Clean up the potentially partially written file on error
+      try {
+        // Check if file exists before attempting to delete
+        if (fs.existsSync(finalFilename)) {
+           await fs.promises.unlink(finalFilename);
+           console.log(`Cleaned up partially written file: ${finalFilename}`); // Optional logging
+        }
+      } catch (cleanupError) {
+        console.error(`Error cleaning up file ${finalFilename}:`, cleanupError);
+      }
+
+      // Re-throw the original error to be handled by the caller
+      throw error;
+    }
+  }
+}
+
+
+
+
