@@ -4,9 +4,7 @@ import HTTPService from '../HttpService';
 import BungieResource from './BungieResource';
 import { ServerResponse } from '../type-definitions/common';
 import { pipeline } from 'stream/promises'; 
-import { promises as fsPromises } from 'fs'; // Import promise-based fs functions
-import * as path from 'path'; // Import path for directory operations if needed
-import StreamZip from 'node-stream-zip'; // Import the default export for the class
+
 
 import {
     BungieMembershipType,
@@ -1598,113 +1596,113 @@ export default class Destiny2Resource extends BungieResource {
    *   console.log(err);
    *  });
    * ```
-   *
-   * @param {string} manifestUrl The url of the manifest you want to download
-   * @param {string} [filename] The filename of the final .json file downloaded
-   * @returns {Promise<string>} When fulfilled returns the path of the saved manifest file
-   * @memberof Destiny2Resource
-   */
-  // public downloadManifestJSON(manifestUrl: string, filename?: string): Promise<string> {
-  //   const outStream = fs.createWriteStream(
-  //     `${filename ? filename : manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1)}`
-  //   );
-  //   return new Promise<string>((resolve, reject) => {
-  //     got
-  //       .stream(`https://www.bungie.net/${manifestUrl}`)
-  //       .pipe(outStream)
-  //       .on('finish', () => {
-  //         resolve(filename);
-  //       });
-  //   });
-  // }
+//    *
+//    * @param {string} manifestUrl The url of the manifest you want to download
+//    * @param {string} [filename] The filename of the final .json file downloaded
+//    * @returns {Promise<string>} When fulfilled returns the path of the saved manifest file
+//    * @memberof Destiny2Resource
+//    */
+//   // public downloadManifestJSON(manifestUrl: string, filename?: string): Promise<string> {
+//   //   const outStream = fs.createWriteStream(
+//   //     `${filename ? filename : manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1)}`
+//   //   );
+//   //   return new Promise<string>((resolve, reject) => {
+//   //     got
+//   //       .stream(`https://www.bungie.net/${manifestUrl}`)
+//   //       .pipe(outStream)
+//   //       .on('finish', () => {
+//   //         resolve(filename);
+//   //       });
+//   //   });
+//   // }
 
 
-  public async downloadManifest(manifestUrl: string, filename?: string): Promise<string> {
-    // 1. Determine filenames
-    const extractedFileName: string = manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1);
-    // Use nullish coalescing (??) for default value - more concise than ternary
-    const outputFileName: string = filename ?? extractedFileName;
-    // Use a more distinct temporary filename to avoid clashes
-    const tempZipPath: string = `${outputFileName}.${Date.now()}.zip.temp`;
+//   public async downloadManifest(manifestUrl: string, filename?: string): Promise<string> {
+//     // 1. Determine filenames
+//     const extractedFileName: string = manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1);
+//     // Use nullish coalescing (??) for default value - more concise than ternary
+//     const outputFileName: string = filename ?? extractedFileName;
+//     // Use a more distinct temporary filename to avoid clashes
+//     const tempZipPath: string = `${outputFileName}.${Date.now()}.zip.temp`;
 
-    // 2. Construct the full download URL
-    const downloadUrl = `https://www.bungie.net/${manifestUrl}`;
+//     // 2. Construct the full download URL
+//     const downloadUrl = `https://www.bungie.net/${manifestUrl}`;
 
-    console.log(`Downloading manifest from ${downloadUrl} to ${tempZipPath}...`);
+//     console.log(`Downloading manifest from ${downloadUrl} to ${tempZipPath}...`);
 
-    // Create a writable stream for the temporary zip file
-    const fileWriteStream = fs.createWriteStream(tempZipPath);
+//     // Create a writable stream for the temporary zip file
+//     const fileWriteStream = fs.createWriteStream(tempZipPath);
 
-    try {
-        // 3. Download the file using stream pipeline
-        // 'pipeline' handles stream errors and ensures streams are properly destroyed
-        await pipeline(
-            got.stream(downloadUrl), // Source stream (download)
-            fileWriteStream           // Destination stream (file)
-        );
-        console.log(`Download complete: ${tempZipPath}`);
+//     try {
+//         // 3. Download the file using stream pipeline
+//         // 'pipeline' handles stream errors and ensures streams are properly destroyed
+//         await pipeline(
+//             got.stream(downloadUrl), // Source stream (download)
+//             fileWriteStream           // Destination stream (file)
+//         );
+//         console.log(`Download complete: ${tempZipPath}`);
 
-        // 4. Process the downloaded zip file
-        // Use the async constructor from node-stream-zip v1.13.0+
-        const zip = new StreamZip.async({ file: tempZipPath });
+//         // 4. Process the downloaded zip file
+//         // Use the async constructor from node-stream-zip v1.13.0+
+//         const zip = new StreamZip.async({ file: tempZipPath });
 
-        try {
-            console.log(`Extracting '${extractedFileName}' from ${tempZipPath} to '${outputFileName}'...`);
+//         try {
+//             console.log(`Extracting '${extractedFileName}' from ${tempZipPath} to '${outputFileName}'...`);
 
-            // Ensure the output directory exists (important if outputFileName includes subdirectories)
-            const outputDir = path.dirname(outputFileName);
-            if (outputDir !== '.') { // Check if outputFileName contains a path
-                 await fsPromises.mkdir(outputDir, { recursive: true });
-            }
+//             // Ensure the output directory exists (important if outputFileName includes subdirectories)
+//             const outputDir = path.dirname(outputFileName);
+//             if (outputDir !== '.') { // Check if outputFileName contains a path
+//                  await fsPromises.mkdir(outputDir, { recursive: true });
+//             }
 
 
-            // Extract the specific file from the zip archive asynchronously
-            const count = await zip.extract(extractedFileName, outputFileName);
-            console.log(`Successfully extracted ${count} entry to ${outputFileName}`);
+//             // Extract the specific file from the zip archive asynchronously
+//             const count = await zip.extract(extractedFileName, outputFileName);
+//             console.log(`Successfully extracted ${count} entry to ${outputFileName}`);
 
-            // Close the zip file asynchronously
-            await zip.close();
-            console.log(`Zip file ${tempZipPath} closed.`);
+//             // Close the zip file asynchronously
+//             await zip.close();
+//             console.log(`Zip file ${tempZipPath} closed.`);
 
-        } catch (zipError) {
-            console.error(`Error processing zip file ${tempZipPath}:`, zipError);
-            // Attempt to close zip even if extraction failed, ignore potential close errors here
-            try { await zip.close(); } catch (closeErr) { /* Ignore */ }
-            // Re-throw the error to be caught by the outer catch block for cleanup
-            throw new Error(`Failed to extract ${extractedFileName} from zip: ${(zipError as Error).message}`);
-        }
+//         } catch (zipError) {
+//             console.error(`Error processing zip file ${tempZipPath}:`, zipError);
+//             // Attempt to close zip even if extraction failed, ignore potential close errors here
+//             try { await zip.close(); } catch (closeErr) { /* Ignore */ }
+//             // Re-throw the error to be caught by the outer catch block for cleanup
+//             throw new Error(`Failed to extract ${extractedFileName} from zip: ${(zipError as Error).message}`);
+//         }
 
-    } catch (error) {
-        console.error(`Operation failed:`, error);
-        // 5. Cleanup attempt 1: Clean up the temp file if download or extraction failed
-        try {
-            // Check if the temp file exists before trying to delete it
-             const stats = await fsPromises.stat(tempZipPath).catch(() => null);
-             if (stats) {
-                 await fsPromises.unlink(tempZipPath);
-                 console.log(`Cleaned up temporary file after error: ${tempZipPath}`);
-             }
-        } catch (cleanupError) {
-            // Log cleanup error but prioritize throwing the original error
-             console.error(`Failed to cleanup temporary file ${tempZipPath} after error:`, cleanupError);
-        }
-        // Re-throw the original error to the caller
-        throw error;
-    }
+//     } catch (error) {
+//         console.error(`Operation failed:`, error);
+//         // 5. Cleanup attempt 1: Clean up the temp file if download or extraction failed
+//         try {
+//             // Check if the temp file exists before trying to delete it
+//              const stats = await fsPromises.stat(tempZipPath).catch(() => null);
+//              if (stats) {
+//                  await fsPromises.unlink(tempZipPath);
+//                  console.log(`Cleaned up temporary file after error: ${tempZipPath}`);
+//              }
+//         } catch (cleanupError) {
+//             // Log cleanup error but prioritize throwing the original error
+//              console.error(`Failed to cleanup temporary file ${tempZipPath} after error:`, cleanupError);
+//         }
+//         // Re-throw the original error to the caller
+//         throw error;
+//     }
 
-    // 6. Cleanup attempt 2: Delete the temporary zip file if everything succeeded
-    try {
-        await fsPromises.unlink(tempZipPath);
-        console.log(`Deleted temporary file: ${tempZipPath}`);
-    } catch (unlinkError) {
-        console.error(`Failed to delete temporary file ${tempZipPath} after successful extraction:`, unlinkError);
-        // Decide if this is critical. Original code rejected, so we throw.
-        throw new Error(`Extraction successful, but failed to delete temp file ${tempZipPath}: ${(unlinkError as Error).message}`);
-    }
+//     // 6. Cleanup attempt 2: Delete the temporary zip file if everything succeeded
+//     try {
+//         await fsPromises.unlink(tempZipPath);
+//         console.log(`Deleted temporary file: ${tempZipPath}`);
+//     } catch (unlinkError) {
+//         console.error(`Failed to delete temporary file ${tempZipPath} after successful extraction:`, unlinkError);
+//         // Decide if this is critical. Original code rejected, so we throw.
+//         throw new Error(`Extraction successful, but failed to delete temp file ${tempZipPath}: ${(unlinkError as Error).message}`);
+//     }
 
-    // 7. Return the final output filename
-    return outputFileName;
-}
+//     // 7. Return the final output filename
+//     return outputFileName;
+// }
 
 
 

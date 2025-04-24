@@ -137,20 +137,28 @@ function App() {
     const downloadManifest = async () => {
       if (oauthServerResponse?.access_token) {
         console.log("Downloading Bungie manifest...");
-        try {
-          const manifest = await traveler.destiny2.downloadManifest("http://www.bungie.net/Platform/Destiny2/Manifest", oauthServerResponse.access_token);
-          // You can store the manifest in local storage or state if needed
-          // localStorage.setItem('bungieManifest', JSON.stringify(manifest));
-          // Or set it in state
-          // setBungieManifest(manifest);
-          console.log("Bungie manifest downloaded:", manifest);
-        } catch (error) {
-          console.error("Error downloading Bungie manifest:", error);
-        }
+        traveler.destiny2
+.getDestinyManifest()
+.then(response => {
+ traveler.destiny2
+   .downloadManifestJSON(response.Response.jsonWorldContentPaths['en'])
+   .then(response => {
+     console.log(response);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+ })
+ .catch(err => {
+  console.log(err);
+ });
       }
     };
     downloadManifest();
   }, [oauthServerResponse, traveler]);
+
+
+  
 
 
 
