@@ -138,7 +138,11 @@ function App() {
       if (oauthServerResponse?.access_token) {
         console.log("Downloading Bungie manifest...");
         try {
-          const manifest = await traveler.destiny2.getDestinyManifest();
+          const manifest = await traveler.destiny2.downloadManifest("http://www.bungie.net/Platform/Destiny2/Manifest", oauthServerResponse.access_token);
+          // You can store the manifest in local storage or state if needed
+          // localStorage.setItem('bungieManifest', JSON.stringify(manifest));
+          // Or set it in state
+          // setBungieManifest(manifest);
           console.log("Bungie manifest downloaded:", manifest);
         } catch (error) {
           console.error("Error downloading Bungie manifest:", error);
@@ -148,55 +152,6 @@ function App() {
     downloadManifest();
   }, [oauthServerResponse, traveler]);
 
-  // // 2b. Save the Manifest to IndexedDB
-  // useEffect(() => {
-  //   const saveManifestToIndexedDB = async () => {
-  //     if (oauthServerResponse?.access_token) {
-  //       console.log("Saving Bungie manifest to IndexedDB...");
-  //       try {
-  //         const manifest = await traveler.destiny2.getDestinyManifest();
-  //         const manifestData = manifest.Response;
-  //         const manifestUrl = manifestData.mobileWorldContentPaths.en;
-  //         const manifestDataResponse = await fetch(manifestUrl);
-  //         const manifestDataBlob = await manifestDataResponse.blob();
-  //         const manifestDataArrayBuffer = await manifestDataBlob.arrayBuffer();
-  //         const manifestDataBuffer = new Uint8Array(manifestDataArrayBuffer);
-  //         const manifestDataString = new TextDecoder().decode(manifestDataBuffer);
-  //         const manifestDataJson = JSON.parse(manifestDataString);
-  //         const manifestDataObject = {
-  //           version: manifestData.version,
-  //           mobileWorldContentPaths: manifestData.mobileWorldContentPaths,
-  //           json: manifestDataJson
-  //         };
-  //         const db = await indexedDB.open('BungieManifestDB', 1);
-  //         db.onupgradeneeded = (event) => {
-  //           const db = event.target.result;
-  //           if (!db.objectStoreNames.contains('manifest')) {
-  //             db.createObjectStore('manifest', { keyPath: 'version' });
-  //           }
-  //         };
-  //         db.onsuccess = (event) => {
-  //           const db = event.target.result;
-  //           const transaction = db.transaction('manifest', 'readwrite');
-  //           const objectStore = transaction.objectStore('manifest');
-  //           const request = objectStore.put(manifestDataObject);
-  //           request.onsuccess = () => {
-  //             console.log("Manifest data saved to IndexedDB successfully.");
-  //           };
-  //           request.onerror = (event) => {
-  //             console.error("Error saving manifest data to IndexedDB:", event);
-  //           };
-  //         };
-  //         db.onerror = (event) => {
-  //           console.error("Error opening IndexedDB:", event);
-  //         };          
-  //       } catch (error) {
-  //         console.error("Error saving manifest to IndexedDB:", error);
-  //       }
-  //     }
-  //   };
-  //   saveManifestToIndexedDB();
-  // }, [oauthServerResponse, traveler]); 
 
 
   // 3. Get Character Profiles
