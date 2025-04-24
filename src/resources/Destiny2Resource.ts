@@ -2,8 +2,6 @@ import * as fs from 'fs';
 import HTTPService from '../HttpService';
 import BungieResource from './BungieResource';
 import { ServerResponse } from '../type-definitions/common';
-import { pipeline } from 'stream/promises'; 
-
 
 import {
     BungieMembershipType,
@@ -1616,178 +1614,64 @@ export default class Destiny2Resource extends BungieResource {
 //   // }
 
 
-//   public async downloadManifest(manifestUrl: string, filename?: string): Promise<string> {
-//     // 1. Determine filenames
-//     const extractedFileName: string = manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1);
-//     // Use nullish coalescing (??) for default value - more concise than ternary
-//     const outputFileName: string = filename ?? extractedFileName;
-//     // Use a more distinct temporary filename to avoid clashes
-//     const tempZipPath: string = `${outputFileName}.${Date.now()}.zip.temp`;
-
-//     // 2. Construct the full download URL
-//     const downloadUrl = `https://www.bungie.net/${manifestUrl}`;
-
-//     console.log(`Downloading manifest from ${downloadUrl} to ${tempZipPath}...`);
-
-//     // Create a writable stream for the temporary zip file
-//     const fileWriteStream = fs.createWriteStream(tempZipPath);
-
-//     try {
-//         // 3. Download the file using stream pipeline
-//         // 'pipeline' handles stream errors and ensures streams are properly destroyed
-//         await pipeline(
-//             got.stream(downloadUrl), // Source stream (download)
-//             fileWriteStream           // Destination stream (file)
-//         );
-//         console.log(`Download complete: ${tempZipPath}`);
-
-//         // 4. Process the downloaded zip file
-//         // Use the async constructor from node-stream-zip v1.13.0+
-//         const zip = new StreamZip.async({ file: tempZipPath });
-
-//         try {
-//             console.log(`Extracting '${extractedFileName}' from ${tempZipPath} to '${outputFileName}'...`);
-
-//             // Ensure the output directory exists (important if outputFileName includes subdirectories)
-//             const outputDir = path.dirname(outputFileName);
-//             if (outputDir !== '.') { // Check if outputFileName contains a path
-//                  await fsPromises.mkdir(outputDir, { recursive: true });
-//             }
-
-
-//             // Extract the specific file from the zip archive asynchronously
-//             const count = await zip.extract(extractedFileName, outputFileName);
-//             console.log(`Successfully extracted ${count} entry to ${outputFileName}`);
-
-//             // Close the zip file asynchronously
-//             await zip.close();
-//             console.log(`Zip file ${tempZipPath} closed.`);
-
-//         } catch (zipError) {
-//             console.error(`Error processing zip file ${tempZipPath}:`, zipError);
-//             // Attempt to close zip even if extraction failed, ignore potential close errors here
-//             try { await zip.close(); } catch (closeErr) { /* Ignore */ }
-//             // Re-throw the error to be caught by the outer catch block for cleanup
-//             throw new Error(`Failed to extract ${extractedFileName} from zip: ${(zipError as Error).message}`);
-//         }
-
-//     } catch (error) {
-//         console.error(`Operation failed:`, error);
-//         // 5. Cleanup attempt 1: Clean up the temp file if download or extraction failed
-//         try {
-//             // Check if the temp file exists before trying to delete it
-//              const stats = await fsPromises.stat(tempZipPath).catch(() => null);
-//              if (stats) {
-//                  await fsPromises.unlink(tempZipPath);
-//                  console.log(`Cleaned up temporary file after error: ${tempZipPath}`);
-//              }
-//         } catch (cleanupError) {
-//             // Log cleanup error but prioritize throwing the original error
-//              console.error(`Failed to cleanup temporary file ${tempZipPath} after error:`, cleanupError);
-//         }
-//         // Re-throw the original error to the caller
-//         throw error;
-//     }
-
-//     // 6. Cleanup attempt 2: Delete the temporary zip file if everything succeeded
-//     try {
-//         await fsPromises.unlink(tempZipPath);
-//         console.log(`Deleted temporary file: ${tempZipPath}`);
-//     } catch (unlinkError) {
-//         console.error(`Failed to delete temporary file ${tempZipPath} after successful extraction:`, unlinkError);
-//         // Decide if this is critical. Original code rejected, so we throw.
-//         throw new Error(`Extraction successful, but failed to delete temp file ${tempZipPath}: ${(unlinkError as Error).message}`);
-//     }
-
-//     // 7. Return the final output filename
-//     return outputFileName;
-// }
-
-
-
-
-public async downloadManifestJSON(manifestUrl: string, filename?: string): Promise<string> {
-  // 1. Determine the final output filename
-  const finalFilename = filename ? filename : manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1);
-
-  // 2. Construct the full URL
+/**
+ * Attempts to download a manifest file directly from Bungie.net and trigger
+ * a browser download prompt.
+ * NOTE: Assumes Bungie.net API allows CORS requests from your origin.
+ *
+ * @param manifestUrl - The relative path of the manifest file on Bungie.net.
+ * @param filename - Optional. The local filename for the download prompt.
+ * @returns A Promise that resolves when the download is initiated, or rejects on error.
+ */
+public async downloadManifestForBrowser(manifestUrl: string, filename?: string): Promise<void> {
+  const finalFilename = filename || manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1);
   const fullUrl = `https://www.bungie.net/${manifestUrl}`;
-  console.log(`Attempting to download manifest from: ${fullUrl}`);
-
-  // Declare response outside try block for potential use in error messages if needed,
-  // but primarily handle within try.
-  let response: Response | null = null;
-
-  // 3. Create a writable stream *before* the try block to ensure it's available for cleanup
-  //    even if fetch itself fails immediately. However, opening it only on success might be cleaner
-  //    Let's create it inside the try block just before piping, similar to original logic.
-  const outputStream = fs.createWriteStream(finalFilename);
-
+  console.log(`Attempting direct download from: ${fullUrl}`);
 
   try {
-    // 4. Perform the fetch request
-    response = await fetch(fullUrl);
+    // 1. Fetch directly from the browser
+    const response = await fetch(fullUrl); // Add headers if needed, but NO secret keys here
 
-    // 5. Check if the fetch request was successful (status code 200-299)
+    // 2. Check if the request was successful (status 200-299) and handle potential CORS issues
     if (!response.ok) {
+       if (response.type === 'opaque') {
+         throw new Error(`NetworkError: Request to ${fullUrl} failed. This might be a CORS issue. The server needs to send 'Access-Control-Allow-Origin' headers.`);
+       }
       throw new Error(`HTTP error! Status: ${response.status} ${response.statusText} for URL: ${fullUrl}`);
     }
 
-    // 6. Check if the response body exists (it should for a successful GET)
-    if (!response.body) {
-        throw new Error(`Response body is null for URL: ${fullUrl}`);
+    // 3. Get the response body as a Blob
+    const blob = await response.blob();
+
+    // 4. Create a temporary URL representing the Blob data
+    const objectUrl = window.URL.createObjectURL(blob);
+
+    // 5. Create a temporary anchor element to trigger the download
+    const link = document.createElement('a');
+    link.href = objectUrl;
+    link.setAttribute('download', finalFilename); // Suggest a filename
+    document.body.appendChild(link); // Append link temporarily
+
+    // 6. Programmatically click the link
+    link.click();
+
+    // 7. Clean up
+    console.log(`Download initiated for: ${finalFilename}`);
+    if (link.parentNode) {
+        link.parentNode.removeChild(link);
     }
-
-    // 7. Use stream.pipeline for robust download and file writing
-    //    It pipes the download stream (response.body) to the file stream (outputStream)
-    //    and correctly manages errors and stream cleanup.
-    console.log(`Saving manifest to: ${finalFilename}`);
-
-    // response.body is a Web API ReadableStream.
-    // pipeline (from stream/promises) in modern Node.js can often handle this.
-    // We use a type assertion here for TypeScript.
-    // Alternative for explicit conversion:
-    // import { Readable } from 'stream';
-    // await pipeline(Readable.fromWeb(response.body), outputStream);
-    await pipeline(
-      response.body as unknown as NodeJS.ReadableStream, // Cast needed as pipeline expects Node streams
-      outputStream
-    );
-
-    // 8. If pipeline completes successfully, resolve the promise with the filename
-    console.log(`Successfully downloaded and saved manifest to ${finalFilename}`);
-    return finalFilename;
+    window.URL.revokeObjectURL(objectUrl);
 
   } catch (error) {
-    // 9. If any error occurs (fetch, bad status, null body, pipeline error)
-    console.error(`Error downloading or writing manifest from ${fullUrl} to ${finalFilename}:`, error);
-
-    // Optional: Clean up the potentially partially written file on error
-    try {
-      // Ensure the stream is closed before attempting deletion
-      if (!outputStream.closed) {
-        outputStream.close();
-      }
-      // Check if file exists before attempting to delete
-      // Use fs.promises.stat and catch instead of existsSync for async consistency
-       try {
-         await fs.promises.stat(finalFilename); // Check existence
-         await fs.promises.unlink(finalFilename); // Delete if exists
-         console.log(`Cleaned up potentially partially written file: ${finalFilename}`);
-       } catch (statError: any) {
-         if (statError.code !== 'ENOENT') { // Ignore 'file not found' errors during cleanup
-           console.error(`Error checking/deleting file ${finalFilename} during cleanup:`, statError);
-         }
-       }
-    } catch (cleanupError) {
-      // Catch errors during stream closing or file operations
-      console.error(`Error during cleanup for file ${finalFilename}:`, cleanupError);
-    }
-
-    // Re-throw the original error to be handled by the caller
+    console.error(`Direct download failed for ${fullUrl}:`, error);
+    // Consider showing this error to the user in the UI
     throw error;
   }
 }
+
+
+
+
 }
 
 

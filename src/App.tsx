@@ -141,7 +141,7 @@ function App() {
 .getDestinyManifest()
 .then(response => {
  traveler.destiny2
-   .downloadManifestJSON(response.Response.jsonWorldContentPaths['en'])
+   .downloadManifestForBrowser(response.Response.jsonWorldContentPaths['en'])
    .then(response => {
      console.log(response);
     })
