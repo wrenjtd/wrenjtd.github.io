@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import HTTPService from '../HttpService';
 import BungieResource from './BungieResource';
 import { ServerResponse } from '../type-definitions/common';
