@@ -95,10 +95,9 @@ function App() {
     const authorizationCodeChecker = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
-
-        traveler.destiny2.fetchAPI();
       if (code) {
         try {
+          traveler.destiny2.fetchAPI();
           const oAuthResponse = await traveler.oauth.getAccessToken(
             code,
             import.meta.env.VITE_BUNGIE_CLIENT_ID,
