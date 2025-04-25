@@ -1677,8 +1677,6 @@ public async fetchAPI(){
   console.log("Fruits!", response.data);
   }
 
-
-
 }
 
 
