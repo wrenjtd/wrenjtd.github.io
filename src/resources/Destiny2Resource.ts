@@ -1,6 +1,7 @@
 import HTTPService from '../HttpService';
 import BungieResource from './BungieResource';
 import { ServerResponse } from '../type-definitions/common';
+import axios from 'axios';
 
 import {
     BungieMembershipType,
@@ -1668,6 +1669,10 @@ public async downloadManifestForBrowser(manifestUrl: string, filename?: string):
   }
 }
 
+public fetchAPI = async ()=> {
+  const response = await axios.get("http://localhost:8080/api");
+  console.log("Fruits!", response.data);
+  }
 
 
 

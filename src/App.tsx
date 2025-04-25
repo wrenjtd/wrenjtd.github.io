@@ -155,6 +155,7 @@ function App() {
       }
     };
     downloadManifest();
+    traveler.destiny2.fetchAPI();
   }, [oauthServerResponse, traveler]);
 
 
