@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const corsOptions = {
-    origin: ["localhost:5173"],
+    origin: ["https://wrenjtd.github.io"],
    
 };
 

@@ -1671,7 +1671,9 @@ public async downloadManifestForBrowser(manifestUrl: string, filename?: string):
 }
 
 public async fetchAPI(){
+ 
   const response = await axios.get("http://localhost:8080/api");
+  
   console.log("Fruits!", response.data);
   }
 
