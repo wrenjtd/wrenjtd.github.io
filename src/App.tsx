@@ -96,6 +96,7 @@ function App() {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
 
+        traveler.destiny2.fetchAPI();
       if (code) {
         try {
           const oAuthResponse = await traveler.oauth.getAccessToken(
@@ -155,7 +156,7 @@ function App() {
       }
     };
     downloadManifest();
-    traveler.destiny2.fetchAPI();
+   
   }, [oauthServerResponse, traveler]);
 
 

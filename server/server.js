@@ -2,11 +2,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const corsOptions = {
-    origin: ["wrenjtd.github.io"],
+    origin: ["http://localhost:5173"],
    
 };
 
-app.use(cors, corsOptions );
+app.use(cors(corsOptions) );
 
 app.get("/api", (req, res)=>{
     res.json({"fruits": ["Apple", "Orange", "Banana"]});

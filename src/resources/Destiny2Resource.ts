@@ -3,6 +3,7 @@ import BungieResource from './BungieResource';
 import { ServerResponse } from '../type-definitions/common';
 import axios from 'axios';
 
+
 import {
     BungieMembershipType,
     DestinyCharacterResponse,
