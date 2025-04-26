@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as sqlite from 'sqlite3';
+import got from 'got';
 
 /**
  * Class for accessing the manifest file
@@ -39,4 +40,53 @@ export default class Manifest {
       });
     });
   }
+
+   /**
+   * Download the specified json manifest file
+   *
+   * ```js
+   * import Traveler from './Traveler';
+   *
+   * let traveler = new Traveler({
+   *  apikey: 'apikey',
+   *  userAgent: 'useragent', //used to identify your request to the API
+   * });
+   *
+   * traveler.destiny2
+   * .getDestinyManifest()
+   * .then(response => {
+   *  traveler.destiny2
+   *    .downloadManifestJSON(response.Response.jsonWorldContentPaths['en'])
+   *    .then(response => {
+   *      console.log(response);
+   *     })
+   *     .catch(err => {
+   *       console.log(err);
+   *     });
+   *  })
+   *  .catch(err => {
+   *   console.log(err);
+   *  });
+   * ```
+   *
+   * @param {string} manifestUrl The url of the manifest you want to download
+   * @param {string} [filename] The filename of the final .json file downloaded
+   * @returns {Promise<string>} When fulfilled returns the path of the saved manifest file
+   * @memberof Destiny2Resource
+   */
+   public downloadManifestJSON(manifestUrl: string, filename: string): Promise<string> {
+    const outStream = fs.createWriteStream(
+      `${filename ? filename : manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1)}`
+    );
+    console.log("Downloading Bungie manifest...");
+    return new Promise<string>((resolve, reject) => {
+      got
+        .stream(`https://www.bungie.net/${manifestUrl}`)
+        .pipe(outStream)
+        .on('finish', () => {
+          resolve(filename);
+        });
+    });
+  }
+
 }
