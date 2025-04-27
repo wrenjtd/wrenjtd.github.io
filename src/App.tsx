@@ -132,32 +132,32 @@ function App() {
     getBungieMembershipData();
   }, [oauthServerResponse, traveler]);
 
-  //2a. Download the Bungie Manifest
+//   //2a. Download the Bungie Manifest
 
-  useEffect(() => {
-    const downloadManifest = async () => {
-      if (oauthServerResponse?.access_token) {
-        console.log("Downloading Bungie manifest...");
-        traveler.destiny2
-.getDestinyManifest()
-.then(response => {
- traveler.destiny2
-   .downloadManifestForBrowser(response.Response.jsonWorldContentPaths['en'])
-   .then(response => {
-     console.log(response);
-    })
-    .catch(err => {
-      console.log(err);
-    });
- })
- .catch(err => {
-  console.log(err);
- });
-      }
-    };
-    downloadManifest();
+//   useEffect(() => {
+//     const downloadManifest = async () => {
+//       if (oauthServerResponse?.access_token) {
+//         console.log("Downloading Bungie manifest...");
+//         traveler.destiny2
+// .getDestinyManifest()
+// .then(response => {
+//  traveler.destiny2
+//    .downloadManifestForBrowser(response.Response.jsonWorldContentPaths['en'])
+//    .then(response => {
+//      console.log(response);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     });
+//  })
+//  .catch(err => {
+//   console.log(err);
+//  });
+//       }
+//     };
+//     downloadManifest();
    
-  }, [oauthServerResponse, traveler]);
+//   }, [oauthServerResponse, traveler]);
 
 
   
