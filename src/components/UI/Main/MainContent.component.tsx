@@ -42,32 +42,29 @@ const MainContentComponent = () => {
             </div>
 
           </div>
-     
+
           <div>
 
             {/* Character emblem + overlays */}
             <div className="m-2 grid grid-cols-3">
               {/* <div className="flex justify-center bg-cover bg-center rounded-lg" > */}
-                {/* <div className={`bg-[url('https://bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')] bg-cover rounded-lg`} >
+              {/* <div className={`bg-[url('https://bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')] bg-cover rounded-lg`} >
 
                 </div> */}
 
-                <div style={{ backgroundImage: `url('https://bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }} className="bg-cover rounded-lg" >
-
-                </div>
-              {/* </div> */}
-              <div className="flex justify-center bg-cover bg-center rounded-lg">
-                <img src={`https://www.bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}`} alt="emblem" className="h-12 rounded-lg" />
+              <div style={{ backgroundImage: `url('https://bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="bg-cover rounded-lg" >
               </div>
-              <div className="flex justify-center bg-cover bg-center rounded-lg" >
-                <img src={`https://www.bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[2]].emblemBackgroundPath}`} alt="emblem" className="h-12 rounded-lg" />
+              {/* </div> */}
+              <div style={{ backgroundImage: `url('https://bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }} className="grid grid-cols-4 justify-center bg-cover bg-center rounded-lg">
+              </div>
+              <div style={{ backgroundImage: `url('https://bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[2]].emblemBackgroundPath}')` }} className="grid  grid-cols-4 justify-center bg-cover bg-center rounded-lg" >
               </div>
             </div>
 
             <div>
               <div className="grid grid-cols-3">
-                 
-                 {/* Character 1 equipped items */}
+
+                {/* Character 1 equipped items */}
                 <div className="flex mx-auto">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 mr-10">
@@ -95,7 +92,7 @@ const MainContentComponent = () => {
 
                             </div>
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
-                              {item?.displayProperties?.name || "Weapon Details"}<br/>
+                              {item?.displayProperties?.name || "Weapon Details"}<br />
                               {item?.itemTypeDisplayName || "Weapon Type"}
                             </span>
                           </a>
@@ -129,7 +126,7 @@ const MainContentComponent = () => {
                               </div>
                             </div>
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
-                              {item?.displayProperties?.name || "Armor Details"}<br/>
+                              {item?.displayProperties?.name || "Armor Details"}<br />
                               {item?.itemTypeDisplayName || "Armor Type"}
                             </span>
                           </a>
@@ -167,7 +164,7 @@ const MainContentComponent = () => {
 
                             </div>
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
-                              {item?.displayProperties?.name || "Weapon Details"}<br/>
+                              {item?.displayProperties?.name || "Weapon Details"}<br />
                               {item?.itemTypeDisplayName || "Weapon Type"}
                             </span>
                           </a>
@@ -201,7 +198,7 @@ const MainContentComponent = () => {
                               </div>
                             </div>
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
-                              {item?.displayProperties?.name || "Armor Details"}<br/>
+                              {item?.displayProperties?.name || "Armor Details"}<br />
                               {item?.itemTypeDisplayName || "Armor Type"}
                             </span>
                           </a>
@@ -240,7 +237,7 @@ const MainContentComponent = () => {
 
                             {/* Tooltip */}
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
-                              {item?.displayProperties?.name || "Weapon Details"}<br/>
+                              {item?.displayProperties?.name || "Weapon Details"}<br />
                               {item?.itemTypeDisplayName || "Weapon Type"}
                             </span>
                           </a>
@@ -276,7 +273,7 @@ const MainContentComponent = () => {
 
                             {/* Tooltip */}
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
-                              {item?.displayProperties?.name || "Armor Details"}<br/>
+                              {item?.displayProperties?.name || "Armor Details"}<br />
                               {item?.itemTypeDisplayName || "Armor Type"}
                             </span>
                           </a>
