@@ -88,8 +88,6 @@ function App() {
   const [userArmor, setUserArmor] = useState<DestinyInventoryItemDefinition[][]>([]);
 
 
-  // --- Effects ---
-
   // 1. Check for OAuth Code 
   useEffect(() => {
     const authorizationCodeChecker = async () => {

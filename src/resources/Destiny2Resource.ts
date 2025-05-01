@@ -1532,47 +1532,13 @@ export default class Destiny2Resource extends BungieResource {
    * @returns {Promise<string>} When fulfilled returns the path of the saved manifest file
    * @memberof Destiny2Resource
    */
-  // public downloadManifest(manifestUrl: string, filename?: string): Promise<string> {
-  //   const downloadFileName = manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1);
-  //   const outputFileName = `${filename ? filename : manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1)}`;
 
-  //   const outStream = fs.createWriteStream(`${downloadFileName}.zip`);
 
-  //   return new Promise<string>((resolve, reject) => {
-  //     got
-  //       .stream(`https://www.bungie.net/${manifestUrl}`)
-  //       .pipe(outStream)
-  //       .on('finish', () => {
-  //         const zip = new SZIP({
-  //           file: `${downloadFileName}.zip`,
-  //           storeEntries: true
-  //         });
-
-  //         zip.on('ready', () => {
-  //           zip.extract(downloadFileName, outputFileName, (err: object, count: number) => {
-  //             if (err) {
-  //               reject(new Error('Error extracting zip'));
-  //             } else {
-  //               zip.close();
-  //               fs.unlink(`${downloadFileName}.zip`, err => {
-  //                 if (err) {
-  //                   reject(new Error('Error deleting .zip file'));
-  //                 }
-  //                 resolve(outputFileName);
-  //               });
-  //             }
-  //           });
-  //         });
-  //       });
-  //   });
-  // }
-
- 
+  
 
 /**
  * Attempts to download a manifest file directly from Bungie.net and trigger
  * a browser download prompt.
- * NOTE: Assumes Bungie.net API allows CORS requests from your origin.
  *
  * @param manifestUrl - The relative path of the manifest file on Bungie.net.
  * @param filename - Optional. The local filename for the download prompt.
