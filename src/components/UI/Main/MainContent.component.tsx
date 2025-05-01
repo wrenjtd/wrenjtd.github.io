@@ -48,7 +48,7 @@ const MainContentComponent = () => {
             {/* Character emblem + overlays */}
             <div className="m-2 grid grid-cols-3">
               
-              <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="rounded-lg" >
+              <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="rounded-lg h-12" >
               </div>
               
               <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }} className=" rounded-lg">
