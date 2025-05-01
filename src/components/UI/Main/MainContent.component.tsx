@@ -48,7 +48,11 @@ const MainContentComponent = () => {
             {/* Character emblem + overlays */}
             <div className="m-2 grid grid-cols-3">
               {/* <div className="flex justify-center bg-cover bg-center rounded-lg" > */}
-                <div className={`bg-[url('https://bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')] bg-cover rounded-lg`}>
+                {/* <div className={`bg-[url('https://bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')] bg-cover rounded-lg`} >
+
+                </div> */}
+
+                <div style={{ backgroundImage: `url('https://bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }} className="bg-cover rounded-lg" >
 
                 </div>
               {/* </div> */}
