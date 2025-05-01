@@ -48,7 +48,7 @@ const MainContentComponent = () => {
             {/* Character emblem + overlays */}
             <div className="m-2 grid grid-cols-3">
               <div className="flex justify-center bg-cover bg-center rounded-lg" >
-                <div className={`grid grid-cols-3 bg-[url('${`https://www.bungie.net/${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}`}')] bg-cover bg-center rounded-lg`}>
+                <div className={`grid grid-cols-3 bg-[url('${`https://www.bungie.net/img/theme/destiny/icons/character.png`}')] bg-cover bg-center rounded-lg`}>
 
                 </div>
               </div>
