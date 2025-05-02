@@ -26,7 +26,7 @@ const MainContentComponent = () => {
 
               {/* Social Media stuff */}
               <div className="flow-root">
-                <ul className="-m-1 flex flex-wrap mb-2.5">
+                <ul className=" flex flex-wrap mb-2.5">
                   <li className="p-1 leading-none">
                     <a href="#" className="text-xs font-medium text-gray-300"> Twitter </a>
                   </li>
