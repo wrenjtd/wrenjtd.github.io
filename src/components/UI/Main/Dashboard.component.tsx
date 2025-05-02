@@ -1,6 +1,6 @@
 import HeaderContentComponent from "../HeaderContent.component";
 // import LeftbarBoxComponent from "../LeftbarBox.component";
-import FooterBoxComponent from "../FooterBox.component";
+// import FooterBoxComponent from "../FooterBox.component";
 import MainContentComponent from "./MainContent.component";
 import { Routes, Route } from "react-router-dom";
 import PickerComponent from "./Picker.component";
@@ -22,7 +22,7 @@ export default function Dashboard() {
         {/* <LeftbarBoxComponent membershipData={membershipData} /> */}
 
       
-          <FooterBoxComponent></FooterBoxComponent>
+          {/* <FooterBoxComponent></FooterBoxComponent> */}
         
 
       </div>
