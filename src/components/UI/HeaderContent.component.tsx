@@ -61,7 +61,7 @@ const HeaderContentComponent = () => {
             <div className="flex h-16 items-center mr-5 ml-5">
                 <Menu as="div" className="relative ml-3">
                     <div>
-                        <MenuButton className="group relative inline-flex items-center justify-center rounded-md bg-transparent p-2 hover:text-orange-600 focus:text-orange-600 focus:outline-hidden">
+                        <MenuButton className="group relative inline-flex items-center justify-center rounded-md bg-transparent p-2 text-white  hover:text-orange-600 focus:text-orange-600 focus:outline-hidden">
                             <span className="absolute inset-1.5" />
                             <span className="sr-only">Open user menu</span>
 
@@ -136,7 +136,7 @@ const HeaderContentComponent = () => {
                                     <MenuButton className="relative flex max-w-xs items-center rounded-full bg-transparent   hover:text-orange-600 focus:text-orange-600  focus:outline-hidden">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
-                                        <Cog6ToothIcon aria-hidden="true" className="size-6 hover:text-orange-600 focus:text-orange-600 text-white " />
+                                        <Cog6ToothIcon aria-hidden="true" className="size-6 text-white  hover:text-orange-600 focus:text-orange-600 " />
                                     </MenuButton>
                                 </div>
                                 <MenuItems
