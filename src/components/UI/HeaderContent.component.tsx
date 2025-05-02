@@ -56,7 +56,7 @@ const HeaderContentComponent = () => {
 
     return (
 
-        <Disclosure as="nav" className="bg-transparent">
+        <Disclosure as="nav" className="bg-gray-800">
             {/* Visible Header Parent */}
             <div className="flex h-16 items-center mr-5 ml-5">
                 <Menu as="div" className="relative ml-3">
