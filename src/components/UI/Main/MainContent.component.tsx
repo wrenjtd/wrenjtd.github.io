@@ -11,11 +11,12 @@ const MainContentComponent = () => {
 
 
   return (
-   
-        <article className="bg-gray-800">
 
-          {/* Profile information */}
-          {user.bungieMembershipData && <div>
+    <article className="bg-gray-800">
+
+      {/* Profile information */}
+      {user.bungieMembershipData &&
+        <div>
           <div className="flex flex-col gap-4">
             <div>
               <div className="flex items-center gap-2">
@@ -46,7 +47,7 @@ const MainContentComponent = () => {
           <div>
 
             {/* Character emblem + overlays */}
-            <div className="m-2 grid grid-cols-3">
+            <div className="grid grid-cols-3">
 
               <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="grid grid-cols-3 rounded-lg h-12 max-w-3xs" >
               </div>
@@ -282,11 +283,11 @@ const MainContentComponent = () => {
             </div>
 
           </div>
-          </div>}
-          
+        </div>}
 
-        </article>
- 
+
+    </article>
+
   )
 
 };
