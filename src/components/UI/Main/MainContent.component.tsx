@@ -134,7 +134,7 @@ const MainContentComponent = () => {
                 </div>
 
                 {/* Character 2 equipped items */}
-                <div className="flex mx-auto">
+                {/* <div className="flex mx-auto">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 mr-10">
 
@@ -203,10 +203,10 @@ const MainContentComponent = () => {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Character 3 equipped items */}
-                <div className="flex mx-auto">
+               {/* <div className="flex mx-auto">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 mr-10">
                       {user?.userWeapons[2]?.map((item, index) => (
@@ -232,7 +232,7 @@ const MainContentComponent = () => {
 
                             </div>
 
-                            {/* Tooltip */}
+                           
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
                               {item?.displayProperties?.name || "Weapon Details"}<br />
                               {item?.itemTypeDisplayName || "Weapon Type"}
@@ -268,7 +268,7 @@ const MainContentComponent = () => {
                               </div>
                             </div>
 
-                            {/* Tooltip */}
+                           
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
                               {item?.displayProperties?.name || "Armor Details"}<br />
                               {item?.itemTypeDisplayName || "Armor Type"}
@@ -278,7 +278,9 @@ const MainContentComponent = () => {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </div>  */}
+
+
               </div>
             </div>
 
