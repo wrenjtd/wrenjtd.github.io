@@ -11,9 +11,9 @@ const MainContentComponent = () => {
 
 
   return (
-    <div className="flex flex-1">
+    <div className="">
       {user.bungieMembershipData &&
-        <article className=" bg-gray-800 size-full">
+        <article className="bg-gray-800">
 
           {/* Profile information */}
           <div className="flex flex-col gap-4">
