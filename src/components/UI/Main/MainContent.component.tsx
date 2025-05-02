@@ -62,7 +62,7 @@ const MainContentComponent = () => {
               <div className="grid grid-cols-3">
 
                 {/* Character 1 equipped items */}
-                {/* <div className="flex mx-auto">
+                <div className="flex mx-auto">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 mr-10">
 
@@ -131,7 +131,7 @@ const MainContentComponent = () => {
                       ))}
                     </ul>
                   </div>
-                </div> */}
+                </div>
 
                 {/* Character 2 equipped items */}
                 {/* <div className="flex mx-auto">
