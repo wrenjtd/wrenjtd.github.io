@@ -138,7 +138,7 @@ const MainContentComponent = () => {
               <div className="grid grid-cols-3">
 
                 {/* Character 1 equipped items */}
-                <div className="flex mx-auto gap-5">
+                <div className="flex mx-auto gap-x-5">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 ">
 
