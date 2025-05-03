@@ -57,7 +57,7 @@ const MainContentComponent = () => {
                       Hunter
                     </div>
 
-                    <div className="col-start-3 col-end-4">
+                    <div className="">
                       2034
                     </div>
 
@@ -77,7 +77,7 @@ const MainContentComponent = () => {
                       Hunter
                     </div>
 
-                    <div className="col-start-3 col-end-4">
+                    <div className="">
                       2034
                     </div>
 
@@ -96,7 +96,7 @@ const MainContentComponent = () => {
                       Hunter
                     </div>
 
-                    <div className="col-start-3 col-end-4">
+                    <div className="">
                       2034
                     </div>
 
