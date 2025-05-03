@@ -54,13 +54,13 @@ const MainContentComponent = () => {
                 </div>
               </div>
 
-              <div className="max-w-[255px] w-60 text-center">
+              <div className="max-w-[255px] w-60">
                 <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }} className=" mx-auto rounded-lg h-12 ">
                 </div>
               </div>
 
 
-              <div className="max-w-[255px] w-60 text-center">
+              <div className="max-w-[255px] w-60">
                 <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[2]].emblemBackgroundPath}')` }} className=" mx-auto rounded-lg h-12" >
                 </div>
               </div>
