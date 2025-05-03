@@ -47,15 +47,22 @@ const MainContentComponent = () => {
           <div>
 
             {/* Character emblem + overlays */}
-            <div className="grid grid-cols-3 justify-center">
+            <div className="grid grid-cols-3  ">
 
-              <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="grid grid-cols-3 rounded-lg h-12" >
+              <div className="max-w-[255px] w-60">
+                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="grid grid-cols-3 rounded-lg h-12" >
+                </div>
               </div>
 
-              <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }} className=" grid grid-cols-3 rounded-lg h-12 ">
+              <div className="max-w-[255px] w-60">
+                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }} className=" grid grid-cols-3 rounded-lg h-12 ">
+                </div>
               </div>
 
-              <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[2]].emblemBackgroundPath}')` }} className=" grid grid-cols-3 rounded-lg h-12" >
+
+              <div className="max-w-[255px] w-60">
+                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[2]].emblemBackgroundPath}')` }} className=" grid grid-cols-3 rounded-lg h-12" >
+                </div>
               </div>
             </div>
 
@@ -207,7 +214,7 @@ const MainContentComponent = () => {
                 </div> */}
 
                 {/* Character 3 equipped items */}
-               {/* <div className="flex mx-auto">
+                {/* <div className="flex mx-auto">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 mr-10">
                       {user?.userWeapons[2]?.map((item, index) => (
