@@ -49,19 +49,19 @@ const MainContentComponent = () => {
             {/* Character emblem + overlays */}
             <div className="grid grid-cols-3  ">
 
-              <div className="max-w-[255px] w-60 text-center">
-                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="grid grid-cols-3 rounded-lg h-12" >
+              <div className="max-w-[255px] w-60">
+                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="rounded-lg h-12 mx-auto" >
                 </div>
               </div>
 
               <div className="max-w-[255px] w-60 text-center">
-                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }} className=" grid grid-cols-3 rounded-lg h-12 ">
+                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }} className=" mx-auto rounded-lg h-12 ">
                 </div>
               </div>
 
 
               <div className="max-w-[255px] w-60 text-center">
-                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[2]].emblemBackgroundPath}')` }} className=" grid grid-cols-3 rounded-lg h-12" >
+                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[2]].emblemBackgroundPath}')` }} className=" mx-auto rounded-lg h-12" >
                 </div>
               </div>
             </div>
