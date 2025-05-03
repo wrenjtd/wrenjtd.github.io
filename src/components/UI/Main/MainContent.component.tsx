@@ -53,11 +53,11 @@ const MainContentComponent = () => {
                 <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="rounded-lg h-12 mx-auto grid grid-cols-3" >
                   <div className="flex col-start-2 col-end-4 ">
 
-                    <div className=" ">
-                      Hunter
+                    <div className="text-white">
+                      Warlock
                     </div>
 
-                    <div className="">
+                    <div className="text-yellow-400">
                       2034
                     </div>
 
@@ -68,41 +68,46 @@ const MainContentComponent = () => {
               </div>
 
               <div className="max-w-[255px] w-60">
-                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }} className=" mx-auto rounded-lg h-12 grid grid-cols-3 ">
-                </div>
+                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }}
+                  className=" mx-auto rounded-lg h-12 grid grid-cols-3 ">
 
-                <div className="flex col-start-2 col-end-4 ">
 
-                    <div className=" ">
+                  <div className="flex col-start-2 col-end-4 ">
+
+                    <div className="text-white">
                       Hunter
                     </div>
 
-                    <div className="">
+                    <div className="text-yellow-400">
                       2034
                     </div>
 
                   </div>
+                </div>
 
               </div>
 
 
               <div className="max-w-[255px] w-60">
-                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[2]].emblemBackgroundPath}')` }} className=" mx-auto rounded-lg h-12 grid grid-cols-3" >
-                </div>
+                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[2]].emblemBackgroundPath}')` }}
+                  className=" mx-auto rounded-lg h-12 grid grid-cols-3" >
 
-                <div className="flex col-start-2 col-end-4 ">
+                  <div className="flex col-start-2 col-end-4 ">
 
-                    <div className=" ">
-                      Hunter
+                    <div className="text-white">
+                      Titan
                     </div>
 
-                    <div className="">
+                    <div className="text-yellow-400">
                       2034
                     </div>
 
                   </div>
+                </div>
+
 
               </div>
+
             </div>
 
             <div>
@@ -279,7 +284,7 @@ const MainContentComponent = () => {
 
                             </div>
 
-                           
+
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
                               {item?.displayProperties?.name || "Weapon Details"}<br />
                               {item?.itemTypeDisplayName || "Weapon Type"}
@@ -315,7 +320,7 @@ const MainContentComponent = () => {
                               </div>
                             </div>
 
-                           
+
                             <span className="absolute bottom-1 left-1 z-10 hidden group-hover:block w-max max-w-xs bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-none shadow-lg whitespace-nowrap">
                               {item?.displayProperties?.name || "Armor Details"}<br />
                               {item?.itemTypeDisplayName || "Armor Type"}
@@ -325,7 +330,7 @@ const MainContentComponent = () => {
                       ))}
                     </ul>
                   </div>
-                </div> 
+                </div>
 
 
               </div>
