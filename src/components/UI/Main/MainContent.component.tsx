@@ -51,31 +51,57 @@ const MainContentComponent = () => {
 
               <div className="max-w-[255px] w-60">
                 <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="rounded-lg h-12 mx-auto grid grid-cols-3" >
-                <div className="flex ">
+                  <div className="flex col-start-2 col-end-4 ">
 
-                  <div className=" col-start-2 col-end-3">
-                          Hunter
+                    <div className=" ">
+                      Hunter
+                    </div>
+
+                    <div className="col-start-3 col-end-4">
+                      2034
+                    </div>
+
                   </div>
-
-                  <div className="col-start-3 col-end-4">
-                        2034
-                  </div>
-
-                </div>
 
 
                 </div>
               </div>
 
               <div className="max-w-[255px] w-60">
-                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }} className=" mx-auto rounded-lg h-12 ">
+                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }} className=" mx-auto rounded-lg h-12 grid grid-cols-3 ">
                 </div>
+
+                <div className="flex col-start-2 col-end-4 ">
+
+                    <div className=" ">
+                      Hunter
+                    </div>
+
+                    <div className="col-start-3 col-end-4">
+                      2034
+                    </div>
+
+                  </div>
+
               </div>
 
 
               <div className="max-w-[255px] w-60">
-                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[2]].emblemBackgroundPath}')` }} className=" mx-auto rounded-lg h-12" >
+                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[2]].emblemBackgroundPath}')` }} className=" mx-auto rounded-lg h-12 grid grid-cols-3" >
                 </div>
+
+                <div className="flex col-start-2 col-end-4 ">
+
+                    <div className=" ">
+                      Hunter
+                    </div>
+
+                    <div className="col-start-3 col-end-4">
+                      2034
+                    </div>
+
+                  </div>
+
               </div>
             </div>
 
@@ -155,7 +181,7 @@ const MainContentComponent = () => {
                 </div>
 
                 {/* Character 2 equipped items */}
-                {/* <div className="flex mx-auto">
+                <div className="flex mx-auto">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 mr-10">
 
@@ -224,10 +250,10 @@ const MainContentComponent = () => {
                       ))}
                     </ul>
                   </div>
-                </div> */}
+                </div>
 
                 {/* Character 3 equipped items */}
-                {/* <div className="flex mx-auto">
+                <div className="flex mx-auto">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 mr-10">
                       {user?.userWeapons[2]?.map((item, index) => (
@@ -299,7 +325,7 @@ const MainContentComponent = () => {
                       ))}
                     </ul>
                   </div>
-                </div>  */}
+                </div> 
 
 
               </div>
