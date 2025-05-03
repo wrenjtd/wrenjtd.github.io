@@ -53,11 +53,11 @@ const MainContentComponent = () => {
                 <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="rounded-lg h-12 mx-auto grid grid-cols-3" >
                   <div className="flex col-start-2 col-end-4 ">
 
-                    <div className="text-white">
+                    <div className="text-white pr-14">
                       Warlock
                     </div>
 
-                    <div className="text-yellow-400">
+                    <div className="text-yellow-400 pr-10">
                       2034
                     </div>
 
@@ -74,11 +74,11 @@ const MainContentComponent = () => {
 
                   <div className="flex col-start-2 col-end-4 ">
 
-                    <div className="text-white">
+                    <div className="text-white pr-14">
                       Hunter
                     </div>
 
-                    <div className="text-yellow-400">
+                    <div className="text-yellow-400 pr-10">
                       2034
                     </div>
 
@@ -94,11 +94,11 @@ const MainContentComponent = () => {
 
                   <div className="flex col-start-2 col-end-4 ">
 
-                    <div className="text-white">
+                    <div className="text-white pr-14">
                       Titan
                     </div>
 
-                    <div className="text-yellow-400">
+                    <div className="text-yellow-400 pr-10">
                       2034
                     </div>
 
