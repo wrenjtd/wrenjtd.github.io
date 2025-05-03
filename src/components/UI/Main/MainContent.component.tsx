@@ -140,7 +140,7 @@ const MainContentComponent = () => {
                 {/* Character 1 equipped items */}
                 <div className="flex mx-auto">
                   <div className="border-black rounded-none">
-                    <ul className="flex flex-col space-y-9 mr-10">
+                    <ul className="flex flex-col space-y-9">
 
                       {user?.userWeapons[0]?.map((item, index) => (
 
@@ -174,7 +174,7 @@ const MainContentComponent = () => {
                     </ul>
                   </div>
                   <div className="border-black rounded-none">
-                    <ul className="flex flex-col space-y-9 ml-10">
+                    <ul className="flex flex-col space-y-9 ">
 
                       {user?.userArmor[0]?.map((item, index) => (
 
@@ -246,7 +246,7 @@ const MainContentComponent = () => {
                     </ul>
                   </div>
                   <div className="border-black rounded-none">
-                    <ul className="flex flex-col space-y-9 ml-10">
+                    <ul className="flex flex-col space-y-9 ">
 
                       {user?.userArmor[1]?.map((item, index) => (
 
@@ -284,7 +284,7 @@ const MainContentComponent = () => {
                 {/* Character 3 equipped items */}
                 <div className="flex mx-auto">
                   <div className="border-black rounded-none">
-                    <ul className="flex flex-col space-y-9 mr-10">
+                    <ul className="flex flex-col space-y-9">
                       {user?.userWeapons[2]?.map((item, index) => (
 
                         <li className="flex" key={index}>
