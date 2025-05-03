@@ -47,7 +47,7 @@ const MainContentComponent = () => {
           <div>
 
             {/* Character emblem + overlays */}
-            <div className="grid grid-cols-3  ">
+            <div className="grid grid-cols-3 justify-items-center ">
 
               <div className="max-w-[255px] w-60">
                 <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="rounded-lg h-12 mx-auto" >
