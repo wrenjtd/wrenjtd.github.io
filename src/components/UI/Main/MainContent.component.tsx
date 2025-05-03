@@ -63,6 +63,14 @@ const MainContentComponent = () => {
 
                   </div>
 
+                  <div className="flex col-start-2 col-end-4 ">
+
+                    <div className="text-white pr-14">
+                      Slayer Baron
+                    </div>
+
+                  </div>
+
 
                 </div>
               </div>
@@ -83,6 +91,14 @@ const MainContentComponent = () => {
                     </div>
 
                   </div>
+
+                  <div className="flex col-start-2 col-end-4 ">
+
+                    <div className="text-white pr-14">
+                      Slayer Baron
+                    </div>
+
+                  </div>
                 </div>
 
               </div>
@@ -100,6 +116,14 @@ const MainContentComponent = () => {
 
                     <div className="text-yellow-400 pr-10">
                       2034
+                    </div>
+
+                  </div>
+
+                  <div className="flex col-start-2 col-end-4 ">
+
+                    <div className="text-white pr-14">
+                      Slayer Baron
                     </div>
 
                   </div>
