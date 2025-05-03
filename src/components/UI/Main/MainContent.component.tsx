@@ -50,7 +50,20 @@ const MainContentComponent = () => {
             <div className="grid grid-cols-3 justify-items-center ">
 
               <div className="max-w-[255px] w-60">
-                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="rounded-lg h-12 mx-auto" >
+                <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="rounded-lg h-12 mx-auto grid grid-cols-3" >
+                <div className="flex ">
+
+                  <div className=" col-start-2 col-end-3">
+                          Hunter
+                  </div>
+
+                  <div className="col-start-3 col-end-4">
+                        2034
+                  </div>
+
+                </div>
+
+
                 </div>
               </div>
 
