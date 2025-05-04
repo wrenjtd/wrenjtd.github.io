@@ -49,7 +49,7 @@ const MainContentComponent = () => {
             {/* Character emblem + overlays */}
             <div className="grid grid-cols-3 justify-items-center ">
 
-              <div className="max-w-[255px] w-60">
+              <div className="max-w-[255px] w-60 pb-2.5">
                 <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[0]].emblemBackgroundPath}')` }} className="rounded-lg h-12 mx-auto grid grid-cols-3" >
                   <div className="flex col-start-2 col-end-4 ">
 
@@ -75,7 +75,7 @@ const MainContentComponent = () => {
                 </div>
               </div>
 
-              <div className="max-w-[255px] w-60">
+              <div className="max-w-[255px] w-60 pb-2.5">
                 <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[1]].emblemBackgroundPath}')` }}
                   className=" mx-auto rounded-lg h-12 grid grid-cols-3 ">
 
@@ -104,7 +104,7 @@ const MainContentComponent = () => {
               </div>
 
 
-              <div className="max-w-[255px] w-60">
+              <div className="max-w-[255px] w-60 pb-2.5">
                 <div style={{ backgroundImage: `url('https://bungie.net${user.userCharacterProfiles?.Response.characters.data[Object.keys(user.userCharacterProfiles.Response.characters.data)[2]].emblemBackgroundPath}')` }}
                   className=" mx-auto rounded-lg h-12 grid grid-cols-3" >
 

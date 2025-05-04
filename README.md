@@ -1,9 +1,7 @@
 # TODO:
 
 ## Main Page:
-- Add class names to emblem header
-- Grid equipment layout to be a 2 X 5 appropriately spaced to line up with class emblem header
-- Fix setting button not highlighting orange on hover and focus
+
 - Match responsive design to page layout
 
 
@@ -13,7 +11,7 @@
 ## Backend for manifest: 
 
 ## Database for manifest storage:
-- Load and view the downloaded manifest json file
+
 
 ## Loadouts Page:
 - Add Loadouts page to link
