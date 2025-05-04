@@ -138,7 +138,7 @@ const MainContentComponent = () => {
               <div className="grid grid-cols-3">
 
                 {/* Character 1 equipped items */}
-                <div className="flex mx-auto gap-x-[130px]">
+                <div className="flex mx-auto gap-x-[132px]">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 ">
 
@@ -210,7 +210,7 @@ const MainContentComponent = () => {
                 </div>
 
                 {/* Character 2 equipped items */}
-                <div className="flex mx-auto gap-x-[128px]">
+                <div className="flex mx-auto gap-x-[132px]">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9">
 
@@ -282,7 +282,7 @@ const MainContentComponent = () => {
                 </div>
 
                 {/* Character 3 equipped items */}
-                <div className="flex mx-auto gap-x-[130px]">
+                <div className="flex mx-auto gap-x-[132px]">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9">
                       {user?.userWeapons[2]?.map((item, index) => (
