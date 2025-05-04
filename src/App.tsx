@@ -8,6 +8,8 @@ import { BungieMembershipType, ServerResponse } from './type-definitions/common'
 import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyItemComponent, DestinyProfileResponse } from './type-definitions/destiny2';
 import { UserMembershipData } from './type-definitions/user';
 import Dashboard from './components/UI/Main/Dashboard.component';
+import Manifest from '../server/Manifest'
+
 
 // Define bucket hashes for clarity and maintainability
 const BUCKET_HASHES = {
@@ -71,6 +73,10 @@ function App() {
     userAgent: 'YourAppName/Version'
   }), []);
 
+  // --- Manifest Initialization ---
+
+  const manifest = useMemo(()=> new Manifest("Data/world_sql_content_36c75edf70c70f365e90604a61832d53.sqlite3"), [traveler])
+
   const oauth_url_endpoint = useMemo(() =>
     traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID)
     , [traveler]);
@@ -130,32 +136,18 @@ function App() {
     getBungieMembershipData();
   }, [oauthServerResponse, traveler]);
 
-//   //2a. Download the Bungie Manifest
 
-//   useEffect(() => {
-//     const downloadManifest = async () => {
-//       if (oauthServerResponse?.access_token) {
-//         console.log("Downloading Bungie manifest...");
-//         traveler.destiny2
-// .getDestinyManifest()
-// .then(response => {
-//  traveler.destiny2
-//    .downloadManifestForBrowser(response.Response.jsonWorldContentPaths['en'])
-//    .then(response => {
-//      console.log(response);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-//  })
-//  .catch(err => {
-//   console.log(err);
-//  });
-//       }
-//     };
-//     downloadManifest();
-   
-//   }, [oauthServerResponse, traveler]);
+  //2b. Fetch Manifest
+
+  useEffect(()=>{
+    manifest.queryManifest("SELECT json FROM DestinyRaceDefinition WHERE id = -1491684358;").then((response)=>{
+      console.log("Manifest response:", response);
+    }
+    ).catch((error)=>{
+      console.error("Error fetching manifest data:", error);
+    }
+    )
+  }, [manifest]);
 
 
   
