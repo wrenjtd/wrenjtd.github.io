@@ -8,7 +8,7 @@ import { BungieMembershipType, ServerResponse } from './type-definitions/common'
 import { DestinyComponentType, DestinyInventoryItemDefinition, DestinyItemComponent, DestinyProfileResponse } from './type-definitions/destiny2';
 import { UserMembershipData } from './type-definitions/user';
 import Dashboard from './components/UI/Main/Dashboard.component';
-// import Manifest from '../server/Manifest'
+import Manifest from '../server/Manifest'
 
 
 // Define bucket hashes for clarity and maintainability
@@ -75,7 +75,7 @@ function App() {
 
   // --- Manifest Initialization ---
 
-  // const manifest = useMemo(()=> new Manifest("Data/world_sql_content_36c75edf70c70f365e90604a61832d53.sqlite3"), [traveler])
+  const manifest = useMemo(()=> new Manifest("Data/world_sql_content_36c75edf70c70f365e90604a61832d53.sqlite3"), [traveler])
 
   const oauth_url_endpoint = useMemo(() =>
     traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID)
@@ -138,16 +138,9 @@ function App() {
 
   //2b. Fetch Manifest
 
-  // useEffect(()=>{
-  //   console.log("Attempting to query the manifest");
-  //   manifest.queryManifest("SELECT json FROM DestinyRaceDefinition WHERE id = -1491684358;").then((response)=>{
-  //     console.log("Manifest response:", response);
-  //   }
-  //   ).catch((error)=>{
-  //     console.error("Error fetching manifest data:", error);
-  //   }
-  //   )
-  // }, [manifest]);
+  useEffect(()=>{
+  manifest.manifestCheck();
+  }, [manifest]);
 
 
   

@@ -89,4 +89,9 @@ export default class Manifest {
     });
   }
 
+  public  manifestCheck(){
+
+    console.log("I'm working");
+  }
+
 }
