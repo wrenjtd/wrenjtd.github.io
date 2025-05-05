@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as sqlite from 'sqlite3';
-import got from 'got';
+// import got from 'got';
 
 /**
  * Class for accessing the manifest file
@@ -74,20 +74,20 @@ export default class Manifest {
    * @returns {Promise<string>} When fulfilled returns the path of the saved manifest file
    * @memberof Destiny2Resource
    */
-   public downloadManifestJSON(manifestUrl: string, filename: string): Promise<string> {
-    const outStream = fs.createWriteStream(
-      `${filename ? filename : manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1)}`
-    );
-    console.log("Downloading Bungie manifest...");
-    return new Promise<string>((resolve, reject) => {
-      got
-        .stream(`https://www.bungie.net/${manifestUrl}`)
-        .pipe(outStream)
-        .on('finish', () => {
-          resolve(filename);
-        });
-    });
-  }
+  //  public downloadManifestJSON(manifestUrl: string, filename: string): Promise<string> {
+  //   const outStream = fs.createWriteStream(
+  //     `${filename ? filename : manifestUrl.substring(manifestUrl.lastIndexOf('/') + 1)}`
+  //   );
+  //   console.log("Downloading Bungie manifest...");
+  //   return new Promise<string>((resolve, reject) => {
+  //     got
+  //       .stream(`https://www.bungie.net/${manifestUrl}`)
+  //       .pipe(outStream)
+  //       .on('finish', () => {
+  //         resolve(filename);
+  //       });
+  //   });
+  // }
 
   public  manifestCheck(){
 

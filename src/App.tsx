@@ -75,7 +75,9 @@ function App() {
 
   // --- Manifest Initialization ---
 
-  const manifest = useMemo(()=> new Manifest("Data/world_sql_content_36c75edf70c70f365e90604a61832d53.sqlite3"), [traveler])
+  const manifest = useMemo(() => new Manifest(import.meta.env.VITE_MANIFEST_FILE_PATH), []);
+  console.log("Manifest path working:", manifest.manifestCheck());
+  
 
   const oauth_url_endpoint = useMemo(() =>
     traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID)
@@ -138,9 +140,16 @@ function App() {
 
   //2b. Fetch Manifest
 
-  useEffect(()=>{
-  manifest.manifestCheck();
-  }, [manifest]);
+  // useEffect(()=>{
+  //   console.log("Attempting to query the manifest");
+  //   manifest.queryManifest("SELECT json FROM DestinyRaceDefinition WHERE id = -1491684358;").then((response)=>{
+  //     console.log("Manifest response:", response);
+  //   }
+  //   ).catch((error)=>{
+  //     console.error("Error fetching manifest data:", error);
+  //   }
+  //   )
+  // }, [manifest]);
 
 
   
