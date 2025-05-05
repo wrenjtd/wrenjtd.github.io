@@ -75,8 +75,17 @@ function App() {
 
   // --- Manifest Initialization ---
 
-  const manifest = useMemo(() => new Manifest("data/world_sql_content_36c75edf70c70f365e90604a61832d53.sqlite3"), []);
-  console.log("Manifest path working:", manifest.manifestCheck());
+  const manifest = useMemo(() => new Manifest(""), []);
+  useEffect(() => {
+    console.log("Attempting to query the manifest");
+    manifest.queryManifest("SELECT json FROM DestinyRaceDefinition WHERE id = -1491684358;").then((response) => {
+      console.log("Manifest response:", response);
+    }
+    ).catch((error) => {
+      console.error("Error fetching manifest data:", error);
+    }
+    )
+  }, [manifest]);
   
 
   const oauth_url_endpoint = useMemo(() =>
