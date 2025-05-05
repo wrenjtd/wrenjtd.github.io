@@ -99,10 +99,9 @@ function App() {
     const authorizationCodeChecker = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
-      traveler.destiny2.fetchAPI();
+      
       if (code) {
         try {
-          
           const oAuthResponse = await traveler.oauth.getAccessToken(
             code,
             import.meta.env.VITE_BUNGIE_CLIENT_ID,
@@ -140,6 +139,7 @@ function App() {
   //2b. Fetch Manifest
 
   useEffect(()=>{
+    console.log("Attempting to query the manifest");
     manifest.queryManifest("SELECT json FROM DestinyRaceDefinition WHERE id = -1491684358;").then((response)=>{
       console.log("Manifest response:", response);
     }
