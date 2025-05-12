@@ -407,6 +407,7 @@ function App() {
       },
     });
     const data = await response.json();
+    console.log("URL response:", data);
     return JSON.stringify(data);
   };
 
