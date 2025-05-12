@@ -430,7 +430,8 @@ function App() {
   useEffect(() => {
     const authorizationCodeChecker = async () => {
       const urlParams = new URLSearchParams(window.location.search);
-      console.log("URL Params:", urlParams);
+      const code = urlParams.get("code");
+      console.log("URL Params:", code);
       const response = await fetch("http://localhost:8080/sendCode", {
         method: 'POST',
         headers: {
