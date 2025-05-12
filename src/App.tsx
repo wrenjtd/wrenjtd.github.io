@@ -376,6 +376,7 @@ import type {   DestinyProfileResponse } from './type-definitions/destiny2';
 import { BrowserRouter } from 'react-router-dom';
 import Dashboard from './components/UI/Main/Dashboard.component';
 import '../src/assets/css/App.css';
+import { OAuthResponse } from './type-definitions/additons';
 
 
 
@@ -399,6 +400,7 @@ function App() {
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData> | undefined>(undefined);
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse> | undefined>(undefined);
   const [oauthURL, setOauthURL] = useState<string>(""); // New state for the resolved URL
+  // const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
 
   const oauth_url_endpoint = async ()  => {
     const response =  await fetch("http://localhost:8080/getURL", {
@@ -411,15 +413,18 @@ function App() {
     return data;
   };
 
+  //Fetch authorization url from backend
   useEffect(() => {
     const fetchOauthURL = async () => {
       const url = await oauth_url_endpoint();
-      console.log("OAuth URL:", url);
+
       setOauthURL(url);
+      console.log("OAuthURL: ", url);
+      window.history.replaceState({}, document.title, window.location.pathname);
     };
 
     fetchOauthURL();
-    console.log("OAuth URL ran:", oauthURL);
+   
   }, [oauth_url_endpoint]);
 
   useEffect(() => {
