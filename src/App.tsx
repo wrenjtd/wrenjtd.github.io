@@ -441,8 +441,8 @@ useEffect(() => {
         body: JSON.stringify(urlParams.get("code"))
       });
       const data = await response.json();
-      setBungieMembershipData(data.BungieMembershipData);
-      setUserCharacterProfiles(data.characterProfileData);
+      setBungieMembershipData(data?.BungieMembershipData);
+      setUserCharacterProfiles(data?.characterProfileData);
     
 
     };
