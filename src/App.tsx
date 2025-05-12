@@ -443,7 +443,7 @@ function App() {
       setUserCharacterProfiles(data?.characterProfileData);
     };
     authorizationCodeChecker();
-  }, []);
+  }, [oauth_url_endpoint]);
 
   // --- Prepare Context Value ---
   const contextValue = useMemo(() => ({
