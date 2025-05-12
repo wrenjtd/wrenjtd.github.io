@@ -431,13 +431,16 @@ function App() {
     const authorizationCodeChecker = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
-      console.log("URL Params:", code);
+     
+
+
+
       const response = await fetch("http://localhost:8080/sendCode", {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain'
         },
-        body: JSON.stringify(urlParams.get("code"))
+        body: code
       });
       const data = await response.json();
       setBungieMembershipData(data?.BungieMembershipData);
