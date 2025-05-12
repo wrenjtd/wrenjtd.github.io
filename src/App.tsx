@@ -485,6 +485,13 @@ useEffect(() => {
     userArmor
   }), [bungieMembershipData, userCharacterProfiles, userWeapons, userArmor]);
 
+  useEffect(() => { 
+
+   console.log(setBungieMembershipData, setUserCharacterProfiles, setUserWeapons, setUserArmor, oauthServerResponse, settingsNavigation )
+
+  }
+  , []);
+
 
     return (
       <>
