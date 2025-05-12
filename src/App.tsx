@@ -419,6 +419,7 @@ function App() {
     };
 
     fetchOauthURL();
+    console.log("OAuth URL ran:", oauthURL);
   }, [oauth_url_endpoint]);
 
   useEffect(() => {
