@@ -420,7 +420,7 @@ function App() {
 
       setOauthURL(url);
       console.log("OAuthURL: ", url);
-      window.history.replaceState({}, document.title, window.location.pathname);
+    
     };
 
     fetchOauthURL();
