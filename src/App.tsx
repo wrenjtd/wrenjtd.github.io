@@ -370,10 +370,10 @@
 
 
 import { useState, useEffect, createContext, useMemo } from 'react';
-import { type OAuthResponse } from './type-definitions/additons';
+
 import {  type ServerResponse } from './type-definitions/common';
 import { type UserMembershipData } from './type-definitions/user';
-import type {  DestinyInventoryItemDefinition, DestinyProfileResponse } from './type-definitions/destiny2';
+import type {   DestinyProfileResponse } from './type-definitions/destiny2';
 import { BrowserRouter } from 'react-router-dom';
 import Dashboard from './components/UI/Main/Dashboard.component';
 
@@ -384,29 +384,28 @@ import Dashboard from './components/UI/Main/Dashboard.component';
 export type contextType = {
   bungieMembershipData: ServerResponse<UserMembershipData> | undefined;
   userCharacterProfiles: ServerResponse<DestinyProfileResponse> | undefined;
-  userWeapons: DestinyInventoryItemDefinition[][];
-  userArmor: DestinyInventoryItemDefinition[][];
+  // userWeapons: DestinyInventoryItemDefinition[][];
+  // userArmor: DestinyInventoryItemDefinition[][];
 }
 
 // --- Context Initialization ---
 const defaultContextValue: contextType = {
   bungieMembershipData: undefined,
   userCharacterProfiles: undefined,
-  userWeapons: [],
-  userArmor: [],
+  // userWeapons: [],
+  // userArmor: [],
 };
 
 // --- State Definitions ---
-
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
 
   // State to hold all unique fetched item definitions for equipped items for all characters
- 
+
 
   // Final categorized state - Array per character
-  const [userWeapons, setUserWeapons] = useState<DestinyInventoryItemDefinition[][]>([]);
-  const [userArmor, setUserArmor] = useState<DestinyInventoryItemDefinition[][]>([]);
+  // const [userWeapons, setUserWeapons] = useState<DestinyInventoryItemDefinition[][]>([]);
+  // const [userArmor, setUserArmor] = useState<DestinyInventoryItemDefinition[][]>([]);
 
   const [oauthURL, setOauthURL] = useState<string>(""); // New state for the resolved URL
   
@@ -414,9 +413,10 @@ export const BungieMembershipDataContext = createContext<contextType>(defaultCon
 export const OAuthURLEndpointContext = createContext<string>("");
 
 
+
+
 function App() {
 
-  const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
   
 useEffect(() => {
      const fetchOauthURL = async () => {
@@ -441,7 +441,9 @@ useEffect(() => {
         body: JSON.stringify(urlParams.get("code"))
       });
       const data = await response.json();
-      setOauthServerResponse(data);
+      setBungieMembershipData(data.BungieMembershipData);
+      setUserCharacterProfiles(data.characterProfileData);
+    
 
     };
     authorizationCodeChecker();
@@ -481,20 +483,9 @@ useEffect(() => {
   const contextValue = useMemo(() => ({
     bungieMembershipData,
     userCharacterProfiles,
-    userWeapons,
-    userArmor
-  }), [bungieMembershipData, userCharacterProfiles, userWeapons, userArmor]);
-
-  useEffect(() => { 
-
-    const thing = 99;
-    if(thing > 100){
-    console.log(setBungieMembershipData, setUserCharacterProfiles, setUserWeapons, setUserArmor, oauthServerResponse, settingsNavigation )
-    }
-  
-
-  }
-  , []);
+    // userWeapons,
+    // userArmor
+  }), [bungieMembershipData, userCharacterProfiles]);
 
 
     return (
