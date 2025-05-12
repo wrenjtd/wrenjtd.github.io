@@ -407,7 +407,6 @@ function App() {
       },
     });
     const data = await response.json();
-    console.log("URL response:", data);
     return JSON.stringify(data);
   };
 
@@ -423,6 +422,7 @@ function App() {
   useEffect(() => {
     const authorizationCodeChecker = async () => {
       const urlParams = new URLSearchParams(window.location.search);
+      console.log("URL Params:", urlParams);
       const response = await fetch("http://localhost:8080/sendCode", {
         method: 'POST',
         headers: {
