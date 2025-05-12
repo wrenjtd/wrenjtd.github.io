@@ -400,7 +400,7 @@ function App() {
   const [oauthURL, setOauthURL] = useState<string>(""); // New state for the resolved URL
 
   const oauth_url_endpoint = async ()  => {
-    const response =  await fetch("https://localhost:8080/getURL", {
+    const response =  await fetch("http://localhost:8080/getURL", {
       method: 'get',
       headers: {
         'Content-Type': 'application/json'
@@ -423,7 +423,7 @@ function App() {
   useEffect(() => {
     const authorizationCodeChecker = async () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const response = await fetch("https://localhost:8080/sendCode", {
+      const response = await fetch("http://localhost:8080/sendCode", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
