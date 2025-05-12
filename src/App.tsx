@@ -407,8 +407,8 @@ function App() {
         'Content-Type': 'text/plain'
       },
     });
-    const data = await response.json();
-    return JSON.stringify(data);
+    const data = await response.text();
+    return data;
   };
 
   useEffect(() => {
