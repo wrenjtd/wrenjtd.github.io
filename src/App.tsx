@@ -431,6 +431,8 @@ function App() {
     const authorizationCodeChecker = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
+
+      
      
 
 
@@ -442,9 +444,10 @@ function App() {
         },
         body: code
       });
-      const data = await response.json();
-      setBungieMembershipData(data?.BungieMembershipData);
-      setUserCharacterProfiles(data?.characterProfileData);
+      console.log("Response back: ", response.body);
+      // const data = await response.json();
+      // setBungieMembershipData(data?.BungieMembershipData);
+      // setUserCharacterProfiles(data?.characterProfileData);
     };
     authorizationCodeChecker();
   }, [oauth_url_endpoint]);
