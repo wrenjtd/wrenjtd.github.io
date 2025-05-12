@@ -370,10 +370,10 @@
 
 
 import { useState, useEffect, createContext, useMemo } from 'react';
-import { type OAuthResponse, TypeDefinition } from './type-definitions/additons';
-import { BungieMembershipType, type ServerResponse } from './type-definitions/common';
+import { type OAuthResponse } from './type-definitions/additons';
+import {  type ServerResponse } from './type-definitions/common';
 import { type UserMembershipData } from './type-definitions/user';
-import type { DestinyComponentType, DestinyInventoryItemDefinition, DestinyProfileResponse } from './type-definitions/destiny2';
+import type {  DestinyInventoryItemDefinition, DestinyProfileResponse } from './type-definitions/destiny2';
 import { BrowserRouter } from 'react-router-dom';
 import Dashboard from './components/UI/Main/Dashboard.component';
 
@@ -397,12 +397,12 @@ const defaultContextValue: contextType = {
 };
 
 // --- State Definitions ---
-  const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
+
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
 
   // State to hold all unique fetched item definitions for equipped items for all characters
-  const [allUniqueEquippedItemDefinitions, setAllUniqueEquippedItemDefinitions] = useState<DestinyInventoryItemDefinition[]>([]);
+ 
 
   // Final categorized state - Array per character
   const [userWeapons, setUserWeapons] = useState<DestinyInventoryItemDefinition[][]>([]);
