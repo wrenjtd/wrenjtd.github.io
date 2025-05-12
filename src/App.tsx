@@ -397,8 +397,8 @@ const defaultContextValue: contextType = {
 };
 
 // --- State Definitions ---
-  const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>();
-  const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>();
+  const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData>>({} as ServerResponse<UserMembershipData>);
+  const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse>>({} as ServerResponse<DestinyProfileResponse>);
 
   // State to hold all unique fetched item definitions for equipped items for all characters
 
