@@ -487,7 +487,11 @@ useEffect(() => {
 
   useEffect(() => { 
 
-   console.log(setBungieMembershipData, setUserCharacterProfiles, setUserWeapons, setUserArmor, oauthServerResponse, settingsNavigation )
+    const thing = 99;
+    if(thing > 100){
+    console.log(setBungieMembershipData, setUserCharacterProfiles, setUserWeapons, setUserArmor, oauthServerResponse, settingsNavigation )
+    }
+  
 
   }
   , []);
