@@ -467,16 +467,7 @@ useEffect(() => {
   };
   
 
-     const settingsNavigation = [
-        { name: 'Bungie.net', href: '', onClick: () => openInNewTab(oauthURL) },
-        { name: 'Settings', href: '#', onClick: () => { } },
-        { name: 'Sign out', href: '#', onClick: () => { } },
-    ]
 
-     const openInNewTab = (url: string) => {
-        const newWindow = window.open(url, '_self', 'noopener,noreferrer')
-        if (newWindow) newWindow.opener = null
-    }
 
       // --- Prepare Context Value ---
   // Ensure the value passed matches the contextType
