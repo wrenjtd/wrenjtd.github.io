@@ -414,6 +414,7 @@ function App() {
   useEffect(() => {
     const fetchOauthURL = async () => {
       const url = await oauth_url_endpoint();
+      console.log("OAuth URL:", url);
       setOauthURL(url);
     };
 
