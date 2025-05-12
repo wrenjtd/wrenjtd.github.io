@@ -485,7 +485,7 @@ useEffect(() => {
         <BungieMembershipDataContext.Provider value={contextValue}>
           <OAuthURLEndpointContext.Provider value={oauthURL}>
 
-            <Dashboard />
+            {/* <Dashboard /> */}
 
             {/* Example conditional rendering or loading state */}
             {/* {!contextValue.userCharacterProfiles || (contextValue.userWeapons.length === 0 && contextValue.userArmor.length === 0) ? (
