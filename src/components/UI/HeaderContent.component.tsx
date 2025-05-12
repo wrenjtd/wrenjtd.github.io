@@ -25,6 +25,7 @@ const HeaderContentComponent = () => {
     const auth_endpoint = useContext(OAuthURLEndpointContext);
 
     const openInNewTab = (url: string) => {
+        console.log('Opening URL:', url);
         const newWindow = window.open(url, '_self', 'noopener,noreferrer')
         if (newWindow) newWindow.opener = null
     }
