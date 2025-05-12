@@ -404,7 +404,7 @@ function App() {
     const response =  await fetch("http://localhost:8080/getURL", {
       method: 'get',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'text/plain'
       },
     });
     const data = await response.json();
