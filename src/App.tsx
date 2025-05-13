@@ -432,11 +432,6 @@ function App() {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
 
-      
-     
-
-
-
       const response = await fetch("http://localhost:8080/sendCode", {
         method: 'POST',
         headers: {
@@ -445,9 +440,9 @@ function App() {
         body: code
       });
       console.log("Response back: ", response.body);
-      // const data = await response.json();
-      // setBungieMembershipData(data?.BungieMembershipData);
-      // setUserCharacterProfiles(data?.characterProfileData);
+      const data = await response.json();
+      setBungieMembershipData(data?.BungieMembershipData);
+      setUserCharacterProfiles(data?.characterProfileData);
     };
     authorizationCodeChecker();
   }, [oauth_url_endpoint]);
