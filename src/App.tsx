@@ -444,9 +444,11 @@ function App() {
         const response = await fetch("http://localhost:8080/sendCode", {
           method: 'POST',
           headers: {
-            'Content-Type': 'text/plain'
+            "Content-Type": "application/json",
           },
-          body: code
+          body: JSON.stringify({
+            code: code
+          }),
         });
         console.log("Response back: ", response.body);
         const data = await response.json();
