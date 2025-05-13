@@ -437,8 +437,10 @@ function App() {
         headers: {
           'Content-Type': 'text/plain'
         },
-        body: code
+        body: JSON.stringify(code)
       });
+
+
       console.log("Response back: ", response.body);
       const data = await response.json();
       setBungieMembershipData(data?.BungieMembershipData);
