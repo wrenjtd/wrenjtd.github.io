@@ -75,8 +75,8 @@
 
 //   // --- Manifest Initialization ---
 
-  
-  
+
+
 
 //   const oauth_url_endpoint = useMemo(() =>
 //     traveler.oauth.generateOAuthURL(import.meta.env.VITE_BUNGIE_CLIENT_ID)
@@ -100,7 +100,7 @@
 //     const authorizationCodeChecker = async () => {
 //       const urlParams = new URLSearchParams(window.location.search);
 //       const code = urlParams.get('code');
-      
+
 //       if (code) {
 //         try {
 //           const oAuthResponse = await traveler.oauth.getAccessToken(
@@ -151,7 +151,7 @@
 //   // }, [manifest]);
 
 
-  
+
 
 
 
@@ -370,9 +370,9 @@
 
 
 import { useState, useEffect, createContext, useMemo } from 'react';
-import {  type ServerResponse } from './type-definitions/common';
+import { type ServerResponse } from './type-definitions/common';
 import { type UserMembershipData } from './type-definitions/user';
-import type {   DestinyProfileResponse } from './type-definitions/destiny2';
+import type { DestinyProfileResponse } from './type-definitions/destiny2';
 import { BrowserRouter } from 'react-router-dom';
 import Dashboard from './components/UI/Main/Dashboard.component';
 import '../src/assets/css/App.css';
@@ -402,8 +402,8 @@ function App() {
   const [oauthURL, setOauthURL] = useState<string>(""); // New state for the resolved URL
   // const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
 
-  const oauth_url_endpoint = async ()  => {
-    const response =  await fetch("http://localhost:8080/getURL", {
+  const oauth_url_endpoint = async () => {
+    const response = await fetch("http://localhost:8080/getURL", {
       method: 'get',
       headers: {
         'Content-Type': 'text/plain'
@@ -420,17 +420,17 @@ function App() {
 
       setOauthURL(url);
       console.log("OAuthURL: ", url);
-    
+
     };
 
     fetchOauthURL();
-   
+
   }, [oauth_url_endpoint]);
 
   useEffect(() => {
     const authorizationCodeChecker = async () => {
-     const urlParams = new URLSearchParams(window.location.search);
-   
+      const urlParams = new URLSearchParams(window.location.search);
+
       const code = urlParams.get("code");
 
       if (!code) {
@@ -438,26 +438,26 @@ function App() {
         return;
       }
       console.log("Authorization code found: ", code);
-       
 
-      if(code){
- const response = await fetch("http://localhost:8080/sendCode", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'text/plain'
-        },
-        body: JSON.stringify(code)
-      });
-       console.log("Response back: ", response.body);
-      const data = await response.json();
-      setBungieMembershipData(data?.BungieMembershipData);
-      setUserCharacterProfiles(data?.characterProfileData);
-      
+
+      if (code) {
+        const response = await fetch("http://localhost:8080/sendCode", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain'
+          },
+          body: JSON.stringify(code)
+        });
+        console.log("Response back: ", response.body);
+        const data = await response.json();
+        setBungieMembershipData(data?.BungieMembershipData);
+        setUserCharacterProfiles(data?.characterProfileData);
+
       }
-     
 
-     
-     
+
+
+
     };
     authorizationCodeChecker();
   }, [oauth_url_endpoint]);
