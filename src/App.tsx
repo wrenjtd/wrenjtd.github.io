@@ -429,22 +429,35 @@ function App() {
 
   useEffect(() => {
     const authorizationCodeChecker = async () => {
-      const urlParams = new URLSearchParams(window.location.search);
+     const urlParams = new URLSearchParams(window.location.search);
+   
       const code = urlParams.get("code");
 
-      const response = await fetch("http://localhost:8080/sendCode", {
+      if (!code) {
+        console.log("No authorization code found in URL.");
+        return;
+      }
+      console.log("Authorization code found: ", code);
+       
+
+      if(code){
+ const response = await fetch("http://localhost:8080/sendCode", {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain'
         },
         body: JSON.stringify(code)
       });
-
-
-      console.log("Response back: ", response.body);
+       console.log("Response back: ", response.body);
       const data = await response.json();
       setBungieMembershipData(data?.BungieMembershipData);
       setUserCharacterProfiles(data?.characterProfileData);
+      
+      }
+     
+
+     
+     
     };
     authorizationCodeChecker();
   }, [oauth_url_endpoint]);
