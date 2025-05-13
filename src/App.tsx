@@ -446,7 +446,7 @@ function App() {
           headers: {
             'Content-Type': 'text/plain'
           },
-          body: JSON.stringify(code)
+          body: code
         });
         console.log("Response back: ", response.body);
         const data = await response.json();
@@ -454,9 +454,6 @@ function App() {
         setUserCharacterProfiles(data?.characterProfileData);
 
       }
-
-
-
 
     };
     authorizationCodeChecker();
