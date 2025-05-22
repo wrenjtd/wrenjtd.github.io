@@ -425,7 +425,7 @@ function App() {
 
     fetchOauthURL();
 
-  }, [oauth_url_endpoint]);
+  }, []);
 
   useMemo(() => {
     const authorizationCodeChecker = async () => {
@@ -450,7 +450,6 @@ function App() {
             code: code
           }),
         });
-        console.log("Response back: ", response.body);
         const data = await response.json();
         setBungieMembershipData(data?.BungieMembershipData);
         setUserCharacterProfiles(data?.characterProfileData);
