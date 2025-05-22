@@ -372,7 +372,7 @@
 import { useState, useEffect, createContext, useMemo } from 'react';
 import { type ServerResponse } from './type-definitions/common';
 import { type UserMembershipData } from './type-definitions/user';
-import type { DestinyProfileResponse } from './type-definitions/destiny2';
+import type { DestinyInventoryItemDefinition, DestinyProfileResponse } from './type-definitions/destiny2';
 import { BrowserRouter } from 'react-router-dom';
 import Dashboard from './components/UI/Main/Dashboard.component';
 import '../src/assets/css/App.css';
@@ -384,12 +384,16 @@ import '../src/assets/css/App.css';
 export type contextType = {
   bungieMembershipData: ServerResponse<UserMembershipData> | undefined;
   userCharacterProfiles: ServerResponse<DestinyProfileResponse> | undefined;
+  userWeapons: DestinyInventoryItemDefinition[][] | undefined;
+  userArmor: DestinyInventoryItemDefinition[][] | undefined;
 }
 
 // --- Context Initialization ---
 const defaultContextValue: contextType = {
   bungieMembershipData: undefined,
   userCharacterProfiles: undefined,
+  userWeapons: undefined,
+  userArmor: undefined,
 };
 
 export const BungieMembershipDataContext = createContext<contextType>(defaultContextValue);
@@ -399,6 +403,8 @@ function App() {
   // --- State Definitions ---
   const [bungieMembershipData, setBungieMembershipData] = useState<ServerResponse<UserMembershipData> | undefined>(undefined);
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse> | undefined>(undefined);
+  const [userWeapons, setUserWeapons] = useState<DestinyInventoryItemDefinition[][] | undefined>(undefined);
+  const [userArmor, setUserArmor] = useState<DestinyInventoryItemDefinition[][] | undefined>(undefined);
   const [oauthURL, setOauthURL] = useState<string>(""); // New state for the resolved URL
   // const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
 
@@ -453,6 +459,8 @@ function App() {
         const data = await response.json();
         setBungieMembershipData(data?.BungieMembershipData);
         setUserCharacterProfiles(data?.characterProfileData);
+        setUserWeapons(data?.userWeapons);
+        setUserArmor(data?.userArmor);
 
       }
 
@@ -464,6 +472,8 @@ function App() {
   const contextValue = useMemo(() => ({
     bungieMembershipData,
     userCharacterProfiles,
+    userWeapons,
+    userArmor
   }), [bungieMembershipData, userCharacterProfiles]);
 
   return (
