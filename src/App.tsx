@@ -405,7 +405,7 @@ function App() {
   const [userCharacterProfiles, setUserCharacterProfiles] = useState<ServerResponse<DestinyProfileResponse> | undefined>(undefined);
   const [userWeapons, setUserWeapons] = useState<DestinyInventoryItemDefinition[][] | undefined>(undefined);
   const [userArmor, setUserArmor] = useState<DestinyInventoryItemDefinition[][] | undefined>(undefined);
-  const [oauthURL, setOauthURL] = useState<string>(""); // New state for the resolved URL
+  const [oauthURL, setOauthURL] = useState<string>(""); 
   // const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
 
   const oauth_url_endpoint = async () => {
@@ -425,7 +425,6 @@ function App() {
       const url = await oauth_url_endpoint();
 
       setOauthURL(url);
-      console.log("OAuthURL: ", url);
 
     };
 
@@ -443,7 +442,7 @@ function App() {
         console.log("No authorization code found in URL.");
         return;
       }
-      console.log("Authorization code found: ", code);
+
 
 
       if (code) {
@@ -474,7 +473,7 @@ function App() {
     userCharacterProfiles,
     userWeapons,
     userArmor
-  }), [bungieMembershipData, userCharacterProfiles]);
+  }), [bungieMembershipData, userCharacterProfiles, userWeapons, userArmor]);
 
   return (
     <>
