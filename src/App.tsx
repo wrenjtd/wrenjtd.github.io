@@ -414,7 +414,7 @@ function App() {
   };
 
   //Fetch authorization url from backend
-  useMemo(() => {
+  useEffect(() => {
     const fetchOauthURL = async () => {
       const url = await oauth_url_endpoint();
 
@@ -427,7 +427,7 @@ function App() {
 
   }, [oauth_url_endpoint]);
 
-  useEffect(() => {
+  useMemo(() => {
     const authorizationCodeChecker = async () => {
       const urlParams = new URLSearchParams(window.location.search);
 
