@@ -459,7 +459,7 @@ function App() {
 
     };
     authorizationCodeChecker();
-  }, [oauth_url_endpoint]);
+  }, [oauthURL]);
 
   // --- Prepare Context Value ---
   const contextValue = useMemo(() => ({
