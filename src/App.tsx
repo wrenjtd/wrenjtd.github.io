@@ -386,6 +386,7 @@ export type contextType = {
   userCharacterProfiles: ServerResponse<DestinyProfileResponse> | undefined;
   userWeapons: DestinyInventoryItemDefinition[][] | undefined;
   userArmor: DestinyInventoryItemDefinition[][] | undefined;
+  jsonObject: DestinyInventoryItemDefinition[] | undefined;
 }
 
 // --- Context Initialization ---
@@ -394,6 +395,7 @@ const defaultContextValue: contextType = {
   userCharacterProfiles: undefined,
   userWeapons: undefined,
   userArmor: undefined,
+  jsonObject: undefined,
 };
 
 export const BungieMembershipDataContext = createContext<contextType>(defaultContextValue);
@@ -406,6 +408,7 @@ function App() {
   const [userWeapons, setUserWeapons] = useState<DestinyInventoryItemDefinition[][] | undefined>(undefined);
   const [userArmor, setUserArmor] = useState<DestinyInventoryItemDefinition[][] | undefined>(undefined);
   const [oauthURL, setOauthURL] = useState<string>(""); 
+  const [jsonObject, setJsonObject] = useState<DestinyInventoryItemDefinition[] | undefined>(undefined);
   // const [oauthServerResponse, setOauthServerResponse] = useState<OAuthResponse>();
 
   const oauth_url_endpoint = async () => {
@@ -460,6 +463,7 @@ function App() {
         setUserCharacterProfiles(data?.characterProfileData);
         setUserWeapons(data?.userWeapons);
         setUserArmor(data?.userArmor);
+        setJsonObject(data?.jsonObject);
 
       }
 
@@ -472,8 +476,9 @@ function App() {
     bungieMembershipData,
     userCharacterProfiles,
     userWeapons,
-    userArmor
-  }), [bungieMembershipData, userCharacterProfiles, userWeapons, userArmor]);
+    userArmor,
+    jsonObject,
+  }), [bungieMembershipData, userCharacterProfiles, userWeapons, userArmor, jsonObject]);
 
   return (
     <>
