@@ -471,6 +471,11 @@ function App() {
     authorizationCodeChecker();
   }, []);
 
+  useEffect(() => {
+    console.log("jsonObject", jsonObject);
+  }
+    , [jsonObject]);
+
   // --- Prepare Context Value ---
   const contextValue = useMemo(() => ({
     bungieMembershipData,
