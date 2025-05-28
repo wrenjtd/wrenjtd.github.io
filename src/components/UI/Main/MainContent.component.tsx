@@ -177,7 +177,7 @@ const MainContentComponent = () => {
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 ">
 
-                      {user?.userWeapons && user?.userWeapons[0]?.map((item, index) => (
+                      {user?.userArmor && user?.userArmor[0]?.map((item, index) => (
 
                         <li className="flex" key={index}>
                           <a href="#" className="group relative rounded-none border border-gray-700 hover:border-white w-auto transition-colors duration-150">
@@ -211,11 +211,11 @@ const MainContentComponent = () => {
                 </div> 
 
                 {/* Character 2 equipped items */}
-                {/* <div className="flex mx-auto gap-x-[132px]">
+                <div className="flex mx-auto gap-x-[132px]">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9">
 
-                      {user?.userWeapons[1]?.map((item, index) => (
+                      {user?.userWeapons && user?.userWeapons[1]?.map((item, index) => (
 
                         <li className="flex" key={index}>
                           <a href="#" className="group relative rounded-none border border-gray-700 hover:border-white w-auto transition-colors duration-150">
@@ -249,7 +249,7 @@ const MainContentComponent = () => {
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 ">
 
-                      {user?.userArmor[1]?.map((item, index) => (
+                      {user?.userArmor && user?.userArmor[1]?.map((item, index) => (
 
                         <li className="flex" key={index}>
                           <a href="#" className="group relative rounded-none border border-gray-700 hover:border-white w-auto transition-colors duration-150">
@@ -280,13 +280,13 @@ const MainContentComponent = () => {
                       ))}
                     </ul>
                   </div>
-                </div> */}
+                </div>
 
                 {/* Character 3 equipped items */}
-                {/* <div className="flex mx-auto gap-x-[132px]">
+                <div className="flex mx-auto gap-x-[132px]">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9">
-                      {user?.userWeapons[2]?.map((item, index) => (
+                      {user?.userWeapons && user?.userWeapons[2]?.map((item, index) => (
 
                         <li className="flex" key={index}>
                           <a href="#" className="group relative rounded-none border border-gray-700 hover:border-white w-auto transition-colors duration-150">
@@ -322,7 +322,7 @@ const MainContentComponent = () => {
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9">
 
-                      {user?.userArmor[2]?.map((item, index) => (
+                      {user.userArmor && user?.userArmor[2]?.map((item, index) => (
 
                         <li className="flex" key={index}>
                           <a href="#" className="group relative rounded-none border-gray-700 hover:border-white w-auto transition-colors duration-150">
@@ -355,7 +355,7 @@ const MainContentComponent = () => {
                       ))}
                     </ul>
                   </div>
-                </div> */}
+                </div>
 
 
               </div>
