@@ -38,11 +38,7 @@ const MainContentComponent = () => {
                   <li className="p-1 leading-none">
                     <a href="#" className="text-xs font-medium text-gray-300">Website</a>
                   </li>
-                  <li className="p-1 leading-none">
-                    {user.userArmor && (
-                      <p>{user.userArmor[0][0].displayProperties.name}</p>
-                    )}
-                  </li>
+                  
                 </ul>
               </div>
             </div>
@@ -143,11 +139,11 @@ const MainContentComponent = () => {
               <div className="grid grid-cols-3">
 
                 {/* Character 1 equipped items */}
-                {/* <div className="flex mx-auto gap-x-[132px]">
+                 <div className="flex mx-auto gap-x-[132px]">
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 ">
-
-                      {user?.userWeapons[0]?.map((item, index) => (
+                    
+                     {user?.userWeapons && user?.userWeapons[0]?.map((item, index) => (
 
                         <li className="flex" key={index}>
                           <a href="#" className="group relative rounded-none border border-gray-700 hover:border-white w-auto transition-colors duration-150">
@@ -181,7 +177,7 @@ const MainContentComponent = () => {
                   <div className="border-black rounded-none">
                     <ul className="flex flex-col space-y-9 ">
 
-                      {user?.userArmor[0]?.map((item, index) => (
+                      {user?.userWeapons && user?.userWeapons[0]?.map((item, index) => (
 
                         <li className="flex" key={index}>
                           <a href="#" className="group relative rounded-none border border-gray-700 hover:border-white w-auto transition-colors duration-150">
@@ -212,7 +208,7 @@ const MainContentComponent = () => {
                       ))}
                     </ul>
                   </div>
-                </div> */}
+                </div> 
 
                 {/* Character 2 equipped items */}
                 {/* <div className="flex mx-auto gap-x-[132px]">
