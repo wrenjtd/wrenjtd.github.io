@@ -39,8 +39,8 @@ const MainContentComponent = () => {
                     <a href="#" className="text-xs font-medium text-gray-300">Website</a>
                   </li>
                   <li className="p-1 leading-none">
-                    {user.jsonObject && user.jsonObject[0] && user.jsonObject[0].displayProperties && user.jsonObject[0].displayProperties.name && (
-                      <p>{user.jsonObject[0].displayProperties.name}</p>
+                    {user.userArmor && (
+                      <p>{user.userArmor[0][0].displayProperties.name}</p>
                     )}
                   </li>
                 </ul>
